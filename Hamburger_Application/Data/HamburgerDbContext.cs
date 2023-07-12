@@ -23,8 +23,8 @@ namespace Hamburger_Application.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(builder);
             builder.ApplyConfigurationsFromAssembly(typeof(HamburgerDbContext).Assembly);
+            base.OnModelCreating(builder);
         }
     }
 }
