@@ -4,11 +4,11 @@ using System.Diagnostics;
 
 namespace Hamburger_Application.Controllers
 {
-	public class HomeController : Controller
-	{
-		public IActionResult Main()
-		{
-			return View();
-		}
-	}
+    public class HomeController : Controller
+    {
+        public IActionResult Main()
+        {
+            return View();
+        }
+    }
 }

@@ -21,9 +21,9 @@ namespace Hamburger_Application.Configurations
                     Name = "Whopper Menu",
                     Price = 150,
                     Piece = 1,
-                    FriesId=1,
-                    DrinkId=1,
-                    HamburgerId=1
+                    FriesId = 1,
+                    DrinkId = 1,
+                    HamburgerId = 1
                 },
                 new Menu
                 {

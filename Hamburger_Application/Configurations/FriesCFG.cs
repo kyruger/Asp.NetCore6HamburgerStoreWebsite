@@ -19,7 +19,7 @@ namespace Hamburger_Application.Configurations
                     Name = "Potato",
                     Price = 20,
                     Piece = 1,
-                    
+
                 },
                 new Fries
                 {
