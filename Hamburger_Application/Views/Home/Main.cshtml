@@ -1,0 +1,67 @@
+﻿@{
+	ViewData["Title"] = "Home Page";
+}
+<style>
+	.mbf-container {
+		text-align: center;
+		background-color: #f8f8f8;
+		padding: 20px;
+		transition: background-color 0.3s ease;
+	}
+
+		.mbf-container:hover {
+			background-color: rgb(237,200,8);
+		}
+
+		.mbf-container p {
+			margin-bottom: 10px;
+			text-align: justify;
+		}
+
+		.mbf-container strong {
+			font-weight: bold;
+		}
+</style>
+
+<div class="carousel slide" data-bs-ride="carousel" id="carousel-1">
+	<div class="carousel-inner">
+		<div class="carousel-item active">
+			<div class="bg-light border rounded border-light hero-nature carousel-hero jumbotron py-5 px-4">
+				<h1 class="hero-title">Hero Nature</h1>
+				<p class="hero-subtitle">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisi
+			</div>
+		</div>
+		<div class="carousel-item">
+			<div class="bg-light border rounded border-light hero-photography carousel-hero jumbotron py-5 px-4">
+				<h1 class="hero-title">Hero Photography</h1>
+				<p class="hero-subtitle">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+			</div>
+		</div>
+		<div class="carousel-item">
+			<div class="bg-light border rounded border-light hero-technology carousel-hero jumbotron py-5 px-4">
+				<h1 class="hero-title">Hero Technology</h1>
+				<p class="hero-subtitle">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+			</div>
+		</div>
+	</div>
+	<div><a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span><span class="visually-hidden">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next"><span class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span></a></div>
+	<ol class="carousel-indicators">
+		<li data-bs-target="#carousel-1" data-bs-slide-to="0" class="active"></li>
+		<li data-bs-target="#carousel-1" data-bs-slide-to="1"></li>
+		<li data-bs-target="#carousel-1" data-bs-slide-to="2"></li>
+	</ol>
+</div>
+<div class="mbf-container">
+	<p>
+		<strong>mbf (The Perfect Burger's Oven)</strong> offers a mouthwatering hamburger experience that will satisfy your cravings! Known for its delicious and satisfying burgers, mbf is the perfect destination for anyone in search of a fantastic hamburger.
+		The menu at mbf features a wide range of options to cater to every taste and preference. From classic cheeseburgers to unique and flavorful specialty burgers, there is something for everyone. All burgers are carefully prepared using fresh and high-quality ingredients.
+		In addition to burgers, mbf also offers tasty side dishes and beverages. Complement your hamburger with options like crispy french fries, onion rings, or even crispy chicken pieces. And to top it all off, enjoy refreshing drinks alongside your burger.
+		mbf's quick and convenient service ensures that your hunger is satisfied promptly. With an easy ordering process and fast delivery options, you can indulge in a delicious hamburger without delay.
+		Customer satisfaction is of great importance to mbf. By prioritizing quality and flavor at every step, they aim to provide you with the best hamburger experience possible. So, come and experience mbf's tantalizing hamburgers that will leave you craving for more!
+		If you're in search of a perfect hamburger experience, visit mbf and get ready to satisfy your appetite!
+	</p>
+</div>
+@section Scripts{
+	<script src="~/js/bootstrap.min.js"></script>
+	<partial name="_ValidationScriptsPartial" />
+}
