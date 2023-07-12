@@ -5,7 +5,7 @@ namespace Hamburger_Application.Areas.User.Controllers
 	[Area("User")]
 	public class AccountController : Controller
 	{
-		public IActionResult SignIn()
+		public IActionResult SignUp()
 		{
 			return View();
 		}
