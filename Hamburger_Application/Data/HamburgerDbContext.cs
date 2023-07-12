@@ -15,7 +15,7 @@ namespace Hamburger_Application.Data
 		public DbSet<Dessert> Desserts { get; set; }
 		public DbSet<Drink> Drinks { get; set; }
 		public DbSet<Fries> Frieses { get; set; }
-		public DbSet<Hamburger> Hamburgers { get; set; }
+		public DbSet<Sauce> Hamburgers { get; set; }
 		public DbSet<Menu> Menus { get; set; }
 		public DbSet<Order> Orders { get; set; }
 		public DbSet<Sauce> Sauces { get; set; }
@@ -23,8 +23,8 @@ namespace Hamburger_Application.Data
 
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
-			builder.ApplyConfigurationsFromAssembly(typeof(HamburgerDbContext).Assembly);
 			base.OnModelCreating(builder);
+			builder.ApplyConfigurationsFromAssembly(typeof(HamburgerDbContext).Assembly);
 		}
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using Hamburger_Application.Entities.Concrete;
+using Hamburger_Application.Entities.Enum;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -9,13 +10,13 @@ namespace Hamburger_Application.Configurations
 		public void Configure(EntityTypeBuilder<Drink> builder)
 		{
 			builder.Property(a=>a.isActive).HasDefaultValue(true);
-			builder.Property(a=>a.CreationTime).HasDefaultValue(DateTime.UtcNow);
+			builder.Property(a=>a.Size).HasDefaultValue(Size.Small);
 
 			builder.HasData(
 				new Drink
 				{
 					Id = 1,
-					Name = "Coke ",
+					Name = "Coke",
 					Price = 40,
 					Piece = 1
 				},
