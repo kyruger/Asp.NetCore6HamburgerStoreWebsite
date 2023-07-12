@@ -376,8 +376,8 @@ namespace Hamburger_Application.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "CreationTime", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "85052d38-6287-411d-9ef3-0b4b429ddffb", new DateTime(2023, 7, 12, 16, 46, 36, 367, DateTimeKind.Local).AddTicks(1358), "Admin", "ADMIN" },
-                    { 2, "2b2427a0-0a63-408d-81a7-c47f92ff88d2", new DateTime(2023, 7, 12, 16, 46, 36, 367, DateTimeKind.Local).AddTicks(1374), "User", "USER" }
+                    { 1, "dac1c99a-0456-48f8-8de8-a6724fffc82f", new DateTime(2023, 7, 12, 17, 12, 39, 668, DateTimeKind.Local).AddTicks(5250), "Admin", "ADMIN" },
+                    { 2, "01c1ba79-2270-43ab-99e7-02ffc44305c4", new DateTime(2023, 7, 12, 17, 12, 39, 668, DateTimeKind.Local).AddTicks(5278), "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -385,11 +385,11 @@ namespace Hamburger_Application.Migrations
                 columns: new[] { "Id", "CreationTime", "MenuId", "Name", "OrderId", "Photo", "Piece", "Price" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 7, 12, 16, 46, 36, 367, DateTimeKind.Local).AddTicks(2649), null, "Brownie", null, null, 1, 50m },
-                    { 2, new DateTime(2023, 7, 12, 16, 46, 36, 367, DateTimeKind.Local).AddTicks(2662), null, "Milkshake", null, null, 1, 40m },
-                    { 3, new DateTime(2023, 7, 12, 16, 46, 36, 367, DateTimeKind.Local).AddTicks(2665), null, "Cheesecake", null, null, 1, 60m },
-                    { 4, new DateTime(2023, 7, 12, 16, 46, 36, 367, DateTimeKind.Local).AddTicks(2667), null, "Ice Cream", null, null, 1, 30m },
-                    { 5, new DateTime(2023, 7, 12, 16, 46, 36, 367, DateTimeKind.Local).AddTicks(2668), null, "Puding", null, null, 1, 40m }
+                    { 1, new DateTime(2023, 7, 12, 17, 12, 39, 668, DateTimeKind.Local).AddTicks(6594), null, "Brownie", null, null, 1, 50m },
+                    { 2, new DateTime(2023, 7, 12, 17, 12, 39, 668, DateTimeKind.Local).AddTicks(6606), null, "Milkshake", null, null, 1, 40m },
+                    { 3, new DateTime(2023, 7, 12, 17, 12, 39, 668, DateTimeKind.Local).AddTicks(6608), null, "Cheesecake", null, null, 1, 60m },
+                    { 4, new DateTime(2023, 7, 12, 17, 12, 39, 668, DateTimeKind.Local).AddTicks(6610), null, "Ice Cream", null, null, 1, 30m },
+                    { 5, new DateTime(2023, 7, 12, 17, 12, 39, 668, DateTimeKind.Local).AddTicks(6612), null, "Puding", null, null, 1, 40m }
                 });
 
             migrationBuilder.InsertData(
@@ -397,11 +397,11 @@ namespace Hamburger_Application.Migrations
                 columns: new[] { "Id", "CreationTime", "MenuId", "Name", "OrderId", "Photo", "Piece", "Price" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 7, 12, 16, 46, 36, 367, DateTimeKind.Local).AddTicks(3661), null, "Coke", null, null, 1, 40m },
-                    { 2, new DateTime(2023, 7, 12, 16, 46, 36, 367, DateTimeKind.Local).AddTicks(3669), null, "Ayran", null, null, 1, 25m },
-                    { 3, new DateTime(2023, 7, 12, 16, 46, 36, 367, DateTimeKind.Local).AddTicks(3670), null, "Coke Zero", null, null, 1, 45m },
-                    { 4, new DateTime(2023, 7, 12, 16, 46, 36, 367, DateTimeKind.Local).AddTicks(3672), null, "Cold Tea", null, null, 1, 35m },
-                    { 5, new DateTime(2023, 7, 12, 16, 46, 36, 367, DateTimeKind.Local).AddTicks(3673), null, "Mineral Water", null, null, 1, 15m }
+                    { 1, new DateTime(2023, 7, 12, 17, 12, 39, 668, DateTimeKind.Local).AddTicks(7946), null, "Coke", null, null, 1, 40m },
+                    { 2, new DateTime(2023, 7, 12, 17, 12, 39, 668, DateTimeKind.Local).AddTicks(7958), null, "Ayran", null, null, 1, 25m },
+                    { 3, new DateTime(2023, 7, 12, 17, 12, 39, 668, DateTimeKind.Local).AddTicks(7961), null, "Coke Zero", null, null, 1, 45m },
+                    { 4, new DateTime(2023, 7, 12, 17, 12, 39, 668, DateTimeKind.Local).AddTicks(7963), null, "Cold Tea", null, null, 1, 35m },
+                    { 5, new DateTime(2023, 7, 12, 17, 12, 39, 668, DateTimeKind.Local).AddTicks(7966), null, "Mineral Water", null, null, 1, 15m }
                 });
 
             migrationBuilder.InsertData(
@@ -409,10 +409,10 @@ namespace Hamburger_Application.Migrations
                 columns: new[] { "Id", "CreationTime", "MenuId", "Name", "OrderId", "Photo", "Piece", "Price" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 7, 12, 16, 46, 36, 367, DateTimeKind.Local).AddTicks(4502), null, "Potato", null, null, 1, 20m },
-                    { 2, new DateTime(2023, 7, 12, 16, 46, 36, 367, DateTimeKind.Local).AddTicks(4507), null, "Onion Ring", null, null, 1, 22m },
-                    { 3, new DateTime(2023, 7, 12, 16, 46, 36, 367, DateTimeKind.Local).AddTicks(4509), null, "Nugget", null, null, 1, 25m },
-                    { 4, new DateTime(2023, 7, 12, 16, 46, 36, 367, DateTimeKind.Local).AddTicks(4510), null, "Chicken Tenders", null, null, 1, 25m }
+                    { 1, new DateTime(2023, 7, 12, 17, 12, 39, 669, DateTimeKind.Local).AddTicks(3740), null, "Potato", null, null, 1, 20m },
+                    { 2, new DateTime(2023, 7, 12, 17, 12, 39, 669, DateTimeKind.Local).AddTicks(3760), null, "Onion Ring", null, null, 1, 22m },
+                    { 3, new DateTime(2023, 7, 12, 17, 12, 39, 669, DateTimeKind.Local).AddTicks(3764), null, "Nugget", null, null, 1, 25m },
+                    { 4, new DateTime(2023, 7, 12, 17, 12, 39, 669, DateTimeKind.Local).AddTicks(3767), null, "Chicken Tenders", null, null, 1, 25m }
                 });
 
             migrationBuilder.InsertData(
@@ -420,11 +420,11 @@ namespace Hamburger_Application.Migrations
                 columns: new[] { "Id", "CreationTime", "MenuId", "Name", "OrderId", "Photo", "Piece", "Price" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 7, 12, 16, 46, 36, 367, DateTimeKind.Local).AddTicks(5335), null, "Whopper", null, null, 1, 120m },
-                    { 2, new DateTime(2023, 7, 12, 16, 46, 36, 367, DateTimeKind.Local).AddTicks(5341), null, "Texas SmokeHouse", null, null, 1, 140m },
-                    { 3, new DateTime(2023, 7, 12, 16, 46, 36, 367, DateTimeKind.Local).AddTicks(5342), null, "Fish Royale", null, null, 1, 110m },
-                    { 4, new DateTime(2023, 7, 12, 16, 46, 36, 367, DateTimeKind.Local).AddTicks(5344), null, "Big King", null, null, 1, 150m },
-                    { 5, new DateTime(2023, 7, 12, 16, 46, 36, 367, DateTimeKind.Local).AddTicks(5345), null, "Chicken Royale", null, null, 1, 95m }
+                    { 1, new DateTime(2023, 7, 12, 17, 12, 39, 669, DateTimeKind.Local).AddTicks(5396), null, "Whopper", null, null, 1, 120m },
+                    { 2, new DateTime(2023, 7, 12, 17, 12, 39, 669, DateTimeKind.Local).AddTicks(5407), null, "Texas SmokeHouse", null, null, 1, 140m },
+                    { 3, new DateTime(2023, 7, 12, 17, 12, 39, 669, DateTimeKind.Local).AddTicks(5410), null, "Fish Royale", null, null, 1, 110m },
+                    { 4, new DateTime(2023, 7, 12, 17, 12, 39, 669, DateTimeKind.Local).AddTicks(5413), null, "Big King", null, null, 1, 150m },
+                    { 5, new DateTime(2023, 7, 12, 17, 12, 39, 669, DateTimeKind.Local).AddTicks(5415), null, "Chicken Royale", null, null, 1, 95m }
                 });
 
             migrationBuilder.InsertData(
@@ -432,11 +432,11 @@ namespace Hamburger_Application.Migrations
                 columns: new[] { "Id", "CreationTime", "DessertId", "DrinkId", "FriesId", "HamburgerId", "Name", "OrderId", "Photo", "Piece", "Price" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 7, 12, 16, 46, 36, 370, DateTimeKind.Local).AddTicks(2450), null, 1, 1, 1, "Whopper Menu", null, null, 1, 150m },
-                    { 2, new DateTime(2023, 7, 12, 16, 46, 36, 370, DateTimeKind.Local).AddTicks(2484), null, 1, 1, 2, "Texas SmokeHouse Menu", null, null, 1, 170m },
-                    { 3, new DateTime(2023, 7, 12, 16, 46, 36, 370, DateTimeKind.Local).AddTicks(2595), null, 1, 1, 3, "Fish Royale Menu", null, null, 1, 140m },
-                    { 4, new DateTime(2023, 7, 12, 16, 46, 36, 370, DateTimeKind.Local).AddTicks(2600), null, 1, 1, 4, "Big King Menu", null, null, 1, 150m },
-                    { 5, new DateTime(2023, 7, 12, 16, 46, 36, 370, DateTimeKind.Local).AddTicks(2608), null, 1, 1, 5, "Chicken Royale Menu", null, null, 1, 120m }
+                    { 1, new DateTime(2023, 7, 12, 17, 12, 39, 673, DateTimeKind.Local).AddTicks(9864), null, 1, 1, 1, "Whopper Menu", null, null, 1, 150m },
+                    { 2, new DateTime(2023, 7, 12, 17, 12, 39, 673, DateTimeKind.Local).AddTicks(9892), null, 1, 1, 2, "Texas SmokeHouse Menu", null, null, 1, 170m },
+                    { 3, new DateTime(2023, 7, 12, 17, 12, 39, 673, DateTimeKind.Local).AddTicks(9896), null, 1, 1, 3, "Fish Royale Menu", null, null, 1, 140m },
+                    { 4, new DateTime(2023, 7, 12, 17, 12, 39, 673, DateTimeKind.Local).AddTicks(9898), null, 1, 1, 4, "Big King Menu", null, null, 1, 150m },
+                    { 5, new DateTime(2023, 7, 12, 17, 12, 39, 673, DateTimeKind.Local).AddTicks(9901), null, 1, 1, 5, "Chicken Royale Menu", null, null, 1, 120m }
                 });
 
             migrationBuilder.InsertData(
@@ -444,10 +444,10 @@ namespace Hamburger_Application.Migrations
                 columns: new[] { "Id", "CreationTime", "MenuId", "Name", "OrderId", "Photo", "Piece", "Price" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 7, 12, 16, 46, 36, 370, DateTimeKind.Local).AddTicks(4036), null, "Ranch", null, null, 1, 15m },
-                    { 2, new DateTime(2023, 7, 12, 16, 46, 36, 370, DateTimeKind.Local).AddTicks(4042), null, "Ketchup", null, null, 1, 10m },
-                    { 3, new DateTime(2023, 7, 12, 16, 46, 36, 370, DateTimeKind.Local).AddTicks(4043), null, "Mayonnaise", null, null, 1, 10m },
-                    { 4, new DateTime(2023, 7, 12, 16, 46, 36, 370, DateTimeKind.Local).AddTicks(4044), null, "Barbeque", null, null, 1, 15m }
+                    { 1, new DateTime(2023, 7, 12, 17, 12, 39, 674, DateTimeKind.Local).AddTicks(1343), null, "Ranch", null, null, 1, 15m },
+                    { 2, new DateTime(2023, 7, 12, 17, 12, 39, 674, DateTimeKind.Local).AddTicks(1352), null, "Ketchup", null, null, 1, 10m },
+                    { 3, new DateTime(2023, 7, 12, 17, 12, 39, 674, DateTimeKind.Local).AddTicks(1354), null, "Mayonnaise", null, null, 1, 10m },
+                    { 4, new DateTime(2023, 7, 12, 17, 12, 39, 674, DateTimeKind.Local).AddTicks(1364), null, "Barbeque", null, null, 1, 15m }
                 });
 
             migrationBuilder.CreateIndex(
