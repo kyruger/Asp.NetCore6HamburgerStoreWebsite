@@ -1,0 +1,31 @@
+﻿@model DessertCreateVM
+
+<h1>Dessert Create</h1>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Dessert.Name" class="control-label"></label>
+        <input asp-for="Dessert.Name" class="form-control" type="text"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="Dessert.Price" class="control-label"></label>
+        <input asp-for="Dessert.Price" class="form-control" type="number" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Dessert.Piece" class="control-label"></label>
+        <input asp-for="Dessert.Piece" class="form-control" type="number"  />
+    </div>
+    <div class="form-group">
+        <label asp-for="Dessert.Photo" class="control-label"></label>
+        <input asp-for="Dessert.Photo" class="form-control" type="file" name="imgCover" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+
+</form>
+@if (ViewBag.info != null)
+{
+    <p>@ViewBag.info</p>
+}

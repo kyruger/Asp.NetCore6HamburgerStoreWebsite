@@ -1,0 +1,49 @@
+﻿@using Hamburger_Application.Entities.Concrete;
+@model DessertListVM
+
+
+<h3>Desserts</h3>
+
+
+<div class="row text-center justify-content-center">
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Dessert Name</th>
+                <th>Dessert CreationTime</th>
+                <th>Dessert Activity</th>
+                <th>Dessert Price</th>
+                <th>Dessert Piece</th>
+                <th>Dessert Photo</th>
+                <th>Details</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (Dessert dessert in Model.Desserts)
+            {
+                <tr>
+                    <td>@dessert.Name</td>
+                    <td>@dessert.CreationTime</td>
+                    <td>@dessert.isActive</td>
+                    <td>@dessert.Price</td>
+                    <td>@dessert.Piece</td>
+                    <td>@dessert.Photo</td>
+                    <td>
+                        <a asp-action="Details" class="btn btn-primary" asp-route-id="@dessert.Id">Detaylar</a>
+                    </td>
+                    <td>
+                        <a asp-action="Update" class="btn btn-primary" asp-route-id="@dessert.Id">Güncelle</a>
+                    </td>
+                    <td>
+                        <a asp-action="Delete" class="btn btn-primary" asp-route-id="@dessert.Id">Sil</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-action="Create">Create Dessert</a>
+</div>

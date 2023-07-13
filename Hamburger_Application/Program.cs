@@ -1,5 +1,7 @@
 using Hamburger_Application.Data;
 using Hamburger_Application.Entities.Concrete;
+using Hamburger_Application.Repositories.Abstract;
+using Hamburger_Application.Repositories.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +18,8 @@ builder.Services.AddDbContext<HamburgerDbContext>(options =>
 //builder.Services.AddDbContext<HamburgerDbContext>(options =>
 //	options.UseSqlServer(connectionString));
 //builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+builder.Services.AddTransient(typeof(IRepository<>), typeof(GenericRepository<>));
 
 builder.Services.AddIdentity<AppUser, AppRole>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<AppRole>()
