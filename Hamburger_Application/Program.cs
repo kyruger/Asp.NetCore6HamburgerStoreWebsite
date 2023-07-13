@@ -38,13 +38,13 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.LoginPath = "/Home/Index"; // default u degistirme
 });
 
-builder.Services.Configure<IdentityOptions>(options =>
-{
-    // password customize
-    options.Password.RequiredLength = 8;
-    options.User.RequireUniqueEmail = true;
-    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);
-});
+//builder.Services.Configure<IdentityOptions>(options =>
+//{
+//    // password customize
+//    options.Password.RequiredLength = 8;
+//    options.User.RequireUniqueEmail = true;
+//    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);
+//});
 
 builder.Services.AddRazorPages();
 

@@ -28,7 +28,7 @@ namespace Hamburger_Application.Areas.User.Controllers
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> SignUpAsync(AppUserCreateVM appUserCreateVM)
+		public async Task<IActionResult> SignUp(AppUserCreateVM appUserCreateVM)
 		{
 			if (ModelState.IsValid)
 			{
@@ -90,7 +90,7 @@ namespace Hamburger_Application.Areas.User.Controllers
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> EmailConfirmAsync(AppUserEmailConfirmVM appUserEmailConfirmVM)
+		public async Task<IActionResult> EmailConfirm(AppUserEmailConfirmVM appUserEmailConfirmVM)
 		{
 			AppUser appUser = await userManager.FindByEmailAsync(appUserEmailConfirmVM.Email);
 			if (appUser is not null)
@@ -99,7 +99,7 @@ namespace Hamburger_Application.Areas.User.Controllers
 				IdentityResult result = await userManager.UpdateAsync(appUser);
 				if (result.Succeeded)
 				{
-					return RedirectToAction("Index", "Home");
+					return RedirectToAction("SignIn");
 				}
 				else
 				{
@@ -122,7 +122,7 @@ namespace Hamburger_Application.Areas.User.Controllers
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> SignInAsync(AppUserSignInVM appUserSignInVM) 
+		public async Task<IActionResult> SignIn(AppUserSignInVM appUserSignInVM) 
 		{
 			if (ModelState.IsValid)
 			{
@@ -136,7 +136,7 @@ namespace Hamburger_Application.Areas.User.Controllers
 						{
 							if (appUser.EmailConfirmed)
 							{
-								return RedirectToAction("Index", "UserAccounts");
+								return RedirectToAction("Main", "Home");
 							}
 							else
 							{

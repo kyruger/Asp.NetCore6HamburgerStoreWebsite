@@ -1,18 +1,24 @@
 ﻿@model AppUserCreateVM
 
-<section class="register-photo" style="background-color: transparent;">
+<section class="register-photo" style="background-color: transparent; font-family:'Indie Flower'">
     <div class="form-container d-flex" style="margin-top: 40px;">
-        <div class="image-holder" style="background: url(&quot;assets/img/IINET-DOSAGE-1.jpg&quot;) left / cover no-repeat;height: 500px;">
-            <img src="../../img/burger4.jpg" width="400" height="400" style="width: 400px;height: 510px;" />
+        <div class="image-holder; justify-content-center" style="background: url(&quot;assets/img/IINET-DOSAGE-1.jpg&quot;) left / cover no-repeat;height: 950px;">
+            <img src="../../img/burger4.jpg" width="400" height="400" style="width: 450px;height: 950px; font-size:16px" />
         </div>
-        <form asp-action="SignUp" method="post" class="justify-content-between text-center">
-            <h2>Sign Up</h2>
+        <form asp-action="SignUp" method="post" class="form-group justify-content-between text-center" style="font-family:'Indie Flower'">
+            <h2 style="color:rgb(244,147,1)">Sign Up</h2>
             <div class="" style="font-size:22px">
-                <input type="text" asp-for="FirstName" placeholder="Name" />
-                <input type="text" asp-for="LastName" placeholder="Surname" />
-                <input type="email" asp-for="Email" placeholder="Email" />
-                <input type="password" asp-for="Password" placeholder="Password" />
-                <input type="password" asp-for="ConfirmedPassword" placeholder="Password Confirm" />
+                <input type="text" asp-for="FirstName" class="form-control" placeholder="Name" />
+                <br />
+                <input type="text" asp-for="LastName" class="form-control" placeholder="Surname" />
+                <br />
+                <input type="text" asp-for="UserName" class="form-control" placeholder="Username" />
+                <br />
+                <input type="email" asp-for="Email" class="form-control" placeholder="Email" />
+                <br />
+                <input type="password" asp-for="Password" class="form-control" placeholder="Password" />
+                <br />
+                <input type="password" asp-for="ConfirmPassword" class="form-control" placeholder="Password Confirm" />
             </div>
             <div asp-validation-summary="All"></div>
             <br />
@@ -23,9 +29,9 @@
                 </li>
             </ul>
             <div class="form-group mb-3">
-                <button class="btn btn-primary d-block w-100" id="submitButton" type="submit" style="color: rgb(255,255,255);background: rgb(244,147,1);">Sign Up</button>
+                <button class="btn btn-primary d-block w-100" id="submitButton" type="submit" style="color: rgb(255,255,255);background: rgb(244,147,1); font-family:'Indie Flower'">Sign Up</button>
             </div>
-            <span>Already have an account? => <a class="btn btn-outline" href="Login/Index">Sign In</a></span>
+            <span>Already have an account?&nbsp; => &nbsp;<a class="btn btn-outline-danger" asp-action="SignIn" style="font-family:'Indie Flower'">Sign In</a></span>
         </form>
     </div>
 </section>

@@ -3,36 +3,76 @@
 @inject SignInManager<AppUser> SignInManager
 @inject UserManager<AppUser> UserManager
 <style>
-	.text-right {
-		text-align: right;
-	}
+    .text-right {
+        text-align: right;
+    }
 
-		.text-right .nav-item {
-			display: inline-block;
-			float: right;
-			margin-left: 10px;
-		}
+        .text-right .nav-item {
+            display: inline-block;
+            float: right;
+            margin-left: 10px;
+        }
 </style>
 
-<ul class="navbar-nav">
-	@if (SignInManager.IsSignedIn(User))
-	{
-		<li class="nav-item">
-			<a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
-		</li>
-		<li class="nav-item">
-			<form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-				<button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-			</form>
-		</li>
-	}
-	else
-	{
-		<li class="nav-item">
-			<a class="nav-link text-white" asp-area="Identity" asp-page="/Account/Login">Login</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link text-white" asp-area="User" asp-controller="Account" asp-action="SignUp">Sign Up</a>
-		</li>
-	}
-</ul>
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <ul class="navbar-nav nav-right">
+        <li class="nav-item dropdown">
+            <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#" style="color: rgb(247,244,244);">
+                Products
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" asp-area="Admin" asp-controller="Menu" asp-action="Index"><img src="https://www.burgerking.com.tr/cmsfiles/categories/urunler/menuler-icon.png?v=269">Menus</a>
+                <a class="dropdown-item" asp-area="Admin" asp-controller="Hamburger" asp-action="Index"><img src="https://www.burgerking.com.tr/cmsfiles/categories/urunler/burgerler-icon.png?v=269">Burgers</a>
+                <a class="dropdown-item" asp-area="Admin" asp-controller="Fries" asp-action="Index"><img src="	https://www.burgerking.com.tr/cmsfiles/categories/urunler/citir-lezzetler-icon.png?v=269">Fries</a>
+                <a class="dropdown-item" asp-area="Admin" asp-controller="Dessert" asp-action="Index"><img src="https://www.burgerking.com.tr/cmsfiles/categories/urunler/tatlilar-icon.png?v=269">Desserts</a>
+                <a class="dropdown-item" asp-area="Admin" asp-controller="Drink" asp-action="Index"><img src="https://www.burgerking.com.tr/cmsfiles/categories/urunler/icecekler-icon.png?v=269">Drinks</a>
+                <a class="dropdown-item" asp-area="Admin" asp-controller="Sauce" asp-action="Index"><img src="https://www.burgerking.com.tr/cmsfiles/categories/urunler/soslar-icon.png?v=269">Sauces</a>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="contact.html" style="color: rgb(254,254,254);">contact </a>
+        </li>
+    </ul>
+
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name</a>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+            </form>
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="navbar-nav nav-right">
+        <li class="nav-item dropdown">
+            <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#" style="color: rgb(247,244,244);">
+                Products
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" asp-area="Admin" asp-controller="Menu" asp-action="Index"><img src="https://www.burgerking.com.tr/cmsfiles/categories/urunler/menuler-icon.png?v=269">Menus</a>
+                <a class="dropdown-item" asp-area="Admin" asp-controller="Hamburger" asp-action="Index"><img src="https://www.burgerking.com.tr/cmsfiles/categories/urunler/burgerler-icon.png?v=269">Burgers</a>
+                <a class="dropdown-item" asp-area="Admin" asp-controller="Fries" asp-action="Index"><img src="	https://www.burgerking.com.tr/cmsfiles/categories/urunler/citir-lezzetler-icon.png?v=269">Fries</a>
+                <a class="dropdown-item" asp-area="Admin" asp-controller="Dessert" asp-action="Index"><img src="https://www.burgerking.com.tr/cmsfiles/categories/urunler/tatlilar-icon.png?v=269">Desserts</a>
+                <a class="dropdown-item" asp-area="Admin" asp-controller="Drink" asp-action="Index"><img src="https://www.burgerking.com.tr/cmsfiles/categories/urunler/icecekler-icon.png?v=269">Drinks</a>
+                <a class="dropdown-item" asp-area="Admin" asp-controller="Sauce" asp-action="Index"><img src="https://www.burgerking.com.tr/cmsfiles/categories/urunler/soslar-icon.png?v=269">Sauces</a>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="contact.html" style="color: rgb(254,254,254);">contact </a>
+        </li>
+    </ul>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link text-white" asp-area="User" asp-controller="Account" asp-action="SignIn">Sign In</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" asp-area="User" asp-controller="Account" asp-action="SignUp">Sign Up</a>
+        </li>
+    </ul>
+}

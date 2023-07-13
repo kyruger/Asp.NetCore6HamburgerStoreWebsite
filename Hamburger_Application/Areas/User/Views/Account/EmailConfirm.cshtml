@@ -3,15 +3,14 @@
 <br />
 <br />
 <br />
-<br />
-<br />
+
 <div class="container">
     <div class="d-flex flex-column mb-3 text-center" style="color:rgb(244,147,1); font-family:'Indie Flower'; font-size:16px">
         <h1>Please enter your confirm code which is sent your email adress.</h1>
         <br />
         <hr />
         <br />
-        <form asp-action="Index" method="post" class="form-group">
+        <form asp-action="EmailConfirm" method="post" class="form-group">
             <div class="p-2">
                 <label asp-for="Email"></label>
                 <input type="email" class="form-control" asp-for="Email" required="" value="@TempData["Email"]" />
