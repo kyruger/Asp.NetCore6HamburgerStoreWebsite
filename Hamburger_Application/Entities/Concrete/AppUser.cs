@@ -12,6 +12,7 @@ namespace Hamburger_Application.Entities.Concrete
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string? Address { get; set; }
+        public bool IsActive { get; set; }
         public DateTime CreationTime { get; set; }
         [NotMapped]
         public int ConfirmCode { get; set; }

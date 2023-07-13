@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Hamburger_Application.Areas.User.Controllers
 {
+    [Area("User")]
     public class EmailConfirmController : Controller
     {
         private readonly UserManager<AppUser> userManager;
@@ -23,19 +24,20 @@ namespace Hamburger_Application.Areas.User.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(AppUserEmailConfirmVM appUserEmailConfirmVM)
         {
-            AppUser appUser = await userManager.Users.FirstOrDefaultAsync(a => a.Email == appUserEmailConfirmVM.Email && a.ConfirmCode == appUserEmailConfirmVM.ConfirmCode);
+            AppUser appUser = await userManager.FindByEmailAsync(appUserEmailConfirmVM.Email);
             if (appUser is not null)
             {
                 appUser.EmailConfirmed = true;
                 IdentityResult result = await userManager.UpdateAsync(appUser);
                 if (result.Succeeded) 
                 {
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
                     foreach (IdentityError error in result.Errors)
                     {
-                        ModelState.AddModelError("Email confirm process is unsuccess", error.Description);
+                        ModelState.AddModelError("Email confirm process is unsuccess !", error.Description);
                     }
                 }
             }

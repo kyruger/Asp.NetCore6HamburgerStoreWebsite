@@ -8,11 +8,12 @@ using AutoMapper;
 
 namespace Hamburger_Application.Areas.User.Controllers
 {
-    public class AccountController : Controller
+    [Area("User")]
+    public class SignUpController : Controller
     {
         private readonly UserManager<AppUser> userManager;
         private readonly IMapper mapper;
-        public AccountController(UserManager<AppUser> userManager, IMapper mapper)
+        public SignUpController(UserManager<AppUser> userManager, IMapper mapper)
         {
             this.userManager = userManager;
             this.mapper = mapper;

@@ -8,16 +8,11 @@
         <form asp-action="SignUp" method="post" class="justify-content-between text-center">
             <h2>Sign Up</h2>
             <div class="" style="font-size:22px">
-                <input type="text" asp-for="FirstName" placeholder="Name" required="">
-                <span asp-validation-for="FirstName"></span>
-                <input type="text" asp-for="LastName" placeholder="Surname" required="">
-                <span asp-validation-for="LastName"></span>
-                <input type="email" asp-for="Email" placeholder="Email" required="">
-                <span asp-validation-for="Email"></span>
-                <input type="password" asp-for="Password" placeholder="Password" required="">
-                <span asp-validation-for="Password"></span>
-                <input type="password" asp-for="ConfirmedPassword" placeholder="Password Confirm" required="">
-                <span asp-validation-for="ConfirmedPassword"></span>
+                <input type="text" asp-for="FirstName" placeholder="Name" />
+                <input type="text" asp-for="LastName" placeholder="Surname" />
+                <input type="email" asp-for="Email" placeholder="Email" />
+                <input type="password" asp-for="Password" placeholder="Password" />
+                <input type="password" asp-for="ConfirmedPassword" placeholder="Password Confirm" />
             </div>
             <div asp-validation-summary="All"></div>
             <br />
@@ -28,9 +23,9 @@
                 </li>
             </ul>
             <div class="form-group mb-3">
-                <button class="btn btn-primary d-block w-100" id="submitButton" type="submit" style="color: rgb(255,255,255);background: rgb(244,147,1);">Crear cuenta</button>
+                <button class="btn btn-primary d-block w-100" id="submitButton" type="submit" style="color: rgb(255,255,255);background: rgb(244,147,1);">Sign Up</button>
             </div>
-            <a class="already" href="login.html">¿Ya tienes una cuenta? Inicia sesión aquí</a>
+            <span>Already have an account? => <a class="btn btn-outline" href="Login/Index">Sign In</a></span>
         </form>
     </div>
 </section>

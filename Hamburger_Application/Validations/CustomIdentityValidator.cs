@@ -9,7 +9,7 @@ namespace Hamburger_Application.Validations
             return new IdentityError()
             {
                 Code = "InvalidEmail",
-                Description = $"{email} email adresi geçersizdir !\nSistemde yok ya da kullanıcı tarafından onaylanmamış mail adresi !"
+                Description = $"{email} email address is invalid !"
             };
         }
 
@@ -18,7 +18,7 @@ namespace Hamburger_Application.Validations
             return new IdentityError()
             {
                 Code = "DuplicateEmail",
-                Description = $"{email} email adresi sistemde kayıtlıdır.\nSisteme kaydolmak için lütfen farklı bir email adresi giriniz !"
+                Description = $"{email} email address has already been in system !"
             };
         }
 
@@ -27,7 +27,7 @@ namespace Hamburger_Application.Validations
             return new IdentityError()
             {
                 Code = "PasswordTooShort",
-                Description = $"Girilen şifre çok kısa !\nEn az {length} karaktere sahip bir şifre oluşturulmalıdır !"
+                Description = $"Password must have been {length} characters at least !"
             };
         }
 
@@ -36,7 +36,7 @@ namespace Hamburger_Application.Validations
             return new IdentityError()
             {
                 Code = "PasswordRequiresLower",
-                Description = "Şifre en az bir küçük harf içermelidir !"
+                Description = "Password must have been min one lower character !"
             };
         }
 
@@ -45,7 +45,7 @@ namespace Hamburger_Application.Validations
             return new IdentityError()
             {
                 Code = "PasswordRequiresUpper",
-                Description = "Şifre en az bir büyük harf içermelidir !"
+                Description = "Password must have been min one upper character !"
             };
         }
 
@@ -54,7 +54,7 @@ namespace Hamburger_Application.Validations
             return new IdentityError()
             {
                 Code = "PasswordRequiresDigit",
-                Description = "Şifre en az bir sayı içermelidir !"
+                Description = "Password must have been min one digit character !"
             };
         }
 
@@ -63,7 +63,7 @@ namespace Hamburger_Application.Validations
             return new IdentityError()
             {
                 Code = "PasswordRequiresNonAlphanumeric",
-                Description = "Şifre en az bir özel karakter içermelidir !"
+                Description = "Password must have been min one alphanumeric character !"
             };
         }
     }

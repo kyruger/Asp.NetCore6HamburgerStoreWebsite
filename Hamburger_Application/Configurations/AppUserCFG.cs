@@ -14,6 +14,7 @@ namespace Hamburger_Application.Configurations
             builder.Property(b => b.Address).HasMaxLength(200);
             builder.Property(b => b.Email).IsRequired();
             builder.HasIndex(b => b.Email).IsUnique();
+            builder.Property(b => b.IsActive).HasDefaultValue(true);
         }
     }
 }
