@@ -8,7 +8,6 @@ using AutoMapper;
 
 namespace Hamburger_Application.Areas.User.Controllers
 {
-    [Area("User")]
     public class AccountController : Controller
     {
         private readonly UserManager<AppUser> userManager;
