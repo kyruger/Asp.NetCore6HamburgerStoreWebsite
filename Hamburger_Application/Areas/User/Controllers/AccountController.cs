@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MimeKit;
 using MailKit.Net.Smtp;
+using AutoMapper;
 
 namespace Hamburger_Application.Areas.User.Controllers
 {
@@ -11,9 +12,11 @@ namespace Hamburger_Application.Areas.User.Controllers
     public class AccountController : Controller
     {
         private readonly UserManager<AppUser> userManager;
-        public AccountController(UserManager<AppUser> userManager)
+        private readonly IMapper mapper;
+        public AccountController(UserManager<AppUser> userManager, IMapper mapper)
         {
             this.userManager = userManager;
+            this.mapper = mapper;
         }
 
         public IActionResult SignUp()
@@ -27,41 +30,19 @@ namespace Hamburger_Application.Areas.User.Controllers
             if (ModelState.IsValid)
             {
                 Random random = new();
-                int confirmCode = random.Next(100_000, 1_000_000);
+                int randomCode = random.Next(100_000, 1_000_000);
 
-                AppUser appUser = new AppUser()
-                {
-                    FirstName = appUserCreateVM.FirstName,
-                    LastName = appUserCreateVM.LastName,
-                    Email = appUserCreateVM.Email,
-                    ConfirmCode = confirmCode
-                };
+                AppUser appUser = new();
+                appUser = mapper.Map<AppUser>(appUserCreateVM);
 
+                appUser.ConfirmCode = randomCode;
                 appUser.PasswordHash = userManager.PasswordHasher.HashPassword(appUser, appUserCreateVM.Password);
 
                 IdentityResult result = await userManager.CreateAsync(appUser);
 
                 if (result.Succeeded)
                 {
-                    MailboxAddress mailboxAddressFrom = new MailboxAddress("mbf hamburger", "fatih_trkci96@hotmail.com");
-                    MailboxAddress mailboxAddressTo = new MailboxAddress("User", appUser.Email);
-
-                    var bodyBuilder = new BodyBuilder();
-                    bodyBuilder.TextBody = "Sign Up process confirm code :  " + confirmCode;
-
-                    MimeMessage mimeMessage = new();
-                    mimeMessage.From.Add(mailboxAddressFrom);
-                    mimeMessage.To.Add(mailboxAddressTo);
-
-                    mimeMessage.Body = bodyBuilder.ToMessageBody();
-                    mimeMessage.Subject = "mbf Hamburger";
-
-                    SmtpClient client = new();
-                    client.Connect("smtp.office365.com", 587, false);
-                    client.Authenticate("fatih_trkci96@hotmail.com", "dakytkefxqwqevks");
-                    client.Send(mimeMessage);
-                    client.Disconnect(true);
-
+                    EmailSend(appUser.Email, randomCode);
                     TempData["Email"] = appUser.Email;
                     return RedirectToAction("Index", "EmailConfirm");
                 }
@@ -69,20 +50,35 @@ namespace Hamburger_Application.Areas.User.Controllers
                 {
                     foreach (IdentityError error in result.Errors)
                     {
-                        ModelState.AddModelError("Error", $"{error.Code}  =>  {error.Description}");
+                        ModelState.AddModelError("Error", error.Description);
                     }
                 }
             }
+            else ModelState.AddModelError("Error", "Something was wrong");
             return View(appUserCreateVM);
         }
 
-        public async Task<IActionResult> LogIn()
+        [NonAction]
+        private void EmailSend(string email, int randomCode)
         {
-            return View();
-        }
-        public IActionResult LogOut()
-        {
-            return View();
+            MailboxAddress mailboxAddressFrom = new MailboxAddress("mbf hamburger", "fatih_trkci96@hotmail.com");
+            MailboxAddress mailboxAddressTo = new MailboxAddress("User", email);
+
+            var bodyBuilder = new BodyBuilder();
+            bodyBuilder.TextBody = "Sign Up process confirm code :  " + randomCode;
+
+            MimeMessage mimeMessage = new();
+            mimeMessage.From.Add(mailboxAddressFrom);
+            mimeMessage.To.Add(mailboxAddressTo);
+
+            mimeMessage.Body = bodyBuilder.ToMessageBody();
+            mimeMessage.Subject = "mbf Hamburger";
+
+            SmtpClient client = new();
+            client.Connect("smtp.office365.com", 587, false);
+            client.Authenticate("fatih_trkci96@hotmail.com", "dakytkefxqwqevks");
+            client.Send(mimeMessage);
+            client.Disconnect(true); 
         }
     }
 }

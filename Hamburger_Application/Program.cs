@@ -20,6 +20,24 @@ builder.Services.AddIdentity<AppUser, AppRole>(options => options.SignIn.Require
     .AddRoles<AppRole>()
     .AddEntityFrameworkStores<HamburgerDbContext>().AddErrorDescriber<CustomIdentityValidator>();
 
+// login olan kullanýcý bir dk mouse klavye hareket yoksa sistemden atýlýr
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.Name = "Identity";
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(1);
+    options.SlidingExpiration = true;
+
+    options.LoginPath = "/Home/Index"; // default u degistirme
+});
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    // password customize
+    options.Password.RequiredLength = 8;
+    options.User.RequireUniqueEmail = true;
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);
+});
+
 builder.Services.AddRazorPages();
 
 var app = builder.Build();

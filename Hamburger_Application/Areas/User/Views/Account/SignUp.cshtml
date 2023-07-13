@@ -1,4 +1,4 @@
-﻿@model AppUserCreateVMs
+﻿@model AppUserCreateVM
 
 <section class="register-photo" style="background-color: transparent;">
     <div class="form-container d-flex" style="margin-top: 40px;">
@@ -12,8 +12,6 @@
                 <span asp-validation-for="FirstName"></span>
                 <input type="text" asp-for="LastName" placeholder="Surname" required="">
                 <span asp-validation-for="LastName"></span>
-                <input type="text" asp-for="UserName" placeholder="Username" required="">
-                <span asp-validation-for="UserName"></span>
                 <input type="email" asp-for="Email" placeholder="Email" required="">
                 <span asp-validation-for="Email"></span>
                 <input type="password" asp-for="Password" placeholder="Password" required="">
