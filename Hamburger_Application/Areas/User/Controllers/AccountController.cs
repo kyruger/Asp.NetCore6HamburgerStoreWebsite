@@ -33,7 +33,6 @@ namespace Hamburger_Application.Areas.User.Controllers
                 {
                     FirstName = appUserCreateVM.FirstName,
                     LastName = appUserCreateVM.LastName,
-                    UserName = appUserCreateVM.UserName,
                     Email = appUserCreateVM.Email,
                     ConfirmCode = confirmCode
                 };
