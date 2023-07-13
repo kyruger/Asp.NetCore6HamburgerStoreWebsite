@@ -28,6 +28,7 @@
     <Folder Include="Areas\User\Models\" />
     <Folder Include="wwwroot\ProductImages\Fries\" />
     <Folder Include="wwwroot\ProductImages\Hamburger\" />
+    <Folder Include="wwwroot\ProductImages\Sauce\" />
   </ItemGroup>
 
 </Project>
