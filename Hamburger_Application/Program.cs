@@ -1,5 +1,6 @@
 using Hamburger_Application.Data;
 using Hamburger_Application.Entities.Concrete;
+using Hamburger_Application.Validations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,20 +9,35 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
+
 var connectionString = builder.Configuration.GetConnectionString("ConnStr");
 builder.Services.AddDbContext<HamburgerDbContext>(options =>
     options.UseSqlServer(connectionString));
-
-//var connectionString = builder.Configuration.GetConnectionString("ConStr");
-//builder.Services.AddDbContext<HamburgerDbContext>(options =>
-//	options.UseSqlServer(connectionString));
 //builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddIdentity<AppUser, AppRole>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<AppRole>()
-    .AddEntityFrameworkStores<HamburgerDbContext>();
+    .AddEntityFrameworkStores<HamburgerDbContext>().AddErrorDescriber<CustomIdentityValidator>();
 
-builder.Services.AddControllersWithViews();
+// login olan kullanýcý bir dk mouse klavye hareket yoksa sistemden atýlýr
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.Name = "Identity";
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(1);
+    options.SlidingExpiration = true;
+
+    options.LoginPath = "/Home/Index"; // default u degistirme
+});
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    // password customize
+    options.Password.RequiredLength = 8;
+    options.User.RequireUniqueEmail = true;
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);
+});
+
 builder.Services.AddRazorPages();
 
 var app = builder.Build();

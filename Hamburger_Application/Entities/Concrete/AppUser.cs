@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hamburger_Application.Entities.Concrete
 {
@@ -10,8 +11,10 @@ namespace Hamburger_Application.Entities.Concrete
         }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Address { get; set; }
+        public string? Address { get; set; }
         public DateTime CreationTime { get; set; }
+        [NotMapped]
+        public int ConfirmCode { get; set; }
         public ICollection<Order> Orders { get; set; }
     }
 }
