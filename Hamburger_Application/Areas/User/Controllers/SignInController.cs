@@ -1,6 +1,5 @@
 ﻿using Hamburger_Application.Areas.User.Models.AppUserVMs;
 using Hamburger_Application.Entities.Concrete;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
