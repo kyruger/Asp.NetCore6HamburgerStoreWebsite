@@ -198,7 +198,7 @@ namespace Hamburger_Application.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("Desserts");
+                    b.ToTable("Desserts", (string)null);
 
                     b.HasData(
                         new
@@ -295,7 +295,7 @@ namespace Hamburger_Application.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("Drinks");
+                    b.ToTable("Drinks", (string)null);
 
                     b.HasData(
                         new
@@ -397,7 +397,7 @@ namespace Hamburger_Application.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("Frieses");
+                    b.ToTable("Frieses", (string)null);
 
                     b.HasData(
                         new
@@ -484,7 +484,7 @@ namespace Hamburger_Application.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("Hamburger");
+                    b.ToTable("Hamburger", (string)null);
 
                     b.HasData(
                         new
@@ -581,7 +581,7 @@ namespace Hamburger_Application.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("Menus");
+                    b.ToTable("Menus", (string)null);
 
                     b.HasData(
                         new
@@ -683,7 +683,7 @@ namespace Hamburger_Application.Migrations
 
                     b.HasIndex("UserId1");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", (string)null);
                 });
 
             modelBuilder.Entity("Hamburger_Application.Entities.Concrete.Sauce", b =>
@@ -726,7 +726,7 @@ namespace Hamburger_Application.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("Sauce");
+                    b.ToTable("Sauce", (string)null);
 
                     b.HasData(
                         new
