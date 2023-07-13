@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using Hamburger_Application.Data;
 using Hamburger_Application.Entities.Concrete;
 using Hamburger_Application.Repositories.Abstract;
@@ -13,6 +14,14 @@ builder.Services.AddControllersWithViews();
 var connectionString = builder.Configuration.GetConnectionString("ConnStr");
 builder.Services.AddDbContext<HamburgerDbContext>(options =>
     options.UseSqlServer(connectionString));
+
+builder.Services.AddFluentValidation(a =>
+{
+    a.RegisterValidatorsFromAssemblyContaining<Program>();
+    a.DisableDataAnnotationsValidation = true;
+});
+
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 //var connectionString = builder.Configuration.GetConnectionString("ConStr");
 //builder.Services.AddDbContext<HamburgerDbContext>(options =>

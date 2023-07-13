@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace Hamburger_Application.Areas.Admin.Controllers
 {
     [Area("Admin")]
-	public class DrinkController : Controller
-	{
+    public class DrinkController : Controller
+    {
         private readonly IRepository<Drink> drinkRepository;
 
         public DrinkController(IRepository<Drink> drinktRepository)
@@ -17,7 +17,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
         public IActionResult DrinkList()
         {
             DrinkListVM drinkListVM = new DrinkListVM();
-            drinkListVM.Drinks = drinkRepository.GetAll().ToList();
+            drinkListVM.Drinks = drinkRepository.GetAllTrue(true).ToList();
             return View(drinkListVM);
         }
         public IActionResult Create()
@@ -69,4 +69,5 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             ViewBag.info = "Failed to change drink activity";
             return View(drink);
         }
+    }
 }

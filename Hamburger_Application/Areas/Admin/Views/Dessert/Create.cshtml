@@ -4,21 +4,21 @@
 
 <form asp-action="Create" method="post" enctype="multipart/form-data">
     <div class="form-group">
-        <label asp-for="Dessert.Name" class="control-label"></label>
-        <input asp-for="Dessert.Name" class="form-control" type="text"/>
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" type="text"/>
     </div>
     <div class="form-group">
-        <label asp-for="Dessert.Price" class="control-label"></label>
-        <input asp-for="Dessert.Price" class="form-control" type="number" />
+        <label asp-for="Price" class="control-label"></label>
+        <input asp-for="Price" class="form-control" type="number" />
     </div>
 
     <div class="form-group">
-        <label asp-for="Dessert.Piece" class="control-label"></label>
-        <input asp-for="Dessert.Piece" class="form-control" type="number"  />
+        <label asp-for="Piece" class="control-label"></label>
+        <input asp-for="Piece" class="form-control" type="number"  />
     </div>
     <div class="form-group">
-        <label asp-for="Dessert.Photo" class="control-label"></label>
-        <input asp-for="Dessert.Photo" class="form-control" type="file" name="imgCover" />
+        <label asp-for="Photo" class="control-label"></label>
+        <input asp-for="Photo" class="form-control" type="file" name="imgCover" />
     </div>
     <div class="form-group">
         <input type="submit" value="Create" class="btn btn-primary" />

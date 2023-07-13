@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
 using Hamburger_Application.Models;
 
-namespace Hamburger_Application.Validations.Drink
+namespace Hamburger_Application.Validations.Dessert
 {
-    public class CreateDrinkVMValidator:AbstractValidator<DrinkCreatVM>
+    public class UpdateDessertVMValidator:AbstractValidator<DessertUpdateVM>
     {
-        public CreateDrinkVMValidator()
+        public UpdateDessertVMValidator()
         {
             RuleFor(f => f.Name).NotEmpty();
             RuleFor(f => f.Price).NotEmpty().GreaterThan(0).WithMessage("Price cannot be a negative value");

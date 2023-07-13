@@ -4,7 +4,11 @@ namespace Hamburger_Application.Models
 {
     public class DessertCreateVM
     {
-        public Dessert Dessert { get; set; }
-        public IFormFile İmageName { get; set; }
+        public string Name { get; set; }
+
+        public decimal? Price { get; set; }
+        public int Piece { get; set; }
+        public string Photo { get; set; }
+ 
     }
 }

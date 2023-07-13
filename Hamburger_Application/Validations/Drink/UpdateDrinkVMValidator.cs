@@ -3,9 +3,9 @@ using Hamburger_Application.Models;
 
 namespace Hamburger_Application.Validations.Drink
 {
-    public class CreateDrinkVMValidator:AbstractValidator<DrinkCreatVM>
+    public class UpdateDrinkVMValidator:AbstractValidator<DrinkUpdateVM>
     {
-        public CreateDrinkVMValidator()
+        public UpdateDrinkVMValidator()
         {
             RuleFor(f => f.Name).NotEmpty();
             RuleFor(f => f.Price).NotEmpty().GreaterThan(0).WithMessage("Price cannot be a negative value");
