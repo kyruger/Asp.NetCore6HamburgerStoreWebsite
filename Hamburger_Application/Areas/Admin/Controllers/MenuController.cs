@@ -2,6 +2,7 @@
 using Hamburger_Application.Entities.Concrete;
 using Hamburger_Application.Repositories.Abstract;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Hamburger_Application.Areas.Admin.Controllers
 {
@@ -12,13 +13,15 @@ namespace Hamburger_Application.Areas.Admin.Controllers
         private readonly IRepository<Hamburger> hamburgerRepository;
         private readonly IRepository<Drink> drinkRepository;
         private readonly IRepository<Fries> friesRepository;
+        private readonly IRepository<Dessert> dessertRepository;
 
-        public MenuController(IMenuRepository menuRepository,IRepository<Hamburger> hamburgerRepository,IRepository<Drink> drinkRepository,IRepository<Fries> friesRepository) 
+        public MenuController(IMenuRepository menuRepository,IRepository<Hamburger> hamburgerRepository,IRepository<Drink> drinkRepository,IRepository<Fries> friesRepository, IRepository<Dessert> dessertRepository) 
 		{
             this.menuRepository = menuRepository;
             this.hamburgerRepository = hamburgerRepository;
             this.drinkRepository = drinkRepository;
             this.friesRepository = friesRepository;
+            this.dessertRepository = dessertRepository;
         }
 		public IActionResult List()
 		{
@@ -38,5 +41,16 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 			menuListVM.Menus = menuList;
 			return View(menuListVM);
 		}
+		public IActionResult Create()
+		{
+			CreateMenuVM menuVM = new CreateMenuVM();
+			menuVM.Menu = new();
+			menuVM.Fries = new SelectList(friesRepository.GetAll(), "Id", "Name");
+			menuVM.Drinks = new SelectList(drinkRepository.GetAll(), "Id", "Name");
+			menuVM.Hamburgers = new SelectList(hamburgerRepository.GetAll(), "Id", "Name");
+			menuVM.Desserts = new SelectList(dessertRepository.GetAll(), "Id", "Name");
+
+			return View(menuVM);
+        }
 	}
 }
