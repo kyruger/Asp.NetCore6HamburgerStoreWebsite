@@ -57,6 +57,10 @@ namespace Hamburger_Application.Areas.Admin.Controllers
         {
             Drink drink = mapper.Map<Drink>(updateVM);
 
+            drink.Photo = GenerateUniqueFileName(imgCover);
+            FileStream stream = new FileStream("wwwroot/ProductImages/Drink/" + drink.Photo, FileMode.Create);
+            await imgCover.CopyToAsync(stream);
+
             bool isUpdated = drinkRepository.Update(drink);
             if (isUpdated)
             {
