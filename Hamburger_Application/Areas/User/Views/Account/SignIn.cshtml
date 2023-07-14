@@ -1,0 +1,29 @@
+﻿@model AppUserSignInVM
+
+<section class="register-photo" style="background-color: transparent; font-family:'Indie Flower'">
+    <div class="form-container d-flex" style="margin-top: 40px;">
+        <div class="image-holder" style="background: url(&quot;assets/img/IINET-DOSAGE-1.jpg&quot;) left / cover no-repeat;height: 500px;">
+            <img src="../../img/burger4.jpg" width="400" height="400" style="width: 400px;height: 500px; font-size:16px" />
+        </div>
+        <form asp-action="SignIn" method="post" class="form-group justify-content-between text-center" style="">
+        <br />
+        <br />
+        <h2 style="color:rgb(244,147,1)">Sign In</h2>
+        <div class="" style="font-size:22px">
+            <input type="email" asp-for="Email" class="form-control" placeholder="Email" />
+            <br />
+            <input type="password" asp-for="Password" class="form-control" placeholder="Password" />
+        </div>
+        <div asp-validation-summary="All"></div>
+        <div class="form-group mb-3">
+                <button class="btn btn-primary d-block w-100" id="submitButton" type="submit" style="color: rgb(255,255,255);background: rgb(244,147,1); font-family:'Indie Flower'">Sign Up</button>
+        </div>
+            <span>&nbsp;Create an account?&nbsp;&nbsp;&nbsp; => &nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-outline-danger" asp-action="SignUp" style="font-family:'Indie Flower'">Sign Up</a></span>
+        </form>
+    </div>
+</section>
+
+        @section Scripts{
+    <script src="~/js/bootstrap.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+}

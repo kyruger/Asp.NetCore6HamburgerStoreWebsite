@@ -1,0 +1,30 @@
+﻿@model AppUserEmailConfirmVM
+
+<br />
+<br />
+<br />
+
+<div class="container">
+    <div class="d-flex flex-column mb-3 text-center" style="color:rgb(244,147,1); font-family:'Indie Flower'; font-size:16px">
+        <h1>Please enter your confirm code which is sent your email adress.</h1>
+        <br />
+        <hr />
+        <br />
+        <form asp-action="EmailConfirm" method="post" class="form-group">
+            <div class="p-2">
+                <label asp-for="Email"></label>
+                <input type="email" class="form-control" asp-for="Email" required="" value="@TempData["Email"]" />
+                <span asp-validation-for="Email"></span>
+                <br />
+                <label asp-for="ConfirmCode">Confirm Code</label>
+                <input type="number" class="form-control" placeholder="Enter your code" asp-for="ConfirmCode" required="" />
+                <span asp-validation-for="ConfirmCode"></span>
+                <br />
+            </div>
+            <div class="p-2">
+                <button type="submit" class="form-control" style="background-color:rgb(244,147,1); font-family:'Indie Flower'; color:white">Confirm</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
