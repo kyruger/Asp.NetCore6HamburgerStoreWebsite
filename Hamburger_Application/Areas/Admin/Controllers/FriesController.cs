@@ -36,7 +36,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 
 				fries.Photo = GenerateUniqueFileName(imageName);
 
-				FileStream file = new FileStream("wwwroot/ProductImages/Fries/" + fries.Photo, FileMode.Create);
+				FileStream file = new FileStream("wwwroot/ProductImages/Fries1/" + fries.Photo, FileMode.Create);
 				await imageName.CopyToAsync(file);
 				if (isAdded)
 				{
@@ -70,7 +70,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 
 					fries.Photo = GenerateUniqueFileName(ImageName);
 
-					FileStream file = new FileStream("wwwroot/ProductImages/Fries/" + fries.Photo, FileMode.Create);
+					FileStream file = new FileStream("wwwroot/ProductImages/Fries1/" + fries.Photo, FileMode.Create);
 					await ImageName.CopyToAsync(file);
 					if (isAdded)
 					{

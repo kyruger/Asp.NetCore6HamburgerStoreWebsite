@@ -14,9 +14,9 @@ namespace Hamburger_Application.Repositories.Concrete
             this.context = context;
         }
 
-        public IEnumerable<Menu> GetAllIncludeFriesIncludeDrinkIncludeHamburger()
+        public IEnumerable<Menu> GetAllIncludeFriesIncludeDrinkIncludeHamburger(bool state)
         {
-            return context.Menus.Include(m=>m.Fries).Include(m=>m.Drink).Include(m=>m.Hamburger);
+            return context.Menus.Where(m=>m.isActive == state).Include(m => m.Fries).Include(m => m.Drink).Include(m => m.Hamburger);
         }
     }
 }

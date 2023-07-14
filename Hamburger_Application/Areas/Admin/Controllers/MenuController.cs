@@ -30,7 +30,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 		public IActionResult List()
 		{
 			MenuListVM menuListVM = new MenuListVM();
-			menuListVM.Menus = menuRepository.GetAllIncludeFriesIncludeDrinkIncludeHamburger().ToList();
+			menuListVM.Menus = menuRepository.GetAllIncludeFriesIncludeDrinkIncludeHamburger(true).ToList();
 			List<Menu> menuList = new List<Menu>();
 			foreach (Menu menu in menuListVM.Menus)
 			{
