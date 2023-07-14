@@ -2,6 +2,7 @@
 using Hamburger_Application.Areas.Admin.Models;
 using Hamburger_Application.Entities.Concrete;
 using Hamburger_Application.Repositories.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hamburger_Application.Areas.Admin.Controllers
@@ -12,11 +13,12 @@ namespace Hamburger_Application.Areas.Admin.Controllers
         private readonly IRepository<Dessert> dessertRepository;
         private readonly IMapper mapper;
 
-        public DessertController(IRepository<Dessert> dessertRepository,IMapper mapper)
+        public DessertController(IRepository<Dessert> dessertRepository, IMapper mapper)
         {
             this.dessertRepository = dessertRepository;
             this.mapper = mapper;
         }
+
         public IActionResult DessertList()
         {
             DessertListVM dessertListVM = new DessertListVM();
@@ -28,12 +30,13 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create(DessertCreateVM createVM, IFormFile imgCover)
         {
-            Dessert dessert=mapper.Map<Dessert>(createVM);
-            bool isAdded=dessertRepository.Add(dessert);
+            Dessert dessert = mapper.Map<Dessert>(createVM);
+            bool isAdded = dessertRepository.Add(dessert);
 
-            dessert.Photo=GenerateUniqueFileName(imgCover);
+            dessert.Photo = GenerateUniqueFileName(imgCover);
             FileStream stream = new FileStream("wwwroot/ProductImages/Dessert/" + dessert.Photo, FileMode.Create);
             await imgCover.CopyToAsync(stream);
             if (isAdded)
@@ -45,24 +48,27 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             return View(dessert);
         }
 
+        [Authorize]
         public IActionResult Update(int id)
         {
             Dessert dessert = new Dessert();
-            dessert=dessertRepository.GetById(id);
-            DessertUpdateVM updateVM = mapper.Map<DessertUpdateVM>(dessert);       
-            return View(updateVM);  
+            dessert = dessertRepository.GetById(id);
+            DessertUpdateVM updateVM = mapper.Map<DessertUpdateVM>(dessert);
+            return View(updateVM);
         }
-        [HttpPost]
-        public async Task<IActionResult> Update(DessertUpdateVM updateVM,IFormFile imgCover)
-        {
-            Dessert dessert =mapper.Map<Dessert>(updateVM);
 
-            bool isUpdated=dessertRepository.Update(dessert);
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Update(DessertUpdateVM updateVM, IFormFile imgCover)
+        {
+            Dessert dessert = mapper.Map<Dessert>(updateVM);
+
+            bool isUpdated = dessertRepository.Update(dessert);
 
             dessert.Photo = GenerateUniqueFileName(imgCover);
             FileStream stream = new FileStream("wwwroot/ProductImages/Dessert/" + dessert.Photo, FileMode.Create);
             await imgCover.CopyToAsync(stream);
-            if (isUpdated) 
+            if (isUpdated)
             {
                 TempData["info"] = "Dessert Updated";
                 return RedirectToAction("DessertList");
@@ -71,10 +77,12 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             return View(dessert);
 
         }
+
+        [Authorize]
         public IActionResult Delete(int id)
         {
             Dessert dessert = new Dessert();
-            bool isDeleted= dessertRepository.Delete(dessert);
+            bool isDeleted = dessertRepository.Delete(dessert);
             if (isDeleted)
             {
                 TempData["info"] = "Dessert activity became false";
@@ -83,12 +91,17 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             ViewBag.info = "Failed to change dessert activity";
             return View(dessert);
         }
+
         [NonAction]
         private string GenerateUniqueFileName(IFormFile file)
         {
-            Guid guid = Guid.NewGuid();
-            string newFileName = guid.ToString() + "_" + file.FileName;
-            return newFileName;
+            if (file is not null)
+            {
+                Guid guid = Guid.NewGuid();
+                string newFileName = guid.ToString() + "_" + file.FileName;
+                return newFileName;
+            }
+            return null;
         }
 
     }

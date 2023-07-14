@@ -73,9 +73,9 @@
 				<p>@item.Price ₺</p>
 				<p>@item.Hamburger.Name, @item.Fries.Name, @item.Drink.Name</p>
 				<p>
-                    <button class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id">
-						Add to Carts
-					</button>
+                    <a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" asp-controller="Menu" asp-action="Edit" value="Edit Menu">Edit Menu</a>
+                    <a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" asp-controller="Menu" asp-action="Delete" value="Edit Menu">Delete Menu</a>
+                    <a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" value="Add to Carts">Add to Carts</a>
 				</p>
 			</div>
 		}
