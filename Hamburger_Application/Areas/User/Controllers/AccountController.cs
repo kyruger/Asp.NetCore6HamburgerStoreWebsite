@@ -136,7 +136,7 @@ namespace Hamburger_Application.Areas.User.Controllers
 						{
 							if (appUser.EmailConfirmed)
 							{
-								return RedirectToAction("Main", "Home");
+								return RedirectToPage("/Home/Index/");
 							}
 							else
 							{
