@@ -25,10 +25,20 @@ var connectionString = builder.Configuration.GetConnectionString("ConnStr");
 builder.Services.AddDbContext<HamburgerDbContext>(options =>
     options.UseSqlServer(connectionString));
 
+builder.Services.AddFluentValidation(a =>
+{
+    a.RegisterValidatorsFromAssemblyContaining<Program>();
+    a.DisableDataAnnotationsValidation = true;
+});
+
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
+
 //var connectionString = builder.Configuration.GetConnectionString("ConStr");
 //builder.Services.AddDbContext<HamburgerDbContext>(options =>
 //	options.UseSqlServer(connectionString));
 //builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+builder.Services.AddTransient(typeof(IRepository<>), typeof(GenericRepository<>));
 
 builder.Services.AddIdentity<AppUser, AppRole>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<AppRole>()

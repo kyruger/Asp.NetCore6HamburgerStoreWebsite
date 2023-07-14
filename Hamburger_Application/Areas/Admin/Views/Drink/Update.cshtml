@@ -1,0 +1,31 @@
+﻿@model DrinkUpdateVM
+
+<h1>Dessert Update</h1>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" type="text" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Price" class="control-label"></label>
+        <input asp-for="Price" class="form-control" type="number" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Piece" class="control-label"></label>
+        <input asp-for="Piece" class="form-control" type="number" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Photo" class="control-label"></label>
+        <input asp-for="Photo" class="form-control" type="file" name="imgCover" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+
+</form>
+@if (ViewBag.info != null)
+{
+    <p>@ViewBag.info</p>
+}
