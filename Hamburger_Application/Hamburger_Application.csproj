@@ -27,10 +27,8 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\User\Data\" />
-    <Folder Include="Areas\User\Models\" />
     <Folder Include="wwwroot\ProductImages\Dessert\" />
     <Folder Include="wwwroot\ProductImages\Drink\" />
-    <Folder Include="Validations\Menu\" />
     <Folder Include="wwwroot\ProductImages\Hamburger1\" />
     <Folder Include="wwwroot\ProductImages\Fries1\" />
     <Folder Include="wwwroot\ProductImages\Menu\" />

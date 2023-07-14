@@ -1,6 +1,4 @@
-﻿@using Hamburger_Application.Entities.Concrete;
-@using Microsoft.AspNetCore.Identity
-@inject SignInManager<AppUser> signInManager
+﻿@inject SignInManager<AppUser> signInManager
 @inject UserManager<AppUser> userManager
 <style>
     .text-right {
@@ -17,7 +15,6 @@
 
 @if (signInManager.IsSignedIn(User))
 {
-    
     if (User.IsInRole("User"))
     {
         <ul class="navbar-nav nav-right">
@@ -36,16 +33,6 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="contact.html" style="color: rgb(254,254,254);">contact </a>
-            </li>
-        </ul>
-
-        <ul class="navbar-nav nav-right">
-            <li class="nav-item dropdown">
-                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown">@User.Identity.Name</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" asp-area="User" asp-controller="Account" asp-action="Settings">Settings</a>
-                    <a class="dropdown-item" asp-area="User" asp-controller="Account" asp-action="SignOut">SignOut</a>
-                </div>
             </li>
         </ul>
     }
@@ -69,17 +56,17 @@
                 <a class="nav-link" href="contact.html" style="color: rgb(254,254,254);">contact </a>
             </li>
         </ul>
-
-        <ul class="navbar-nav nav-right">
-            <li class="nav-item dropdown">
-                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown">Hello @User.Identity.Name</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" asp-area="User" asp-controller="Account" asp-action="Settings">Settings</a>
-                    <a class="dropdown-item" asp-area="User" asp-controller="Account" asp-action="SignOut">SignOut</a>
-                </div>
-            </li>
-        </ul>
     }
+
+    <ul class="navbar-nav nav-right">
+        <li class="nav-item dropdown">
+            <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" style="color: rgb(247,244,244); font-family:'Indie Flower'">@User.Identity.Name</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" asp-area="User" asp-controller="Account" asp-action="Settings">Settings</a>
+                <a class="dropdown-item" asp-area="User" asp-controller="Account" asp-action="SignOut">Sign Out</a>
+            </div>
+        </li>
+    </ul>
 }
 else
 {

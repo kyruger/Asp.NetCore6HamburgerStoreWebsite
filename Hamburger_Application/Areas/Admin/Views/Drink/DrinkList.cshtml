@@ -32,13 +32,10 @@
                     <td>@drink.Piece</td>
                     <td>@drink.Photo</td>
                     <td>
-                        <a asp-action="Details" class="btn btn-primary" asp-route-id="@drink.Id">Detaylar</a>
+                        <a asp-action="Update" class="btn btn-primary" asp-route-id="@drink.Id">Edit</a>
                     </td>
                     <td>
-                        <a asp-action="Update" class="btn btn-primary" asp-route-id="@drink.Id">Güncelle</a>
-                    </td>
-                    <td>
-                        <a asp-action="Delete" class="btn btn-primary" asp-route-id="@drink.Id">Sil</a>
+                        <a asp-action="Delete" class="btn btn-primary" asp-route-id="@drink.Id">Delete</a>
                     </td>
                 </tr>
             }

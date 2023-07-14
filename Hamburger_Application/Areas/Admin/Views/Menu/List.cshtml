@@ -3,7 +3,7 @@
 <style>
     #page {
         /*display: grid;
-        overflow-x: hidden;*/
+                overflow-x: hidden;*/
         width: 100%;
         box-sizing: border-box;
         grid-template-columns: auto auto auto auto;
@@ -13,6 +13,17 @@
             "nav main main main"
             "foot foot foot foot";
     }
+
+
+    .btn.btn-outline-success:hover {
+        background-color: darkolivegreen !important;
+    }
+
+    .btn.btn-outline-secondary.btn-block:hover {
+        background-color: red !important;
+    }
+
+
     main {
         grid-area: main;
         display: flex;
@@ -41,8 +52,8 @@
     }
 
     /*header > div > ul > li {
-        margin: 30px 70px;
-    }*/
+                margin: 30px 70px;
+            }*/
 
 
     div.kutu:hover {
@@ -63,21 +74,24 @@
     }
 </style>
 <section id="page">
-	<main>
-		<p>Menus</p>
-		@foreach (Menu item in Model.Menus)
-		{
-			<div class="kutu">
-				<img src="/ProductsImages/Menu/@item.Photo" width="90" height="140" style="width: 100%" />
+    <main>
+        <p>Menus</p>
+        @foreach (Menu item in Model.Menus)
+        {
+            <div class="kutu">
+                <img src="/ProductsImages/Menu/@item.Photo" width="90" height="140" style="width: 100%" />
                 <h6 style="text-align: center; font-family: Aclonica serif;">@item.Name</h6>
-				<p>@item.Price ₺</p>
-				<p>@item.Hamburger.Name, @item.Fries.Name, @item.Drink.Name</p>
-				<p>
+                <p>@item.Price ₺</p>
+                <p>@item.Hamburger.Name, @item.Fries.Name, @item.Drink.Name</p>
+                <p>
                     <a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" asp-controller="Menu" asp-action="Edit" value="Edit Menu">Edit Menu</a>
                     <a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" asp-controller="Menu" asp-action="Delete" value="Edit Menu">Delete Menu</a>
                     <a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" value="Add to Carts">Add to Carts</a>
-				</p>
-			</div>
-		}
-	</main>
+                </p>
+
+            </div>
+        }
+    </main>
+    <p>  <a asp-action="Create" class="btn btn-outline-success">Create Menu</a></p>
+
 </section>

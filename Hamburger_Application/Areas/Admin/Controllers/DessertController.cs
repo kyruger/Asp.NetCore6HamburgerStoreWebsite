@@ -33,19 +33,23 @@ namespace Hamburger_Application.Areas.Admin.Controllers
         [Authorize]
         public async Task<IActionResult> Create(DessertCreateVM createVM, IFormFile imgCover)
         {
-            Dessert dessert = mapper.Map<Dessert>(createVM);
-            bool isAdded = dessertRepository.Add(dessert);
-
-            dessert.Photo = GenerateUniqueFileName(imgCover);
-            FileStream stream = new FileStream("wwwroot/ProductImages/Dessert/" + dessert.Photo, FileMode.Create);
-            await imgCover.CopyToAsync(stream);
-            if (isAdded)
+            if (ModelState.IsValid)
             {
-                TempData["info"] = "Dessert Created";
-                return RedirectToAction("DessertList");
+                Dessert dessert = mapper.Map<Dessert>(createVM);
+                bool isAdded = dessertRepository.Add(dessert);
+
+                dessert.Photo = GenerateUniqueFileName(imgCover);
+                FileStream stream = new FileStream("wwwroot/ProductImages/Dessert/" + dessert.Photo, FileMode.Create);
+                await imgCover.CopyToAsync(stream);
+                if (isAdded)
+                {
+                    TempData["info"] = "Dessert Created";
+                    return RedirectToAction("DessertList");
+                }
+                ViewBag.info = "Failed to Create dessert";
             }
-            ViewBag.info = "Failed to Create dessert";
-            return View(dessert);
+
+            return View(createVM);
         }
 
         [Authorize]
@@ -61,20 +65,25 @@ namespace Hamburger_Application.Areas.Admin.Controllers
         [Authorize]
         public async Task<IActionResult> Update(DessertUpdateVM updateVM, IFormFile imgCover)
         {
-            Dessert dessert = mapper.Map<Dessert>(updateVM);
-
-            bool isUpdated = dessertRepository.Update(dessert);
-
-            dessert.Photo = GenerateUniqueFileName(imgCover);
-            FileStream stream = new FileStream("wwwroot/ProductImages/Dessert/" + dessert.Photo, FileMode.Create);
-            await imgCover.CopyToAsync(stream);
-            if (isUpdated)
+            if (ModelState.IsValid)
             {
-                TempData["info"] = "Dessert Updated";
-                return RedirectToAction("DessertList");
+                Dessert dessert = mapper.Map<Dessert>(updateVM);
+
+                bool isUpdated = dessertRepository.Update(dessert);
+
+                dessert.Photo = GenerateUniqueFileName(imgCover);
+                FileStream stream = new FileStream("wwwroot/ProductImages/Dessert/" + dessert.Photo, FileMode.Create);
+                await imgCover.CopyToAsync(stream);
+                if (isUpdated)
+                {
+                    TempData["info"] = "Dessert Updated";
+                    return RedirectToAction("DessertList");
+                }
+                else
+                    ViewBag.info = "Failed to Update dessert";
             }
-            ViewBag.info = "Failed to Update dessert";
-            return View(dessert);
+
+            return View(updateVM);
 
         }
 
@@ -86,10 +95,12 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             if (isDeleted)
             {
                 TempData["info"] = "Dessert activity became false";
-                return RedirectToAction("DessertList");
+
             }
-            ViewBag.info = "Failed to change dessert activity";
-            return View(dessert);
+            else
+                TempData["info"] = "Failed to change dessert activity";
+
+            return RedirectToAction("DessertList");
         }
 
         [NonAction]
