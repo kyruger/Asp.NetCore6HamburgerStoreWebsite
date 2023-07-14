@@ -68,9 +68,9 @@ namespace Hamburger_Application.Repositories.Concrete
             return db.Set<T>().Where(expression);
         }
 
-		public IEnumerable<T> GetAllTrue(bool state)
-		{
-			return db.Set<T>().Where(a => a.isActive == state);
-		}
-	}
+        public IEnumerable<T> GetAllTrue(bool state)
+        {
+            return db.Set<T>().Where(a => a.isActive == state);
+        }
+    }
 }
