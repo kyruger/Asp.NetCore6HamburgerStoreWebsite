@@ -15,6 +15,7 @@ namespace Hamburger_Application.Mapper.AppUserMapping
             CreateMap<AppUser, AppUserAccountVM>().ReverseMap().ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email));
             CreateMap<AppUser, AppUserAccountVM>().ReverseMap().ForMember(dest => dest.ConfirmCode, opt => opt.MapFrom(src => src.ConfirmCode));
             CreateMap<AppUser, AppUserAccountVM>().ReverseMap().ForMember(dest => dest.IsActive, opt => opt.MapFrom(src => src.IsActive));
+            CreateMap<AppUser, AppUserAccountVM>().ReverseMap().ForMember(dest => dest.IsDark, opt => opt.MapFrom(src => src.IsDark));
             CreateMap<AppUser, AppUserAccountVM>().ReverseMap().ForMember(dest => dest.Orders, opt => opt.MapFrom(src => src.Orders));
         }
     }
