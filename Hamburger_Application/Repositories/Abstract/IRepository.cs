@@ -9,8 +9,12 @@ namespace Hamburger_Application.Repositories.Abstract
         bool Delete(T entity);
         bool Update(T entity);
         IEnumerable<T> GetAll();
+        IEnumerable<T> GetAllTrue(bool state);
+
         T GetById(int id);
         IEnumerable<T> GetWhere(Expression<Func<T, bool>> expression);
+
+
         //void AddPhoto(BaseEntity entity, IFormFile formFile);
     }
 }

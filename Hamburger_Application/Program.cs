@@ -2,6 +2,8 @@ using FluentValidation.AspNetCore;
 using Hamburger_Application.Data;
 using Hamburger_Application.Entities.Concrete;
 using Hamburger_Application.Validations;
+using Hamburger_Application.Repositories.Abstract;
+using Hamburger_Application.Repositories.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +15,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 
+
+
 builder.Services.AddFluentValidation(x =>
 {
     x.RegisterValidatorsFromAssemblyContaining<Program>();
@@ -22,7 +26,15 @@ builder.Services.AddFluentValidation(x =>
 var connectionString = builder.Configuration.GetConnectionString("ConnStr");
 builder.Services.AddDbContext<HamburgerDbContext>(options =>
     options.UseSqlServer(connectionString));
+
+builder.Services.AddTransient<IMenuRepository, MenuRepository>();
+
+//var connectionString = builder.Configuration.GetConnectionString("ConStr");
+//builder.Services.AddDbContext<HamburgerDbContext>(options =>
+//	options.UseSqlServer(connectionString));
 //builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+builder.Services.AddTransient(typeof(IRepository<>), typeof(GenericRepository<>));
 
 builder.Services.AddIdentity<AppUser, AppRole>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<AppRole>()
@@ -80,6 +92,7 @@ app.UseEndpoints(endpoints =>
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Main}/{id?}");
+
 app.MapRazorPages();
 
 app.Run();
