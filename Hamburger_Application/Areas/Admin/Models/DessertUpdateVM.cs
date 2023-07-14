@@ -1,7 +1,7 @@
 ﻿using Hamburger_Application.Entities.Concrete;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Hamburger_Application.Models
+namespace Hamburger_Application.Areas.Admin.Models
 {
     public class DessertUpdateVM
     {

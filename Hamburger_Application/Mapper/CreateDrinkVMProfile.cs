@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using Hamburger_Application.Areas.Admin.Models;
 using Hamburger_Application.Entities.Concrete;
-using Hamburger_Application.Models;
 
 namespace Hamburger_Application.Mapper
 {

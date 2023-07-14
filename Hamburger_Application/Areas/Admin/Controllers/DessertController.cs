@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using Hamburger_Application.Areas.Admin.Models;
 using Hamburger_Application.Entities.Concrete;
-using Hamburger_Application.Models;
 using Hamburger_Application.Repositories.Abstract;
 using Microsoft.AspNetCore.Mvc;
 
@@ -49,19 +49,20 @@ namespace Hamburger_Application.Areas.Admin.Controllers
         {
             Dessert dessert = new Dessert();
             dessert=dessertRepository.GetById(id);
-            DessertUpdateVM updateVM = mapper.Map<DessertUpdateVM>(dessert);
-            //updateVM.Name = dessert.Name;
-            //updateVM.Price = dessert.Price; 
-            //updateVM.isActive=dessert.isActive;
-            //updateVM.Piece= dessert.Piece;  
-            //updateVM.Photo=dessert.Photo;
+            DessertUpdateVM updateVM = mapper.Map<DessertUpdateVM>(dessert);       
             return View(updateVM);  
         }
         [HttpPost]
-        public IActionResult Update(Dessert dessert)
+        public async Task<IActionResult> Update(DessertUpdateVM updateVM,IFormFile imgCover)
         {
-            bool isUpdated=dessertRepository.Update(dessert);   
-            if(isUpdated) 
+            Dessert dessert =mapper.Map<Dessert>(updateVM);
+
+            bool isUpdated=dessertRepository.Update(dessert);
+
+            dessert.Photo = GenerateUniqueFileName(imgCover);
+            FileStream stream = new FileStream("wwwroot/ProductImages/Dessert/" + dessert.Photo, FileMode.Create);
+            await imgCover.CopyToAsync(stream);
+            if (isUpdated) 
             {
                 TempData["info"] = "Dessert Updated";
                 return RedirectToAction("DessertList");

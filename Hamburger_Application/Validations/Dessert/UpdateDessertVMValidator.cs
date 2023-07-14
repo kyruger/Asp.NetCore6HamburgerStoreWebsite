@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Hamburger_Application.Models;
+using Hamburger_Application.Areas.Admin.Models;
 
 namespace Hamburger_Application.Validations.Dessert
 {

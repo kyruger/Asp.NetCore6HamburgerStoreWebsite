@@ -1,5 +1,6 @@
-﻿using Hamburger_Application.Entities.Concrete;
-using Hamburger_Application.Models;
+﻿using AutoMapper;
+using Hamburger_Application.Areas.Admin.Models;
+using Hamburger_Application.Entities.Concrete;
 using Hamburger_Application.Repositories.Abstract;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,10 +10,12 @@ namespace Hamburger_Application.Areas.Admin.Controllers
     public class DrinkController : Controller
     {
         private readonly IRepository<Drink> drinkRepository;
+        private readonly IMapper mapper;
 
-        public DrinkController(IRepository<Drink> drinktRepository)
+        public DrinkController(IRepository<Drink> drinktRepository, IMapper mapper)
         {
-            this.drinkRepository = drinkRepository;
+            drinkRepository = drinkRepository;
+            this.mapper = mapper;
         }
         public IActionResult DrinkList()
         {
@@ -25,28 +28,35 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(DrinkCreatVM createVM, IFormFile imgCover)
+        public async Task<IActionResult> Create(DrinkCreatVM createVM, IFormFile imgCover)
         {
-
-
-            return View();
+            Drink drink=mapper.Map<Drink>(createVM);
+            bool isAdded=drinkRepository.Add(drink);
+            drink.Photo=GenerateUniqueFileName(imgCover);   
+            FileStream stream= new FileStream("wwwroot/ProductImages/Drink/" + drink.Photo, FileMode.Create);
+            await imgCover.CopyToAsync(stream);
+            if (isAdded)
+            {
+                TempData["info"] = "Drink Created";
+                return RedirectToAction("DrinkList");
+            }
+            ViewBag.info = "Failed to Create drink";
+            return View(drink);
+   
         }
 
         public IActionResult Update(int id)
         {
-            DrinkUpdateVM updateVM = new DrinkUpdateVM();
             Drink drink = new Drink();
             drink = drinkRepository.GetById(id);
-            updateVM.Name = drink.Name;
-            updateVM.Price = drink.Price;
-            updateVM.isActive = drink.isActive;
-            updateVM.Piece = drink.Piece;
-            updateVM.Photo = drink.Photo;
+            DrinkUpdateVM updateVM = mapper.Map<DrinkUpdateVM>(drink); 
             return View(updateVM);
         }
         [HttpPost]
-        public IActionResult Update(Drink drink)
+        public async Task<IActionResult> Update(DrinkUpdateVM updateVM,IFormFile imgCover)
         {
+            Drink drink = mapper.Map<Drink>(updateVM);
+
             bool isUpdated = drinkRepository.Update(drink);
             if (isUpdated)
             {
@@ -68,6 +78,12 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             }
             ViewBag.info = "Failed to change drink activity";
             return View(drink);
+        }
+        private string GenerateUniqueFileName(IFormFile file)
+        {
+            Guid guid = Guid.NewGuid();
+            string newFileName = guid.ToString() + "_" + file.FileName;
+            return newFileName;
         }
     }
 }

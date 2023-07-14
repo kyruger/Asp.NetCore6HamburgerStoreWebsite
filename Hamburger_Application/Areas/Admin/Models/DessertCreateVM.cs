@@ -1,8 +1,8 @@
 ﻿using Hamburger_Application.Entities.Concrete;
 
-namespace Hamburger_Application.Models
+namespace Hamburger_Application.Areas.Admin.Models
 {
-    public class DrinkCreatVM
+    public class DessertCreateVM
     {
         public string Name { get; set; }
 
