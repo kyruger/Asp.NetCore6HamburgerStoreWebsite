@@ -12,9 +12,9 @@ namespace Hamburger_Application.Areas.Admin.Controllers
         private readonly IRepository<Drink> drinkRepository;
         private readonly IMapper mapper;
 
-        public DrinkController(IRepository<Drink> drinktRepository, IMapper mapper)
+        public DrinkController(IRepository<Drink> drinkRepository, IMapper mapper)
         {
-            drinkRepository = drinkRepository;
+            this.drinkRepository = drinkRepository;
             this.mapper = mapper;
         }
         public IActionResult DrinkList()
