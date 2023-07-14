@@ -30,45 +30,55 @@ namespace Hamburger_Application.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(DrinkCreatVM createVM, IFormFile imgCover)
         {
-            Drink drink=mapper.Map<Drink>(createVM);
-            bool isAdded=drinkRepository.Add(drink);
-            drink.Photo=GenerateUniqueFileName(imgCover);   
-            FileStream stream= new FileStream("wwwroot/ProductImages/Drink/" + drink.Photo, FileMode.Create);
-            await imgCover.CopyToAsync(stream);
-            if (isAdded)
+            if (ModelState.IsValid)
             {
-                TempData["info"] = "Drink Created";
-                return RedirectToAction("DrinkList");
+                Drink drink = mapper.Map<Drink>(createVM);
+                bool isAdded = drinkRepository.Add(drink);
+                drink.Photo = GenerateUniqueFileName(imgCover);
+                FileStream stream = new FileStream("wwwroot/ProductImages/Drink/" + drink.Photo, FileMode.Create);
+                await imgCover.CopyToAsync(stream);
+                if (isAdded)
+                {
+                    TempData["info"] = "Drink is added";
+                    return RedirectToAction("DrinkList");
+                }
+                else
+                    ViewBag.info = "Failed to add drink";
             }
-            ViewBag.info = "Failed to Create drink";
-            return View(drink);
-   
+            return View(createVM);
+
+
         }
 
         public IActionResult Update(int id)
         {
             Drink drink = new Drink();
             drink = drinkRepository.GetById(id);
-            DrinkUpdateVM updateVM = mapper.Map<DrinkUpdateVM>(drink); 
+            DrinkUpdateVM updateVM = mapper.Map<DrinkUpdateVM>(drink);
             return View(updateVM);
         }
         [HttpPost]
-        public async Task<IActionResult> Update(DrinkUpdateVM updateVM,IFormFile imgCover)
+        public async Task<IActionResult> Update(DrinkUpdateVM updateVM, IFormFile imgCover)
         {
-            Drink drink = mapper.Map<Drink>(updateVM);
-
-            drink.Photo = GenerateUniqueFileName(imgCover);
-            FileStream stream = new FileStream("wwwroot/ProductImages/Drink/" + drink.Photo, FileMode.Create);
-            await imgCover.CopyToAsync(stream);
-
-            bool isUpdated = drinkRepository.Update(drink);
-            if (isUpdated)
+            if (ModelState.IsValid)
             {
-                TempData["info"] = "Drink Updated";
-                return RedirectToAction("DrinkList");
+                Drink drink = mapper.Map<Drink>(updateVM);
+
+                drink.Photo = GenerateUniqueFileName(imgCover);
+                FileStream stream = new FileStream("wwwroot/ProductImages/Drink/" + drink.Photo, FileMode.Create);
+                await imgCover.CopyToAsync(stream);
+
+                bool isUpdated = drinkRepository.Update(drink);
+                if (isUpdated)
+                {
+                    TempData["info"] = "Drink Updated";
+           
+                }
+                else
+                    TempData["info"] = "Failed to Update drink";
             }
-            ViewBag.info = "Failed to Update drink";
-            return View(drink);
+            return RedirectToAction("DrinkList");
+
 
         }
         public IActionResult Delete(int id)

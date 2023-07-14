@@ -129,14 +129,14 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                 if (isDeleted)
                 {
                     TempData["Info"] = "Menu is deleted";
-                    return RedirectToAction("List");
+                   
                 }
                 else
                 {
-                    ViewBag.IsDeleted = "Menu is not deleted";
+                    TempData["Info"] = "Menu is not deleted";
                 }
             }
-            return View(menu);
+            return RedirectToAction("List");
         }
 
         [NonAction]
