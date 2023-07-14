@@ -15,6 +15,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 
+
+
 builder.Services.AddFluentValidation(x =>
 {
     x.RegisterValidatorsFromAssemblyContaining<Program>();
@@ -24,6 +26,8 @@ builder.Services.AddFluentValidation(x =>
 var connectionString = builder.Configuration.GetConnectionString("ConnStr");
 builder.Services.AddDbContext<HamburgerDbContext>(options =>
     options.UseSqlServer(connectionString));
+
+builder.Services.AddTransient(typeof(IRepository<>), typeof(GenericRepository<>));
 
 builder.Services.AddTransient<IMenuRepository, MenuRepository>();
 
