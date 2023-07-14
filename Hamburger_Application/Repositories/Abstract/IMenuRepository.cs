@@ -4,6 +4,6 @@ namespace Hamburger_Application.Repositories.Abstract
 {
     public interface IMenuRepository : IRepository<Menu> 
     {
-        IEnumerable<Menu> GetAllIncludeFriesIncludeDrink();
+        IEnumerable<Menu> GetAllIncludeFriesIncludeDrinkIncludeHamburger();
     }
 }

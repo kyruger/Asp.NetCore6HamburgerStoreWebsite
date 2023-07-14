@@ -15,6 +15,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 
+
+
 builder.Services.AddFluentValidation(x =>
 {
     x.RegisterValidatorsFromAssemblyContaining<Program>();
