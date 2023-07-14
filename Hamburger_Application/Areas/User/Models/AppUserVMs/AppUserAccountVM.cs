@@ -13,6 +13,7 @@ namespace Hamburger_Application.Areas.User.Models.AppUserVMs
         public string ConfirmPassword { get; set; }
         public int? ConfirmCode { get; set; }
         public bool IsActive { get; set; }
+        public bool IsDark { get; set; } = false;
         public ICollection<Order> Orders { get; set; }
     }
 }
