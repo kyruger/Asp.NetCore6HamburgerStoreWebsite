@@ -1,0 +1,92 @@
+﻿@model UpdateHamburgerVM
+
+<style>
+	.btn.btn-outline-warning:hover {
+		background-color: darkorange !important;
+	}
+
+	.btn.btn-outline-success:hover {
+		background-color: darkolivegreen !important;
+	}
+
+	.table-hover tbody tr:hover {
+		background-color: rgb(244, 147, 1);
+	}
+
+	.btn.btn-outline-secondary.btn-block:hover {
+		background-color: red !important;
+	}
+</style>
+<table class="table table-hover table-bordered  ">
+	<thead>
+		<tr>
+			<th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Photo</th>
+			<th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Name</th>
+			<th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Piece</th>
+			<th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Size</th>
+			<th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Price</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="text-center">
+				<img src="/Products/HamburgerImages/@Model.Photo" width="90" height="140">
+			</td>
+			<td>
+				<div class="text-container">
+					@Model.Name
+				</div>
+			</td>
+			<td>
+				<div class="text-container">
+					@Model.Piece
+				</div>
+			</td>
+			<td>
+				<div class="text-container">
+					@Model.Size
+				</div>
+			</td>
+			<td>
+				<div class="text-container">
+					@Model.Price ₺
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<form method="post" asp-action="Edit" asp-controller="Hamburger" enctype="multipart/form-data">
+	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+	<input type="hidden" asp-for="Id" />
+	<div>
+		<label>Name:</label>
+		<input asp-for="Name" class="form-control" placeholder="Name" />
+		<span asp-validation-for="Name" style="color:darkred" />
+	</div>
+	<div>
+		<label>Price:</label>
+		<input asp-for="Price" class="form-control" placeholder="Price" />
+		<span asp-validation-for="Price" style="color:darkred" />
+	</div>
+	<div>
+		<label>Piece:</label>
+		<input asp-for="Piece" class="form-control" placeholder="Piece" />
+		<span asp-validation-for="Piece" style="color:darkred" />
+	</div>
+	<div class="form-group">
+		<label asp-for="Photo" class="control-label"></label>
+		<input asp-for="Photo" class="form-control" type="file" name="ImageName" accept=".jpg,.png, .jpeg" />
+		<span asp-validation-for="Photo" class="text-danger"></span>
+	</div>
+	<div class="text-center">
+		<input type="submit" value="Update" class="btn btn-outline-success">
+		<a asp-action="List" asp-controller="Hamburger" class="btn btn-outline-secondary btn-block">Cancel</a>
+	</div>
+</form>
+
+
+@section Scripts{
+	<partial name="_ValidationScriptsPartial" />
+}
+
