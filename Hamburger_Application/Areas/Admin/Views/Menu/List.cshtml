@@ -1,66 +1,63 @@
 ﻿@using Hamburger_Application.Areas.Admin.Models.ViewModels.Menu;
+@using Microsoft.AspNetCore.Identity;
 @model MenuListVM
 <style>
-    #page {
-        /*display: grid;
-        overflow-x: hidden;*/
-        width: 100%;
-        box-sizing: border-box;
-        grid-template-columns: auto auto auto auto;
-        grid-template-rows: 100px auto 200px;
-        grid-template-areas:
-            "head head head head"
-            "nav main main main"
-            "foot foot foot foot";
-    }
-    main {
-        grid-area: main;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        justify-content: space-between;
-    }
+	#page {
+		/*display: grid;
+							overflow-x: hidden;*/
+		width: 100%;
+		box-sizing: border-box;
+		grid-template-columns: auto auto auto auto;
+		grid-template-rows: 100px auto 200px;
+		grid-template-areas:
+			"head head head head"
+			"nav main main main"
+			"foot foot foot foot";
+	}
 
-    .kutu {
-        perspective: 1000px; /* 3D efekti için perspektif değeri */
-        transition: transform 1s ease;
-        width: 200px;
-        height: auto;
-        box-shadow: 5px 5px 10px orange;
-        margin: 20px;
-    }
+	main {
+		grid-area: main;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		justify-content: space-between;
+	}
 
-    main p {
-        width: 100%;
-        text-align: center;
-        font-size: large;
-        background-color: rgb(244, 147, 1);
-        color: rgb(247,244,244);
-        font-family: Aclonica serif;
-        font-size: 25px;
-    }
+	.kutu {
+		perspective: 1000px; /* 3D efekti için perspektif değeri */
+		transition: transform 1s ease;
+		width: 200px;
+		height: auto;
+		box-shadow: 5px 5px 10px orange;
+		margin: 20px;
+	}
 
-    /*header > div > ul > li {
-        margin: 30px 70px;
-    }*/
+	main p {
+		width: 100%;
+		text-align: center;
+		font-size: large;
+		background-color: rgb(244, 147, 1);
+		color: rgb(247,244,244);
+		font-family: Aclonica serif;
+		font-size: 25px;
+	}
 
+	div.kutu:hover {
+		transform: rotateY(360deg) scale(1.2);
+	}
 
-    div.kutu:hover {
-        transform: rotateY(360deg) scale(1.2);
-    }
+	.card-styles {
+		width: 100%;
+		height: 50px;
+		background-color: darkorange;
+		color: red;
+		cursor: pointer;
+		font-family: Aclonica serif;
+	}
 
-    .card-styles {
-        width: 100%;
-        height: 50px;
-        background-color: darkorange;
-        color: red;
-        cursor: pointer;
-        font-family: Aclonica serif;
-    }
-
-    .btn.btn-outline-warning:hover {
-        background-color: darkorange !important;
-    }
+	.btn.btn-outline-warning:hover {
+		background-color: darkorange !important;
+	}
 </style>
 <section id="page">
 	<main>
@@ -69,13 +66,19 @@
 		{
 			<div class="kutu">
 				<img src="/ProductsImages/Menu/@item.Photo" width="90" height="140" style="width: 100%" />
-                <h6 style="text-align: center; font-family: Aclonica serif;">@item.Name</h6>
+				<h6 style="text-align: center; font-family: Aclonica serif;">@item.Name</h6>
 				<p>@item.Price ₺</p>
-				<p>@item.Hamburger.Name, @item.Fries.Name, @item.Drink.Name</p>
 				<p>
-                    <a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" asp-controller="Menu" asp-action="Edit" value="Edit Menu">Edit Menu</a>
-                    <a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" asp-controller="Menu" asp-action="Delete" value="Edit Menu">Delete Menu</a>
-                    <a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" value="Add to Carts">Add to Carts</a>
+					<div style="text-align: center; font-family: Aclonica serif; background-color: rgb(244, 147, 1); color: rgb(247,244,244);">
+						@item.Hamburger.Name, @item.Fries.Name, @item.Drink.Name
+					</div>
+				</p>
+				<p>
+					<div style="text-align: center; font-family: Aclonica serif;">
+						<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" asp-controller="Menu" asp-action="Edit" value="Edit Menu">Edit Menu</a> <br>
+						<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" asp-controller="Menu" asp-action="Delete" value="Edit Menu">Delete Menu</a>
+					</div>
+					@*<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" value="Add to Carts">Add to Carts</a>*@
 				</p>
 			</div>
 		}
