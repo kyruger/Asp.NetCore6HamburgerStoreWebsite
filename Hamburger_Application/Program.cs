@@ -6,6 +6,7 @@ using Hamburger_Application.Repositories.Abstract;
 using Hamburger_Application.Repositories.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Hamburger_Application.Data.Utilities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -92,7 +93,11 @@ app.UseEndpoints(endpoints =>
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Main}/{id?}");
-
 app.MapRazorPages();
+
+
+//var scope = app.Services.CreateScope();
+//var userManager = (UserManager<AppUser>)scope.ServiceProvider.GetService(typeof(UserManager<AppUser>));
+//forLogin.AddASuperUserAsync(userManager);
 
 app.Run();
