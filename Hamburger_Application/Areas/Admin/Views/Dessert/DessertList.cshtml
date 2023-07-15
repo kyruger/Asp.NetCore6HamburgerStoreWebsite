@@ -1,13 +1,13 @@
-﻿
+﻿@model DessertListVM
 
-@model DessertListVM
-
-
-<h3>Desserts</h3>
-
+<br />
+<br />
 
 <div class="row text-center justify-content-center">
 
+    <h3>Desserts</h3>
+    <br />
+    <br />
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -31,7 +31,7 @@
                     <td>@dessert.isActive</td>
                     <td>@dessert.Price</td>
                     <td>@dessert.Piece</td>
-                    <td><img src="/ProductImages/Dessert/@dessert.Photo"/></td>
+                    <td><img src="/ProductImages/Dessert/@dessert.Photo" /></td>
                     <td>
                         <a asp-action="Update" class="btn btn-primary" asp-route-id="@dessert.Id">Güncelle</a>
                     </td>

@@ -1,9 +1,12 @@
-﻿@using Hamburger_Application.Areas.Admin.Models.ViewModels.Menu;
-@model MenuListVM
+﻿@model MenuListVM
 <style>
     #page {
         /*display: grid;
+<<<<<<< HEAD
                 overflow-x: hidden;*/
+=======
+            overflow-x: hidden;*/
+>>>>>>> fatih_branch2
         width: 100%;
         box-sizing: border-box;
         grid-template-columns: auto auto auto auto;
@@ -14,6 +17,7 @@
             "foot foot foot foot";
     }
 
+<<<<<<< HEAD
 
     .btn.btn-outline-success:hover {
         background-color: darkolivegreen !important;
@@ -24,6 +28,8 @@
     }
 
 
+=======
+>>>>>>> fatih_branch2
     main {
         grid-area: main;
         display: flex;
@@ -52,8 +58,13 @@
     }
 
     /*header > div > ul > li {
+<<<<<<< HEAD
                 margin: 30px 70px;
             }*/
+=======
+            margin: 30px 70px;
+        }*/
+>>>>>>> fatih_branch2
 
 
     div.kutu:hover {
@@ -74,7 +85,11 @@
     }
 </style>
 <section id="page">
+<<<<<<< HEAD
     <main>
+=======
+    <main class="container">
+>>>>>>> fatih_branch2
         <p>Menus</p>
         @foreach (Menu item in Model.Menus)
         {
@@ -88,10 +103,16 @@
                     <a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" asp-controller="Menu" asp-action="Delete" value="Edit Menu">Delete Menu</a>
                     <a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" value="Add to Carts">Add to Carts</a>
                 </p>
+<<<<<<< HEAD
 
             </div>
         }
     </main>
     <p>  <a asp-action="Create" class="btn btn-outline-success">Create Menu</a></p>
 
+=======
+            </div>
+        }
+    </main>
+>>>>>>> fatih_branch2
 </section>
