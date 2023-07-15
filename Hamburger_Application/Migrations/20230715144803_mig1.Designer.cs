@@ -4,6 +4,7 @@ using Hamburger_Application.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hamburger_Application.Migrations
 {
     [DbContext(typeof(HamburgerDbContext))]
-    partial class HamburgerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230715144803_mig1")]
+    partial class mig1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,16 +60,16 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "34e17149-f3f6-41a0-8b55-e6d8aa4a1920",
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 915, DateTimeKind.Local).AddTicks(3637),
+                            ConcurrencyStamp = "14bd94a9-35df-4e34-8456-660379c0dac9",
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 329, DateTimeKind.Local).AddTicks(4436),
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "22b7eca1-8364-45ae-85e3-19d8084a6b3e",
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 915, DateTimeKind.Local).AddTicks(3651),
+                            ConcurrencyStamp = "dbca7cf6-e306-4a9a-b4ad-55b05bc28d91",
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 329, DateTimeKind.Local).AddTicks(4448),
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -197,7 +199,7 @@ namespace Hamburger_Application.Migrations
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Piece")
+                    b.Property<int>("Piece")
                         .HasColumnType("int");
 
                     b.Property<decimal?>("Price")
@@ -222,7 +224,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 915, DateTimeKind.Local).AddTicks(6032),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 329, DateTimeKind.Local).AddTicks(7842),
                             Name = "Brownie",
                             Piece = 1,
                             Price = 50m,
@@ -231,7 +233,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 915, DateTimeKind.Local).AddTicks(6039),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 329, DateTimeKind.Local).AddTicks(7857),
                             Name = "Milkshake",
                             Piece = 1,
                             Price = 40m,
@@ -240,7 +242,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 915, DateTimeKind.Local).AddTicks(6040),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 329, DateTimeKind.Local).AddTicks(7858),
                             Name = "Cheesecake",
                             Piece = 1,
                             Price = 60m,
@@ -249,7 +251,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 915, DateTimeKind.Local).AddTicks(6041),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 329, DateTimeKind.Local).AddTicks(7859),
                             Name = "Ice Cream",
                             Piece = 1,
                             Price = 30m,
@@ -258,7 +260,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 5,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 915, DateTimeKind.Local).AddTicks(6042),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 329, DateTimeKind.Local).AddTicks(7861),
                             Name = "Puding",
                             Piece = 1,
                             Price = 40m,
@@ -289,7 +291,7 @@ namespace Hamburger_Application.Migrations
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Piece")
+                    b.Property<int>("Piece")
                         .HasColumnType("int");
 
                     b.Property<decimal?>("Price")
@@ -319,7 +321,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 915, DateTimeKind.Local).AddTicks(6520),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 329, DateTimeKind.Local).AddTicks(8673),
                             Name = "Coke",
                             Piece = 1,
                             Price = 40m,
@@ -329,7 +331,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 915, DateTimeKind.Local).AddTicks(6523),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 329, DateTimeKind.Local).AddTicks(8678),
                             Name = "Ayran",
                             Piece = 1,
                             Price = 25m,
@@ -339,7 +341,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 915, DateTimeKind.Local).AddTicks(6524),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 329, DateTimeKind.Local).AddTicks(8679),
                             Name = "Coke Zero",
                             Piece = 1,
                             Price = 45m,
@@ -349,7 +351,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 915, DateTimeKind.Local).AddTicks(6525),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 329, DateTimeKind.Local).AddTicks(8680),
                             Name = "Cold Tea",
                             Piece = 1,
                             Price = 35m,
@@ -359,7 +361,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 5,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 915, DateTimeKind.Local).AddTicks(6527),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 329, DateTimeKind.Local).AddTicks(8681),
                             Name = "Mineral Water",
                             Piece = 1,
                             Price = 15m,
@@ -391,7 +393,7 @@ namespace Hamburger_Application.Migrations
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Piece")
+                    b.Property<int>("Piece")
                         .HasColumnType("int");
 
                     b.Property<decimal?>("Price")
@@ -421,7 +423,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 915, DateTimeKind.Local).AddTicks(7050),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 329, DateTimeKind.Local).AddTicks(9360),
                             Name = "Potato",
                             Piece = 1,
                             Price = 20m,
@@ -431,7 +433,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 915, DateTimeKind.Local).AddTicks(7053),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 329, DateTimeKind.Local).AddTicks(9362),
                             Name = "Onion Ring",
                             Piece = 1,
                             Price = 22m,
@@ -441,7 +443,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 915, DateTimeKind.Local).AddTicks(7054),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 329, DateTimeKind.Local).AddTicks(9363),
                             Name = "Nugget",
                             Piece = 1,
                             Price = 25m,
@@ -451,7 +453,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 915, DateTimeKind.Local).AddTicks(7055),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 329, DateTimeKind.Local).AddTicks(9364),
                             Name = "Chicken Tenders",
                             Piece = 1,
                             Price = 25m,
@@ -483,7 +485,7 @@ namespace Hamburger_Application.Migrations
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Piece")
+                    b.Property<int>("Piece")
                         .HasColumnType("int");
 
                     b.Property<decimal?>("Price")
@@ -508,7 +510,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 915, DateTimeKind.Local).AddTicks(7438),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 329, DateTimeKind.Local).AddTicks(9916),
                             Name = "Whopper",
                             Piece = 1,
                             Price = 120m,
@@ -517,7 +519,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 915, DateTimeKind.Local).AddTicks(7440),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 329, DateTimeKind.Local).AddTicks(9918),
                             Name = "Texas SmokeHouse",
                             Piece = 1,
                             Price = 140m,
@@ -526,7 +528,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 915, DateTimeKind.Local).AddTicks(7442),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 329, DateTimeKind.Local).AddTicks(9919),
                             Name = "Fish Royale",
                             Piece = 1,
                             Price = 110m,
@@ -535,7 +537,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 915, DateTimeKind.Local).AddTicks(7443),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 329, DateTimeKind.Local).AddTicks(9920),
                             Name = "Big King",
                             Piece = 1,
                             Price = 150m,
@@ -544,7 +546,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 5,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 915, DateTimeKind.Local).AddTicks(7444),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 329, DateTimeKind.Local).AddTicks(9921),
                             Name = "Chicken Royale",
                             Piece = 1,
                             Price = 95m,
@@ -584,7 +586,7 @@ namespace Hamburger_Application.Migrations
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Piece")
+                    b.Property<int>("Piece")
                         .HasColumnType("int");
 
                     b.Property<decimal?>("Price")
@@ -605,7 +607,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 917, DateTimeKind.Local).AddTicks(2542),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 332, DateTimeKind.Local).AddTicks(8814),
                             DrinkId = 1,
                             FriesId = 1,
                             HamburgerId = 1,
@@ -617,7 +619,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 917, DateTimeKind.Local).AddTicks(2557),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 332, DateTimeKind.Local).AddTicks(8832),
                             DrinkId = 1,
                             FriesId = 1,
                             HamburgerId = 2,
@@ -629,7 +631,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 917, DateTimeKind.Local).AddTicks(2559),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 332, DateTimeKind.Local).AddTicks(8834),
                             DrinkId = 1,
                             FriesId = 1,
                             HamburgerId = 3,
@@ -641,7 +643,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 917, DateTimeKind.Local).AddTicks(2560),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 332, DateTimeKind.Local).AddTicks(8836),
                             DrinkId = 1,
                             FriesId = 1,
                             HamburgerId = 4,
@@ -653,7 +655,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 5,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 917, DateTimeKind.Local).AddTicks(2562),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 332, DateTimeKind.Local).AddTicks(8837),
                             DrinkId = 1,
                             FriesId = 1,
                             HamburgerId = 5,
@@ -681,7 +683,7 @@ namespace Hamburger_Application.Migrations
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Piece")
+                    b.Property<int>("Piece")
                         .HasColumnType("int");
 
                     b.Property<decimal?>("Price")
@@ -730,7 +732,7 @@ namespace Hamburger_Application.Migrations
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Piece")
+                    b.Property<int>("Piece")
                         .HasColumnType("int");
 
                     b.Property<decimal?>("Price")
@@ -753,7 +755,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 917, DateTimeKind.Local).AddTicks(3588),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 333, DateTimeKind.Local).AddTicks(689),
                             Name = "Ranch",
                             Piece = 1,
                             Price = 15m,
@@ -762,7 +764,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 917, DateTimeKind.Local).AddTicks(3592),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 333, DateTimeKind.Local).AddTicks(700),
                             Name = "Ketchup",
                             Piece = 1,
                             Price = 10m,
@@ -771,7 +773,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 917, DateTimeKind.Local).AddTicks(3594),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 333, DateTimeKind.Local).AddTicks(701),
                             Name = "Mayonnaise",
                             Piece = 1,
                             Price = 10m,
@@ -780,7 +782,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2023, 7, 15, 18, 27, 34, 917, DateTimeKind.Local).AddTicks(3595),
+                            CreationTime = new DateTime(2023, 7, 15, 17, 48, 1, 333, DateTimeKind.Local).AddTicks(702),
                             Name = "Barbeque",
                             Piece = 1,
                             Price = 15m,

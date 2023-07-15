@@ -30,6 +30,8 @@ builder.Services.AddDbContext<HamburgerDbContext>(options =>
 
 builder.Services.AddTransient<IMenuRepository, MenuRepository>();
 
+builder.Services.AddTransient<IOrderRepository, OrderRepository>();
+
 //var connectionString = builder.Configuration.GetConnectionString("ConStr");
 //builder.Services.AddDbContext<HamburgerDbContext>(options =>
 //	options.UseSqlServer(connectionString));
@@ -96,8 +98,8 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 
-var scope = app.Services.CreateScope();
-var userManager = (UserManager<AppUser>)scope.ServiceProvider.GetService(typeof(UserManager<AppUser>));
-forLogin.AddASuperUserAsync(userManager);
+//var scope = app.Services.CreateScope();
+//var userManager = (UserManager<AppUser>)scope.ServiceProvider.GetService(typeof(UserManager<AppUser>));
+//forLogin.AddASuperUserAsync(userManager);
 
 app.Run();

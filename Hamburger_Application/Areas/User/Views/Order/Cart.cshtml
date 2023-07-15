@@ -1,0 +1,231 @@
+﻿@using Hamburger_Application.Entities.Enum;
+@model Order
+<style>
+    .btn.btn-outline-warning:hover {
+        background-color: darkorange !important;
+    }
+
+    .btn.btn-outline-danger:hover {
+        background-color: red !important;
+    }
+
+    .btn.btn-outline-success:hover {
+        background-color: darkolivegreen !important;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: rgb(244, 147, 1);
+    }
+
+    .button-container {
+        margin-right: 20px;
+    }
+</style>
+
+<table class="table table-hover table-bordered  ">
+    <thead>
+        <tr>
+            <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Photo</th>
+            <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Name</th>
+            <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Piece</th>
+            <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Price</th>
+            <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Choose Your Transaction</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (Menu menu in Model.Menus)
+            {
+                <tr>
+                    <td class="text-center">
+                        <img src="/ProductsImages/Menu/@menu.Photo" width="90" height="140">
+                    </td>
+                    <td>
+                        <div class="text-container">
+                            @menu.Name
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-container">
+                            @menu.Piece
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-container">
+                            @menu.Price ₺
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex">
+                            <a asp-action="Delete" asp-controller="Order" asp-area="User" class="btn btn-outline-danger ">Delete </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+            foreach (Hamburger hamburger in Model.Hamburgers)
+            {
+                <tr>
+                    <td class="text-center">
+                        <img src="/ProductsImages/Hamburger1/@hamburger.Photo" width="90" height="140">
+                    </td>
+                    <td>
+                        <div class="text-container">
+                            @hamburger.Name
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-container">
+                            @hamburger.Piece
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-container">
+                            @hamburger.Price ₺
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex">
+
+                            <a asp-action="Delete" asp-controller="Order" asp-area="User" class="btn btn-outline-danger ">Delete </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+            foreach (Dessert dessert in Model.Desserts)
+            {
+                <tr>
+                    <td class="text-center">
+                        <img src="/ProductsImages/Dessert/@dessert.Photo" width="90" height="140">
+                    </td>
+                    <td>
+                        <div class="text-container">
+                            @dessert.Name
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-container">
+                            @dessert.Piece
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-container">
+                            @dessert.Price ₺
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex">
+
+                            <a asp-action="Delete" asp-controller="Order" asp-area="User" class="btn btn-outline-danger ">Delete </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+            foreach (Sauce sauce in Model.Sauces)
+            {
+                <tr>
+                    <td class="text-center">
+                        <img src="/ProductsImages/Sauce1/@sauce.Photo" width="90" height="140">
+                    </td>
+                    <td>
+                        <div class="text-container">
+                            @sauce.Name
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-container">
+                            @sauce.Piece
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-container">
+                            @sauce.Price ₺
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex">
+
+                            <a asp-action="Delete" asp-controller="Order" asp-area="User" class="btn btn-outline-danger ">Delete </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td colspan="5">Extras</td>
+            </tr>
+
+            foreach (Fries fries in Model.Fries)
+            {
+                <tr>
+                    <td class="text-center">
+                        <img src="/ProductsImages/Fries1/@fries.Photo" width="90" height="140">
+                    </td>
+                    <td>
+                        <div class="text-container">
+                            @fries.Name
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-container">
+                            @fries.Piece
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-container">
+                            @fries.Price ₺
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex">
+                           @* <div class="form-group">
+                                <select asp-for="@fries.Size" class="form-control" asp-items="ViewBag.size"></select>
+                            </div>*@
+                           @* <a asp-action="Update" asp-controller="Order" asp-area="User" asp-route-id="@fries.Id"  asp-route-name="fries" class="btn btn-outline-danger ">Update</a>*@
+                            <a asp-action="Update" asp-controller="Order" asp-area="User" asp-route-id="@fries.Id" asp-route-name="fries" class="btn btn-outline-danger ">Update</a>
+                            <a asp-action="Delete" asp-controller="Order" asp-route-id="@fries.Id" asp-route-name="fries" asp-area="User" class="btn btn-outline-danger ">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+            foreach (Drink drink in Model.Drinks)
+            {
+                <tr>
+                    <td class="text-center">
+                        <img src="/ProductsImages/Drink/@drink.Photo" width="90" height="140">
+                    </td>
+                    <td>
+                        <div class="text-container">
+                            @drink.Name
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-container">
+                            @drink.Piece
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-container">
+                            @drink.Price ₺
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex">
+                            <select asp-for="@drink.Size" class="form-control" asp-items="ViewBag.size"></select>
+                            <a asp-action="Update" asp-controller="Order" asp-area="User" asp-route-id="@drink.Id" class="btn btn-outline-danger ">Delete Hamburger</a>
+                            <a asp-action="Delete" asp-controller="Order" asp-area="User" class="btn btn-outline-danger ">Delete Hamburger</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+
+            <tr>
+                <td colspan="7" class="text-center">
+                    <a asp-action="Save" asp-controller="Order" asp-area="User" class="btn btn-outline-success">Confirm my cart</a>
+                </td>
+            </tr>
+
+        }
+        <p>Your cart is empty</p>
+
+    </tbody>
+</table>
