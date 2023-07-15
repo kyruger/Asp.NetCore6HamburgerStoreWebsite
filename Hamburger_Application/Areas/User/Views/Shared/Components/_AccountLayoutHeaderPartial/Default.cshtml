@@ -1,0 +1,52 @@
+﻿@inject SignInManager<AppUser> signInManager
+
+<style>
+    .text-right {
+        text-align: right;
+    }
+
+        .text-right .nav-item {
+            display: inline-block;
+            float: right;
+            margin-left: 10px;
+        }
+</style>
+
+@{
+    var navbarDefaultBackgroundColor = "#F49301";
+    var mbfLogoColor = "#B12103";
+    var mainBackgroundColor = "#FFFFFF";
+
+    if (Model is not null)
+    {
+        if (Model.IsDark)
+        {
+            mainBackgroundColor = "#000000";
+            mbfLogoColor = "#F49301";
+            navbarDefaultBackgroundColor = "#B12103";
+        }
+    }
+}
+
+<header>
+    <nav class="navbar navbar-light navbar-expand-md navbar-fixed-top navigation-clean-button" style="background: @navbarDefaultBackgroundColor; font-size: 25px;">
+        <div class="container-fluid">
+            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navi">
+                <span class="navbar-toggler-icon"></span>
+                <div>
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Main">
+                        <span style="font-family: Allura, serif;font-size: 50px; transform-style: preserve-3d;--bs-body-font-weight: 100;">
+                            <span style="text-decoration: underline; color: #B12103 /*rgb(177,33,3)*/">mbf</span>
+                        </span>
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo01" style="font-family: 'Comic Sans MS', sans-serif;">
+                    <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+
+                        <partial name="_LoginPartial" />
+
+                    </div>
+                </div>
+        </div>
+    </nav>
+</header>
