@@ -2,8 +2,6 @@
 @model MenuListVM
 <style>
 	#page {
-		/*display: grid;
-							overflow-x: hidden;*/
 		width: 100%;
 		box-sizing: border-box;
 		grid-template-columns: auto auto auto auto;
@@ -41,14 +39,10 @@
 		font-size: 25px;
 	}
 
-    /*header > div > ul > li {
-        margin: 30px 70px;
-    }*/
 
-
-    div.kutu:hover {
-        transform: rotateY(360deg) scale(1.2);
-    }
+	div.kutu:hover {
+		transform: rotateY(360deg) scale(1.2);
+	}
 
 	.card-styles {
 		width: 100%;
@@ -70,13 +64,19 @@
 		{
 			<div class="kutu">
 				<img src="/ProductsImages/Menu/@item.Photo" width="90" height="140" style="width: 100%" />
-                <h6 style="text-align: center; font-family: Aclonica serif;">@item.Name</h6>
+				<h6 style="text-align: center; font-family: Aclonica serif;">@item.Name</h6>
 				<p>@item.Price ₺</p>
-				<p>@item.Hamburger.Name, @item.Fries.Name, @item.Drink.Name</p>
 				<p>
-                    <a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" asp-controller="Menu" asp-action="Edit" value="Edit Menu">Edit Menu</a>
-                    <a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" asp-controller="Menu" asp-action="Delete" value="Edit Menu">Delete Menu</a>
-                    <a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" value="Add to Carts">Add to Carts</a>
+					<h6 style="text-align: center; font-family: Aclonica serif; background-color: rgb(244, 147, 1); color: rgb(247,244,244);">
+						@item.Hamburger.Name, @item.Fries.Name, @item.Drink.Name
+					</h6>
+				</p>
+				<p>
+					<h6>
+						<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" asp-controller="Menu" asp-action="Edit" value="Edit Menu">Edit Menu</a>
+						<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" asp-controller="Menu" asp-action="Delete" value="Edit Menu">Delete Menu</a>
+						@*<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" value="Add to Carts">Add to Carts</a>*@
+					</h6>
 				</p>
 			</div>
 		}
