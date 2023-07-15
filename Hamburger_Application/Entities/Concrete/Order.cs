@@ -4,7 +4,7 @@ namespace Hamburger_Application.Entities.Concrete
 {
     public class Order : BaseEntity
     {
-        public string UserId { get; set; }
+        public int UserId { get; set; }
         public AppUser User { get; set; }
         public ICollection<Menu>? Menus { get; set; }
         public ICollection<Hamburger>? Hamburgers { get; set; }
