@@ -26,13 +26,14 @@ namespace Hamburger_Application.Areas.User.Controllers
 
         public async Task<IActionResult> DeleteAccount()
         {
-            return PartialView("_DeleteAccountPartial");
+            //return PartialView("_DeleteAccountPartial");
+            return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete()
         {
-            AppUser appUser = await userManager.FindByIdAsync(id);
+            AppUser appUser = await userManager.FindByNameAsync(User.Identity.Name);
             appUser.IsActive = false;
             IdentityResult result = await userManager.UpdateAsync(appUser);
             if (result.Succeeded)

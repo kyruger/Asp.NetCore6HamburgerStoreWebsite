@@ -1,4 +1,5 @@
-﻿<style>
+﻿<link rel="stylesheet" href="~/css/Black-Navbar.css">
+<style>
     .text-right {
         text-align: right;
     }
@@ -31,20 +32,21 @@
         <div class="container-fluid">
             <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navi">
                 <span class="navbar-toggler-icon"></span>
-                <div>
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Main">
-                        <span style="font-family: Allura, serif;font-size: 50px; transform-style: preserve-3d;--bs-body-font-weight: 100;">
-                            <span style="text-decoration: underline; color: #B12103 /*rgb(177,33,3)*/">mbf</span>
-                        </span>
-                    </a>
-                </div>
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo01" style="font-family: 'Comic Sans MS', sans-serif;">
-                    <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+            </button>
+            <div>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Main">
+                    <span style="font-family: Allura, serif;font-size: 50px; transform-style: preserve-3d;--bs-body-font-weight: 100;">
+                        <span style="text-decoration: underline; color: #B12103 /*rgb(177,33,3)*/">mbf</span>
+                    </span>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01" style="font-family: 'Comic Sans MS', sans-serif;">
+                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
 
-                        <partial name="_LoginPartial" />
+                    <partial name="_LoginPartial" />
 
-                    </div>
                 </div>
+            </div>
         </div>
     </nav>
 </header>

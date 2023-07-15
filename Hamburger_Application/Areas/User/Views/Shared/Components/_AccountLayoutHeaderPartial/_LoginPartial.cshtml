@@ -1,4 +1,5 @@
-﻿@inject SignInManager<AppUser> signInManager
+﻿<link rel="stylesheet" href="~/css/Black-Navbar.css">
+@inject SignInManager<AppUser> signInManager
 
 <style>
     .text-right {
@@ -35,10 +36,9 @@
             </li>
         </ul>
 
-
         <ul class="navbar-nav nav-right">
             <li class="nav-item dropdown">
-                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" style="color: rgb(247,244,244); font-family:'Indie Flower'" href="#">@User.Identity.Name</a>
+                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" style="color: rgb(247,244,244); font-family:'Indie Flower'">@User.Identity.Name</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" asp-area="User" asp-controller="AccountSettings" asp-action="Index">Settings</a>
                     <a class="dropdown-item" asp-area="User" asp-controller="Account" asp-action="SignOut">Sign Out</a>

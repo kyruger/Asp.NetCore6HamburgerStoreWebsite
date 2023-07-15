@@ -14,12 +14,10 @@
     <!-- /header -->
 
     <div class="container bg-body">
-        <!-- sidebar -->
-        @await Component.InvokeAsync("_AccountLayoutSidebarPartial")
-        <!-- sidebar -->
         <main role="main" class="pb-3" @*style="background-color:@mainBackgroundColor"*@>
-
-
+            <!-- sidebar -->
+            @await Component.InvokeAsync("_AccountLayoutSidebarPartial")
+            <!-- sidebar -->
             @RenderBody()
         </main>
     </div>
@@ -27,6 +25,7 @@
     <!-- footer content -->
     @await Component.InvokeAsync("_AccountLayoutFooterPartial")
     <!-- /footer content -->
+
     <!-- script content -->
     @await Component.InvokeAsync("_AccountLayoutScriptPartial")
 

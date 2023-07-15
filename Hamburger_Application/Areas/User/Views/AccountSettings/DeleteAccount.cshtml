@@ -1,0 +1,23 @@
+﻿
+@{
+    Layout = "~/Areas/User/Views/AccountLayout/Index.cshtml";
+}
+
+@inject UserManager<AppUser> userManager;
+
+@{
+    var user = await userManager.FindByNameAsync(User.Identity.Name);
+}
+
+<h2 style="color:white">Delete Account</h2>
+<br />
+<br />
+<hr />
+<div style="color:white">
+    <label>Do you want to delete your account ?</label>
+    <br />
+    <form method="post" asp-area="User" asp-controller="AccountSettings" asp-action="Delete">
+        <input type="submit" class="btn btn-outline-danger" value="Yes" />
+    </form>
+</div>
+
