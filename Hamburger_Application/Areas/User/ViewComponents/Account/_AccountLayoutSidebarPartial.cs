@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Hamburger_Application.Areas.User.Controllers
+namespace Hamburger_Application.Areas.User.ViewComponents.Account
 {
     public class _AccountLayoutSidebarPartial : ViewComponent
     {
