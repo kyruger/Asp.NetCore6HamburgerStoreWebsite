@@ -1,118 +1,84 @@
-﻿@model MenuListVM
+﻿@using Hamburger_Application.Areas.Admin.Models.ViewModels.Menu;
+@model MenuListVM
 <style>
-    #page {
-        /*display: grid;
-<<<<<<< HEAD
-                overflow-x: hidden;*/
-=======
-            overflow-x: hidden;*/
->>>>>>> fatih_branch2
-        width: 100%;
-        box-sizing: border-box;
-        grid-template-columns: auto auto auto auto;
-        grid-template-rows: 100px auto 200px;
-        grid-template-areas:
-            "head head head head"
-            "nav main main main"
-            "foot foot foot foot";
-    }
+	#page {
+		/*display: grid;
+							overflow-x: hidden;*/
+		width: 100%;
+		box-sizing: border-box;
+		grid-template-columns: auto auto auto auto;
+		grid-template-rows: 100px auto 200px;
+		grid-template-areas:
+			"head head head head"
+			"nav main main main"
+			"foot foot foot foot";
+	}
 
-<<<<<<< HEAD
+	main {
+		grid-area: main;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		justify-content: space-between;
+	}
 
-    .btn.btn-outline-success:hover {
-        background-color: darkolivegreen !important;
-    }
+	.kutu {
+		perspective: 1000px; /* 3D efekti için perspektif değeri */
+		transition: transform 1s ease;
+		width: 200px;
+		height: auto;
+		box-shadow: 5px 5px 10px orange;
+		margin: 20px;
+	}
 
-    .btn.btn-outline-secondary.btn-block:hover {
-        background-color: red !important;
-    }
-
-
-=======
->>>>>>> fatih_branch2
-    main {
-        grid-area: main;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        justify-content: space-between;
-    }
-
-    .kutu {
-        perspective: 1000px; /* 3D efekti için perspektif değeri */
-        transition: transform 1s ease;
-        width: 200px;
-        height: auto;
-        box-shadow: 5px 5px 10px orange;
-        margin: 20px;
-    }
-
-    main p {
-        width: 100%;
-        text-align: center;
-        font-size: large;
-        background-color: rgb(244, 147, 1);
-        color: rgb(247,244,244);
-        font-family: Aclonica serif;
-        font-size: 25px;
-    }
+	main p {
+		width: 100%;
+		text-align: center;
+		font-size: large;
+		background-color: rgb(244, 147, 1);
+		color: rgb(247,244,244);
+		font-family: Aclonica serif;
+		font-size: 25px;
+	}
 
     /*header > div > ul > li {
-<<<<<<< HEAD
-                margin: 30px 70px;
-            }*/
-=======
-            margin: 30px 70px;
-        }*/
->>>>>>> fatih_branch2
+        margin: 30px 70px;
+    }*/
 
 
     div.kutu:hover {
         transform: rotateY(360deg) scale(1.2);
     }
 
-    .card-styles {
-        width: 100%;
-        height: 50px;
-        background-color: darkorange;
-        color: red;
-        cursor: pointer;
-        font-family: Aclonica serif;
-    }
+	.card-styles {
+		width: 100%;
+		height: 50px;
+		background-color: darkorange;
+		color: red;
+		cursor: pointer;
+		font-family: Aclonica serif;
+	}
 
-    .btn.btn-outline-warning:hover {
-        background-color: darkorange !important;
-    }
+	.btn.btn-outline-warning:hover {
+		background-color: darkorange !important;
+	}
 </style>
 <section id="page">
-<<<<<<< HEAD
-    <main>
-=======
-    <main class="container">
->>>>>>> fatih_branch2
-        <p>Menus</p>
-        @foreach (Menu item in Model.Menus)
-        {
-            <div class="kutu">
-                <img src="/ProductsImages/Menu/@item.Photo" width="90" height="140" style="width: 100%" />
+	<main>
+		<p>Menus</p>
+		@foreach (Menu item in Model.Menus)
+		{
+			<div class="kutu">
+				<img src="/ProductsImages/Menu/@item.Photo" width="90" height="140" style="width: 100%" />
                 <h6 style="text-align: center; font-family: Aclonica serif;">@item.Name</h6>
-                <p>@item.Price ₺</p>
-                <p>@item.Hamburger.Name, @item.Fries.Name, @item.Drink.Name</p>
-                <p>
+				<p>@item.Price ₺</p>
+				<p>@item.Hamburger.Name, @item.Fries.Name, @item.Drink.Name</p>
+				<p>
                     <a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" asp-controller="Menu" asp-action="Edit" value="Edit Menu">Edit Menu</a>
                     <a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" asp-controller="Menu" asp-action="Delete" value="Edit Menu">Delete Menu</a>
                     <a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" value="Add to Carts">Add to Carts</a>
-                </p>
-<<<<<<< HEAD
-
-            </div>
-        }
-    </main>
-    <p>  <a asp-action="Create" class="btn btn-outline-success">Create Menu</a></p>
-
-=======
-            </div>
-        }
-    </main>
->>>>>>> fatih_branch2
+				</p>
+			</div>
+		}
+	</main>
 </section>
