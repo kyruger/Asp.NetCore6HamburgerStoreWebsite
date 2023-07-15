@@ -1,0 +1,15 @@
+﻿@inject UserManager<AppUser> userManager;
+
+@{
+    var user = await userManager.FindByNameAsync(User.Identity.Name);
+}
+
+<h2>Delete Account</h2>
+<br />
+<br />
+<hr />
+<div>
+    <label>Do you want to delete your account ?</label>
+    <br />
+    <a class="btn-outline-danger" onclick="DeleteAccount(@user.Id)">Yes</a>
+</div>
