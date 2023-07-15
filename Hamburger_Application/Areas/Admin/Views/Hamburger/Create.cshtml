@@ -1,43 +1,43 @@
 ﻿@model CreateHamburgerVM
 
 <style>
-	.btn.btn-outline-success:hover {
-		background-color: darkolivegreen !important;
-	}
+    .btn.btn-outline-success:hover {
+        background-color: darkolivegreen !important;
+    }
 
-	.btn.btn-outline-secondary.btn-block:hover {
-		background-color: red !important;
-	}
+    .btn.btn-outline-secondary.btn-block:hover {
+        background-color: red !important;
+    }
 </style>
 
 <form method="post" asp-action="Create" asp-controller="Hamburger" enctype="multipart/form-data">
-	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-	<div>
-		<label>Name:</label>
-		<input asp-for="Name" class="form-control" />
-		<span asp-validation-for="Name" style="color:darkred" />
-	</div>
-	<div>
-		<label>Piece</label>
-		<input asp-for="Piece" class="form-control" />
-		<span asp-validation-for="Piece" style="color:darkred" />
-	</div>
-	<div>
-		<label>Price:</label>
-		<input asp-for="Price" class="form-control" />
-		<span asp-validation-for="Price" style="color:darkred" />
-	</div>
-	<div class="form-group">
-		<label asp-for="Photo" class="control-label"></label>
-		<input asp-for="Photo" class="form-control" type="file" name="imageName" accept=".jpg,.png" />
-		<span asp-validation-for="Photo" class="text-danger"></span>
-	</div>
-	<div class="text-center">
-		<button type="submit" class="btn btn-outline-success">Save</button>
-		<a asp-action="List" asp-controller="Hamburger" class="btn btn-outline-secondary btn-block">Cancel</a>
-	</div>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div>
+        <label>Name:</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" style="color:darkred" />
+    </div>
+    <div>
+        <label>Piece</label>
+        <input asp-for="Piece" class="form-control" />
+        <span asp-validation-for="Piece" style="color:darkred" />
+    </div>
+    <div>
+        <label>Price:</label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" style="color:darkred" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Photo" class="control-label"></label>
+        <input asp-for="Photo" class="form-control" type="file" name="imageName" accept=".jpg,.png" />
+        <span asp-validation-for="Photo" class="text-danger"></span>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-outline-success">Save</button>
+        <a asp-action="List" asp-controller="Hamburger" class="btn btn-outline-secondary btn-block">Cancel</a>
+    </div>
 </form>
 
 @section Scripts{
-	<partial name="_ValidationScriptsPartial" />
+    <partial name="_ValidationScriptsPartial" />
 }

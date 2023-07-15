@@ -40,12 +40,12 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 				await imageName.CopyToAsync(file);
 				if (isAdded)
 				{
-					TempData["Info"] = "The item added";
+					TempData["Info"] = "Fries is added";
 					return View("List");
 				}
 				else
 				{
-					ViewBag.Info = "The item could not be added.";
+					ViewBag.Info = "Fries cannot added";
 				}
 			}
 			return View(friesVM);
@@ -98,19 +98,19 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 				if (isDeleted)
 				{
 					TempData["Info"] = "Fries is deleted";
-					return RedirectToAction("List");
+				
 				}
 				else
 				{
-					ViewBag.Info = "Fries is not deleted";
+                    TempData["Info"] = "Fries is not deleted";
 				}
 			}
 			else
 			{
-				ViewBag.Info = "The item could not be founded.";
+                TempData["Info"] = "fries could not be founded.";
 			}
-			return View(fries);
-		}
+            return RedirectToAction("List");
+        }
 
 		[NonAction]
 		private string GenerateUniqueFileName(IFormFile file)
