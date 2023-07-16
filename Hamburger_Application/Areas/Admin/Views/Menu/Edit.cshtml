@@ -1,14 +1,54 @@
 ﻿@model CreateMenuVM
 
 <style>
+    .btn.btn-outline-warning:hover {
+        background-color: darkorange !important;
+    }
+
     .btn.btn-outline-success:hover {
         background-color: darkolivegreen !important;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: rgb(244, 147, 1);
     }
 
     .btn.btn-outline-secondary.btn-block:hover {
         background-color: red !important;
     }
 </style>
+<table class="table table-hover table-bordered  ">
+    <thead>
+        <tr>
+            <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Photo</th>
+            <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Name</th>
+            <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Piece</th>
+            <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="text-center">
+                <img src="/ProductsImages/Menu/@Model.Menu.Photo" width="90" height="140">
+            </td>
+            <td>
+                <div class="text-container">
+                    @Model.Menu.Name
+                </div>
+            </td>
+            <td>
+                <div class="text-container">
+                    @Model.Menu.Piece
+                </div>
+            </td>
+            <td>
+                <div class="text-container">
+                    @Model.Menu.Price ₺
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 <form method="post" asp-action="Edit" asp-controller="Menu" enctype="multipart/form-data">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -44,10 +84,6 @@
     <div class="form-group">
         <label>Drink Name:</label>
         <select asp-for="Menu.DrinkId" class="form-control" asp-items="Model.Drinks"></select>
-    </div>
-    <div class="form-group">
-        <label>Dessert Name:</label>
-        <select asp-for="Menu.DessertId" class="form-control" asp-items="Model.Desserts"></select>
     </div>
     <div class="text-center">
         <button type="submit" class="btn btn-outline-success">Save</button>

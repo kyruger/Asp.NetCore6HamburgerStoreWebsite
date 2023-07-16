@@ -15,16 +15,14 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 		private readonly IRepository<Hamburger> hamburgerRepository;
 		private readonly IRepository<Drink> drinkRepository;
 		private readonly IRepository<Fries> friesRepository;
-		private readonly IRepository<Dessert> dessertRepository;
 		private readonly IMapper mapper;
 
-		public MenuController(IMenuRepository menuRepository, IRepository<Hamburger> hamburgerRepository, IRepository<Drink> drinkRepository, IRepository<Fries> friesRepository, IRepository<Dessert> dessertRepository, IMapper mapper)
+		public MenuController(IMenuRepository menuRepository, IRepository<Hamburger> hamburgerRepository, IRepository<Drink> drinkRepository, IRepository<Fries> friesRepository, IMapper mapper)
 		{
 			this.menuRepository = menuRepository;
 			this.hamburgerRepository = hamburgerRepository;
 			this.drinkRepository = drinkRepository;
 			this.friesRepository = friesRepository;
-			this.dessertRepository = dessertRepository;
 			this.mapper = mapper;
 		}
 		public IActionResult List()
@@ -52,7 +50,6 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 			menuVM.Fries = new SelectList(friesRepository.GetAll(), "Id", "Name");
 			menuVM.Drinks = new SelectList(drinkRepository.GetAll(), "Id", "Name");
 			menuVM.Hamburgers = new SelectList(hamburgerRepository.GetAll(), "Id", "Name");
-			menuVM.Desserts = new SelectList(dessertRepository.GetAll(), "Id", "Name");
 
 			return View(menuVM);
 		}
@@ -87,7 +84,6 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 				createMenuVM.Drinks = new SelectList(drinkRepository.GetAllTrue(true), "Id", "Name");
 				createMenuVM.Hamburgers = new SelectList(hamburgerRepository.GetAllTrue(true), "Id", "Name");
 				createMenuVM.Fries = new SelectList(friesRepository.GetAllTrue(true), "Id", "Name");
-				createMenuVM.Desserts = new SelectList(dessertRepository.GetAllTrue(true), "Id", "Name");
 				return View(createMenuVM);
 			}
 			else

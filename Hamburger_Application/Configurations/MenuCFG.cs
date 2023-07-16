@@ -8,7 +8,6 @@ namespace Hamburger_Application.Configurations
     {
         public void Configure(EntityTypeBuilder<Menu> builder)
         {
-            builder.HasOne(a => a.Dessert).WithOne(a => a.Menu).HasForeignKey<Dessert>(a => a.MenuId).OnDelete(DeleteBehavior.SetNull);
             builder.HasOne(a => a.Fries).WithOne(a => a.Menu).HasForeignKey<Fries>(a => a.MenuId).OnDelete(DeleteBehavior.SetNull);
             builder.HasOne(a => a.Drink).WithOne(a => a.Menu).HasForeignKey<Drink>(a => a.MenuId).OnDelete(DeleteBehavior.SetNull);
             builder.HasOne(a => a.Hamburger).WithOne(a => a.Menu).HasForeignKey<Hamburger>(a => a.MenuId).OnDelete(DeleteBehavior.SetNull);
