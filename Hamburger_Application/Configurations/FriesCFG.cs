@@ -9,6 +9,7 @@ namespace Hamburger_Application.Configurations
     {
         public void Configure(EntityTypeBuilder<Fries> builder)
         {
+            builder.Property(a => a.Name).HasMaxLength(30);
             builder.Property(a => a.isActive).HasDefaultValue(true);
             builder.Property(a => a.Size).HasDefaultValue(Size.Small);
 

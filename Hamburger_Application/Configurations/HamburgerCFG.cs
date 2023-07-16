@@ -9,7 +9,7 @@ namespace Hamburger_Application.Configurations
         public void Configure(EntityTypeBuilder<Hamburger> builder)
         {
             builder.Property(a => a.isActive).HasDefaultValue(true);
-
+            builder.Property(a => a.Name).HasMaxLength(50);
             builder.HasData(
                 new Hamburger
                 {
