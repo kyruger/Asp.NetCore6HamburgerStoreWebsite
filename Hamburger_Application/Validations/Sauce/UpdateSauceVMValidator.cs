@@ -9,7 +9,7 @@ namespace Hamburger_Application.Validations.Sauce
 		{
             RuleFor(f => f.Name).NotEmpty().MaximumLength(30).WithMessage("Sauce name must not be empty & maximum characters must be 30");
             RuleFor(f => f.Price).NotEmpty().GreaterThan(0).WithMessage("Price cannot be a negative value");
-			RuleFor(f => f.Photo).Must(BeValidImageFormat).WithMessage("Invalid photo format. Only JPEG, JPG and PNG formats are allowed.");
+			//RuleFor(f => f.Photo).Must(BeValidImageFormat).WithMessage("Invalid photo format. Only JPEG, JPG and PNG formats are allowed.");
 		}
 		private bool BeValidImageFormat(string photo)
 		{

@@ -27,21 +27,21 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(CreateSauceVM sauceVM, IFormFile imageName)
+        public async Task<IActionResult> Create(CreateSauceVM sauceVM, IFormFile imgCover)
         {
             if (ModelState.IsValid)
             {
                 Sauce sauce = mapper.Map<Sauce>(sauceVM);
+                sauce.Photo = GenerateUniqueFileName(imgCover);
                 bool isAdded = sauceRepository.Add(sauce);
 
-                sauce.Photo = GenerateUniqueFileName(imageName);
 
                 FileStream file = new FileStream("wwwroot/ProductImages/Sauce1/" + sauce.Photo, FileMode.Create);
-                await imageName.CopyToAsync(file);
+                await imgCover.CopyToAsync(file);
                 if (isAdded)
                 {
                     TempData["Info"] = "Sauce is added";
-                    return View("List");
+                    return RedirectToAction("List");
                 }
                 else
                 {
@@ -58,36 +58,31 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             return View(sauceVM);
         }
         [HttpPost]
-        public async Task<IActionResult> Edit(UpdateSauceVM updateSauceVM, IFormFile ImageName)
+        public async Task<IActionResult> Edit(UpdateSauceVM updateSauceVM, IFormFile imgCover)
         {
             if (ModelState.IsValid)
             {
-                Sauce sauce = sauceRepository.GetById(updateSauceVM.Id);
+                    Sauce sauce = mapper.Map<Sauce>(updateSauceVM);
+                
                 if (sauce is not null)
                 {
-                    sauce = mapper.Map<Sauce>(updateSauceVM);
+                    sauce.Photo = GenerateUniqueFileName(imgCover);
                     bool isAdded = sauceRepository.Update(sauce);
 
-                    sauce.Photo = GenerateUniqueFileName(ImageName);
-
                     FileStream file = new FileStream("wwwroot/ProductImages/Sauce1/" + sauce.Photo, FileMode.Create);
-                    await ImageName.CopyToAsync(file);
+                    await imgCover.CopyToAsync(file);
                     if (isAdded)
                     {
                         TempData["Info"] = "Sauce is updated";
-                        return View("List");
                     }
                     else
                     {
                         ViewBag.Info = "Sauce cannot be updated";
+                        return View(updateSauceVM);
                     }
                 }
-                else
-                {
-                    ViewBag.Info = "Sauce cannot be founded";
-                }
             }
-            return View(updateSauceVM);
+            return RedirectToAction("List");
         }
         public IActionResult Delete(int id)
         {

@@ -27,21 +27,21 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 			return View();
 		}
 		[HttpPost]
-		public async Task<IActionResult> Create(CreateHamburgerVM hamburgerVM, IFormFile imageName)
+		public async Task<IActionResult> Create(CreateHamburgerVM hamburgerVM, IFormFile imgCover)
 		{
 			if (ModelState.IsValid)
 			{
 				Hamburger hamburger = mapper.Map<Hamburger>(hamburgerVM);
+				hamburger.Photo = GenerateUniqueFileName(imgCover);
 				bool isAdded = hamburgerRepository.Add(hamburger);
 
-				hamburger.Photo = GenerateUniqueFileName(imageName);
 
 				FileStream file = new FileStream("wwwroot/ProductImages/Hamburger1/" + hamburger.Photo, FileMode.Create);
-				await imageName.CopyToAsync(file);
+				await imgCover.CopyToAsync(file);
 				if (isAdded)
 				{
 					TempData["Info"] = "Hamburger is added";
-					return View("List");
+					return RedirectToAction("List");
 				}
 				else
 				{
@@ -58,36 +58,32 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 			return View(hamburgerVM);
 		}
 		[HttpPost]
-		public async Task<IActionResult> Edit(UpdateHamburgerVM updateHamburgerVM, IFormFile ImageName)
+		public async Task<IActionResult> Edit(UpdateHamburgerVM updateHamburgerVM, IFormFile imgCover)
 		{
 			if (ModelState.IsValid)
 			{
-				Hamburger hamburger = hamburgerRepository.GetById(updateHamburgerVM.Id);
+					Hamburger hamburger = mapper.Map<Hamburger>(updateHamburgerVM);
+
 				if (hamburger is not null)
 				{
-					hamburger = mapper.Map<Hamburger>(updateHamburgerVM);
+					hamburger.Photo = GenerateUniqueFileName(imgCover);
 					bool isAdded = hamburgerRepository.Update(hamburger);
 
-					hamburger.Photo = GenerateUniqueFileName(ImageName);
 
 					FileStream file = new FileStream("wwwroot/ProductImages/Hamburger1/" + hamburger.Photo, FileMode.Create);
-					await ImageName.CopyToAsync(file);
+					await imgCover.CopyToAsync(file);
 					if (isAdded)
 					{
 						TempData["Info"] = "Hamburger is updated";
-						return View("List");
 					}
 					else
 					{
-						ViewBag.Info = "Hamburger is updated";
+						ViewBag.Info = "Hamburger is failed updated";
+						return View(updateHamburgerVM);
 					}
 				}
-				else
-				{
-					ViewBag.Info = "Hamburgert cannot be found";
-				}
 			}
-			return View(updateHamburgerVM);
+			return RedirectToAction("List");
 		}
 		public IActionResult Delete(int id)
 		{
@@ -98,7 +94,6 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 				if (isDeleted)
 				{
 					TempData["Info"] = "Hamburger is deleted";
-					
 				}
 				else
 				{

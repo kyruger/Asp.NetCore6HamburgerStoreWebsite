@@ -5,6 +5,6 @@
 		public string Name { get; set; }
 		public decimal? Price { get; set; }
 		public int Piece { get; set; }
-		public string Photo { get; set; }
+		public IFormFile imgCover { get; set; }
 	}
 }

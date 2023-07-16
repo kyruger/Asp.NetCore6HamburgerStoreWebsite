@@ -64,7 +64,7 @@
 		@foreach (Menu item in Model.Menus)
 		{
 			<div class="kutu">
-				<img src="/ProductsImages/Menu/@item.Photo" width="90" height="140" style="width: 100%" />
+				<img src="/ProductImages/Menu1/@item.Photo" width="90" height="140" style="width: 100%" />
 				<h6 style="text-align: center; font-family: Aclonica serif;">@item.Name</h6>
 				<p>@item.Price ₺</p>
 				<p>
@@ -81,7 +81,7 @@
 						}
 						else if (User.IsInRole("User"))
 						{
-							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" value="Add to Carts" asp-controller="Order" asp-action="AddToCart" asp-route-name="menu">Add to Carts</a>
+							<a class="btn btn-outline-warning button-container card-styles" value="Add to Carts" asp-controller="Order" asp-action="AddToCart" asp-area="User" asp-route-id="@item.Id" asp-route-name="menu">Add to Carts</a>
 						}
 					</h6>
 				</p>

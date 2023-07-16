@@ -77,7 +77,7 @@
 		@foreach (Hamburger hamburger in Model)
 		{
 			<div class="kutu">
-				<img src="/ProductsImages/Hamburger1/@hamburger.Photo" width="90" height="140" style="width: 100%" />
+				<img src="/ProductImages/Hamburger1/@hamburger.Photo" width="90" height="140" style="width: 100%" />
 				<h6 style="text-align: center; font-family: Aclonica serif;">@hamburger.Name</h6>
 				<p>@hamburger.Price ₺</p>
 				<p>
@@ -89,7 +89,7 @@
 						}
 						else if (User.IsInRole("User"))
 						{
-							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@hamburger.Id" value="Add to Carts" asp-controller="Order" asp-action="AddToCart" asp-route-name="hamburger">Add to Carts</a>
+							<a class="btn btn-outline-warning button-container card-styles" value="Add to Carts" asp-controller="Order" asp-action="AddToCart" asp-area="User" asp-route-id="@hamburger.Id"  asp-route-name="hamburger">Add to Carts</a>
 						}
 					</h6>
 				</p>

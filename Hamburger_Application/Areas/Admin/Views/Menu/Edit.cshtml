@@ -17,38 +17,6 @@
         background-color: red !important;
     }
 </style>
-<table class="table table-hover table-bordered  ">
-    <thead>
-        <tr>
-            <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Photo</th>
-            <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Name</th>
-            <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Piece</th>
-            <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Price</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td class="text-center">
-                <img src="/ProductsImages/Menu/@Model.Menu.Photo" width="90" height="140">
-            </td>
-            <td>
-                <div class="text-container">
-                    @Model.Menu.Name
-                </div>
-            </td>
-            <td>
-                <div class="text-container">
-                    @Model.Menu.Piece
-                </div>
-            </td>
-            <td>
-                <div class="text-container">
-                    @Model.Menu.Price ₺
-                </div>
-            </td>
-        </tr>
-    </tbody>
-</table>
 
 <form method="post" asp-action="Edit" asp-controller="Menu" enctype="multipart/form-data">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -69,9 +37,8 @@
         <span asp-validation-for="Menu.Price" style="color:darkred" />
     </div>
     <div class="form-group">
-        <label asp-for="Menu.Photo" class="control-label"></label>
-        <input asp-for="Menu.Photo" class="form-control" type="file" name="imageName" accept=".jpg,.png,.jpeg" placeholder="Menu.Photo" />
-        <span asp-validation-for="Menu.Photo" class="text-danger"></span>
+        <label class="control-label">Photo</label>
+        <input class="form-control" type="file" name="imgCover" accept=".jpg,.png,.jpeg" />
     </div>
     <div class="form-group">
         <label>Hamburger Name:</label>
