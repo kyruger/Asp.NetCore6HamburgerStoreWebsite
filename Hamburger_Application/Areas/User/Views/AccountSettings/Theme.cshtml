@@ -17,8 +17,9 @@
 <div style="color:white">
     <label>Do you want to use dark theme in mbf hamburger website?</label>
     <br />
-    <form method="post" asp-area="User" asp-controller="AccountSettings" asp-action="DeleteAccount" asp-route-id="@user.Id" asp-route-IsDark="@user.IsDark">
+    <form method="post" asp-area="User" asp-controller="AccountSettings" asp-action="Theme" asp-route-id="@user.Id" asp-route-IsDark="@user.IsDark">
         <input type="checkbox" class="btn btn-outline-danger" value="Dark Theme" />
+        @*<input type="submit" class="btn btn-outline-warning" />*@
     </form>
 </div>
 

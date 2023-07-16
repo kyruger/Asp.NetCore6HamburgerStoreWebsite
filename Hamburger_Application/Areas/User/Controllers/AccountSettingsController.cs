@@ -191,19 +191,22 @@ namespace Hamburger_Application.Areas.User.Controllers
         public async Task<IActionResult> Theme(string id, bool IsDark)
         {
             AppUser appUser = await userManager.FindByIdAsync(id);
-            appUser.IsDark = IsDark;
-            IdentityResult result = await userManager.UpdateAsync(appUser);
-            if (result.Succeeded)
+            if (appUser is not null)
             {
-                return RedirectToAction("Main", "Home", new { area = "" });
-            }
-            else
-            {
-                foreach (IdentityError error in result.Errors)
+                appUser.IsDark = IsDark;
+                IdentityResult result = await userManager.UpdateAsync(appUser);
+                if (result.Succeeded)
                 {
-                    ModelState.AddModelError("Error", error.Description);
+                    return RedirectToAction("Main", "Home", new { area = "" });
                 }
-                return View();
+                else
+                {
+                    foreach (IdentityError error in result.Errors)
+                    {
+                        ModelState.AddModelError("Error", error.Description);
+                    }
+                    return View();
+                }
             }
         }
     }

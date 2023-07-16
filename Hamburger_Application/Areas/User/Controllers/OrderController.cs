@@ -149,7 +149,13 @@ namespace Hamburger_Application.Areas.User.Controllers
             else if (name == "hamburger")
             {
                 Hamburger hamburger = hamburgerRepository.GetById(id);
-                order.Hamburgers.Remove(hamburger);
+                if (hamburger.Piece > 0)
+                {
+                    hamburger.Price--;
+                    order.Hamburgers.Remove(hamburger);
+                    order.Hamburgers.Add(hamburger);
+                    bool isUpdated = orderRepository.Update(order);
+                }
             }
             else if (name == "dessert")
             {
