@@ -16,7 +16,7 @@
 <div style="color:white">
     <label>Do you want to delete your account ?</label>
     <br />
-    <form method="post" asp-area="User" asp-controller="AccountSettings" asp-action="Delete">
+    <form method="post" asp-area="User" asp-controller="AccountSettings" asp-action="DeleteAccount" asp-route-id="@user.Id">
         <input type="submit" class="btn btn-outline-danger" value="Yes" />
     </form>
 </div>
