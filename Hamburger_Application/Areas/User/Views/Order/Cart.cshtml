@@ -177,10 +177,10 @@
                     </td>
                     <td>
                         <div class="d-flex">
-                           @* <div class="form-group">
-                                <select asp-for="@fries.Size" class="form-control" asp-items="ViewBag.size"></select>
-                            </div>*@
-                           @* <a asp-action="Update" asp-controller="Order" asp-area="User" asp-route-id="@fries.Id"  asp-route-name="fries" class="btn btn-outline-danger ">Update</a>*@
+                            @* <div class="form-group">
+                    <select asp-for="@fries.Size" class="form-control" asp-items="ViewBag.size"></select>
+                    </div>*@
+                            @* <a asp-action="Update" asp-controller="Order" asp-area="User" asp-route-id="@fries.Id"  asp-route-name="fries" class="btn btn-outline-danger ">Update</a>*@
                             <a asp-action="Update" asp-controller="Order" asp-area="User" asp-route-id="@fries.Id" asp-route-name="fries" class="btn btn-outline-danger ">Update</a>
                             <a asp-action="Delete" asp-controller="Order" asp-route-id="@fries.Id" asp-route-name="fries" asp-area="User" class="btn btn-outline-danger ">Delete</a>
                         </div>
@@ -225,7 +225,11 @@
             </tr>
 
         }
-        <p>Your cart is empty</p>
+        else
+        {
+
+            <p>Your cart is empty</p>
+        }
 
     </tbody>
 </table>

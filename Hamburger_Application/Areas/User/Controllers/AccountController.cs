@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Hamburger_Application.Areas.User.Models.AppUserVMs;
+using Hamburger_Application.Areas.User.Utilities;
 using Hamburger_Application.Entities.Concrete;
 using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Authorization;
@@ -101,6 +102,7 @@ namespace Hamburger_Application.Areas.User.Controllers
                 IdentityResult result = await userManager.UpdateAsync(appUser);
                 if (result.Succeeded)
                 {
+                    Helper.EmailSend(appUser.Email, "Welcome to mbf hamburger !");
                     return RedirectToAction("SignIn");
                 }
                 else
@@ -114,6 +116,7 @@ namespace Hamburger_Application.Areas.User.Controllers
             else
             {
                 ModelState.AddModelError("Error", "Something went wrong !\nA new confirm code was sent.");
+                Helper.EmailSend(appUser.Email, "A new confirm code");
             }
             return View(appUserEmailConfirmVM);
         }
@@ -142,11 +145,14 @@ namespace Hamburger_Application.Areas.User.Controllers
                             }
                             else
                             {
-                                ModelState.AddModelError("Error", "Your email could not have been confirmed");
+                                ModelState.AddModelError("Error", "Your email could not have been confirmed !\nA new confirm code was sent.");
+                                Helper.EmailSend(appUser.Email, "A new confirm code");
+                                return RedirectToAction("EmailConfirm");
                             }
                         }
                         else ModelState.AddModelError("Error", "Email or password is incorrect !");
                     }
+                    ModelState.AddModelError("Error", "Can not be sign in with email is in account was deleted !\nPlease get in touch with sending email");
                 }
                 else ModelState.AddModelError("Error", "Something went wrong !");
             }
