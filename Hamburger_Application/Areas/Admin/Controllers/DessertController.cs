@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Hamburger_Application.Areas.Admin.Models;
 using Hamburger_Application.Entities.Concrete;
+using Hamburger_Application.Entities.Enum;
 using Hamburger_Application.Repositories.Abstract;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Hamburger_Application.Areas.Admin.Controllers
 {
@@ -48,7 +50,6 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                 }
                 ViewBag.info = "Failed to Create dessert";
             }
-
             return View(createVM);
         }
 
@@ -82,9 +83,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                 else
                     ViewBag.info = "Failed to Update dessert";
             }
-
             return View(updateVM);
-
         }
 
         [Authorize]

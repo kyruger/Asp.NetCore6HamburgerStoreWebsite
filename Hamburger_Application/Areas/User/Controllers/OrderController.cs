@@ -72,10 +72,6 @@ namespace Hamburger_Application.Areas.User.Controllers
             ViewBag.size = selectList;
             return View(order);
         }
-        //public IActionResult Save()
-        //{
-
-        //}
         public async Task<IActionResult> AddToCart(int id, string name)
         {
             AppUser user = await userManager.FindByNameAsync(User.Identity.Name);
@@ -87,12 +83,8 @@ namespace Hamburger_Application.Areas.User.Controllers
                 orderRepository.Add(order);
             }
 
-
-
             if (user != null && name != null)
             {
-
-
                 if (name == "menu")
                 {
                     Menu menu = menuRepository.GetById(id);

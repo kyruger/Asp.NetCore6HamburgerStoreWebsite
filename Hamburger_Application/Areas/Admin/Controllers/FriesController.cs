@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using Hamburger_Application.Areas.Admin.Models.ViewModels.Fries;
 using Hamburger_Application.Entities.Concrete;
+using Hamburger_Application.Entities.Enum;
 using Hamburger_Application.Repositories.Abstract;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Hamburger_Application.Areas.Admin.Controllers
 {
@@ -24,6 +26,9 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 		}
 		public IActionResult Create()
 		{
+			var enumList = Enum.GetValues(typeof(Size)).Cast<Size>().ToList();
+			SelectList selectList = new SelectList(enumList);
+			ViewBag.size = selectList;
 			return View();
 		}
 		[HttpPost]
@@ -55,6 +60,9 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 			UpdateFriesVM friesVM = new();
 			Fries fries = friesRepository.GetById(id);
 			friesVM = mapper.Map<UpdateFriesVM>(fries);
+			var enumList = Enum.GetValues(typeof(Size)).Cast<Size>().ToList();
+			SelectList selectList = new SelectList(enumList);
+			ViewBag.size = selectList;
 			return View(friesVM);
 		}
 		[HttpPost]

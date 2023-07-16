@@ -1,45 +1,104 @@
-﻿@model DrinkListVM
+﻿@using Microsoft.AspNetCore.Identity;
+@model DrinkListVM
+@inject SignInManager<AppUser> signInManager
+<style>
+	#page {
+		width: 100%;
+		box-sizing: border-box;
+		grid-template-columns: auto auto auto auto;
+		grid-template-rows: 100px auto 200px;
+		grid-template-areas:
+			"head head head head"
+			"nav main main main"
+			"foot foot foot foot";
+	}
+
+	main {
+		grid-area: main;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		justify-content: space-between;
+	}
+
+	.kutu {
+		perspective: 1000px; /* 3D efekti için perspektif değeri */
+		transition: transform 1s ease;
+		width: 200px;
+		height: auto;
+		box-shadow: 5px 5px 10px orange;
+		margin: 20px;
+	}
+
+	main p {
+		width: 100%;
+		text-align: center;
+		font-size: large;
+		background-color: rgb(244, 147, 1);
+		color: rgb(247,244,244);
+		font-family: Aclonica serif;
+		font-size: 25px;
+	}
 
 
-<h3>Drinks</h3>
+	div.kutu:hover {
+		transform: rotateY(360deg) scale(1.2);
+	}
 
+	.card-styles {
+		width: 100%;
+		height: 50px;
+		background-color: darkorange;
+		color: red;
+		cursor: pointer;
+		font-family: Aclonica serif;
+	}
 
-<div class="row text-center justify-content-center">
+	.btn.btn-outline-warning:hover {
+		background-color: darkorange !important;
+	}
 
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Drink Name</th>
-                <th>Drink CreationTime</th>
-                <th>Drink Activity</th>
-                <th>Drink Price</th>
-                <th>Drink Piece</th>
-                <th>Drink Photo</th>
-                <th>Details</th>
-                <th>Update</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody>
+	<style >
+	.btn.btn-outline-success:hover {
+		background-color: darkolivegreen !important;
+	}
 
-            @foreach (Drink drink in Model.Drinks)
-            {
-                <tr>
-                    <td>@drink.Name</td>
-                    <td>@drink.CreationTime</td>
-                    <td>@drink.isActive</td>
-                    <td>@drink.Price</td>
-                    <td>@drink.Piece</td>
-                    <td>@drink.Photo</td>
-                    <td>
-                        <a asp-action="Update" class="btn btn-primary" asp-route-id="@drink.Id">Edit</a>
-                    </td>
-                    <td>
-                        <a asp-action="Delete" class="btn btn-primary" asp-route-id="@drink.Id">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    <a asp-action="Create">Create Drink</a>
-</div>
+	.btn.btn-outline-secondary.btn-block:hover {
+		background-color: red !important;
+	}
+
+	.btn-outline-success:hover {
+		background-color: darkolivegreen;
+	}
+</style>
+
+<section id="page">
+	<main>
+		<p>Drinks</p>
+		@foreach (Drink drink in Model.Drinks)
+		{
+			<div class="kutu">
+				<img src="/ProductsImages/Drink/@drink.Photo" width="90" height="140" style="width: 100%" />
+				<h6 style="text-align: center; font-family: Aclonica serif;">@drink.Name</h6>
+				<p>@drink.Price ₺</p>
+				<p>
+					<h6>
+						@if (User.IsInRole("Admin"))
+						{
+							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@drink.Id" asp-controller="Drink" asp-action="Update" value="Edit Drink">Edit Drink</a>
+							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@drink.Id" asp-controller="Drink" asp-action="Delete" value="Delete Drink">Delete Drink</a>
+						}
+						else if (User.IsInRole("User"))
+						{
+							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@drink.Id" value="Add to Carts" asp-controller="Order" asp-action="AddToCart" asp-route-name="drink">Add to Carts</a>
+						}
+					</h6>
+				</p>
+			</div>
+		}
+	</main>
+	<div class="text-center">
+		<a asp-action="Create" asp-controller="Drink" class="btn btn-outline-success"> New Create Drink</a>
+	</div>
+</section>
+

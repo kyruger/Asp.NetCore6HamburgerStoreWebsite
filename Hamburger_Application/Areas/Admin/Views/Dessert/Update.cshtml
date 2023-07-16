@@ -1,30 +1,54 @@
 ﻿@model DessertUpdateVM
 
-<h1>Dessert Create</h1>
+<style>
+	.btn.btn-outline-warning:hover {
+		background-color: darkorange !important;
+	}
+
+	.btn.btn-outline-success:hover {
+		background-color: darkolivegreen !important;
+	}
+
+	.table-hover tbody tr:hover {
+		background-color: rgb(244, 147, 1);
+	}
+
+	.btn.btn-outline-secondary.btn-block:hover {
+		background-color: red !important;
+	}
+</style>
 
 <form asp-action="Update" method="post" enctype="multipart/form-data">
-    <div class="form-group">
-        <label asp-for="Name" class="control-label">Dessert Name</label>
-        <input asp-for="Name" class="form-control" type="text" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Piece" class="control-label"></label>
-        <input asp-for="Piece" class="form-control" type="number" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Price" class="control-label"></label>
-        <input asp-for="Price" class="form-control" type="number" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Photo" class="control-label"></label>
-        <input asp-for="Photo" class="form-control" type="file" name="imgCover" />
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Update" class="btn btn-primary" />
-    </div>
-
+	<div class="form-group">
+		<label asp-for="Name" class="control-label">Dessert Name</label>
+		<input asp-for="Name" class="form-control" type="text" />
+		<span asp-validation-for="Name" style="color:darkred" />
+	</div>
+	<div class="form-group">
+		<label asp-for="Piece" class="control-label"></label>
+		<input asp-for="Piece" class="form-control" type="number" />
+		<span asp-validation-for="Piece" style="color:darkred" />
+	</div>
+	<div class="form-group">
+		<label asp-for="Price" class="control-label"></label>
+		<input asp-for="Price" class="form-control" type="number" />
+		<span asp-validation-for="Price" style="color:darkred" />
+	</div>
+	<div class="form-group">
+		<label asp-for="Photo" class="control-label"></label>
+		<input asp-for="Photo" class="form-control" type="file" name="imgCover" accept=".jpg,.png,.jpeg" />
+		<span asp-validation-for="Photo" class="text-danger"></span>
+	</div>
+	<div class="text-center">
+		<input type="submit" value="Update" class="btn btn-outline-success">
+		<a asp-action="DessertList" asp-controller="Dessert" class="btn btn-outline-secondary btn-block">Cancel</a>
+	</div>
 </form>
 @if (ViewBag.info != null)
 {
-    <p>@ViewBag.info</p>
+	<p>@ViewBag.info</p>
+}
+
+@section Scripts{
+	<partial name="_ValidationScriptsPartial" />
 }

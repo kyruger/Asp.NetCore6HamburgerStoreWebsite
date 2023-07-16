@@ -1,31 +1,53 @@
 ﻿@model DrinkCreatVM
 
+<style>
+    .btn.btn-outline-success:hover {
+        background-color: darkolivegreen !important;
+    }
+
+    .btn.btn-outline-secondary.btn-block:hover {
+        background-color: red !important;
+    }
+</style>
+
 <h1>Dessert Create</h1>
 
 <form asp-action="Create" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label asp-for="Name" class="control-label"></label>
         <input asp-for="Name" class="form-control" type="text" />
+        <span asp-validation-for="Name" style="color:darkred" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Piece" class="control-label"></label>
+        <input asp-for="Piece" class="form-control" type="number" />
+        <span asp-validation-for="Piece" style="color:darkred" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Size" class="control-label"></label>
+        <select asp-for="Size" class="form-control" asp-items="ViewBag.size"></select>
     </div>
     <div class="form-group">
         <label asp-for="Price" class="control-label"></label>
         <input asp-for="Price" class="form-control" type="number" />
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Piece" class="control-label"></label>
-        <input asp-for="Piece" class="form-control" type="number" />
+        <span asp-validation-for="Price" style="color:darkred" />
     </div>
     <div class="form-group">
         <label asp-for="Photo" class="control-label"></label>
         <input asp-for="Photo" class="form-control" type="file" name="imgCover" />
+        <span asp-validation-for="Photo" style="color:darkred" />
     </div>
-    <div class="form-group">
-        <input type="submit" value="Create" class="btn btn-primary" />
+    <div class="text-center">
+        <button type="submit" class="btn btn-outline-success">Save</button>
+        <a asp-action="DrinkList" asp-controller="Drink" class="btn btn-outline-secondary btn-block">Cancel</a>
     </div>
 
 </form>
 @if (ViewBag.info != null)
 {
     <p>@ViewBag.info</p>
+}
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
 }

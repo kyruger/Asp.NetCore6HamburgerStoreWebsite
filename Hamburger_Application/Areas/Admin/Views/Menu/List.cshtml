@@ -1,5 +1,6 @@
-﻿@using Hamburger_Application.Areas.Admin.Models.ViewModels.Menu;
+﻿@using Microsoft.AspNetCore.Identity;
 @model MenuListVM
+@inject SignInManager<AppUser> signInManager
 <style>
 	#page {
 		width: 100%;
@@ -68,14 +69,20 @@
 				<p>@item.Price ₺</p>
 				<p>
 					<h6 style="text-align: center; font-family: Aclonica serif; background-color: rgb(244, 147, 1); color: rgb(247,244,244);">
-						@item.Hamburger.Name, @item.Fries.Name, @item.Drink.Name
+						@item.Hamburger.Name, @item.Fries.Size-@item.Fries.Name, @item.Drink.Size- @item.Drink.Name
 					</h6>
 				</p>
 				<p>
 					<h6>
-						<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" asp-controller="Menu" asp-action="Edit" value="Edit Menu">Edit Menu</a>
-						<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" asp-controller="Menu" asp-action="Delete" value="Edit Menu">Delete Menu</a>
-						@*<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" value="Add to Carts">Add to Carts</a>*@
+						@if (User.IsInRole("Admin"))
+						{
+							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" asp-controller="Menu" asp-action="Edit" value="Edit Menu">Edit Menu</a>
+							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" asp-controller="Menu" asp-action="Delete" value="Edit Menu">Delete Menu</a>
+						}
+						else if (User.IsInRole("User"))
+						{
+							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@item.Id" value="Add to Carts" asp-controller="Order" asp-action="AddToCart" asp-route-name="menu">Add to Carts</a>
+						}
 					</h6>
 				</p>
 			</div>

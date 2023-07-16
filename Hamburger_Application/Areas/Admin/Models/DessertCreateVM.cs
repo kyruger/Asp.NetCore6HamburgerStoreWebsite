@@ -1,5 +1,4 @@
 ﻿using Hamburger_Application.Entities.Concrete;
-
 namespace Hamburger_Application.Areas.Admin.Models
 {
     public class DessertCreateVM

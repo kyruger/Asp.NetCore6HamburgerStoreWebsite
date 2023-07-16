@@ -30,7 +30,7 @@
     <tbody>
         <tr>
             <td class="text-center">
-                <img src="/Products/FriesImages/@Model.Photo" width="90" height="140">
+                <img src="/ProductsImages/Fries1/@Model.Photo" width="90" height="140">
             </td>
             <td>
                 <div class="text-container">
@@ -60,19 +60,23 @@
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <input type="hidden" asp-for="Id" />
     <div>
-        <label>Name:</label>
+        <label>Fries Name</label>
         <input asp-for="Name" class="form-control" placeholder="Name" />
         <span asp-validation-for="Name" style="color:darkred" />
     </div>
     <div>
-        <label>Price:</label>
-        <input asp-for="Price" class="form-control" placeholder="Price" />
-        <span asp-validation-for="Price" style="color:darkred" />
+        <label>Piece</label>
+        <input asp-for="Piece" class="form-control" />
+        <span asp-validation-for="Piece" style="color:darkred" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Size" class="control-label"></label>
+        <select asp-for="Size" class="form-control" asp-items="ViewBag.size"></select>
     </div>
     <div>
-        <label>Piece:</label>
-        <input asp-for="Piece" class="form-control" placeholder="Piece" />
-        <span asp-validation-for="Piece" style="color:darkred" />
+        <label>Price:</label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" style="color:darkred" />
     </div>
     <div class="form-group">
         <label asp-for="Photo" class="control-label"></label>
