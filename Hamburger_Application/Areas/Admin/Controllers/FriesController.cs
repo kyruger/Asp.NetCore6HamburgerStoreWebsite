@@ -32,21 +32,21 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 			return View();
 		}
 		[HttpPost]
-		public async Task<IActionResult> Create(CreateFriesVM friesVM, IFormFile imageName)
+		public async Task<IActionResult> Create(CreateFriesVM friesVM, IFormFile imgCover)
 		{
 			if (ModelState.IsValid)
 			{
 				Fries fries = mapper.Map<Fries>(friesVM);
+				fries.Photo = GenerateUniqueFileName(imgCover);
 				bool isAdded = friesRepository.Add(fries);
 
-				fries.Photo = GenerateUniqueFileName(imageName);
 
 				FileStream file = new FileStream("wwwroot/ProductImages/Fries1/" + fries.Photo, FileMode.Create);
-				await imageName.CopyToAsync(file);
+				await imgCover.CopyToAsync(file);
 				if (isAdded)
 				{
 					TempData["Info"] = "Fries is added";
-					return View("List");
+					return RedirectToAction("List");
 				}
 				else
 				{
@@ -66,36 +66,31 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 			return View(friesVM);
 		}
 		[HttpPost]
-		public async Task<IActionResult> Edit(UpdateFriesVM updateFriesVM, IFormFile ImageName)
+		public async Task<IActionResult> Edit(UpdateFriesVM updateFriesVM, IFormFile imgCover)
 		{
 			if (ModelState.IsValid)
 			{
-				Fries fries = friesRepository.GetById(updateFriesVM.Id);
+				Fries fries = mapper.Map<Fries>(updateFriesVM);
 				if (fries is not null)
 				{
-					fries = mapper.Map<Fries>(updateFriesVM);
-					bool isAdded = friesRepository.Update(fries);
+					fries.Photo = GenerateUniqueFileName(imgCover);
+					bool isUpdated = friesRepository.Update(fries);
 
-					fries.Photo = GenerateUniqueFileName(ImageName);
 
 					FileStream file = new FileStream("wwwroot/ProductImages/Fries1/" + fries.Photo, FileMode.Create);
-					await ImageName.CopyToAsync(file);
-					if (isAdded)
+					await imgCover.CopyToAsync(file);
+					if (isUpdated)
 					{
-						TempData["Info"] = "The item updated";
-						return View("List");
+						TempData["info"] = "Fries Updated";
 					}
 					else
 					{
-						ViewBag.Info = "The item could not be updated.";
+						TempData["info"] = "Failed to Update fries";
+						return View(updateFriesVM);
 					}
 				}
-				else
-				{
-					ViewBag.Info = "The item could not be founded.";
-				}
 			}
-			return View(updateFriesVM);
+				return RedirectToAction("List");
 		}
 		public IActionResult Delete(int id)
 		{

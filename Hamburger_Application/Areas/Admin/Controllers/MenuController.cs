@@ -54,15 +54,15 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 			return View(menuVM);
 		}
 		[HttpPost]
-		public async Task<IActionResult> Create(Menu menu, IFormFile imageName)
+		public async Task<IActionResult> Create(Menu menu, IFormFile imgCover)
 		{
 			if (ModelState.IsValid)
 			{
+				menu.Photo = GenerateUniqueFileName(imgCover);
 				bool isAdded = menuRepository.Add(menu);
-				menu.Photo = GenerateUniqueFileName(imageName);
 
-				FileStream file = new FileStream("wwwroot/ProductImages/Menu/" + menu.Photo, FileMode.Create);
-				await imageName.CopyToAsync(file);
+				FileStream file = new FileStream("wwwroot/ProductImages/Menu1/" + menu.Photo, FileMode.Create);
+				await imgCover.CopyToAsync(file);
 				if (isAdded)
 				{
 					TempData["Info"] = "Menu succesfully added";
@@ -95,15 +95,15 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 
 
 		[HttpPost]
-		public async Task<IActionResult> Edit(Menu menu, IFormFile imageName)
+		public async Task<IActionResult> Edit(CreateMenuVM createMenuVM, IFormFile imgCover)
 		{
 			if (ModelState.IsValid)
 			{
-				bool isAdded = menuRepository.Add(menu);
-				menu.Photo = GenerateUniqueFileName(imageName);
+				createMenuVM.Menu.Photo = GenerateUniqueFileName(imgCover);
+				bool isAdded = menuRepository.Update(createMenuVM.Menu);
 
-				FileStream file = new FileStream("wwwroot/ProductImages/Menu/" + menu.Photo, FileMode.Create);
-				await imageName.CopyToAsync(file);
+				FileStream file = new FileStream("wwwroot/ProductImages/Menu1/" + createMenuVM.Menu.Photo, FileMode.Create);
+				await imgCover.CopyToAsync(file);
 				if (isAdded)
 				{
 					TempData["Info"] = "Menu succesfully added";
@@ -114,7 +114,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 					ViewBag.Info = "Failed to Add Menu";
 				}
 			}
-			return View(menu);
+			return View(createMenuVM);
 		}
         public IActionResult Delete(int id)
         {

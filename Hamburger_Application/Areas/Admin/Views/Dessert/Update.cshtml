@@ -17,38 +17,7 @@
 		background-color: red !important;
 	}
 </style>
-<table class="table table-hover table-bordered  ">
-	<thead>
-		<tr>
-			<th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Photo</th>
-			<th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Name</th>
-			<th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Piece</th>
-			<th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Price</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="text-center">
-				<img src="/ProductsImages/Dessert/@Model.Photo" width="90" height="140">
-			</td>
-			<td>
-				<div class="text-container">
-					@Model.Name
-				</div>
-			</td>
-			<td>
-				<div class="text-container">
-					@Model.Piece
-				</div>
-			</td>
-			<td>
-				<div class="text-container">
-					@Model.Price ₺
-				</div>
-			</td>
-		</tr>
-	</tbody>
-</table>
+
 <form asp-action="Update" method="post" enctype="multipart/form-data">
 	<input type="hidden" asp-for="Id" />
 	<div class="form-group">
@@ -63,13 +32,12 @@
 	</div>
 	<div class="form-group">
 		<label asp-for="Price" class="control-label"></label>
-		<input asp-for="Price" class="form-control" type="number" />
+		<input asp-for="Price" class="form-control" type="number" step="0.1"/>
 		<span asp-validation-for="Price" style="color:darkred" />
 	</div>
 	<div class="form-group">
-		<label asp-for="Photo" class="control-label"></label>
-		<input asp-for="Photo" class="form-control" type="file" name="imgCover" accept=".jpg,.png,.jpeg" />
-		<span asp-validation-for="Photo" class="text-danger"></span>
+		<label class="control-label">Photo</label>
+		<input  class="form-control" type="file" name="imgCover" accept=".jpg,.png,.jpeg" />
 	</div>
 	<div class="text-center">
 		<input type="submit" value="Update" class="btn btn-outline-success">

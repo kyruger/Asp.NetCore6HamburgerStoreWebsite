@@ -76,20 +76,20 @@
 		@foreach (Dessert dessert in Model.Desserts)
 		{
 			<div class="kutu">
-				<img src="~/ProductsImages/Dessert1/@dessert.Photo" width="90" height="140" style="width: 100%" />
+				<img src="/ProductImages/Dessert1/@dessert.Photo" width="90" height="140" style="width: 100%" />
 				<h6 style="text-align: center; font-family: Aclonica serif;">@dessert.Name</h6>
 				<p>@dessert.Price ₺</p>
 				<p>
 					<h6>
-						@*@if (User.IsInRole("Admin"))
-						{*@
+						@if (User.IsInRole("Admin"))
+						{
 							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@dessert.Id" asp-controller="Dessert" asp-action="Update"asp-area="Admin">Edit Dessert</a>
 							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@dessert.Id" asp-controller="Dessert" asp-action="Delete">Delete Dessert</a>
-						@*}
+						}
 						else if (User.IsInRole("User"))
-						{*@
+						{
 							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@dessert.Id" value="Add to Carts" asp-controller="Order" asp-action="AddToCart" asp-route-name="dessert">Add to Carts</a>
-						@*}*@
+						}
 					</h6>
 				</p>
 			</div>

@@ -38,8 +38,8 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 Drink drink = mapper.Map<Drink>(createVM);
-                bool isAdded = drinkRepository.Add(drink);
                 drink.Photo = GenerateUniqueFileName(imgCover);
+                bool isAdded = drinkRepository.Add(drink);
                 FileStream stream = new FileStream("wwwroot/ProductImages/Drink/" + drink.Photo, FileMode.Create);
                 await imgCover.CopyToAsync(stream);
                 if (isAdded)
@@ -73,10 +73,10 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                 Drink drink = mapper.Map<Drink>(updateVM);
 
                 drink.Photo = GenerateUniqueFileName(imgCover);
+                bool isUpdated = drinkRepository.Update(drink);
                 FileStream stream = new FileStream("wwwroot/ProductImages/Drink/" + drink.Photo, FileMode.Create);
                 await imgCover.CopyToAsync(stream);
 
-                bool isUpdated = drinkRepository.Update(drink);
                 if (isUpdated)
                 {
                     TempData["info"] = "Drink Updated";
@@ -91,7 +91,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
         }
         public IActionResult Delete(int id)
         {
-            Drink drink = new Drink();
+            Drink drink = drinkRepository.GetById(id);
             bool isDeleted = drinkRepository.Delete(drink);
             if (isDeleted)
             {

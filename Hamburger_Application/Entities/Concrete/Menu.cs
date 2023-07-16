@@ -1,4 +1,5 @@
 ﻿using Hamburger_Application.Entities.Abstract;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hamburger_Application.Entities.Concrete
 {

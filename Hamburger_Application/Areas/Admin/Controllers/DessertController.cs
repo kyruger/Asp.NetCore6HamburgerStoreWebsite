@@ -38,9 +38,9 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 Dessert dessert = mapper.Map<Dessert>(createVM);
+                dessert.Photo = GenerateUniqueFileName(imgCover);
                 bool isAdded = dessertRepository.Add(dessert);
 
-                dessert.Photo = GenerateUniqueFileName(imgCover);
                 FileStream stream = new FileStream("wwwroot/ProductImages/Dessert1/" + dessert.Photo, FileMode.Create);
                 await imgCover.CopyToAsync(stream);
                 if (isAdded)
@@ -68,21 +68,23 @@ namespace Hamburger_Application.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                //kontrollü olacak!!!
-                Dessert dessert = mapper.Map<Dessert>(updateVM);
-
-                bool isUpdated = dessertRepository.Update(dessert);
-
-                dessert.Photo = GenerateUniqueFileName(imgCover);
-                FileStream stream = new FileStream("wwwroot/ProductImages/Dessert1/" + dessert.Photo, FileMode.Create);
-                await imgCover.CopyToAsync(stream);
-                if (isUpdated)
+                if (updateVM is not null)
                 {
-                    TempData["info"] = "Dessert Updated";
-                    return RedirectToAction("DessertList");
+                    Dessert dessert = mapper.Map<Dessert>(updateVM);
+
+                    dessert.Photo = GenerateUniqueFileName(imgCover);
+                    bool isUpdated = dessertRepository.Update(dessert);
+
+                    FileStream stream = new FileStream("wwwroot/ProductImages/Dessert1/" + dessert.Photo, FileMode.Create);
+                    await imgCover.CopyToAsync(stream);
+                    if (isUpdated)
+                    {
+                        TempData["info"] = "Dessert Updated";
+                        return RedirectToAction("DessertList");
+                    }
+                    else
+                        ViewBag.info = "Failed to Update dessert";
                 }
-                else
-                    ViewBag.info = "Failed to Update dessert";
             }
             return View(updateVM);
         }
