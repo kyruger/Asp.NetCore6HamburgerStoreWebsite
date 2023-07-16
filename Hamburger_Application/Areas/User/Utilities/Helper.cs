@@ -5,15 +5,13 @@ namespace Hamburger_Application.Areas.User.Utilities
 {
     internal static class Helper
     {
-         internal static void EmailSend(string email, string info)
+         internal static void EmailSend(string email, string info, int? randomCode = null)
         {
-            Random random = new();
-            int randomCode = random.Next(100_000, 1_000_000);
             MailboxAddress mailboxAddressFrom = new MailboxAddress("mbf hamburger", "fatih_trkci96@hotmail.com");
             MailboxAddress mailboxAddressTo = new MailboxAddress("User", email);
 
             var bodyBuilder = new BodyBuilder();
-            bodyBuilder.TextBody = $"{info} :  " + randomCode;
+            bodyBuilder.TextBody = $"{info}  " + randomCode;
 
             MimeMessage mimeMessage = new();
             mimeMessage.From.Add(mailboxAddressFrom);

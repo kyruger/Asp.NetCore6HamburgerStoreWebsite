@@ -3,7 +3,7 @@
     Layout = "~/Areas/User/Views/AccountLayout/Index.cshtml";
 }
 
-@model AppUserAccountVM
+@model AppUserPersonalInfoVM
 
 <section class="register-photo" style="background-color: transparent; font-family:'Indie Flower'">
     <div class="form-container d-flex" style="margin-top: 40px;">
@@ -16,7 +16,7 @@
                 <br />
                 <input type="text" asp-for="LastName" class="form-control" placeholder="Surname" />
                 <br />
-                <input type="text" asp-for="UserName" class="form-control" placeholder="Username" />
+                <input type="text" asp-for="UserName" class="form-control" disabled />
                 <input type="hidden" asp-for="Email" />
             </div>
             <div asp-validation-summary="All"></div>
