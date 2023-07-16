@@ -15,12 +15,15 @@ namespace Hamburger_Application.Areas.User.Controllers
         private readonly UserManager<AppUser> userManager;
         private readonly SignInManager<AppUser> signInManager;
         private readonly IMapper mapper;
+        Random random;
+        int randomCode;
 
         public AccountSettingsController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IMapper mapper)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.mapper = mapper;
+            random = new();
         }
 
         public async Task<IActionResult> Index()
@@ -42,15 +45,13 @@ namespace Hamburger_Application.Areas.User.Controllers
             if (result.Succeeded)
             {
                 await signInManager.SignOutAsync();
+                randomCode = random.Next(100_000, 1_000_000);
                 Helper.EmailSend(appUser.Email, "Your mbf hamburger account was deleted successfully !");
                 return RedirectToAction("Main", "Home", new { area = "" });
             }
             else
             {
-                foreach (IdentityError error in result.Errors)
-                {
-                    ModelState.AddModelError("Email confirm process is unsuccess !", error.Description);
-                }
+                ModelState.AddModelError("", "Email confirm process is unsuccess !");
                 return View();
             }
         }
@@ -58,121 +59,127 @@ namespace Hamburger_Application.Areas.User.Controllers
         public async Task<IActionResult> PersonalInfo()
         {
             AppUser appUser = await userManager.FindByNameAsync(User.Identity.Name);
-            AppUserAccountVM appUserAccountVM = mapper.Map<AppUserAccountVM>(appUser);
-            return View(appUserAccountVM);
+            AppUserPersonalInfoVM appUserPersonalInfoVM = mapper.Map<AppUserPersonalInfoVM>(appUser);
+            return View(appUserPersonalInfoVM);
         }
 
         [HttpPost]
-        public async Task<IActionResult> PersonalInfo(AppUserAccountVM appUserAccountVM)
+        public async Task<IActionResult> PersonalInfo(AppUserPersonalInfoVM appUserPersonalInfoVM)
         {
             if (ModelState.IsValid)
             {
-                if (await userManager.FindByNameAsync(appUserAccountVM.UserName) is null)
+                AppUser appUser = await userManager.FindByEmailAsync(appUserPersonalInfoVM.Email);
+                if (appUser is not null)
                 {
-                    AppUser appUser = await userManager.FindByEmailAsync(appUserAccountVM.Email);
-                    appUser.FirstName = appUserAccountVM.FirstName;
-                    appUserAccountVM.LastName = appUserAccountVM.LastName;
-                    appUserAccountVM.UserName = appUserAccountVM.UserName;
-
+                    appUser = mapper.Map<AppUser>(appUserPersonalInfoVM);
                     IdentityResult result = await userManager.UpdateAsync(appUser);
                     if (result.Succeeded)
                     {
-                        ModelState.AddModelError("", "Update process is succeed");
+                        ModelState.AddModelError("", "Update process is succeed !");
+                        Helper.EmailSend(appUser.Email, $"Personal informations was changed !");
                     }
-                    else
-                    {
-                        foreach (var error in result.Errors)
-                        {
-                            ModelState.AddModelError("Error", $"{error.Description}");
-                        }
-                    }
+                    else ModelState.AddModelError("Error", $"Update process is unsucceed. Something went wrong !");
                 }
-                ModelState.AddModelError("Error", $"{appUserAccountVM.UserName} can not be used !");
+                else ModelState.AddModelError("Error", $"{appUserPersonalInfoVM.Email} email address was not found !\nPlease try again later.");
             }
-            return View(appUserAccountVM);
+            return View(appUserPersonalInfoVM);
         }
 
         public async Task<IActionResult> Email()
         {
             AppUser appUser = await userManager.FindByNameAsync(User.Identity.Name);
-            AppUserAccountVM appUserAccountVM = new();
-            appUserAccountVM.Email = appUser.Email;
-            appUserAccountVM.UserName = appUser.UserName;
-            return View(appUserAccountVM);
+            AppUserUsernameEmailVM appUserUsernameEmailVM = mapper.Map<AppUserUsernameEmailVM>(appUser);
+            return View(appUserUsernameEmailVM);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Email(AppUserAccountVM appUserAccountVM)
+        public async Task<IActionResult> Email(AppUserUsernameEmailVM appUserUsernameEmailVM)
         {
-            if (await userManager.FindByEmailAsync(appUserAccountVM.Email) is null)
+            if (await userManager.FindByEmailAsync(appUserUsernameEmailVM.Email) is null)
             {
-                AppUser appUser = await userManager.FindByNameAsync(appUserAccountVM.UserName);
-                appUser.Email = appUserAccountVM.Email;
-                Helper.EmailSend(appUser.Email, $"{appUser.UserName}'s mbf hamburger account change email address confirm code");
-                IdentityResult result = await userManager.UpdateAsync(appUser);
-                if (result.Succeeded)
+                AppUser appUser = await userManager.FindByNameAsync(appUserUsernameEmailVM.UserName);
+                if (appUser is not null)
                 {
-                    ModelState.AddModelError("", "Update process is succeed");
-                    return RedirectToAction("Main", "Home", new { area = "" });
-                }
-                else
-                {
-                    foreach (var error in result.Errors)
+                    appUser = mapper.Map<AppUser>(appUserUsernameEmailVM);
+                    appUser.EmailConfirmed = false;
+                    randomCode = random.Next(100_000, 1_000_000);
+                    Helper.EmailSend(appUser.Email, $"{appUser.UserName}'s mbf hamburger account change email address confirm code : ", randomCode);
+                    IdentityResult result = await userManager.UpdateAsync(appUser);
+                    if (result.Succeeded)
                     {
-                        ModelState.AddModelError("Error", $"{error.Description}");
+                        ModelState.AddModelError("", "You are redirected to the verification page to finish updating the email address !");
+                        Helper.EmailSend(appUser.Email, "Verification page to finish updating the email address :  ", randomCode);
+                        TempData["Email"] = appUser.Email;
+                        return RedirectToAction("EmailConfirm", "Account", new { area = "User" });
                     }
-                    return View(appUserAccountVM);
+                    else
+                    {
+                        ModelState.AddModelError("", "Update process is unsucceed ! Please try again.");
+                    }
                 }
+                else ModelState.AddModelError("Error", $"Something went wrong !\nPlease try again later.");
             }
-            ModelState.AddModelError("Error", $"{appUserAccountVM.UserName} can not be used !");
-            return View(appUserAccountVM);
+            ModelState.AddModelError("Error", $"{appUserUsernameEmailVM.Email} can not be used !");
+            return View(appUserUsernameEmailVM);
         }
 
         public async Task<IActionResult> Password()
         {
             AppUser appUser = await userManager.FindByNameAsync(User.Identity.Name);
-            AppUserAccountVM appUserAccountVM = mapper.Map<AppUserAccountVM>(appUser);
-            return View(appUserAccountVM);
+            AppUserEmailPasswordVM appUserEmailPasswordVM = mapper.Map<AppUserEmailPasswordVM>(appUser);
+            return View(appUserEmailPasswordVM);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Password(AppUserAccountVM appUserAccountVM)
+        public async Task<IActionResult> Password(AppUserEmailPasswordVM appUserEmailPasswordVM)
         {
-            AppUser appUser = await userManager.FindByNameAsync(appUserAccountVM.UserName);
-            appUser.PasswordHash = userManager.PasswordHasher.HashPassword(appUser, appUserAccountVM.Password);
-            Helper.EmailSend(appUser.Email, $"{appUser.UserName}'s mbf hamburger account change password confirm code");
-            IdentityResult result = await userManager.UpdateAsync(appUser);
-            if (result.Succeeded)
+            AppUser appUser = await userManager.FindByEmailAsync(appUserEmailPasswordVM.Email);
+            if (appUser is not null)
             {
-                ModelState.AddModelError("", "Password changing process is succeeded !");
-                Helper.EmailSend(appUser.Email, $"{appUser.UserName}'s account password was changed !");
-                return RedirectToAction("Main", "Home", new { area = "" });
-            }
-            else
-            {
-                foreach (var error in result.Errors)
+                appUser.PasswordHash = userManager.PasswordHasher.HashPassword(appUser, appUserEmailPasswordVM.Password);
+                appUser.EmailConfirmed = false;
+                randomCode = random.Next(100_000, 1_000_000);
+                Helper.EmailSend(appUser.Email, $"{appUser.UserName}'s mbf hamburger account change password confirm code : ", randomCode);
+                IdentityResult result = await userManager.UpdateAsync(appUser);
+                if (result.Succeeded)
                 {
-                    ModelState.AddModelError("Error", $"{error.Description}");
+                    ModelState.AddModelError("", "You are redirected to the verification page to finish updating the password !");
+                    Helper.EmailSend(appUser.Email, "Verification page to finish updating the email address :  ", randomCode);
+                    return RedirectToAction("EmailConfirm", "Account", new { area = "User" });
                 }
-                Helper.EmailSend(appUser.Email, $"{appUser.UserName}'s account password changing process is unsucceeded !\nA new confirm code");
-                return View(appUserAccountVM);
+                else
+                {
+                    ModelState.AddModelError("", "Update process is unsucceed ! Please try again.");
+                }
             }
-
-            ModelState.AddModelError("Error", $"{appUserAccountVM.UserName} can not be used !");
-            return View(appUserAccountVM);
+            else ModelState.AddModelError("Error", $"Something went wrong !\nPlease try again later.");
+            return View(appUserEmailPasswordVM);
         }
 
         public async Task<IActionResult> Address()
         {
             AppUser appUser = await userManager.FindByNameAsync(User.Identity.Name);
-            AppUserAccountVM appUserAccountVM = mapper.Map<AppUserAccountVM>(appUser);
-            return View(appUserAccountVM);
+            AppUserEmailAddressVM appUserEmailAddressVM = mapper.Map<AppUserEmailAddressVM>(appUser);
+            return View(appUserEmailAddressVM);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Address(AppUserAccountVM appUserAccountVM)
+        public async Task<IActionResult> Address(AppUserEmailAddressVM appUserEmailAddressVM)
         {
-            return View();
+            AppUser appUser = await userManager.FindByEmailAsync(appUserEmailAddressVM.Email);
+            if (appUser is not null)
+            {
+                appUser = mapper.Map<AppUser>(appUserEmailAddressVM);
+                IdentityResult result = await userManager.UpdateAsync(appUser);
+                if (result.Succeeded)
+                {
+                    ModelState.AddModelError("", "Update process is succeed !");
+                    Helper.EmailSend(appUser.Email, $"Address info was changed !");
+                }
+                else ModelState.AddModelError("Error", $"Update process is unsucceed. Something went wrong !");
+            }
+            else ModelState.AddModelError("Error", $"{appUserEmailAddressVM.Email} email address was not found !\nPlease try again later.");
+            return View(appUserEmailAddressVM);
         }
 
         public async Task<IActionResult> Theme()
