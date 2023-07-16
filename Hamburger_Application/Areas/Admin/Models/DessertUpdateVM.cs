@@ -5,6 +5,7 @@ namespace Hamburger_Application.Areas.Admin.Models
 {
     public class DessertUpdateVM
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public bool isActive { get; set; }
         public decimal? Price { get; set; }
