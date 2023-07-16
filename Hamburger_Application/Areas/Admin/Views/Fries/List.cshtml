@@ -84,7 +84,7 @@
 					<h6>
 						@if (User.IsInRole("Admin"))
 						{
-							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@fries.Id" asp-controller="Fries" asp-action="Update">Edit Fries</a>
+							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@fries.Id" asp-controller="Fries" asp-action="Edit">Edit Fries</a>
 							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@fries.Id" asp-controller="Fries" asp-action="Delete">Delete Fries</a>
 						}
 						else if (User.IsInRole("User"))

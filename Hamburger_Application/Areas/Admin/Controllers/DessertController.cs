@@ -32,7 +32,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         public async Task<IActionResult> Create(DessertCreateVM createVM, IFormFile imgCover)
         {
             if (ModelState.IsValid)
@@ -53,7 +53,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             return View(createVM);
         }
 
-        [Authorize]
+        //[Authorize]
         public IActionResult Update(int id)
         {
             Dessert dessert = new Dessert();
@@ -63,7 +63,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         public async Task<IActionResult> Update(DessertUpdateVM updateVM, IFormFile imgCover)
         {
             if (ModelState.IsValid)
@@ -86,7 +86,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             return View(updateVM);
         }
 
-        [Authorize]
+        //[Authorize]
         public IActionResult Delete(int id)
         {
             Dessert dessert = new Dessert();

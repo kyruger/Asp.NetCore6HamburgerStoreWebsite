@@ -6,8 +6,6 @@ namespace Hamburger_Application.Entities.Concrete
     {
         public int? OrderId { get; set; }
         public Order? Order { get; set; }
-        public int? DessertId { get; set; }
-        public Dessert? Dessert { get; set; }
         public int? DrinkId { get; set; }
         public Drink? Drink { get; set; }
         public int? FriesId { get; set; }

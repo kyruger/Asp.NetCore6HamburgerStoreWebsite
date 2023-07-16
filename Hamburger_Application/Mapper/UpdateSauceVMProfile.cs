@@ -8,7 +8,7 @@ namespace Hamburger_Application.Mapper
 	{
 		public UpdateSauceVMProfile()
 		{
-			CreateMap<CreateSauceVM, Sauce>().ReverseMap().ForAllMembers(f => f.UseDestinationValue());
+			CreateMap<UpdateSauceVM, Sauce>().ReverseMap().ForAllMembers(f => f.UseDestinationValue());
 		}
 	}
 }

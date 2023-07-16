@@ -44,10 +44,6 @@
         <label>Drink Name:</label>
         <select asp-for="Menu.DrinkId" class="form-control" asp-items="Model.Drinks"></select>
     </div>
-    <div class="form-group">
-        <label>Dessert Name:</label>
-        <select asp-for="Menu.DessertId" class="form-control" asp-items="Model.Desserts"></select>
-    </div>
     <div class="text-center">
         <button type="submit" class="btn btn-outline-success">Save</button>
         <a asp-action="List" asp-controller="Hamburger" class="btn btn-outline-secondary btn-block">Cancel</a>
