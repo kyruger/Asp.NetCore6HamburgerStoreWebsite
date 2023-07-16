@@ -41,7 +41,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                 bool isAdded = dessertRepository.Add(dessert);
 
                 dessert.Photo = GenerateUniqueFileName(imgCover);
-                FileStream stream = new FileStream("wwwroot/ProductImages/Dessert/" + dessert.Photo, FileMode.Create);
+                FileStream stream = new FileStream("wwwroot/ProductImages/Dessert1/" + dessert.Photo, FileMode.Create);
                 await imgCover.CopyToAsync(stream);
                 if (isAdded)
                 {
@@ -68,12 +68,13 @@ namespace Hamburger_Application.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                //kontrollü olacak!!!
                 Dessert dessert = mapper.Map<Dessert>(updateVM);
 
                 bool isUpdated = dessertRepository.Update(dessert);
 
                 dessert.Photo = GenerateUniqueFileName(imgCover);
-                FileStream stream = new FileStream("wwwroot/ProductImages/Dessert/" + dessert.Photo, FileMode.Create);
+                FileStream stream = new FileStream("wwwroot/ProductImages/Dessert1/" + dessert.Photo, FileMode.Create);
                 await imgCover.CopyToAsync(stream);
                 if (isUpdated)
                 {
@@ -89,7 +90,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
         //[Authorize]
         public IActionResult Delete(int id)
         {
-            Dessert dessert = new Dessert();
+            Dessert dessert = dessertRepository.GetById(id);
             bool isDeleted = dessertRepository.Delete(dessert);
             if (isDeleted)
             {

@@ -30,8 +30,9 @@ namespace Hamburger_Application.Repositories.Concrete
         {
             try
             {
-                entity.isActive = false;
-                db.Set<T>().Update(entity);
+                //entity.isActive = false;
+                //db.Set<T>().Update(entity);
+                db.Set<T>().Remove(entity);
                 return db.SaveChanges() > 0;
             }
             catch
