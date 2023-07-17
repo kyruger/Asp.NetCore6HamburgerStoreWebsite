@@ -11,7 +11,7 @@ using MimeKit;
 namespace Hamburger_Application.Areas.User.Controllers
 {
     [Area("User")]
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = "User, Admin")]
     public class AccountController : Controller
     {
         private readonly UserManager<AppUser> userManager;
@@ -67,12 +67,12 @@ namespace Hamburger_Application.Areas.User.Controllers
             else ModelState.AddModelError("Error", "Something was wrong");
             return View(appUserCreateVM);
         }
-
+        [AllowAnonymous]
         public IActionResult EmailConfirm()
         {
             return View();
         }
-
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> EmailConfirm(AppUserEmailConfirmVM appUserEmailConfirmVM)
         {
@@ -146,7 +146,7 @@ namespace Hamburger_Application.Areas.User.Controllers
             }
             return View(appUserSignInVM);
         }
-
+        
         public async Task<IActionResult> SignOut()
         {
             await signInManager.SignOutAsync();

@@ -25,7 +25,8 @@ namespace Hamburger_Application.Configurations
                     Price = 150,
                     FriesId = 1,
                     DrinkId = 1,
-                    HamburgerId = 1
+                    HamburgerId = 1,
+                    Photo = "085732b2-62a9-473a-9c94-198bf0b38d9c_WhopperMenu.jpg"
                 },
                 new Menu
                 {
@@ -34,7 +35,8 @@ namespace Hamburger_Application.Configurations
                     Price = 170,
                     FriesId = 1,
                     DrinkId = 1,
-                    HamburgerId = 2
+                    HamburgerId = 2,
+                    Photo = "03e49b85-7d1b-4a0e-8d18-47d97756a570_TexasSmokeHouseMenu.jpg"
                 },
                 new Menu
                 {
@@ -43,7 +45,8 @@ namespace Hamburger_Application.Configurations
                     Price = 140,
                     FriesId = 1,
                     DrinkId = 1,
-                    HamburgerId = 3
+                    HamburgerId = 3,
+                    Photo = "c7e2b9ad-b7b7-476f-9e1d-32c502cf5686_FishRoyaleMenu.jpg"
                 },
                 new Menu
                 {
@@ -52,7 +55,8 @@ namespace Hamburger_Application.Configurations
                     Price = 150,
                     FriesId = 1,
                     DrinkId = 1,
-                    HamburgerId = 4
+                    HamburgerId = 4,
+                    Photo = "3ae527d5-e1ca-474d-b550-9acca3afb9b8_BigKingMenu.jpg"
                 },
                 new Menu
                 {
@@ -61,7 +65,8 @@ namespace Hamburger_Application.Configurations
                     Price = 120,
                     FriesId = 1,
                     DrinkId = 1,
-                    HamburgerId = 5
+                    HamburgerId = 5,
+                    Photo = "70e64328-09a0-4e6c-90c5-23868ba18a03_ChickenRoyaleMenu.jpg"
                 }
                 );
         }

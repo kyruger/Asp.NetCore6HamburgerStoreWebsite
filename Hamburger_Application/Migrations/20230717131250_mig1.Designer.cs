@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hamburger_Application.Migrations
 {
     [DbContext(typeof(HamburgerDbContext))]
-    [Migration("20230717003934_mig1")]
+    [Migration("20230717131250_mig1")]
     partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -60,16 +60,16 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "5f3c0dc0-b257-41d7-8b48-b56fa9822170",
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 285, DateTimeKind.Local).AddTicks(9676),
+                            ConcurrencyStamp = "ffd5fb09-1d01-4b88-a168-aa21e891df3e",
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 49, DateTimeKind.Local).AddTicks(5652),
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "9ae81ee4-d7d8-449e-afe2-581216bce293",
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 285, DateTimeKind.Local).AddTicks(9692),
+                            ConcurrencyStamp = "ebbf8fe9-6313-476f-8620-70b515643957",
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 49, DateTimeKind.Local).AddTicks(5664),
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -226,41 +226,46 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(3727),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(291),
                             IsActive = false,
                             Name = "Brownie",
+                            Photo = "cafddece-875e-4d0c-830c-72b3e194666c_Brownie.jpg",
                             Price = 50m
                         },
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(3734),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(298),
                             IsActive = false,
                             Name = "Milkshake",
+                            Photo = "fb998a43-9809-4ebc-a546-ce63ca896be8_MilkShake.jpg",
                             Price = 40m
                         },
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(3736),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(300),
                             IsActive = false,
                             Name = "Cheesecake",
+                            Photo = "ee446133-2bb0-46af-b257-3d1a8930432f_CheeseCake.jpg",
                             Price = 60m
                         },
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(3737),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(302),
                             IsActive = false,
                             Name = "Ice Cream",
+                            Photo = "1d5c1238-10f9-49e6-a388-a541d1d64e4c_IcaCream.jpg",
                             Price = 30m
                         },
                         new
                         {
                             Id = 5,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(3738),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(303),
                             IsActive = false,
                             Name = "Puding",
+                            Photo = "a01529c3-70cf-4b43-af5c-db1f8f9a921d_Puding.jpg",
                             Price = 40m
                         });
                 });
@@ -325,47 +330,152 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(5514),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(1993),
                             IsActive = false,
-                            Name = "Coke",
+                            Name = "Coke-S",
+                            Photo = "6240f4b6-c927-4898-9c76-6968b54c1e39_Coke.jpg",
                             Price = 40m,
                             Size = 0
                         },
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(5519),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(1998),
                             IsActive = false,
-                            Name = "Ayran",
+                            Name = "Ayran-S",
+                            Photo = "a7e28042-2e4a-443e-860d-0f0cbd0d640c_Ayran.jpg",
                             Price = 25m,
                             Size = 0
                         },
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(5520),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(1999),
                             IsActive = false,
-                            Name = "Coke Zero",
+                            Name = "Coke Zero-S",
+                            Photo = "1117576e-e2a3-42a5-8dc0-9f5d90fd0e80_CokeZero.jpg",
                             Price = 45m,
                             Size = 0
                         },
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(5521),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(2000),
                             IsActive = false,
-                            Name = "Cold Tea",
+                            Name = "Cold Tea-S",
+                            Photo = "914e854b-f076-455c-aeab-49f8d8f4ca8e_ColdTea.jpg",
                             Price = 35m,
                             Size = 0
                         },
                         new
                         {
                             Id = 5,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(5523),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(2002),
                             IsActive = false,
-                            Name = "Mineral Water",
+                            Name = "Mineral Water-S",
+                            Photo = "d2ffceeb-e929-43e1-9fc6-df7838fa6aa2_MineralWater.jpg",
                             Price = 15m,
                             Size = 0
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(2003),
+                            IsActive = false,
+                            Name = "Coke-M",
+                            Photo = "6240f4b6-c927-4898-9c76-6968b54c1e39_Coke.jpg",
+                            Price = 45m,
+                            Size = 2
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(2005),
+                            IsActive = false,
+                            Name = "Ayran-M",
+                            Photo = "a7e28042-2e4a-443e-860d-0f0cbd0d640c_Ayran.jpg",
+                            Price = 30m,
+                            Size = 2
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(2006),
+                            IsActive = false,
+                            Name = "Coke Zero-M",
+                            Photo = "1117576e-e2a3-42a5-8dc0-9f5d90fd0e80_CokeZero.jpg",
+                            Price = 50m,
+                            Size = 2
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(2007),
+                            IsActive = false,
+                            Name = "Cold Tea-M",
+                            Photo = "914e854b-f076-455c-aeab-49f8d8f4ca8e_ColdTea.jpg",
+                            Price = 40m,
+                            Size = 2
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(2008),
+                            IsActive = false,
+                            Name = "Mineral Water-M",
+                            Photo = "d2ffceeb-e929-43e1-9fc6-df7838fa6aa2_MineralWater.jpg",
+                            Price = 20m,
+                            Size = 2
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(2010),
+                            IsActive = false,
+                            Name = "Coke-L",
+                            Photo = "6240f4b6-c927-4898-9c76-6968b54c1e39_Coke.jpg",
+                            Price = 50m,
+                            Size = 3
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(2011),
+                            IsActive = false,
+                            Name = "Ayran-L",
+                            Photo = "a7e28042-2e4a-443e-860d-0f0cbd0d640c_Ayran.jpg",
+                            Price = 35m,
+                            Size = 3
+                        },
+                        new
+                        {
+                            Id = 13,
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(2013),
+                            IsActive = false,
+                            Name = "Coke Zero-L",
+                            Photo = "1117576e-e2a3-42a5-8dc0-9f5d90fd0e80_CokeZero.jpg",
+                            Price = 55m,
+                            Size = 3
+                        },
+                        new
+                        {
+                            Id = 14,
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(2014),
+                            IsActive = false,
+                            Name = "Cold Tea-L",
+                            Photo = "914e854b-f076-455c-aeab-49f8d8f4ca8e_ColdTea.jpg",
+                            Price = 45m,
+                            Size = 3
+                        },
+                        new
+                        {
+                            Id = 15,
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(2015),
+                            IsActive = false,
+                            Name = "Mineral Water-L",
+                            Photo = "d2ffceeb-e929-43e1-9fc6-df7838fa6aa2_MineralWater.jpg",
+                            Price = 25m,
+                            Size = 3
                         });
                 });
 
@@ -429,38 +539,122 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(7150),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(3785),
                             IsActive = false,
-                            Name = "Potato",
+                            Name = "Potatoes - S",
+                            Photo = "301422bb-3c9f-4670-87ec-52f6bb49510e_Potatoes.jpg",
                             Price = 20m,
                             Size = 0
                         },
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(7218),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(3791),
                             IsActive = false,
-                            Name = "Onion Ring",
+                            Name = "Onion Ring - S",
+                            Photo = "40149d5b-324f-40d3-802c-0866bc9edac8_OnionRings.jpg",
                             Price = 22m,
                             Size = 0
                         },
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(7220),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(3795),
                             IsActive = false,
-                            Name = "Nugget",
+                            Name = "Nugget - S",
+                            Photo = "f012288d-4cb5-4546-a5a1-82a2e34457ce_Nuggets.jpg",
                             Price = 25m,
                             Size = 0
                         },
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(7221),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(3797),
                             IsActive = false,
-                            Name = "Chicken Tenders",
+                            Name = "Chicken Tenders - S",
+                            Photo = "1e165d0c-cdad-4956-a803-a291756320b1_ChickenTenders.jpg",
                             Price = 25m,
                             Size = 0
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(3799),
+                            IsActive = false,
+                            Name = "Potatoes - M",
+                            Photo = "301422bb-3c9f-4670-87ec-52f6bb49510e_Potatoes.jpg",
+                            Price = 24m,
+                            Size = 2
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(3800),
+                            IsActive = false,
+                            Name = "Onion Ring - M",
+                            Photo = "40149d5b-324f-40d3-802c-0866bc9edac8_OnionRings.jpg",
+                            Price = 26m,
+                            Size = 2
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(3801),
+                            IsActive = false,
+                            Name = "Nugget - M",
+                            Photo = "f012288d-4cb5-4546-a5a1-82a2e34457ce_Nuggets.jpg",
+                            Price = 29m,
+                            Size = 2
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(3803),
+                            IsActive = false,
+                            Name = "Chicken Tenders - M",
+                            Photo = "1e165d0c-cdad-4956-a803-a291756320b1_ChickenTenders.jpg",
+                            Price = 29m,
+                            Size = 2
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(3804),
+                            IsActive = false,
+                            Name = "Potatoes - L",
+                            Photo = "301422bb-3c9f-4670-87ec-52f6bb49510e_Potatoes.jpg",
+                            Price = 28m,
+                            Size = 3
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(3806),
+                            IsActive = false,
+                            Name = "Onion Ring - L",
+                            Photo = "40149d5b-324f-40d3-802c-0866bc9edac8_OnionRings.jpg",
+                            Price = 30m,
+                            Size = 3
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(3807),
+                            IsActive = false,
+                            Name = "Nugget - L",
+                            Photo = "f012288d-4cb5-4546-a5a1-82a2e34457ce_Nuggets.jpg",
+                            Price = 33m,
+                            Size = 3
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(3810),
+                            IsActive = false,
+                            Name = "Chicken Tenders - L",
+                            Photo = "1e165d0c-cdad-4956-a803-a291756320b1_ChickenTenders.jpg",
+                            Price = 33m,
+                            Size = 3
                         });
                 });
 
@@ -519,41 +713,46 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(8876),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(5457),
                             IsActive = false,
                             Name = "Whopper",
+                            Photo = "27c952d4-c958-4bce-87ad-6cb40a743067_Whopper.jpg",
                             Price = 120m
                         },
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(8880),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(5463),
                             IsActive = false,
                             Name = "Texas SmokeHouse",
+                            Photo = "43773966-353c-4741-9a0e-9d3642aea7e3_TexasSmokeHouse.jpg",
                             Price = 140m
                         },
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(8881),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(5464),
                             IsActive = false,
                             Name = "Fish Royale",
+                            Photo = "074e56a6-ab87-48b1-b948-8ddc5ff84c97_FishRoyale.jpg",
                             Price = 110m
                         },
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(8882),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(5465),
                             IsActive = false,
                             Name = "Big King",
+                            Photo = "e7bcba7f-5e1f-4b11-81fe-8f423b4bb26f_BigKing.jpg",
                             Price = 150m
                         },
                         new
                         {
                             Id = 5,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(8885),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 50, DateTimeKind.Local).AddTicks(5466),
                             IsActive = false,
                             Name = "Chicken Royale",
+                            Photo = "0c8d85ff-19e8-4550-b079-f83d1e8b863a_ChickenRoyale.jpg",
                             Price = 95m
                         });
                 });
@@ -615,56 +814,61 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(6089),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 52, DateTimeKind.Local).AddTicks(2292),
                             DrinkId = 1,
                             FriesId = 1,
                             HamburgerId = 1,
                             IsActive = false,
                             Name = "Whopper Menu",
+                            Photo = "085732b2-62a9-473a-9c94-198bf0b38d9c_WhopperMenu.jpg",
                             Price = 150m
                         },
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(6097),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 52, DateTimeKind.Local).AddTicks(2302),
                             DrinkId = 1,
                             FriesId = 1,
                             HamburgerId = 2,
                             IsActive = false,
                             Name = "Texas SmokeHouse Menu",
+                            Photo = "03e49b85-7d1b-4a0e-8d18-47d97756a570_TexasSmokeHouseMenu.jpg",
                             Price = 170m
                         },
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(6099),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 52, DateTimeKind.Local).AddTicks(2305),
                             DrinkId = 1,
                             FriesId = 1,
                             HamburgerId = 3,
                             IsActive = false,
                             Name = "Fish Royale Menu",
+                            Photo = "c7e2b9ad-b7b7-476f-9e1d-32c502cf5686_FishRoyaleMenu.jpg",
                             Price = 140m
                         },
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(6101),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 52, DateTimeKind.Local).AddTicks(2308),
                             DrinkId = 1,
                             FriesId = 1,
                             HamburgerId = 4,
                             IsActive = false,
                             Name = "Big King Menu",
+                            Photo = "3ae527d5-e1ca-474d-b550-9acca3afb9b8_BigKingMenu.jpg",
                             Price = 150m
                         },
                         new
                         {
                             Id = 5,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(6102),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 52, DateTimeKind.Local).AddTicks(2310),
                             DrinkId = 1,
                             FriesId = 1,
                             HamburgerId = 5,
                             IsActive = false,
                             Name = "Chicken Royale Menu",
+                            Photo = "70e64328-09a0-4e6c-90c5-23868ba18a03_ChickenRoyaleMenu.jpg",
                             Price = 120m
                         });
                 });
@@ -748,33 +952,37 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(8327),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 52, DateTimeKind.Local).AddTicks(4607),
                             IsActive = false,
                             Name = "Ranch",
+                            Photo = "7b5e0551-d08d-4092-8c72-ff370ea64c57_RanchSauce.jpg",
                             Price = 15m
                         },
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(8331),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 52, DateTimeKind.Local).AddTicks(4612),
                             IsActive = false,
                             Name = "Ketchup",
+                            Photo = "f8b55022-2756-43dd-823d-6b94e43d9807_KetchupSauce.jpg",
                             Price = 10m
                         },
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(8332),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 52, DateTimeKind.Local).AddTicks(4614),
                             IsActive = false,
                             Name = "Mayonnaise",
+                            Photo = "7821c0f8-2b4b-4b46-b958-6fe2dec26bd7_MayonaisseSauce.jpg",
                             Price = 10m
                         },
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(8333),
+                            CreationTime = new DateTime(2023, 7, 17, 16, 12, 48, 52, DateTimeKind.Local).AddTicks(4615),
                             IsActive = false,
                             Name = "Barbeque",
+                            Photo = "cad13c53-f4c9-4b94-aaa7-cb20855cd41e_BarbequeSauce.jpg",
                             Price = 15m
                         });
                 });

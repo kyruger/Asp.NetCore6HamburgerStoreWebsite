@@ -72,25 +72,22 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             {
                 Hamburger hamburger = mapper.Map<Hamburger>(updateHamburgerVM);
 
-                if (hamburger is not null)
-                {
-                    hamburger.Photo = GenerateUniqueFileName(imgCover);
-                    bool isAdded = hamburgerRepository.Update(hamburger);
+                hamburger.Photo = GenerateUniqueFileName(imgCover);
+                bool isAdded = hamburgerRepository.Update(hamburger);
 
-                    FileStream file = new FileStream("wwwroot/ProductImages/Hamburger1/" + hamburger.Photo, FileMode.Create);
-                    await imgCover.CopyToAsync(file);
-                    if (isAdded)
-                    {
-                        TempData["Info"] = "Hamburger is updated";
-                    }
-                    else
-                    {
-                        ViewBag.Info = "Hamburger is failed updated";
-                        return View(updateHamburgerVM);
-                    }
+                FileStream file = new FileStream("wwwroot/ProductImages/Hamburger1/" + hamburger.Photo, FileMode.Create);
+                await imgCover.CopyToAsync(file);
+                if (isAdded)
+                {
+                    TempData["Info"] = "Hamburger is updated";
+                    return RedirectToAction("List");
+                }
+                else
+                {
+                    ViewBag.Info = "Hamburger is failed updated";
                 }
             }
-            return RedirectToAction("List");
+            return View(updateHamburgerVM);
         }
 
         public IActionResult Delete(int id)
@@ -107,6 +104,10 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                 {
                     TempData["Info"] = "Hamburger is not deleted";
                 }
+            }
+            else
+            {
+                TempData["Info"] = "Hamburger could not be founded.";
             }
             return RedirectToAction("List");
         }

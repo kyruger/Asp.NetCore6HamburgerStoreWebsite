@@ -139,7 +139,11 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                     TempData["Info"] = "Menu is not deleted";
                 }
             }
-            return RedirectToAction("List");
+			else
+			{
+				TempData["Info"] = "Menu could not be founded.";
+			}
+			return RedirectToAction("List");
         }
 
         [NonAction]
