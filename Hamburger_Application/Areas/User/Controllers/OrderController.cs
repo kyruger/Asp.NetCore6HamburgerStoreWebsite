@@ -143,12 +143,12 @@ namespace Hamburger_Application.Areas.User.Controllers
             Drink drink = order.Drinks.FirstOrDefault(o => o.Name == entityName);
             Dessert dessert = order.Desserts.FirstOrDefault(o => o.Name == entityName);
 
-            if (menu is not null && menu.Piece < 5) order.Menus.Remove(menu);
-            else if (hamburger is not null && hamburger.Piece < 5) order.Hamburgers.Remove(hamburger);
-            else if (sauce is not null && sauce.Piece < 5) order.Sauces.Remove(sauce);
-            else if (fries is not null && fries.Piece < 5) order.Fries.Remove(fries);
-            else if (drink is not null && drink.Piece < 5) order.Drinks.Remove(drink);
-            else if (dessert is not null && dessert.Piece < 5) order.Desserts.Remove(dessert);
+            if (menu is not null) order.Menus.Remove(menu);
+            else if (hamburger is not null) order.Hamburgers.Remove(hamburger);
+            else if (sauce is not null) order.Sauces.Remove(sauce);
+            else if (fries is not null) order.Fries.Remove(fries);
+            else if (drink is not null) order.Drinks.Remove(drink);
+            else if (dessert is not null) order.Desserts.Remove(dessert);
 
             bool IsUpdated = orderRepository.Update(order);
 

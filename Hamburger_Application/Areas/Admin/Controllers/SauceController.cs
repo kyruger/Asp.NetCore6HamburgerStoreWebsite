@@ -45,12 +45,12 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                 await imgCover.CopyToAsync(file);
                 if (isAdded)
                 {
-                    TempData["Info"] = "Sauce is added";
+                    TempData["Info"] = "Sauces succesfully added";
                     return RedirectToAction("List");
                 }
                 else
                 {
-                    ViewBag.Info = "Sauce cannot be added";
+                    ViewBag.Info = "Failed to Add Sauces";
                 }
             }
             return View(sauceVM);
@@ -71,25 +71,22 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             {
                 Sauce sauce = mapper.Map<Sauce>(updateSauceVM);
 
-                if (sauce is not null)
-                {
-                    sauce.Photo = GenerateUniqueFileName(imgCover);
-                    bool isAdded = sauceRepository.Update(sauce);
+                sauce.Photo = GenerateUniqueFileName(imgCover);
+                bool isAdded = sauceRepository.Update(sauce);
 
-                    FileStream file = new FileStream("wwwroot/ProductImages/Sauce1/" + sauce.Photo, FileMode.Create);
-                    await imgCover.CopyToAsync(file);
-                    if (isAdded)
-                    {
-                        TempData["Info"] = "Sauce is updated";
-                    }
-                    else
-                    {
-                        ViewBag.Info = "Sauce cannot be updated";
-                        return View(updateSauceVM);
-                    }
+                FileStream file = new FileStream("wwwroot/ProductImages/Sauce1/" + sauce.Photo, FileMode.Create);
+                await imgCover.CopyToAsync(file);
+                if (isAdded)
+                {
+                    TempData["Info"] = "Sauce is updated";
+                    return RedirectToAction("List");
+                }
+                else
+                {
+                    ViewBag.Info = "Sauce cannot be updated";
                 }
             }
-            return RedirectToAction("List");
+            return View(updateSauceVM);
         }
 
         public IActionResult Delete(int id)
@@ -106,6 +103,10 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                 {
                     TempData["info"] = "Sauce is not deleted";
                 }
+            }
+            else
+            {
+                TempData["Info"] = "Sauce could not be founded.";
             }
 
             return RedirectToAction("List");

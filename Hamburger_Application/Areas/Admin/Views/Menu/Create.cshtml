@@ -9,7 +9,11 @@
         background-color: red !important;
     }
 </style>
-
+@if (ViewBag.Info is not null)
+{
+    <h3 class="text-center text-danger" style="text-align: center; font-family: Aclonica serif;">@ViewBag.Info</h3>
+}
+<h3 class="text-center text-danger" style="text-align: center; font-family: Aclonica serif;">Menu Create</h3>
 <form method="post" asp-action="Create" asp-controller="Menu" enctype="multipart/form-data">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div>
@@ -43,6 +47,7 @@
         <label>Drink Name:</label>
         <select asp-for="Menu.DrinkId" class="form-control" asp-items="Model.Drinks"></select>
     </div>
+    <br />
     <div class="text-center">
         <button type="submit" class="btn btn-outline-success">Save</button>
         <a asp-action="List" asp-controller="Hamburger" class="btn btn-outline-secondary btn-block">Cancel</a>

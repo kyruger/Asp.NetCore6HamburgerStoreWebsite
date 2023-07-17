@@ -17,17 +17,17 @@
         background-color: red !important;
     }
 </style>
-<h3 class="text-center text-danger" style="text-align: center; font-family: Aclonica serif;">Fries Update</h3>
 @if (ViewBag.Info is not null)
 {
     <h3 class="text-center text-danger" style="text-align: center; font-family: Aclonica serif;">@ViewBag.Info</h3>
 }
+<h3 class="text-center text-danger" style="text-align: center; font-family: Aclonica serif;">Fries Update</h3>
 <form method="post" asp-action="Edit" asp-controller="Fries" enctype="multipart/form-data">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <input type="hidden" asp-for="Id" />
     <div>
         <label>Fries Name</label>
-        <input asp-for="Name" class="form-control" placeholder="Name" />
+        <input asp-for="Name" class="form-control" placeholder="@Model.Name" />
         <span asp-validation-for="Name" style="color:darkred" />
     </div>
     <div>
@@ -48,6 +48,7 @@
         <label class="control-label">Photo</label>
         <input class="form-control" type="file" name="imgCover" accept=".jpg,.png,.jpeg" />
     </div>
+    <br />
     <div class="text-center">
         <input type="submit" value="Update" class="btn btn-outline-success">
         <a asp-action="List" asp-controller="Fries" class="btn btn-outline-secondary btn-block">Cancel</a>
