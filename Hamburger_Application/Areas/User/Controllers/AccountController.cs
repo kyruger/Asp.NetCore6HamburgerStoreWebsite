@@ -40,40 +40,77 @@ namespace Hamburger_Application.Areas.User.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                AppUser appUser = mapper.Map<AppUser>(appUserCreateVM);
-
-                randomCode = random.Next(100_000, 1_000_000);
-                appUser.ConfirmCode = randomCode;
-                appUser.PasswordHash = userManager.PasswordHasher.HashPassword(appUser, appUserCreateVM.Password);
-
-                IdentityResult result = await userManager.CreateAsync(appUser);
-
-                if (result.Succeeded)
+                AppUser appUser = await userManager.FindByEmailAsync(appUserCreateVM.Email);
+                if (appUser is null)
                 {
-                    Helper.EmailSend(appUser.Email, "Sign Up process confirm code :  ", randomCode);
-                    TempData["Email"] = appUser.Email;
-                    await userManager.AddToRoleAsync(appUser, "User");
-                    return RedirectToAction("EmailConfirm");
+                    appUser = mapper.Map<AppUser>(appUserCreateVM);
+
+                    randomCode = random.Next(100_000, 1_000_000);
+                    appUser.ConfirmCode = randomCode;
+                    appUser.PasswordHash = userManager.PasswordHasher.HashPassword(appUser, appUserCreateVM.Password);
+                    IdentityResult result = await userManager.CreateAsync(appUser);
+                    if (result.Succeeded)
+                    {
+                        await userManager.AddToRoleAsync(appUser, "User");
+
+                        Helper.EmailSend(appUser.Email, "Sign Up process confirm code :  ", randomCode);
+                        TempData["Email"] = appUser.Email;
+                        return RedirectToAction("EmailConfirm");
+
+                    }
+                    else
+                    {
+                        foreach (IdentityError error in result.Errors)
+                        {
+                            ModelState.AddModelError("Error", error.Description);
+                        }
+                    }
                 }
                 else
                 {
-                    foreach (IdentityError error in result.Errors)
+                    if (!appUser.IsActive)
                     {
-                        ModelState.AddModelError("Error", error.Description);
+                        if (appUser.UserName != appUserCreateVM.UserName)
+                        {
+                            appUser = mapper.Map<AppUser>(appUserCreateVM);
+
+                            randomCode = random.Next(100_000, 1_000_000);
+                            appUser.ConfirmCode = randomCode;
+                            appUser.PasswordHash = userManager.PasswordHasher.HashPassword(appUser, appUserCreateVM.Password);
+                            IdentityResult result = await userManager.CreateAsync(appUser);
+                            if (result.Succeeded)
+                            {
+                                await userManager.AddToRoleAsync(appUser, "User");
+
+                                Helper.EmailSend(appUser.Email, "Sign Up process confirm code :  ", randomCode);
+                                TempData["Email"] = appUser.Email;
+                                return RedirectToAction("EmailConfirm");
+
+                            }
+                            else
+                            {
+                                foreach (IdentityError error in result.Errors)
+                                {
+                                    ModelState.AddModelError("Error", error.Description);
+                                }
+                            }
+                        }
+                        else ModelState.AddModelError("Error", "Register must not have been made with this email address or username !");
                     }
+                    else ModelState.AddModelError("Error", "Register must not have been made with this email address or username !");
                 }
             }
-            else ModelState.AddModelError("Error", "Something was wrong");
             return View(appUserCreateVM);
         }
+
         [AllowAnonymous]
         public IActionResult EmailConfirm()
         {
             return View();
         }
-        [AllowAnonymous]
+
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> EmailConfirm(AppUserEmailConfirmVM appUserEmailConfirmVM)
         {
             AppUser appUser = await userManager.FindByEmailAsync(appUserEmailConfirmVM.Email);
@@ -85,7 +122,7 @@ namespace Hamburger_Application.Areas.User.Controllers
                     IdentityResult result = await userManager.UpdateAsync(appUser);
                     if (result.Succeeded)
                     {
-                        Helper.EmailSend(appUser.Email, "Welcome to mbf hamburger !");
+                        Helper.EmailSend(appUser.Email, $"Welcome to mbf hamburger {appUser.FirstName} {appUser.LastName} !");
                         return RedirectToAction("SignIn");
                     }
                     else
@@ -93,17 +130,16 @@ namespace Hamburger_Application.Areas.User.Controllers
                         ModelState.AddModelError("Error", "Something went wrong !\nA new confirm code was sent.");
                         randomCode = random.Next(100_000, 1_000_000);
                         appUser.ConfirmCode = randomCode;
+                        Helper.EmailSend(appUser.Email, "A new confirm code : ", appUser.ConfirmCode);
                         await userManager.UpdateAsync(appUser);
+                        return View(appUserEmailConfirmVM);
                     }
                 }
                 else ModelState.AddModelError("Error", "Confirm code is wrong !");
+                TempData["Email"] = appUser.Email;
+                return View(appUserEmailConfirmVM);
             }
-
-            ModelState.AddModelError("Error", "Something went wrong. Please try again !");
-
-            Helper.EmailSend(appUser.Email, "A new confirm code : ", appUser.ConfirmCode);
-            TempData["Email"] = appUser.Email;
-
+            ModelState.AddModelError("Error", "Something went wrong. Email address field can not be empty or this email address is wrong !");
             return View(appUserEmailConfirmVM);
         }
 
@@ -134,19 +170,21 @@ namespace Hamburger_Application.Areas.User.Controllers
                             else
                             {
                                 ModelState.AddModelError("Error", "Your email could not have been confirmed !\nA new confirm code was sent.");
-                                Helper.EmailSend(appUser.Email, "A new confirm code");
+                                randomCode = random.Next(100_000, 1_000_000);
+                                appUser.ConfirmCode = randomCode;
+                                Helper.EmailSend(appUser.Email, "A new confirm code : ", appUser.ConfirmCode);
                                 return RedirectToAction("EmailConfirm");
                             }
                         }
                         else ModelState.AddModelError("Error", "Email or password is incorrect !");
                     }
-                    ModelState.AddModelError("Error", "Can not be sign in with email is in account was deleted !\nPlease get in touch with sending email");
+                    else ModelState.AddModelError("Error", $"{appUserSignInVM.Email} email address is not registered in the system !");
                 }
-                else ModelState.AddModelError("Error", $"{appUserSignInVM} email address is not registered in the system !");
+                else ModelState.AddModelError("Error", $"{appUserSignInVM.Email} email address is not registered in the system !");
             }
             return View(appUserSignInVM);
         }
-        
+
         public async Task<IActionResult> SignOut()
         {
             await signInManager.SignOutAsync();

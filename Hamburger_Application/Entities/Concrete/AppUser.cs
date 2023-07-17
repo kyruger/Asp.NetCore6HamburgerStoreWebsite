@@ -15,7 +15,6 @@ namespace Hamburger_Application.Entities.Concrete
         public bool IsActive { get; set; }
         public bool IsDark { get; set; }
         public DateTime CreationTime { get; set; }
-        [NotMapped]
         public int ConfirmCode { get; set; }
 
         // Relations
