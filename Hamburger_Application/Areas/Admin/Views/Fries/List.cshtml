@@ -73,12 +73,16 @@
 
 <section id="page">
 	<main>
-		<p>Frieses</p>
+		<p class="text-center" style="text-align: center; font-family: Aclonica serif;">Fries</p>
+		@if (TempData["Info"] is not null)
+		{
+			<h3 class="text-center text-danger" style="text-align: center; font-family: Aclonica serif;">@TempData["Info"]</h3>
+		}
 		@foreach (Fries fries in Model)
 		{
 			<div class="kutu">
 				<img src="/ProductImages/Fries1/@fries.Photo" width="90" height="140" style="width: 100%" />
-				<h6 style="text-align: center; font-family: Aclonica serif;">@fries.Name</h6>
+				<h6 style="text-align: center; font-family: Aclonica serif;">@fries.Name-@fries.Size</h6>
 				<p>@fries.Price ₺</p>
 				<p>
 					<h6>
@@ -96,8 +100,11 @@
 			</div>
 		}
 	</main>
-	<div class="text-center">
-		<a asp-action="Create" asp-controller="Fries" class="btn btn-outline-success"> New Create Fries</a>
-	</div>
+	@if (User.IsInRole("Admin"))
+	{
+		<div class="text-center">
+			<a asp-action="Create" asp-controller="Fries" class="btn btn-outline-success"> New Create Fries</a>
+		</div>
+	}
 </section>
 

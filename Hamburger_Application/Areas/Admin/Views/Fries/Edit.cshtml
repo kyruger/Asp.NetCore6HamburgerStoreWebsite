@@ -17,7 +17,11 @@
         background-color: red !important;
     }
 </style>
-
+<h3 class="text-center text-danger" style="text-align: center; font-family: Aclonica serif;">Fries Update</h3>
+@if (ViewBag.Info is not null)
+{
+    <h3 class="text-center text-danger" style="text-align: center; font-family: Aclonica serif;">@ViewBag.Info</h3>
+}
 <form method="post" asp-action="Edit" asp-controller="Fries" enctype="multipart/form-data">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <input type="hidden" asp-for="Id" />
@@ -51,5 +55,6 @@
 </form>
 
 @section Scripts{
+    <script src="~/js/bootstrap.min.js"></script>
     <partial name="_ValidationScriptsPartial" />
 }

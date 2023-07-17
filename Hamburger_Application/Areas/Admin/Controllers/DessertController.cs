@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace Hamburger_Application.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class DessertController : Controller
     {
         private readonly IRepository<Dessert> dessertRepository;
@@ -49,10 +49,10 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                 await imgCover.CopyToAsync(stream);
                 if (isAdded)
                 {
-                    TempData["info"] = "Dessert Created";
+                    TempData["Info"] = "Dessert Created";
                     return RedirectToAction("DessertList");
                 }
-                ViewBag.info = "Failed to Create dessert";
+                ViewBag.Info = "Failed to Create dessert";
             }
             return View(createVM);
         }
@@ -81,11 +81,11 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                     await imgCover.CopyToAsync(stream);
                     if (isUpdated)
                     {
-                        TempData["info"] = "Dessert Updated";
+                        TempData["Info"] = "Dessert Updated";
                         return RedirectToAction("DessertList");
                     }
                     else
-                        ViewBag.info = "Failed to Update dessert";
+                        ViewBag.Info = "Failed to Update dessert";
                 }
             }
             return View(updateVM);
@@ -97,11 +97,10 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             bool isDeleted = dessertRepository.Delete(dessert);
             if (isDeleted)
             {
-                TempData["info"] = "Dessert activity became false";
-
+                TempData["Info"] = "Dessert activity became false";
             }
             else
-                TempData["info"] = "Failed to change dessert activity";
+                TempData["Info"] = "Failed to change dessert activity";
 
             return RedirectToAction("DessertList");
         }

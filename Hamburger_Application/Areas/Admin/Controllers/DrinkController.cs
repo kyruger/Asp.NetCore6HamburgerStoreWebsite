@@ -11,7 +11,7 @@ using System.Data;
 namespace Hamburger_Application.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class DrinkController : Controller
     {
         private readonly IRepository<Drink> drinkRepository;
@@ -51,11 +51,11 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                 await imgCover.CopyToAsync(stream);
                 if (isAdded)
                 {
-                    TempData["info"] = "Drink is added";
+                    TempData["Info"] = "Drink is added";
                     return RedirectToAction("DrinkList");
                 }
                 else
-                    ViewBag.info = "Failed to add drink";
+                    ViewBag.Info = "Failed to add drink";
             }
             return View(createVM);
 
@@ -87,13 +87,13 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 
                 if (isUpdated)
                 {
-                    TempData["info"] = "Drink Updated";
-
+                    TempData["Info"] = "Drink Updated";
+                    return RedirectToAction("DrinkList");
                 }
                 else
-                    TempData["info"] = "Failed to Update drink";
+                    ViewBag.Info = "Failed to Update drink";
             }
-            return RedirectToAction("DrinkList");
+            return View(updateVM);
         }
         public IActionResult Delete(int id)
         {
@@ -101,10 +101,10 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             bool isDeleted = drinkRepository.Delete(drink);
             if (isDeleted)
             {
-                TempData["info"] = "Drink activity became false";
+                TempData["Info"] = "Drink activity became false";
                 return RedirectToAction("DrinkList");
             }
-            ViewBag.info = "Failed to change drink activity";
+            ViewBag.Info = "Failed to change drink activity";
             return View(drink);
         }
 

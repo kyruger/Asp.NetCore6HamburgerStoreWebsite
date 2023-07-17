@@ -83,8 +83,8 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 
-var scope = app.Services.CreateScope();
-var userManager = (UserManager<AppUser>)scope.ServiceProvider.GetService(typeof(UserManager<AppUser>));
-ForLogin.AddASuperUserAsync(userManager);
+//var scope = app.Services.CreateScope();
+//var userManager = (UserManager<AppUser>)scope.ServiceProvider.GetService(typeof(UserManager<AppUser>));
+//ForLogin.AddASuperUserAsync(userManager);
 
 app.Run();

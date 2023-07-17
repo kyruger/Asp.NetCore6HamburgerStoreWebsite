@@ -18,7 +18,13 @@
 	}
 </style>
 
+<h3 class="text-center text-danger" style="text-align: center; font-family: Aclonica serif;">Dessert Update</h3>
+@if (ViewBag.Info is not null)
+{
+	<h3 class="text-center text-danger" style="text-align: center; font-family: Aclonica serif;">@ViewBag.Info</h3>
+}
 <form asp-action="Update" method="post" enctype="multipart/form-data">
+	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 	<input type="hidden" asp-for="Id" />
 	<div class="form-group">
 		<label asp-for="Name" class="control-label">Dessert Name</label>
@@ -44,11 +50,8 @@
 		<a asp-action="DessertList" asp-controller="Dessert" class="btn btn-outline-secondary btn-block">Cancel</a>
 	</div>
 </form>
-@if (ViewBag.info != null)
-{
-	<p>@ViewBag.info</p>
-}
 
 @section Scripts{
+	<script src="~/js/bootstrap.min.js"></script>
 	<partial name="_ValidationScriptsPartial" />
 }
