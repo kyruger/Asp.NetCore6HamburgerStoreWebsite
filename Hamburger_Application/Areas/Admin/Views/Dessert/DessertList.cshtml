@@ -74,11 +74,11 @@
 
 <section id="page">
 	<main>
-		<p class="text-center" style="text-align: center; font-family: Aclonica serif;">Desserts</p>
 		@if (TempData["Info"] is not null)
 		{
 			<h3 class="text-center text-danger" style="text-align: center; font-family: Aclonica serif;">@TempData["Info"]</h3>
 		}
+		<p class="text-center" style="text-align: center; font-family: Aclonica serif;">Desserts</p>
 		@foreach (Dessert dessert in Model.Desserts)
 		{
 			<div class="kutu">
@@ -104,7 +104,7 @@
 	@if (User.IsInRole("Admin"))
 	{
 		<div class="text-center">
-			<a asp-action="Create" asp-controller="Dessert" class="btn btn-outline-success"> New Create Dessert</a>
+			<a asp-action="Create" asp-controller="Dessert" class="btn btn-outline-success"> Create New Dessert</a>
 		</div>
 	}
 	<br />

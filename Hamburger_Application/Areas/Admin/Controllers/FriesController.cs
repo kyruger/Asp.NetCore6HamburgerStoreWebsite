@@ -107,7 +107,6 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 				if (isDeleted)
 				{
 					TempData["Info"] = "Fries is deleted";
-
 				}
 				else
 				{
