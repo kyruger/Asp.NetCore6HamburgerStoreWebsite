@@ -73,7 +73,11 @@
 
 <section id="page">
 	<main>
-		<p>Sauceses</p>
+		@if (TempData["Info"] is not null)
+		{
+			<h3 class="text-center text-danger" style="text-align: center; font-family: Aclonica serif;">@TempData["Info"]</h3>
+		}
+		<p class="text-center" style="text-align: center; font-family: Aclonica serif;">Saucesses</p>
 		@foreach (Sauce sauce in Model)
 		{
 			<div class="kutu">
@@ -89,16 +93,19 @@
 						}
 						else if (User.IsInRole("User"))
 						{
-							<a class="btn btn-outline-warning button-container card-styles" value="Add to Carts" asp-controller="Order" asp-action="AddToCart" asp-area="User" asp-route-id="@sauce.Id"  asp-route-name="sauce">Add to Carts</a>
+							<a class="btn btn-outline-warning button-container card-styles" value="Add to Carts" asp-controller="Order" asp-action="AddToCart" asp-area="User" asp-route-id="@sauce.Id" asp-route-name="sauce">Add to Carts</a>
 						}
 					</h6>
 				</p>
 			</div>
 		}
 	</main>
-	<div class="text-center">
-		<a asp-action="Create" asp-controller="Sauce" class="btn btn-outline-success"> New Create Sauce</a>
-	</div>
+	@if (User.IsInRole("Admin"))
+	{
+		<div class="text-center">
+			<a asp-action="Create" asp-controller="Sauce" class="btn btn-outline-success"> Create New Sauce</a>
+		</div>
+	}
 </section>
 
 

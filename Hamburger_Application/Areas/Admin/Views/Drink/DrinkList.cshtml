@@ -74,37 +74,91 @@
 
 <section id="page">
 	<main>
-		<p class="text-center" style="text-align: center; font-family: Aclonica serif;">Drinks</p>
 			@if (TempData["Info"] is not null)
 			{
 			<h3 class="text-center text-danger" style="text-align: center; font-family: Aclonica serif;">@TempData["Info"]</h3>
 			}
+		<p class="text-center" style="text-align: center; font-family: Aclonica serif;">Drinks</p>
+		<p class="text-center" style="text-align: center; font-family: Aclonica serif;">Drinks - Small</p>
 			@foreach (Drink drink in Model.Drinks)
 			{
-			<div class="kutu">
-				<img src="/ProductImages/Drink/@drink.Photo" width="90" height="140" style="width: 100%" />
-				<h6 style="text-align: center; font-family: Aclonica serif;">@drink.Name</h6>
-				<p>@drink.Price ₺</p>
-				<p>
-					<h6>
-							@if (User.IsInRole("Admin"))
-							{
-							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@drink.Id" asp-controller="Drink" asp-action="Update" value="Edit Drink">Edit Drink</a>
-							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@drink.Id" asp-controller="Drink" asp-action="Delete" value="Delete Drink">Delete Drink</a>
-							}
-							else if (User.IsInRole("User"))
-							{
-							<a class="btn btn-outline-warning button-container card-styles" value="Add to Carts" asp-controller="Order" asp-area="User" asp-action="AddToCart" asp-route-id="@drink.Id" asp-route-name="drink">Add to Carts</a>
-							}
-					</h6>
-				</p>
-			</div>
+				if (drink.Size == Hamburger_Application.Entities.Enum.Size.Small)
+				{
+				<div class="kutu">
+					<img src="/ProductImages/Drink/@drink.Photo" width="90" height="140" style="width: 100%" />
+					<h6 style="text-align: center; font-family: Aclonica serif;">@drink.Name</h6>
+					<p>@drink.Price ₺</p>
+					<p>
+						<h6>
+								@if (User.IsInRole("Admin"))
+								{
+								<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@drink.Id" asp-controller="Drink" asp-action="Update" value="Edit Drink">Edit Drink</a>
+								<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@drink.Id" asp-controller="Drink" asp-action="Delete" value="Delete Drink">Delete Drink</a>
+								}
+								else if (User.IsInRole("User"))
+								{
+								<a class="btn btn-outline-warning button-container card-styles" value="Add to Carts" asp-controller="Order" asp-area="User" asp-action="AddToCart" asp-route-id="@drink.Id" asp-route-name="drink">Add to Carts</a>
+								}
+						</h6>
+					</p>
+				</div>
+				}
+			}
+		<p class="text-center" style="text-align: center; font-family: Aclonica serif;">Drinks - Medium</p>
+			@foreach (Drink drink in Model.Drinks)
+			{
+				if (drink.Size == Hamburger_Application.Entities.Enum.Size.Medium)
+				{
+				<div class="kutu">
+					<img src="/ProductImages/Drink/@drink.Photo" width="90" height="140" style="width: 100%" />
+					<h6 style="text-align: center; font-family: Aclonica serif;">@drink.Name</h6>
+					<p>@drink.Price ₺</p>
+					<p>
+						<h6>
+								@if (User.IsInRole("Admin"))
+								{
+								<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@drink.Id" asp-controller="Drink" asp-action="Update" value="Edit Drink">Edit Drink</a>
+								<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@drink.Id" asp-controller="Drink" asp-action="Delete" value="Delete Drink">Delete Drink</a>
+								}
+								else if (User.IsInRole("User"))
+								{
+								<a class="btn btn-outline-warning button-container card-styles" value="Add to Carts" asp-controller="Order" asp-area="User" asp-action="AddToCart" asp-route-id="@drink.Id" asp-route-name="drink">Add to Carts</a>
+								}
+						</h6>
+					</p>
+				</div>
+				}
+			}
+		<p class="text-center" style="text-align: center; font-family: Aclonica serif;">Drinks - Large</p>
+			@foreach (Drink drink in Model.Drinks)
+			{
+				if (drink.Size == Hamburger_Application.Entities.Enum.Size.Large)
+				{
+				<div class="kutu">
+					<img src="/ProductImages/Drink/@drink.Photo" width="90" height="140" style="width: 100%" />
+					<h6 style="text-align: center; font-family: Aclonica serif;">@drink.Name</h6>
+					<p>@drink.Price ₺</p>
+					<p>
+						<h6>
+								@if (User.IsInRole("Admin"))
+								{
+								<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@drink.Id" asp-controller="Drink" asp-action="Update" value="Edit Drink">Edit Drink</a>
+								<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@drink.Id" asp-controller="Drink" asp-action="Delete" value="Delete Drink">Delete Drink</a>
+								}
+								else if (User.IsInRole("User"))
+								{
+								<a class="btn btn-outline-warning button-container card-styles" value="Add to Carts" asp-controller="Order" asp-area="User" asp-action="AddToCart" asp-route-id="@drink.Id" asp-route-name="drink">Add to Carts</a>
+								}
+						</h6>
+					</p>
+				</div>
+				}
 			}
 	</main>
 		@if (User.IsInRole("Admin"))
 		{
 		<div class="text-center">
-			<a asp-action="Create" asp-controller="Drink" class="btn btn-outline-success"> New Create Drink</a>
+			<a asp-action="Create" asp-controller="Drink" class="btn btn-outline-success"> Create New Drink</a>
 		</div>
 
 		}

@@ -20,26 +20,94 @@ namespace Hamburger_Application.Configurations
                 new Fries
                 {
                     Id = 1,
-                    Name = "Potato",
-                    Price = 20
+                    Name = "Potatoes - S",
+                    Price = 20,
+                    Photo = "301422bb-3c9f-4670-87ec-52f6bb49510e_Potatoes.jpg"
                 },
                 new Fries
                 {
                     Id = 2,
-                    Name = "Onion Ring",
-                    Price = 22
+                    Name = "Onion Ring - S",
+                    Price = 22,
+                    Photo = "40149d5b-324f-40d3-802c-0866bc9edac8_OnionRings.jpg"
                 },
-                new Drink
+                new Fries
                 {
                     Id = 3,
-                    Name = "Nugget",
-                    Price = 25
+                    Name = "Nugget - S",
+                    Price = 25,
+                    Photo = "f012288d-4cb5-4546-a5a1-82a2e34457ce_Nuggets.jpg"
                 },
-                new Drink
+                new Fries
                 {
                     Id = 4,
-                    Name = "Chicken Tenders",
-                    Price = 25
+                    Name = "Chicken Tenders - S",
+                    Price = 25,
+                    Photo = "1e165d0c-cdad-4956-a803-a291756320b1_ChickenTenders.jpg"
+                },
+                new Fries
+                {
+                    Id = 5,
+                    Name = "Potatoes - M",
+                    Price = 24,
+                    Photo = "301422bb-3c9f-4670-87ec-52f6bb49510e_Potatoes.jpg",
+                    Size = Size.Medium
+                },
+                new Fries
+                {
+                    Id = 6,
+                    Name = "Onion Ring - M",
+                    Price = 26,
+                    Photo = "40149d5b-324f-40d3-802c-0866bc9edac8_OnionRings.jpg",
+                    Size = Size.Medium
+                },
+                new Fries
+                {
+                    Id = 7,
+                    Name = "Nugget - M",
+                    Price = 29,
+                    Photo = "f012288d-4cb5-4546-a5a1-82a2e34457ce_Nuggets.jpg",
+                    Size = Size.Medium
+                },
+                new Fries
+                {
+                    Id = 8,
+                    Name = "Chicken Tenders - M",
+                    Price = 29,
+                    Photo = "1e165d0c-cdad-4956-a803-a291756320b1_ChickenTenders.jpg",
+                    Size = Size.Medium
+                },
+                new Fries
+                {
+                    Id = 9,
+                    Name = "Potatoes - L",
+                    Price = 28,
+                    Photo = "301422bb-3c9f-4670-87ec-52f6bb49510e_Potatoes.jpg",
+                    Size = Size.Large
+                },
+                new Fries
+                {
+                    Id = 10,
+                    Name = "Onion Ring - L",
+                    Price = 30,
+                    Photo = "40149d5b-324f-40d3-802c-0866bc9edac8_OnionRings.jpg",
+                    Size = Size.Large
+                },
+                new Fries
+                {
+                    Id = 11,
+                    Name = "Nugget - L",
+                    Price = 33,
+                    Photo = "f012288d-4cb5-4546-a5a1-82a2e34457ce_Nuggets.jpg",
+                    Size = Size.Large
+                },
+                new Fries
+                {
+                    Id = 12,
+                    Name = "Chicken Tenders - L",
+                    Price = 33,
+                    Photo = "1e165d0c-cdad-4956-a803-a291756320b1_ChickenTenders.jpg",
+                    Size = Size.Large
                 }
                 );
         }
