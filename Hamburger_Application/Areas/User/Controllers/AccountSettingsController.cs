@@ -195,7 +195,7 @@ namespace Hamburger_Application.Areas.User.Controllers
             AppUser appUser = await userManager.FindByEmailAsync(appUserThemeVM.Email);
             if (appUser is not null)
             {
-                appUser = appUserThemeVM.IsDark;
+                appUser.IsDark = appUserThemeVM.IsDark;
                 IdentityResult result = await userManager.UpdateAsync(appUser);
                 if (result.Succeeded)
                 {
