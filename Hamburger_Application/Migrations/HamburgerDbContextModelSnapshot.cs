@@ -58,16 +58,16 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "5f3c0dc0-b257-41d7-8b48-b56fa9822170",
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 285, DateTimeKind.Local).AddTicks(9676),
+                            ConcurrencyStamp = "335de442-1cdd-428d-b9b3-78e7ee47666d",
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 458, DateTimeKind.Local).AddTicks(1545),
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "9ae81ee4-d7d8-449e-afe2-581216bce293",
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 285, DateTimeKind.Local).AddTicks(9692),
+                            ConcurrencyStamp = "f2755e47-daa9-4abc-b9d6-e1dcd875ca0c",
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 458, DateTimeKind.Local).AddTicks(1558),
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -224,7 +224,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(3727),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 458, DateTimeKind.Local).AddTicks(4739),
                             IsActive = false,
                             Name = "Brownie",
                             Price = 50m
@@ -232,7 +232,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(3734),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 458, DateTimeKind.Local).AddTicks(4747),
                             IsActive = false,
                             Name = "Milkshake",
                             Price = 40m
@@ -240,7 +240,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(3736),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 458, DateTimeKind.Local).AddTicks(4748),
                             IsActive = false,
                             Name = "Cheesecake",
                             Price = 60m
@@ -248,7 +248,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(3737),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 458, DateTimeKind.Local).AddTicks(4749),
                             IsActive = false,
                             Name = "Ice Cream",
                             Price = 30m
@@ -256,7 +256,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 5,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(3738),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 458, DateTimeKind.Local).AddTicks(4750),
                             IsActive = false,
                             Name = "Puding",
                             Price = 40m
@@ -323,7 +323,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(5514),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 458, DateTimeKind.Local).AddTicks(5948),
                             IsActive = false,
                             Name = "Coke",
                             Price = 40m,
@@ -332,7 +332,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(5519),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 458, DateTimeKind.Local).AddTicks(5952),
                             IsActive = false,
                             Name = "Ayran",
                             Price = 25m,
@@ -341,7 +341,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(5520),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 458, DateTimeKind.Local).AddTicks(5953),
                             IsActive = false,
                             Name = "Coke Zero",
                             Price = 45m,
@@ -350,7 +350,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(5521),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 458, DateTimeKind.Local).AddTicks(5954),
                             IsActive = false,
                             Name = "Cold Tea",
                             Price = 35m,
@@ -359,7 +359,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 5,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(5523),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 458, DateTimeKind.Local).AddTicks(5955),
                             IsActive = false,
                             Name = "Mineral Water",
                             Price = 15m,
@@ -427,7 +427,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(7150),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 458, DateTimeKind.Local).AddTicks(7068),
                             IsActive = false,
                             Name = "Potato",
                             Price = 20m,
@@ -436,7 +436,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(7218),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 458, DateTimeKind.Local).AddTicks(7071),
                             IsActive = false,
                             Name = "Onion Ring",
                             Price = 22m,
@@ -445,7 +445,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(7220),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 458, DateTimeKind.Local).AddTicks(7073),
                             IsActive = false,
                             Name = "Nugget",
                             Price = 25m,
@@ -454,7 +454,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(7221),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 458, DateTimeKind.Local).AddTicks(7074),
                             IsActive = false,
                             Name = "Chicken Tenders",
                             Price = 25m,
@@ -517,7 +517,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(8876),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 458, DateTimeKind.Local).AddTicks(8537),
                             IsActive = false,
                             Name = "Whopper",
                             Price = 120m
@@ -525,7 +525,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(8880),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 458, DateTimeKind.Local).AddTicks(8540),
                             IsActive = false,
                             Name = "Texas SmokeHouse",
                             Price = 140m
@@ -533,7 +533,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(8881),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 458, DateTimeKind.Local).AddTicks(8541),
                             IsActive = false,
                             Name = "Fish Royale",
                             Price = 110m
@@ -541,7 +541,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(8882),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 458, DateTimeKind.Local).AddTicks(8542),
                             IsActive = false,
                             Name = "Big King",
                             Price = 150m
@@ -549,7 +549,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 5,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(8885),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 458, DateTimeKind.Local).AddTicks(8543),
                             IsActive = false,
                             Name = "Chicken Royale",
                             Price = 95m
@@ -613,7 +613,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(6089),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 460, DateTimeKind.Local).AddTicks(1922),
                             DrinkId = 1,
                             FriesId = 1,
                             HamburgerId = 1,
@@ -624,7 +624,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(6097),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 460, DateTimeKind.Local).AddTicks(1933),
                             DrinkId = 1,
                             FriesId = 1,
                             HamburgerId = 2,
@@ -635,7 +635,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(6099),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 460, DateTimeKind.Local).AddTicks(1935),
                             DrinkId = 1,
                             FriesId = 1,
                             HamburgerId = 3,
@@ -646,7 +646,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(6101),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 460, DateTimeKind.Local).AddTicks(1936),
                             DrinkId = 1,
                             FriesId = 1,
                             HamburgerId = 4,
@@ -657,7 +657,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 5,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(6102),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 460, DateTimeKind.Local).AddTicks(1938),
                             DrinkId = 1,
                             FriesId = 1,
                             HamburgerId = 5,
@@ -746,7 +746,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(8327),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 460, DateTimeKind.Local).AddTicks(3603),
                             IsActive = false,
                             Name = "Ranch",
                             Price = 15m
@@ -754,7 +754,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(8331),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 460, DateTimeKind.Local).AddTicks(3607),
                             IsActive = false,
                             Name = "Ketchup",
                             Price = 10m
@@ -762,7 +762,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(8332),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 460, DateTimeKind.Local).AddTicks(3608),
                             IsActive = false,
                             Name = "Mayonnaise",
                             Price = 10m
@@ -770,7 +770,7 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(8333),
+                            CreationTime = new DateTime(2023, 7, 17, 11, 8, 52, 460, DateTimeKind.Local).AddTicks(3609),
                             IsActive = false,
                             Name = "Barbeque",
                             Price = 15m
