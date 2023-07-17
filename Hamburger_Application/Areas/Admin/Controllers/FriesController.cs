@@ -47,7 +47,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 				fries.Photo = GenerateUniqueFileName(imgCover);
 				bool isAdded = friesRepository.Add(fries);
 
-
+				
 				FileStream file = new FileStream("wwwroot/ProductImages/Fries1/" + fries.Photo, FileMode.Create);
 				await imgCover.CopyToAsync(file);
 				if (isAdded)
