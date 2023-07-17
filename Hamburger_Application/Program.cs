@@ -40,7 +40,7 @@ builder.Services.AddIdentity<AppUser, AppRole>(options => options.SignIn.Require
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.Cookie.Name = "Identity";
-    options.ExpireTimeSpan = TimeSpan.FromMinutes(1);
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
     options.SlidingExpiration = true;
 
     options.LoginPath = "/Home/Main"; // default u degistirme
@@ -83,8 +83,8 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 
-var scope = app.Services.CreateScope();
-var userManager = (UserManager<AppUser>)scope.ServiceProvider.GetService(typeof(UserManager<AppUser>));
-ForLogin.AddASuperUserAsync(userManager);
+//var scope = app.Services.CreateScope();
+//var userManager = (UserManager<AppUser>)scope.ServiceProvider.GetService(typeof(UserManager<AppUser>));
+//ForLogin.AddASuperUserAsync(userManager);
 
 app.Run();
