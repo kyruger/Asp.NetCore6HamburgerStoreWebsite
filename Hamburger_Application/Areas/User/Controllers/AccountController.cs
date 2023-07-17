@@ -11,6 +11,7 @@ using MimeKit;
 namespace Hamburger_Application.Areas.User.Controllers
 {
     [Area("User")]
+    [Authorize(Roles = "User")]
     public class AccountController : Controller
     {
         private readonly UserManager<AppUser> userManager;
@@ -27,11 +28,13 @@ namespace Hamburger_Application.Areas.User.Controllers
             random = new();
         }
 
+        [AllowAnonymous]
         public IActionResult SignUp()
         {
             return View();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> SignUp(AppUserCreateVM appUserCreateVM)
         {
@@ -97,18 +100,20 @@ namespace Hamburger_Application.Areas.User.Controllers
             }
 
             ModelState.AddModelError("Error", "Something went wrong. Please try again !");
-            
+
             Helper.EmailSend(appUser.Email, "A new confirm code : ", appUser.ConfirmCode);
             TempData["Email"] = appUser.Email;
 
             return View(appUserEmailConfirmVM);
         }
 
+        [AllowAnonymous]
         public IActionResult SignIn()
         {
             return View();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> SignIn(AppUserSignInVM appUserSignInVM)
         {

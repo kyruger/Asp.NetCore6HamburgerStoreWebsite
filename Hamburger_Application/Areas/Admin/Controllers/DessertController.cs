@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace Hamburger_Application.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class DessertController : Controller
     {
         private readonly IRepository<Dessert> dessertRepository;
@@ -21,18 +22,21 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             this.mapper = mapper;
         }
 
+        [AllowAnonymous]
         public IActionResult DessertList()
         {
             DessertListVM dessertListVM = new DessertListVM();
             dessertListVM.Desserts = dessertRepository.GetAllTrue(true).ToList();
             return View(dessertListVM);
         }
+
         public IActionResult Create()
         {
             return View();
         }
+
+
         [HttpPost]
-        //[Authorize]
         public async Task<IActionResult> Create(DessertCreateVM createVM, IFormFile imgCover)
         {
             if (ModelState.IsValid)
@@ -53,7 +57,6 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             return View(createVM);
         }
 
-        //[Authorize]
         public IActionResult Update(int id)
         {
             Dessert dessert = new Dessert();
@@ -63,7 +66,6 @@ namespace Hamburger_Application.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        //[Authorize]
         public async Task<IActionResult> Update(DessertUpdateVM updateVM, IFormFile imgCover)
         {
             if (ModelState.IsValid)
@@ -89,7 +91,6 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             return View(updateVM);
         }
 
-        //[Authorize]
         public IActionResult Delete(int id)
         {
             Dessert dessert = dessertRepository.GetById(id);

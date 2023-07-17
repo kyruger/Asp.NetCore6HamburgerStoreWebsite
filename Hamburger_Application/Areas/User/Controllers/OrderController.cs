@@ -2,19 +2,15 @@
 using Hamburger_Application.Areas.User.Models.OrderVMs;
 using Hamburger_Application.Areas.User.Utilities;
 using Hamburger_Application.Entities.Concrete;
-using Hamburger_Application.Entities.Enum;
 using Hamburger_Application.Repositories.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using NuGet.ContentModel;
-using NuGet.Protocol;
-using System.Drawing;
-using System.Xml.Linq;
 
 namespace Hamburger_Application.Areas.User.Controllers
 {
     [Area("User")]
+    [Authorize(Roles = "User")]
     public class OrderController : Controller
     {
         private readonly IMenuRepository menuRepository;
@@ -37,6 +33,8 @@ namespace Hamburger_Application.Areas.User.Controllers
             this.userManager = userManager;
             this.orderRepository = orderRepository;
         }
+
+        [AllowAnonymous]
         public IActionResult ProductList()
         {
             MenuListVM menuListVM = new MenuListVM();
@@ -52,6 +50,7 @@ namespace Hamburger_Application.Areas.User.Controllers
                 menu.Hamburger = hamburger;
                 menuListTemp.Add(menu);
             }
+
             var menuList = menuListVM.Menus;
             var hamburgerList = hamburgerRepository.GetAllTrue(true);
             var friesList = friesRepository.GetAllTrue(true);
@@ -67,6 +66,7 @@ namespace Hamburger_Application.Areas.User.Controllers
             productListVM.Desserts = dessertList;
             return View(productListVM);
         }
+
         public async Task<IActionResult> Cart()
         {
             AppUser user = await userManager.FindByNameAsync(User.Identity.Name);
@@ -74,6 +74,7 @@ namespace Hamburger_Application.Areas.User.Controllers
             Order order = orderRepository.GetByUserId(user.Id, false);
             return View(order);
         }
+
         public async Task<IActionResult> AddToCart(int id, string name)
         {
             AppUser user = await userManager.FindByNameAsync(User.Identity.Name);
@@ -128,6 +129,7 @@ namespace Hamburger_Application.Areas.User.Controllers
             return RedirectToAction("Cart", user);
 
         }
+
         public async Task<IActionResult> Delete(string entityName)
         {
 
@@ -152,6 +154,7 @@ namespace Hamburger_Application.Areas.User.Controllers
 
             return RedirectToAction("Cart");
         }
+
         public async Task<IActionResult> SaveOrder(decimal totalPrice)
         {
             AppUser user = await userManager.FindByNameAsync(User.Identity.Name);
@@ -176,6 +179,7 @@ namespace Hamburger_Application.Areas.User.Controllers
             }
             return RedirectToAction("Cart");
         }
+
         public async Task<IActionResult> Decrease(string entityName)
         {
             AppUser user = await userManager.FindByNameAsync(User.Identity.Name);
@@ -231,6 +235,7 @@ namespace Hamburger_Application.Areas.User.Controllers
             }
             return RedirectToAction("Cart");
         }
+
         public async Task<IActionResult> Increase(string entityName)
         {
             AppUser user = await userManager.FindByNameAsync(User.Identity.Name);

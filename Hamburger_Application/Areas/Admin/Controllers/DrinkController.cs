@@ -3,12 +3,15 @@ using Hamburger_Application.Areas.Admin.Models;
 using Hamburger_Application.Entities.Concrete;
 using Hamburger_Application.Entities.Enum;
 using Hamburger_Application.Repositories.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Data;
 
 namespace Hamburger_Application.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class DrinkController : Controller
     {
         private readonly IRepository<Drink> drinkRepository;
@@ -19,12 +22,15 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             this.drinkRepository = drinkRepository;
             this.mapper = mapper;
         }
+
+        [AllowAnonymous]
         public IActionResult DrinkList()
         {
             DrinkListVM drinkListVM = new DrinkListVM();
             drinkListVM.Drinks = drinkRepository.GetAllTrue(true).ToList();
             return View(drinkListVM);
         }
+
         public IActionResult Create()
         {
             var enumList = Enum.GetValues(typeof(Size)).Cast<Size>().ToList();
@@ -32,6 +38,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             ViewBag.size = selectList;
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Create(DrinkCreatVM createVM, IFormFile imgCover)
         {
@@ -65,6 +72,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             ViewBag.size = selectList;
             return View(updateVM);
         }
+
         [HttpPost]
         public async Task<IActionResult> Update(DrinkUpdateVM updateVM, IFormFile imgCover)
         {
@@ -80,14 +88,12 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                 if (isUpdated)
                 {
                     TempData["info"] = "Drink Updated";
-           
+
                 }
                 else
                     TempData["info"] = "Failed to Update drink";
             }
             return RedirectToAction("DrinkList");
-
-
         }
         public IActionResult Delete(int id)
         {
@@ -101,6 +107,8 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             ViewBag.info = "Failed to change drink activity";
             return View(drink);
         }
+
+        [NonAction]
         private string GenerateUniqueFileName(IFormFile file)
         {
             Guid guid = Guid.NewGuid();
