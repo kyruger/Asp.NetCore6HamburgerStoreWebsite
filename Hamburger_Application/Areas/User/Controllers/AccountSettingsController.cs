@@ -205,9 +205,9 @@ namespace Hamburger_Application.Areas.User.Controllers
                     {
                         ModelState.AddModelError("Error", error.Description);
                     }
-                    return View();
                 }
             }
+            return View();
         }
     }
 }

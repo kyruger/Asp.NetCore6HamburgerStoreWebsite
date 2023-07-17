@@ -5,13 +5,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Hamburger_Application.Configurations
 {
-    public class OrderCFG : IEntityTypeConfiguration<Order>
+    public class OrderCfg : IEntityTypeConfiguration<Order>
     {
         public void Configure(EntityTypeBuilder<Order> builder)
         {
-            builder.Property(x=>x.isAccepted).HasDefaultValue(false);
-            builder.Property(x => x.isActive).HasDefaultValue(true);
-
+            builder.Property(b => b.IsAccepted).HasDefaultValue(false);
+            builder.Property(b => b.IsActive).HasDefaultValue(true);
         }
     }
 }

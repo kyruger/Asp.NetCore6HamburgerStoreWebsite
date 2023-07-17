@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Hamburger_Application.Data.Utilities
 {
-	public class forLogin
+	public class ForLogin
 	{
 		public static async void AddASuperUserAsync(UserManager<AppUser> user)
 		{

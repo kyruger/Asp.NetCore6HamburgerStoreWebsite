@@ -7,16 +7,16 @@ namespace Hamburger_Application.Repositories.Concrete
 {
     public class MenuRepository : GenericRepository<Menu>, IMenuRepository
     {
-        private readonly HamburgerDbContext context;
+        private readonly HamburgerDbContext db;
 
-        public MenuRepository(HamburgerDbContext context) : base(context) 
+        public MenuRepository(HamburgerDbContext db) : base(db)
         {
-            this.context = context;
+            this.db = db;
         }
 
         public IEnumerable<Menu> GetAllIncludeFriesIncludeDrinkIncludeHamburger(bool state)
         {
-            return context.Menus.Where(m=>m.isActive == state).Include(m => m.Fries).Include(m => m.Drink).Include(m => m.Hamburger);
+            return db.Menus.Where(m => m.IsActive == state).Include(m => m.Fries).Include(m => m.Drink).Include(m => m.Hamburger);
         }
     }
 }

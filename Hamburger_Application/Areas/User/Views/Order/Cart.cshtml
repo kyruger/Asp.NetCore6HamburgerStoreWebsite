@@ -52,9 +52,9 @@
                     </td>
                     <td colspan="2">
                         <div class="text-container">
-                            <a class="value-button" asp-action="Decrease" asp-controller="Order" asp-route-id="@menu.Id" asp-route-name="menu">-</a>
+                            <a class="value-button" asp-action="Decrease" asp-controller="Order" asp-route-entityName="@menu.Name">-</a>
                             <label>@menu.Piece</label>
-                            <a class="value-button" asp-action="Increase" asp-controller="Order" asp-route-id="@menu.Id" asp-route-name="menu">+</a>
+                            <a class="value-button" asp-action="Increase" asp-controller="Order" asp-route-entityName="@menu.Name">+</a>
                         </div>
                     </td>
                     <td>
@@ -64,7 +64,7 @@
                     </td>
                     <td>
                         <div class="d-flex">
-                            <a asp-action="Delete" asp-controller="Order" asp-area="User" class="btn btn-outline-danger" asp-route-id="@menu.Id" asp-route-name="menu">Delete</a>
+                            <a asp-action="Delete" asp-controller="Order" asp-area="User" class="btn btn-outline-danger" asp-route-entityName="@menu.Name">Delete</a>
                         </div>
                     </td>
                     <td>
@@ -73,7 +73,7 @@
                         </div>
                     </td>
                 </tr>
-                    totalPrice += menu.TotalPrice;
+                totalPrice += menu.TotalPrice;
             }
             foreach (Hamburger hamburger in Model.Hamburgers)
             {
@@ -86,11 +86,11 @@
                             @hamburger.Name
                         </div>
                     </td>
-                    <td colspan ="2">
+                    <td colspan="2">
                         <div class="text-container">
-                            <a class="value-button" asp-action="Decrease" asp-controller="Order" asp-route-id="@hamburger.Id" asp-route-name="hamburger">-</a>
+                            <a class="value-button" asp-action="Decrease" asp-controller="Order" asp-route-entityName="@hamburger.Name">-</a>
                             <label>@hamburger.Piece</label>
-                            <a class="value-button" asp-action="Increase" asp-controller="Order" asp-route-id="@hamburger.Id" asp-route-name="hamburger">+</a>
+                            <a class="value-button" asp-action="Increase" asp-controller="Order" asp-route-entityName="@hamburger.Name">+</a>
                         </div>
                     </td>
                     <td>
@@ -100,7 +100,7 @@
                     </td>
                     <td>
                         <div class="d-flex">
-                            <a asp-action="Delete" asp-controller="Order" asp-area="User" class="btn btn-outline-danger" asp-route-id="@hamburger.Id" asp-route-name="hamburger">Delete</a>
+                            <a asp-action="Delete" asp-controller="Order" asp-area="User" class="btn btn-outline-danger" asp-route-entityName="@hamburger.Name">Delete</a>
                         </div>
                     </td>
                     <td>
@@ -110,78 +110,6 @@
                     </td>
                 </tr>
                 totalPrice += hamburger.TotalPrice;
-            }
-            foreach (Dessert dessert in Model.Desserts)
-            {
-                <tr>
-                    <td class="text-center">
-                        <img src="/ProductImages/Dessert1/@dessert.Photo" width="90" height="140">
-                    </td>
-                    <td>
-                        <div class="text-container">
-                            @dessert.Name
-                        </div>
-                    </td>
-                    <td colspan="2">
-                        <div class="text-container">
-                            <a class="value-button" asp-action="Decrease" asp-controller="Order" asp-route-id="@dessert.Id" asp-route-name="dessert">-</a>
-                            <label>@dessert.Piece</label>
-                            <a class="value-button" asp-action="Increase" asp-controller="Order" asp-route-id="@dessert.Id" asp-route-name="dessert">+</a>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="text-container">
-                            @dessert.Price ₺
-                        </div>
-                    </td>
-                    <td>
-                        <div class="d-flex">
-                            <a asp-action="Delete" asp-controller="Order" asp-area="User" class="btn btn-outline-danger" asp-route-id="@dessert.Id" asp-route-name="dessert">Delete</a>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="text-container">
-                            @dessert.TotalPrice ₺
-                        </div>
-                    </td>
-                </tr>
-                totalPrice += dessert.TotalPrice;
-            }
-            foreach (Sauce sauce in Model.Sauces)
-            {
-                <tr>
-                    <td class="text-center">
-                        <img src="/ProductImages/Sauce1/@sauce.Photo" width="90" height="140">
-                    </td>
-                    <td>
-                        <div class="text-container">
-                            @sauce.Name
-                        </div>
-                    </td>
-                    <td colspan="2">
-                        <div class="text-container">
-                            <a class="value-button" asp-action="Decrease" asp-controller="Order" asp-route-id="@sauce.Id" asp-route-name="sauce">-</a>
-                            <label>@sauce.Piece</label>
-                            <a class="value-button" asp-action="Increase" asp-controller="Order" asp-route-id="@sauce.Id" asp-route-name="sauce">+</a>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="text-container">
-                            @sauce.Price ₺
-                        </div>
-                    </td>
-                    <td>
-                        <div class="d-flex">
-                            <a asp-action="Delete" asp-controller="Order" asp-area="User" class="btn btn-outline-danger" asp-route-id="@sauce.Id" asp-route-name="sauce">Delete</a>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="text-container">
-                            @sauce.TotalPrice ₺
-                        </div>
-                    </td>
-                </tr>
-                totalPrice += sauce.TotalPrice;
             }
             foreach (Fries fries in Model.Fries)
             {
@@ -196,9 +124,9 @@
                     </td>
                     <td colspan="2">
                         <div class="text-container">
-                            <a class="value-button" asp-action="Decrease" asp-controller="Order" asp-route-id="@fries.Id" asp-route-name="fries">-</a>
+                            <a class="value-button" asp-action="Decrease" asp-controller="Order" asp-route-entityName="@fries.Name">-</a>
                             <label>@fries.Piece</label>
-                            <a class="value-button" asp-action="Increase" asp-controller="Order" asp-route-id="@fries.Id" asp-route-name="fries">+</a>
+                            <a class="value-button" asp-action="Increase" asp-controller="Order" asp-route-entityName="@fries.Name">+</a>
                         </div>
                     </td>
                     <td>
@@ -208,7 +136,7 @@
                     </td>
                     <td>
                         <div class="d-flex">
-                            <a asp-action="Delete" asp-controller="Order" asp-area="User" class="btn btn-outline-danger" asp-route-id="@fries.Id" asp-route-name="fries">Delete</a>
+                            <a asp-action="Delete" asp-controller="Order" asp-area="User" class="btn btn-outline-danger" asp-route-entityName="@fries.Name">Delete</a>
                         </div>
                     </td>
                     <td>
@@ -218,6 +146,42 @@
                     </td>
                 </tr>
                 totalPrice += fries.TotalPrice;
+            }
+            foreach (Sauce sauce in Model.Sauces)
+            {
+                <tr>
+                    <td class="text-center">
+                        <img src="/ProductImages/Sauce1/@sauce.Photo" width="90" height="140">
+                    </td>
+                    <td>
+                        <div class="text-container">
+                            @sauce.Name
+                        </div>
+                    </td>
+                    <td colspan="2">
+                        <div class="text-container">
+                            <a class="value-button" asp-action="Decrease" asp-controller="Order" asp-route-entityName="@sauce.Name">-</a>
+                            <label>@sauce.Piece</label>
+                            <a class="value-button" asp-action="Increase" asp-controller="Order" asp-route-entityName="@sauce.Name">+</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-container">
+                            @sauce.Price ₺
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex">
+                            <a asp-action="Delete" asp-controller="Order" asp-area="User" class="btn btn-outline-danger" asp-route-entityName="@sauce.Name">Delete</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-container">
+                            @sauce.TotalPrice ₺
+                        </div>
+                    </td>
+                </tr>
+                totalPrice += sauce.TotalPrice;
             }
             foreach (Drink drink in Model.Drinks)
             {
@@ -232,9 +196,9 @@
                     </td>
                     <td colspan="2">
                         <div class="text-container">
-                            <a class="value-button" asp-action="Decrease" asp-controller="Order" asp-route-id="@drink.Id" asp-route-name="drink">-</a>
+                            <a class="value-button" asp-action="Decrease" asp-controller="Order" asp-route-entityName="@drink.Name">-</a>
                             <label>@drink.Piece</label>
-                            <a class="value-button" asp-action="Increase" asp-controller="Order" asp-route-id="@drink.Id" asp-route-name="drink">+</a>
+                            <a class="value-button" asp-action="Increase" asp-controller="Order" asp-route-entityName="@drink.Name">+</a>
                         </div>
                     </td>
                     <td>
@@ -244,7 +208,7 @@
                     </td>
                     <td>
                         <div class="d-flex">
-                            <a asp-action="Delete" asp-controller="Order" asp-area="User" class="btn btn-outline-danger" asp-route-id="@drink.Id" asp-route-name="drink">Delete</a>
+                            <a asp-action="Delete" asp-controller="Order" asp-area="User" class="btn btn-outline-danger" asp-route-entityName="@drink.Name">Delete</a>
                         </div>
                     </td>
                     <td>
@@ -254,6 +218,42 @@
                     </td>
                 </tr>
                 totalPrice += drink.TotalPrice;
+            }
+            foreach (Dessert dessert in Model.Desserts)
+            {
+                <tr>
+                    <td class="text-center">
+                        <img src="/ProductImages/Dessert1/@dessert.Photo" width="90" height="140">
+                    </td>
+                    <td>
+                        <div class="text-container">
+                            @dessert.Name
+                        </div>
+                    </td>
+                    <td colspan="2">
+                        <div class="text-container">
+                            <a class="value-button" asp-action="Decrease" asp-controller="Order" asp-route-entityName="@dessert.Name">-</a>
+                            <label>@dessert.Piece</label>
+                            <a class="value-button" asp-action="Increase" asp-controller="Order" asp-route-entityName="@dessert.Name">+</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-container">
+                            @dessert.Price ₺
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex">
+                            <a asp-action="Delete" asp-controller="Order" asp-area="User" class="btn btn-outline-danger" asp-route-entityName="@dessert.Name">Delete</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-container">
+                            @dessert.TotalPrice ₺
+                        </div>
+                    </td>
+                </tr>
+                totalPrice += dessert.TotalPrice;
             }
             <tr>
                 <td colspan="6" class="text-center">
@@ -265,14 +265,14 @@
             </tr>
             <tr>
                 <td colspan="7" class="text-center">
-                    <a asp-action="SaveOrder" asp-controller="Order" asp-area="User" asp-route-id="@Model" class="btn btn-outline-success"asp-route-totalPrice="@totalPrice">Confirm my cart</a>
+                    <a asp-action="SaveOrder" asp-controller="Order" asp-area="User" asp-route-id="@Model" class="btn btn-outline-success" asp-route-totalPrice="@totalPrice">Confirm my cart</a>
                 </td>
             </tr>
 
         }
         else
         {
-            <p>@TempData["Info"]</p>
+            <text>@TempData["Info"]</text>
         }
     </tbody>
 </table>

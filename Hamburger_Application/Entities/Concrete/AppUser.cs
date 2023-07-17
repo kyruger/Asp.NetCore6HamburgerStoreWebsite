@@ -13,10 +13,12 @@ namespace Hamburger_Application.Entities.Concrete
         public string LastName { get; set; }
         public string? Address { get; set; }
         public bool IsActive { get; set; }
-        public bool IsDark { get; set; } = false;
+        public bool IsDark { get; set; }
         public DateTime CreationTime { get; set; }
         [NotMapped]
         public int ConfirmCode { get; set; }
+
+        // Relations
         public ICollection<Order> Orders { get; set; }
     }
 }

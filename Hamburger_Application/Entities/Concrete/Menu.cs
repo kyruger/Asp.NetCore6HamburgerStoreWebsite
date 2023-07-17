@@ -3,8 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hamburger_Application.Entities.Concrete
 {
-    public class Menu : BaseEntity
+    public class Menu : ProductBaseEntity
     {
+        // Relations
         public int? OrderId { get; set; }
         public Order? Order { get; set; }
         public int? DrinkId { get; set; }

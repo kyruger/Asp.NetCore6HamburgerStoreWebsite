@@ -30,7 +30,7 @@ namespace Hamburger_Application.Repositories.Concrete
         {
             try
             {
-                entity.isActive = false;
+                entity.IsActive = false;
                 db.Set<T>().Update(entity);
                 return db.SaveChanges() > 0;
             }
@@ -70,7 +70,7 @@ namespace Hamburger_Application.Repositories.Concrete
 
         public IEnumerable<T> GetAllTrue(bool state)
         {
-            return db.Set<T>().Where(a => a.isActive == state);
+            return db.Set<T>().Where(a => a.IsActive == state);
         }
     }
 }

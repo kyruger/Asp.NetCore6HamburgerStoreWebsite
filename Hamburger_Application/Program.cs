@@ -15,9 +15,6 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
-
-
-
 builder.Services.AddFluentValidation(x =>
 {
     x.RegisterValidatorsFromAssemblyContaining<Program>();
@@ -32,10 +29,6 @@ builder.Services.AddTransient<IMenuRepository, MenuRepository>();
 
 builder.Services.AddTransient<IOrderRepository, OrderRepository>();
 
-//var connectionString = builder.Configuration.GetConnectionString("ConStr");
-//builder.Services.AddDbContext<HamburgerDbContext>(options =>
-//	options.UseSqlServer(connectionString));
-//builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddTransient(typeof(IRepository<>), typeof(GenericRepository<>));
 
@@ -50,16 +43,8 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.ExpireTimeSpan = TimeSpan.FromMinutes(1);
     options.SlidingExpiration = true;
 
-    options.LoginPath = "/Home/Index"; // default u degistirme
+    options.LoginPath = "/Home/Main"; // default u degistirme
 });
-
-//builder.Services.Configure<IdentityOptions>(options =>
-//{
-//    // password customize
-//    options.Password.RequiredLength = 8;
-//    options.User.RequireUniqueEmail = true;
-//    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);
-//});
 
 builder.Services.AddRazorPages();
 
@@ -98,8 +83,8 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 
-//var scope = app.Services.CreateScope();
-//var userManager = (UserManager<AppUser>)scope.ServiceProvider.GetService(typeof(UserManager<AppUser>));
-//forLogin.AddASuperUserAsync(userManager);
+var scope = app.Services.CreateScope();
+var userManager = (UserManager<AppUser>)scope.ServiceProvider.GetService(typeof(UserManager<AppUser>));
+ForLogin.AddASuperUserAsync(userManager);
 
 app.Run();
