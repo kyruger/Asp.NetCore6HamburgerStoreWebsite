@@ -13,7 +13,6 @@ namespace Hamburger_Application.Entities.Concrete
             Desserts = new List<Dessert>();
             Sauces = new List<Sauce>();
         }
-        public bool IsActive { get; set; }
         public bool IsAccepted { get; set; }
 
         // Relations
