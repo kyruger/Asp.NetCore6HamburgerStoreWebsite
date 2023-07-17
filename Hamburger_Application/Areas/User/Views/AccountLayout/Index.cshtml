@@ -13,12 +13,25 @@
     @await Component.InvokeAsync("_AccountLayoutHeaderPartial")
     <!-- /header -->
 
-    <div class="container bg-body">
-        <main role="main" class="pb-3" @*style="background-color:@mainBackgroundColor"*@>
+    @*<div class="container bg-body">
+        <main role="main" class="pb-3" @*style="background-color:@mainBackgroundColor"
             <!-- sidebar -->
             @await Component.InvokeAsync("_AccountLayoutSidebarPartial")
             <!-- sidebar -->
             @RenderBody()
+        </main>
+    </div>*@
+
+    <div class=" bg-body">
+        <main class="grid" @*style="background-color:@mainBackgroundColor"*@>
+            <!-- sidebar -->
+            <div class="col-6 col-md-3">
+                @await Component.InvokeAsync("_AccountLayoutSidebarPartial")
+            </div>
+            <!-- sidebar -->
+            <div class="col-md-9">
+                @RenderBody()
+            </div>
         </main>
     </div>
 

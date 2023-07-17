@@ -184,16 +184,18 @@ namespace Hamburger_Application.Areas.User.Controllers
 
         public async Task<IActionResult> Theme()
         {
-            return View();
+            AppUser appUser = await userManager.FindByNameAsync(User.Identity.Name);
+            AppUserThemeVM appUserThemeVM = mapper.Map<AppUserThemeVM>(appUser);
+            return View(appUserThemeVM);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Theme(string id, bool IsDark)
+        public async Task<IActionResult> Theme(AppUserThemeVM appUserThemeVM)
         {
-            AppUser appUser = await userManager.FindByIdAsync(id);
+            AppUser appUser = await userManager.FindByEmailAsync(appUserThemeVM.Email);
             if (appUser is not null)
             {
-                appUser.IsDark = IsDark;
+                appUser = appUserThemeVM.IsDark;
                 IdentityResult result = await userManager.UpdateAsync(appUser);
                 if (result.Succeeded)
                 {
@@ -207,7 +209,7 @@ namespace Hamburger_Application.Areas.User.Controllers
                     }
                 }
             }
-            return View();
+            return View(appUserThemeVM);
         }
     }
 }
