@@ -6,6 +6,7 @@ using Hamburger_Application.Repositories.Abstract;
 using Hamburger_Application.Repositories.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Hamburger_Application.Data.Utilities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,9 +14,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
-
-
-
 
 builder.Services.AddFluentValidation(x =>
 {
@@ -29,10 +27,8 @@ builder.Services.AddDbContext<HamburgerDbContext>(options =>
 
 builder.Services.AddTransient<IMenuRepository, MenuRepository>();
 
-//var connectionString = builder.Configuration.GetConnectionString("ConStr");
-//builder.Services.AddDbContext<HamburgerDbContext>(options =>
-//	options.UseSqlServer(connectionString));
-//builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+builder.Services.AddTransient<IOrderRepository, OrderRepository>();
+
 
 builder.Services.AddTransient(typeof(IRepository<>), typeof(GenericRepository<>));
 
@@ -47,16 +43,8 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.ExpireTimeSpan = TimeSpan.FromMinutes(1);
     options.SlidingExpiration = true;
 
-    options.LoginPath = "/Home/Index"; // default u degistirme
+    options.LoginPath = "/Home/Main"; // default u degistirme
 });
-
-//builder.Services.Configure<IdentityOptions>(options =>
-//{
-//    // password customize
-//    options.Password.RequiredLength = 8;
-//    options.User.RequireUniqueEmail = true;
-//    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);
-//});
 
 builder.Services.AddRazorPages();
 
@@ -92,7 +80,11 @@ app.UseEndpoints(endpoints =>
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Main}/{id?}");
-
 app.MapRazorPages();
+
+
+//var scope = app.Services.CreateScope();
+//var userManager = (UserManager<AppUser>)scope.ServiceProvider.GetService(typeof(UserManager<AppUser>));
+//ForLogin.AddASuperUserAsync(userManager);
 
 app.Run();

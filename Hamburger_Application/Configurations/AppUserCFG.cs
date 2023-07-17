@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Hamburger_Application.Configurations
 {
-    public class AppUserCFG : IEntityTypeConfiguration<AppUser>
+    public class AppUserCfg : IEntityTypeConfiguration<AppUser>
     {
         public void Configure(EntityTypeBuilder<AppUser> builder)
         {
@@ -15,7 +15,9 @@ namespace Hamburger_Application.Configurations
             builder.Property(b => b.Address).HasMaxLength(200);
             builder.Property(b => b.Email).IsRequired();
             builder.HasIndex(b => b.Email).IsUnique();
+            builder.HasIndex(b => b.UserName).IsUnique();
             builder.Property(b => b.IsActive).HasDefaultValue(true);
+            builder.Property(b => b.IsDark).HasDefaultValue(false);
         }
     }
 }

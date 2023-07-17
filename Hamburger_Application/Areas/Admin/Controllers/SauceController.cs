@@ -3,11 +3,14 @@ using Hamburger_Application.Areas.Admin.Models.ViewModels.Hamburger;
 using Hamburger_Application.Areas.Admin.Models.ViewModels.Sauce;
 using Hamburger_Application.Entities.Concrete;
 using Hamburger_Application.Repositories.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace Hamburger_Application.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class SauceController : Controller
     {
         private readonly IRepository<Sauce> sauceRepository;
@@ -17,31 +20,33 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             this.sauceRepository = sauceRepository;
             this.mapper = mapper;
         }
+
+        [AllowAnonymous]
         public IActionResult List()
         {
             IEnumerable<Sauce> sauces = sauceRepository.GetAllTrue(true);
             return View(sauces);
         }
+
         public IActionResult Create()
         {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(CreateSauceVM sauceVM, IFormFile imageName)
+        public async Task<IActionResult> Create(CreateSauceVM sauceVM, IFormFile imgCover)
         {
             if (ModelState.IsValid)
             {
                 Sauce sauce = mapper.Map<Sauce>(sauceVM);
+                sauce.Photo = GenerateUniqueFileName(imgCover);
                 bool isAdded = sauceRepository.Add(sauce);
 
-                sauce.Photo = GenerateUniqueFileName(imageName);
-
                 FileStream file = new FileStream("wwwroot/ProductImages/Sauce1/" + sauce.Photo, FileMode.Create);
-                await imageName.CopyToAsync(file);
+                await imgCover.CopyToAsync(file);
                 if (isAdded)
                 {
                     TempData["Info"] = "Sauce is added";
-                    return View("List");
+                    return RedirectToAction("List");
                 }
                 else
                 {
@@ -50,6 +55,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             }
             return View(sauceVM);
         }
+
         public IActionResult Edit(int id)
         {
             UpdateSauceVM sauceVM = new();
@@ -57,38 +63,35 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             sauceVM = mapper.Map<UpdateSauceVM>(sauce);
             return View(sauceVM);
         }
+
         [HttpPost]
-        public async Task<IActionResult> Edit(UpdateSauceVM updateSauceVM, IFormFile ImageName)
+        public async Task<IActionResult> Edit(UpdateSauceVM updateSauceVM, IFormFile imgCover)
         {
             if (ModelState.IsValid)
             {
-                Sauce sauce = sauceRepository.GetById(updateSauceVM.Id);
+                Sauce sauce = mapper.Map<Sauce>(updateSauceVM);
+
                 if (sauce is not null)
                 {
-                    sauce = mapper.Map<Sauce>(updateSauceVM);
+                    sauce.Photo = GenerateUniqueFileName(imgCover);
                     bool isAdded = sauceRepository.Update(sauce);
 
-                    sauce.Photo = GenerateUniqueFileName(ImageName);
-
                     FileStream file = new FileStream("wwwroot/ProductImages/Sauce1/" + sauce.Photo, FileMode.Create);
-                    await ImageName.CopyToAsync(file);
+                    await imgCover.CopyToAsync(file);
                     if (isAdded)
                     {
                         TempData["Info"] = "Sauce is updated";
-                        return View("List");
                     }
                     else
                     {
                         ViewBag.Info = "Sauce cannot be updated";
+                        return View(updateSauceVM);
                     }
                 }
-                else
-                {
-                    ViewBag.Info = "Sauce cannot be founded";
-                }
             }
-            return View(updateSauceVM);
+            return RedirectToAction("List");
         }
+
         public IActionResult Delete(int id)
         {
             Sauce sauce = sauceRepository.GetById(id);

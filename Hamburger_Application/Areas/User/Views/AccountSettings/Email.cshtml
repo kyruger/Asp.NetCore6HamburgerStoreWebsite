@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = "~/Areas/User/Views/AccountLayout/Index.cshtml";
+}
+
+@model AppUserUsernameEmailVM
+
+<section class="register-photo" style="background-color: transparent; font-family:'Indie Flower'">
+    <div class="form-container d-flex" style="margin-top: 40px;">
+        <div class="image-holder; justify-content-center" style="background: url(&quot;assets/img/IINET-DOSAGE-1.jpg&quot;) left / cover no-repeat;height: 950px;">
+        </div>
+        <form asp-action="PersonalInfo" method="post" class="form-group justify-content-between text-center" style="font-family:'Indie Flower'">
+            <h2 style="color:rgb(244,147,1)">My Personal Info</h2>
+            <div class="" style="font-size:22px">
+                <input type="email" asp-for="Email" class="form-control" placeholder="Email" />
+                <input type="hidden" asp-for="UserName" />
+            </div>
+            <div asp-validation-summary="All"></div>
+            <br />
+            <div class="form-group mb-3">
+                <button class="btn btn-primary d-block w-100" id="submitButton" type="submit" style="color: rgb(255,255,255);background: rgb(244,147,1); font-family:'Indie Flower'">Save</button>
+            </div>
+            <span><a class="btn btn-outline-danger" asp-area="" asp-controller="Home" asp-action="Main" style="font-family:'Indie Flower'">Back To Home</a></span>
+        </form>
+    </div>
+</section>
+
+@section Scripts{
+    <script src="~/js/bootstrap.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+}
+

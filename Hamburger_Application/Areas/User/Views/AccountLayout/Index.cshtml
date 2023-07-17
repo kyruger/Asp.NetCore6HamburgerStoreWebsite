@@ -1,0 +1,49 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- head -->
+@await Component.InvokeAsync("_AccountLayoutHeadPartial")
+<!-- /head -->
+<body class="nav-md">
+    <!-- header -->
+    @await Component.InvokeAsync("_AccountLayoutHeaderPartial")
+    <!-- /header -->
+
+    @*<div class="container bg-body">
+        <main role="main" class="pb-3" @*style="background-color:@mainBackgroundColor"
+            <!-- sidebar -->
+            @await Component.InvokeAsync("_AccountLayoutSidebarPartial")
+            <!-- sidebar -->
+            @RenderBody()
+        </main>
+    </div>*@
+
+    <div class=" bg-body">
+        <main class="grid" @*style="background-color:@mainBackgroundColor"*@>
+            <!-- sidebar -->
+            <div class="col-6 col-md-3">
+                @await Component.InvokeAsync("_AccountLayoutSidebarPartial")
+            </div>
+            <!-- sidebar -->
+            <div class="col-md-9">
+                @RenderBody()
+            </div>
+        </main>
+    </div>
+
+    <!-- footer content -->
+    @await Component.InvokeAsync("_AccountLayoutFooterPartial")
+    <!-- /footer content -->
+
+    <!-- script content -->
+    @await Component.InvokeAsync("_AccountLayoutScriptPartial")
+
+    //@await RenderSectionAsync("Scripts", required: false)
+    <!-- /script content -->
+
+</body>
+</html>

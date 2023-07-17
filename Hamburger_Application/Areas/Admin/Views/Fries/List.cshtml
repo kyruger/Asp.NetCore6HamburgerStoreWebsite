@@ -1,78 +1,110 @@
-﻿@model IEnumerable<Fries>
-
+﻿@using Microsoft.AspNetCore.Identity;
+@model IEnumerable<Fries>
+@inject SignInManager<AppUser> signInManager
 <style>
-	.btn.btn-outline-warning:hover {
-		background-color: darkorange !important;
+	#page {
+		width: 100%;
+		box-sizing: border-box;
+		grid-template-columns: auto auto auto auto;
+		grid-template-rows: 100px auto 200px;
+		grid-template-areas:
+			"head head head head"
+			"nav main main main"
+			"foot foot foot foot";
 	}
 
-	.btn.btn-outline-danger:hover {
-		background-color: red !important;
+	main {
+		grid-area: main;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		justify-content: space-between;
+	}
+
+	.kutu {
+		perspective: 1000px; /* 3D efekti için perspektif değeri */
+		transition: transform 1s ease;
+		width: 200px;
+		height: auto;
+		box-shadow: 5px 5px 10px orange;
+		margin: 20px;
+	}
+
+	main p {
+		width: 100%;
+		text-align: center;
+		font-size: large;
+		background-color: rgb(244, 147, 1);
+		color: rgb(247,244,244);
+		font-family: Aclonica serif;
+		font-size: 25px;
+	}
+
+
+	div.kutu:hover {
+		transform: rotateY(360deg) scale(1.2);
+	}
+
+	.card-styles {
+		width: 100%;
+		height: 50px;
+		background-color: darkorange;
+		color: red;
+		cursor: pointer;
+		font-family: Aclonica serif;
+	}
+
+	.btn.btn-outline-warning:hover {
+		background-color: darkorange !important;
 	}
 
 	.btn.btn-outline-success:hover {
 		background-color: darkolivegreen !important;
 	}
 
-	.table-hover tbody tr:hover {
-		background-color: rgb(244, 147, 1);
+	.btn.btn-outline-secondary.btn-block:hover {
+		background-color: red !important;
 	}
 
-	.button-container {
-		margin-right: 20px;
+	.btn-outline-success:hover {
+		background-color: darkolivegreen;
 	}
 </style>
 
-<table class="table table-hover table-bordered  ">
-	<thead>
-		<tr>
-			<th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Photo</th>
-			<th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Name</th>
-			<th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Piece</th>
-			<th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Size</th>
-			<th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Price</th>
-			<th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Choose Your Transaction</th>
-		</tr>
-	</thead>
-	<tbody>
-		@foreach (var item in Model)
+<section id="page">
+	<main>
+		<p class="text-center" style="text-align: center; font-family: Aclonica serif;">Fries</p>
+		@if (TempData["Info"] is not null)
 		{
-			<tr>
-				<td class="text-center">
-					<img src="/ProductsImages/Fries1/@item.Photo" width="90" height="140">
-				</td>
-				<td>
-					<div class="text-container">
-						@item.Name
-					</div>
-				</td>
-				<td>
-					<div class="text-container">
-						@item.Piece
-					</div>
-				</td>
-				<td>
-					<div class="text-container">
-						@item.Size
-					</div>
-				</td>
-				<td>
-					<div class="text-container">
-						@item.Price ₺
-					</div>
-				</td>
-				<td>
-					<div class="d-flex">
-						<a asp-action="Edit" asp-controller="Fries" asp-area="Admin" asp-route-id="@item.Id" class="btn btn-outline-warning button-container ">Update Fries</a>
-						<a asp-action="Delete" asp-controller="Fries" asp-area="Admin" asp-route-id="@item.Id" class="btn btn-outline-danger ">Delete Fries</a>
-					</div>
-				</td>
-			</tr>
+			<h3 class="text-center text-danger" style="text-align: center; font-family: Aclonica serif;">@TempData["Info"]</h3>
 		}
-		<tr>
-			<td colspan="7" class="text-center">
-				<a asp-action="Create" asp-controller="Fries" asp-area="Admin" class="btn btn-outline-success">Add Fries</a>
-			</td>
-		</tr>
-	</tbody>
-</table>
+		@foreach (Fries fries in Model)
+		{
+			<div class="kutu">
+				<img src="/ProductImages/Fries1/@fries.Photo" width="90" height="140" style="width: 100%" />
+				<h6 style="text-align: center; font-family: Aclonica serif;">@fries.Name-@fries.Size</h6>
+				<p>@fries.Price ₺</p>
+				<p>
+					<h6>
+						@if (User.IsInRole("Admin"))
+						{
+							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@fries.Id" asp-controller="Fries" asp-action="Edit">Edit Fries</a>
+							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@fries.Id" asp-controller="Fries" asp-action="Delete">Delete Fries</a>
+						}
+						else if (User.IsInRole("User"))
+						{
+							<a class="btn btn-outline-warning button-container card-styles" value="Add to Carts" asp-area="User" asp-controller="Order" asp-action="AddToCart" asp-route-id="@fries.Id" asp-route-name="fries">Add to Carts</a>
+						}
+					</h6>
+				</p>
+			</div>
+		}
+	</main>
+	@if (User.IsInRole("Admin"))
+	{
+		<div class="text-center">
+			<a asp-action="Create" asp-controller="Fries" class="btn btn-outline-success"> New Create Fries</a>
+		</div>
+	}
+</section>
 

@@ -4,47 +4,46 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Hamburger_Application.Configurations
 {
-    public class DessertCFG : IEntityTypeConfiguration<Dessert>
+    public class DessertCfg : IEntityTypeConfiguration<Dessert>
     {
         public void Configure(EntityTypeBuilder<Dessert> builder)
         {
-            builder.Property(a => a.isActive).HasDefaultValue(true);
+            builder.Property(b => b.Name).HasMaxLength(30);
+            builder.HasIndex(b => b.Name).IsUnique();
+            builder.Property(b => b.Piece).HasDefaultValue(1);
+            builder.Property(b => b.IsActive).HasDefaultValue(true);
 
-            builder.HasData(
+            builder.HasData
+                (
                 new Dessert
                 {
                     Id = 1,
                     Name = "Brownie",
-                    Price = 50,
-                    Piece = 1
+                    Price = 50
                 },
                 new Dessert
                 {
                     Id = 2,
                     Name = "Milkshake",
-                    Price = 40,
-                    Piece = 1
+                    Price = 40
                 },
                 new Dessert
                 {
                     Id = 3,
                     Name = "Cheesecake",
-                    Price = 60,
-                    Piece = 1
+                    Price = 60
                 },
                 new Dessert
                 {
                     Id = 4,
                     Name = "Ice Cream",
-                    Price = 30,
-                    Piece = 1
+                    Price = 30
                 },
                 new Dessert
                 {
                     Id = 5,
                     Name = "Puding",
-                    Price = 40,
-                    Piece = 1
+                    Price = 40
                 }
                 );
         }

@@ -4,23 +4,25 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Hamburger_Application.Configurations
 {
-    public class MenuCFG : IEntityTypeConfiguration<Menu>
+    public class MenuCfg : IEntityTypeConfiguration<Menu>
     {
         public void Configure(EntityTypeBuilder<Menu> builder)
         {
-            builder.HasOne(a => a.Dessert).WithOne(a => a.Menu).HasForeignKey<Dessert>(a => a.MenuId).OnDelete(DeleteBehavior.SetNull);
-            builder.HasOne(a => a.Fries).WithOne(a => a.Menu).HasForeignKey<Fries>(a => a.MenuId).OnDelete(DeleteBehavior.SetNull);
-            builder.HasOne(a => a.Drink).WithOne(a => a.Menu).HasForeignKey<Drink>(a => a.MenuId).OnDelete(DeleteBehavior.SetNull);
-            builder.HasOne(a => a.Hamburger).WithOne(a => a.Menu).HasForeignKey<Hamburger>(a => a.MenuId).OnDelete(DeleteBehavior.SetNull);
-            builder.Property(a => a.isActive).HasDefaultValue(true);
+            builder.Property(b => b.Name).HasMaxLength(100);
+            builder.HasIndex(b => b.Name).IsUnique();
+            builder.Property(b => b.Piece).HasDefaultValue(1);
+            builder.HasOne(b => b.Fries).WithOne(b => b.Menu).HasForeignKey<Fries>(b => b.MenuId).OnDelete(DeleteBehavior.SetNull);
+            builder.HasOne(b => b.Drink).WithOne(b => b.Menu).HasForeignKey<Drink>(b => b.MenuId).OnDelete(DeleteBehavior.SetNull);
+            builder.HasOne(b => b.Hamburger).WithOne(b => b.Menu).HasForeignKey<Hamburger>(b => b.MenuId).OnDelete(DeleteBehavior.SetNull);
+            builder.Property(b => b.IsActive).HasDefaultValue(true);
 
-            builder.HasData(
+            builder.HasData
+                (
                 new Menu
                 {
                     Id = 1,
                     Name = "Whopper Menu",
                     Price = 150,
-                    Piece = 1,
                     FriesId = 1,
                     DrinkId = 1,
                     HamburgerId = 1
@@ -30,7 +32,6 @@ namespace Hamburger_Application.Configurations
                     Id = 2,
                     Name = "Texas SmokeHouse Menu",
                     Price = 170,
-                    Piece = 1,
                     FriesId = 1,
                     DrinkId = 1,
                     HamburgerId = 2
@@ -40,7 +41,6 @@ namespace Hamburger_Application.Configurations
                     Id = 3,
                     Name = "Fish Royale Menu",
                     Price = 140,
-                    Piece = 1,
                     FriesId = 1,
                     DrinkId = 1,
                     HamburgerId = 3
@@ -50,7 +50,6 @@ namespace Hamburger_Application.Configurations
                     Id = 4,
                     Name = "Big King Menu",
                     Price = 150,
-                    Piece = 1,
                     FriesId = 1,
                     DrinkId = 1,
                     HamburgerId = 4
@@ -60,7 +59,6 @@ namespace Hamburger_Application.Configurations
                     Id = 5,
                     Name = "Chicken Royale Menu",
                     Price = 120,
-                    Piece = 1,
                     FriesId = 1,
                     DrinkId = 1,
                     HamburgerId = 5

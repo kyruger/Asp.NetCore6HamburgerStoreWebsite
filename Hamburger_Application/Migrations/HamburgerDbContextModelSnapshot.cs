@@ -58,16 +58,16 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "3770ba9d-a204-4758-892d-f882ecf84773",
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 128, DateTimeKind.Local).AddTicks(7530),
+                            ConcurrencyStamp = "5f3c0dc0-b257-41d7-8b48-b56fa9822170",
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 285, DateTimeKind.Local).AddTicks(9676),
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "8d463fd5-65f2-469f-b23c-f27eef8a6a9c",
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 128, DateTimeKind.Local).AddTicks(7553),
+                            ConcurrencyStamp = "9ae81ee4-d7d8-449e-afe2-581216bce293",
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 285, DateTimeKind.Local).AddTicks(9692),
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -114,7 +114,9 @@ namespace Hamburger_Application.Migrations
                         .HasDefaultValue(true);
 
                     b.Property<bool>("IsDark")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -167,6 +169,10 @@ namespace Hamburger_Application.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
+                    b.HasIndex("UserName")
+                        .IsUnique()
+                        .HasFilter("[UserName] IS NOT NULL");
+
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
@@ -181,11 +187,15 @@ namespace Hamburger_Application.Migrations
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("MenuId")
-                        .HasColumnType("int");
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<int?>("OrderId")
                         .HasColumnType("int");
@@ -193,22 +203,18 @@ namespace Hamburger_Application.Migrations
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Piece")
-                        .HasColumnType("int");
+                    b.Property<int?>("Piece")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(1);
 
                     b.Property<decimal?>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<bool>("isActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
-
                     b.HasKey("Id");
 
-                    b.HasIndex("MenuId")
-                        .IsUnique()
-                        .HasFilter("[MenuId] IS NOT NULL");
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.HasIndex("OrderId");
 
@@ -218,47 +224,42 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 129, DateTimeKind.Local).AddTicks(1295),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(3727),
+                            IsActive = false,
                             Name = "Brownie",
-                            Piece = 1,
-                            Price = 50m,
-                            isActive = false
+                            Price = 50m
                         },
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 129, DateTimeKind.Local).AddTicks(1305),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(3734),
+                            IsActive = false,
                             Name = "Milkshake",
-                            Piece = 1,
-                            Price = 40m,
-                            isActive = false
+                            Price = 40m
                         },
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 129, DateTimeKind.Local).AddTicks(1306),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(3736),
+                            IsActive = false,
                             Name = "Cheesecake",
-                            Piece = 1,
-                            Price = 60m,
-                            isActive = false
+                            Price = 60m
                         },
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 129, DateTimeKind.Local).AddTicks(1307),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(3737),
+                            IsActive = false,
                             Name = "Ice Cream",
-                            Piece = 1,
-                            Price = 30m,
-                            isActive = false
+                            Price = 30m
                         },
                         new
                         {
                             Id = 5,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 129, DateTimeKind.Local).AddTicks(1308),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(3738),
+                            IsActive = false,
                             Name = "Puding",
-                            Piece = 1,
-                            Price = 40m,
-                            isActive = false
+                            Price = 40m
                         });
                 });
 
@@ -273,11 +274,18 @@ namespace Hamburger_Application.Migrations
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
                     b.Property<int?>("MenuId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<int?>("OrderId")
                         .HasColumnType("int");
@@ -285,8 +293,10 @@ namespace Hamburger_Application.Migrations
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Piece")
-                        .HasColumnType("int");
+                    b.Property<int?>("Piece")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(1);
 
                     b.Property<decimal?>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -296,16 +306,14 @@ namespace Hamburger_Application.Migrations
                         .HasColumnType("int")
                         .HasDefaultValue(1);
 
-                    b.Property<bool>("isActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
-
                     b.HasKey("Id");
 
                     b.HasIndex("MenuId")
                         .IsUnique()
                         .HasFilter("[MenuId] IS NOT NULL");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.HasIndex("OrderId");
 
@@ -315,52 +323,47 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 129, DateTimeKind.Local).AddTicks(2083),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(5514),
+                            IsActive = false,
                             Name = "Coke",
-                            Piece = 1,
                             Price = 40m,
-                            Size = 0,
-                            isActive = false
+                            Size = 0
                         },
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 129, DateTimeKind.Local).AddTicks(2090),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(5519),
+                            IsActive = false,
                             Name = "Ayran",
-                            Piece = 1,
                             Price = 25m,
-                            Size = 0,
-                            isActive = false
+                            Size = 0
                         },
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 129, DateTimeKind.Local).AddTicks(2092),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(5520),
+                            IsActive = false,
                             Name = "Coke Zero",
-                            Piece = 1,
                             Price = 45m,
-                            Size = 0,
-                            isActive = false
+                            Size = 0
                         },
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 129, DateTimeKind.Local).AddTicks(2095),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(5521),
+                            IsActive = false,
                             Name = "Cold Tea",
-                            Piece = 1,
                             Price = 35m,
-                            Size = 0,
-                            isActive = false
+                            Size = 0
                         },
                         new
                         {
                             Id = 5,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 129, DateTimeKind.Local).AddTicks(2097),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(5523),
+                            IsActive = false,
                             Name = "Mineral Water",
-                            Piece = 1,
                             Price = 15m,
-                            Size = 0,
-                            isActive = false
+                            Size = 0
                         });
                 });
 
@@ -375,11 +378,18 @@ namespace Hamburger_Application.Migrations
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
                     b.Property<int?>("MenuId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<int?>("OrderId")
                         .HasColumnType("int");
@@ -387,8 +397,10 @@ namespace Hamburger_Application.Migrations
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Piece")
-                        .HasColumnType("int");
+                    b.Property<int?>("Piece")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(1);
 
                     b.Property<decimal?>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -398,16 +410,14 @@ namespace Hamburger_Application.Migrations
                         .HasColumnType("int")
                         .HasDefaultValue(1);
 
-                    b.Property<bool>("isActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
-
                     b.HasKey("Id");
 
                     b.HasIndex("MenuId")
                         .IsUnique()
                         .HasFilter("[MenuId] IS NOT NULL");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.HasIndex("OrderId");
 
@@ -417,42 +427,38 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 129, DateTimeKind.Local).AddTicks(3271),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(7150),
+                            IsActive = false,
                             Name = "Potato",
-                            Piece = 1,
                             Price = 20m,
-                            Size = 0,
-                            isActive = false
+                            Size = 0
                         },
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 129, DateTimeKind.Local).AddTicks(3276),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(7218),
+                            IsActive = false,
                             Name = "Onion Ring",
-                            Piece = 1,
                             Price = 22m,
-                            Size = 0,
-                            isActive = false
+                            Size = 0
                         },
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 129, DateTimeKind.Local).AddTicks(3277),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(7220),
+                            IsActive = false,
                             Name = "Nugget",
-                            Piece = 1,
                             Price = 25m,
-                            Size = 0,
-                            isActive = false
+                            Size = 0
                         },
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 129, DateTimeKind.Local).AddTicks(3278),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(7221),
+                            IsActive = false,
                             Name = "Chicken Tenders",
-                            Piece = 1,
                             Price = 25m,
-                            Size = 0,
-                            isActive = false
+                            Size = 0
                         });
                 });
 
@@ -467,11 +473,18 @@ namespace Hamburger_Application.Migrations
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
                     b.Property<int?>("MenuId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int?>("OrderId")
                         .HasColumnType("int");
@@ -479,22 +492,22 @@ namespace Hamburger_Application.Migrations
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Piece")
-                        .HasColumnType("int");
+                    b.Property<int?>("Piece")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(1);
 
                     b.Property<decimal?>("Price")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<bool>("isActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
 
                     b.HasKey("Id");
 
                     b.HasIndex("MenuId")
                         .IsUnique()
                         .HasFilter("[MenuId] IS NOT NULL");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.HasIndex("OrderId");
 
@@ -504,47 +517,42 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 129, DateTimeKind.Local).AddTicks(3892),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(8876),
+                            IsActive = false,
                             Name = "Whopper",
-                            Piece = 1,
-                            Price = 120m,
-                            isActive = false
+                            Price = 120m
                         },
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 129, DateTimeKind.Local).AddTicks(3896),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(8880),
+                            IsActive = false,
                             Name = "Texas SmokeHouse",
-                            Piece = 1,
-                            Price = 140m,
-                            isActive = false
+                            Price = 140m
                         },
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 129, DateTimeKind.Local).AddTicks(3897),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(8881),
+                            IsActive = false,
                             Name = "Fish Royale",
-                            Piece = 1,
-                            Price = 110m,
-                            isActive = false
+                            Price = 110m
                         },
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 129, DateTimeKind.Local).AddTicks(3898),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(8882),
+                            IsActive = false,
                             Name = "Big King",
-                            Piece = 1,
-                            Price = 150m,
-                            isActive = false
+                            Price = 150m
                         },
                         new
                         {
                             Id = 5,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 129, DateTimeKind.Local).AddTicks(3899),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(8885),
+                            IsActive = false,
                             Name = "Chicken Royale",
-                            Piece = 1,
-                            Price = 95m,
-                            isActive = false
+                            Price = 95m
                         });
                 });
 
@@ -559,9 +567,6 @@ namespace Hamburger_Application.Migrations
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("DessertId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("DrinkId")
                         .HasColumnType("int");
 
@@ -571,8 +576,15 @@ namespace Hamburger_Application.Migrations
                     b.Property<int?>("HamburgerId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<int?>("OrderId")
                         .HasColumnType("int");
@@ -580,18 +592,18 @@ namespace Hamburger_Application.Migrations
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Piece")
-                        .HasColumnType("int");
+                    b.Property<int?>("Piece")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(1);
 
                     b.Property<decimal?>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<bool>("isActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
-
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.HasIndex("OrderId");
 
@@ -601,62 +613,57 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 131, DateTimeKind.Local).AddTicks(6346),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(6089),
                             DrinkId = 1,
                             FriesId = 1,
                             HamburgerId = 1,
+                            IsActive = false,
                             Name = "Whopper Menu",
-                            Piece = 1,
-                            Price = 150m,
-                            isActive = false
+                            Price = 150m
                         },
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 131, DateTimeKind.Local).AddTicks(6361),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(6097),
                             DrinkId = 1,
                             FriesId = 1,
                             HamburgerId = 2,
+                            IsActive = false,
                             Name = "Texas SmokeHouse Menu",
-                            Piece = 1,
-                            Price = 170m,
-                            isActive = false
+                            Price = 170m
                         },
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 131, DateTimeKind.Local).AddTicks(6362),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(6099),
                             DrinkId = 1,
                             FriesId = 1,
                             HamburgerId = 3,
+                            IsActive = false,
                             Name = "Fish Royale Menu",
-                            Piece = 1,
-                            Price = 140m,
-                            isActive = false
+                            Price = 140m
                         },
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 131, DateTimeKind.Local).AddTicks(6364),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(6101),
                             DrinkId = 1,
                             FriesId = 1,
                             HamburgerId = 4,
+                            IsActive = false,
                             Name = "Big King Menu",
-                            Piece = 1,
-                            Price = 150m,
-                            isActive = false
+                            Price = 150m
                         },
                         new
                         {
                             Id = 5,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 131, DateTimeKind.Local).AddTicks(6365),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(6102),
                             DrinkId = 1,
                             FriesId = 1,
                             HamburgerId = 5,
+                            IsActive = false,
                             Name = "Chicken Royale Menu",
-                            Piece = 1,
-                            Price = 120m,
-                            isActive = false
+                            Price = 120m
                         });
                 });
 
@@ -671,31 +678,22 @@ namespace Hamburger_Application.Migrations
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("IsAccepted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
 
-                    b.Property<string>("Photo")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
-                    b.Property<int>("Piece")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
-
-                    b.Property<decimal?>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserId1")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("isActive")
-                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Orders");
                 });
@@ -711,11 +709,15 @@ namespace Hamburger_Application.Migrations
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("MenuId")
-                        .HasColumnType("int");
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<int?>("OrderId")
                         .HasColumnType("int");
@@ -723,20 +725,18 @@ namespace Hamburger_Application.Migrations
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Piece")
-                        .HasColumnType("int");
+                    b.Property<int?>("Piece")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(1);
 
                     b.Property<decimal?>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<bool>("isActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
-
                     b.HasKey("Id");
 
-                    b.HasIndex("MenuId");
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.HasIndex("OrderId");
 
@@ -746,38 +746,34 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 131, DateTimeKind.Local).AddTicks(7124),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(8327),
+                            IsActive = false,
                             Name = "Ranch",
-                            Piece = 1,
-                            Price = 15m,
-                            isActive = false
+                            Price = 15m
                         },
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 131, DateTimeKind.Local).AddTicks(7128),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(8331),
+                            IsActive = false,
                             Name = "Ketchup",
-                            Piece = 1,
-                            Price = 10m,
-                            isActive = false
+                            Price = 10m
                         },
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 131, DateTimeKind.Local).AddTicks(7129),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(8332),
+                            IsActive = false,
                             Name = "Mayonnaise",
-                            Piece = 1,
-                            Price = 10m,
-                            isActive = false
+                            Price = 10m
                         },
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2023, 7, 14, 19, 19, 57, 131, DateTimeKind.Local).AddTicks(7263),
+                            CreationTime = new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(8333),
+                            IsActive = false,
                             Name = "Barbeque",
-                            Piece = 1,
-                            Price = 15m,
-                            isActive = false
+                            Price = 15m
                         });
                 });
 
@@ -886,16 +882,9 @@ namespace Hamburger_Application.Migrations
 
             modelBuilder.Entity("Hamburger_Application.Entities.Concrete.Dessert", b =>
                 {
-                    b.HasOne("Hamburger_Application.Entities.Concrete.Menu", "Menu")
-                        .WithOne("Dessert")
-                        .HasForeignKey("Hamburger_Application.Entities.Concrete.Dessert", "MenuId")
-                        .OnDelete(DeleteBehavior.SetNull);
-
                     b.HasOne("Hamburger_Application.Entities.Concrete.Order", "Order")
                         .WithMany("Desserts")
                         .HasForeignKey("OrderId");
-
-                    b.Navigation("Menu");
 
                     b.Navigation("Order");
                 });
@@ -961,7 +950,7 @@ namespace Hamburger_Application.Migrations
                 {
                     b.HasOne("Hamburger_Application.Entities.Concrete.AppUser", "User")
                         .WithMany("Orders")
-                        .HasForeignKey("UserId1")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -970,15 +959,9 @@ namespace Hamburger_Application.Migrations
 
             modelBuilder.Entity("Hamburger_Application.Entities.Concrete.Sauce", b =>
                 {
-                    b.HasOne("Hamburger_Application.Entities.Concrete.Menu", "Menu")
-                        .WithMany()
-                        .HasForeignKey("MenuId");
-
                     b.HasOne("Hamburger_Application.Entities.Concrete.Order", "Order")
                         .WithMany("Sauces")
                         .HasForeignKey("OrderId");
-
-                    b.Navigation("Menu");
 
                     b.Navigation("Order");
                 });
@@ -1041,8 +1024,6 @@ namespace Hamburger_Application.Migrations
 
             modelBuilder.Entity("Hamburger_Application.Entities.Concrete.Menu", b =>
                 {
-                    b.Navigation("Dessert");
-
                     b.Navigation("Drink");
 
                     b.Navigation("Fries");

@@ -8,6 +8,6 @@ namespace Hamburger_Application.Areas.Admin.Models.ViewModels.Menu
         public SelectList Fries { get; set; }
         public SelectList Drinks { get; set; }
         public SelectList Hamburgers { get; set; }
-        public SelectList Desserts { get; set; }
+        public IFormFile imgCover { get; set; }
     }
 }

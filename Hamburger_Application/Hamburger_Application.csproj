@@ -8,6 +8,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Admin\Data\**" />
+    <Compile Remove="Areas\User\Data\**" />
+    <Compile Remove="wwwroot\ProductImages\Dessert\**" />
+    <Compile Remove="wwwroot\ProductImages\Menu\**" />
+    <Content Remove="Areas\Admin\Data\**" />
+    <Content Remove="Areas\User\Data\**" />
+    <Content Remove="wwwroot\ProductImages\Dessert\**" />
+    <Content Remove="wwwroot\ProductImages\Menu\**" />
+    <EmbeddedResource Remove="Areas\Admin\Data\**" />
+    <EmbeddedResource Remove="Areas\User\Data\**" />
+    <EmbeddedResource Remove="wwwroot\ProductImages\Dessert\**" />
+    <EmbeddedResource Remove="wwwroot\ProductImages\Menu\**" />
+    <None Remove="Areas\Admin\Data\**" />
+    <None Remove="Areas\User\Data\**" />
+    <None Remove="wwwroot\ProductImages\Dessert\**" />
+    <None Remove="wwwroot\ProductImages\Menu\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.6.0" />
@@ -25,13 +44,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\User\Data\" />
-    <Folder Include="wwwroot\ProductImages\Dessert\" />
-    <Folder Include="wwwroot\ProductImages\Drink\" />
     <Folder Include="wwwroot\ProductImages\Hamburger1\" />
     <Folder Include="wwwroot\ProductImages\Fries1\" />
-    <Folder Include="wwwroot\ProductImages\Menu\" />
+    <Folder Include="wwwroot\ProductImages\Dessert1\" />
+    <Folder Include="wwwroot\ProductImages\Drink\" />
+    <Folder Include="wwwroot\ProductImages\Menu1\" />
     <Folder Include="wwwroot\ProductImages\Sauce1\" />
   </ItemGroup>
 

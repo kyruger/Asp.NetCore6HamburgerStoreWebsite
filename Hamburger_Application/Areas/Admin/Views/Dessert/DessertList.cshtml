@@ -1,46 +1,124 @@
-﻿
-
+﻿@using Microsoft.AspNetCore.Identity;
 @model DessertListVM
+@inject SignInManager<AppUser> signInManager
+<style>
+	#page {
+		width: 100%;
+		box-sizing: border-box;
+		grid-template-columns: auto auto auto auto;
+		grid-template-rows: 100px auto 200px;
+		grid-template-areas:
+			"head head head head"
+			"nav main main main"
+			"foot foot foot foot";
+	}
+
+	main {
+		grid-area: main;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		justify-content: space-between;
+	}
+
+	.kutu {
+		perspective: 1000px; /* 3D efekti için perspektif değeri */
+		transition: transform 1s ease;
+		width: 200px;
+		height: auto;
+		box-shadow: 5px 5px 10px orange;
+		margin: 20px;
+	}
+
+	main p {
+		width: 100%;
+		text-align: center;
+		font-size: large;
+		background-color: rgb(244, 147, 1);
+		color: rgb(247,244,244);
+		font-family: Aclonica serif;
+		font-size: 25px;
+	}
 
 
-<h3>Desserts</h3>
+	div.kutu:hover {
+		transform: rotateY(360deg) scale(1.2);
+	}
 
+	.card-styles {
+		width: 100%;
+		height: 50px;
+		background-color: darkorange;
+		color: red;
+		cursor: pointer;
+		font-family: Aclonica serif;
+	}
 
-<div class="row text-center justify-content-center">
+	.btn.btn-outline-warning:hover {
+		background-color: darkorange !important;
+	}
 
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Dessert Name</th>
-                <th>Dessert CreationTime</th>
-                <th>Dessert Activity</th>
-                <th>Dessert Price</th>
-                <th>Dessert Piece</th>
-                <th>Dessert Photo</th>
-                <th>Update</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody>
+	.btn.btn-outline-success:hover {
+		background-color: darkolivegreen !important;
+	}
 
-            @foreach (Dessert dessert in Model.Desserts)
-            {
-                <tr>
-                    <td>@dessert.Name</td>
-                    <td>@dessert.CreationTime</td>
-                    <td>@dessert.isActive</td>
-                    <td>@dessert.Price</td>
-                    <td>@dessert.Piece</td>
-                    <td><img src="/ProductImages/Dessert/@dessert.Photo"/></td>
-                    <td>
-                        <a asp-action="Update" class="btn btn-primary" asp-route-id="@dessert.Id">Güncelle</a>
-                    </td>
-                    <td>
-                        <a asp-action="Delete" class="btn btn-primary" asp-route-id="@dessert.Id">Sil</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    <a asp-action="Create">Create Dessert</a>
-</div>
+	.btn.btn-outline-secondary.btn-block:hover {
+		background-color: red !important;
+	}
+
+	.btn-outline-success:hover {
+		background-color: darkolivegreen;
+	}
+</style>
+
+<section id="page">
+	<main>
+		<p class="text-center" style="text-align: center; font-family: Aclonica serif;">Desserts</p>
+		@if (TempData["Info"] is not null)
+		{
+			<h3 class="text-center text-danger" style="text-align: center; font-family: Aclonica serif;">@TempData["Info"]</h3>
+		}
+		@foreach (Dessert dessert in Model.Desserts)
+		{
+			<div class="kutu">
+				<img src="/ProductImages/Dessert1/@dessert.Photo" width="90" height="140" style="width: 100%" />
+				<h6 style="text-align: center; font-family: Aclonica serif;">@dessert.Name</h6>
+				<p>@dessert.Price ₺</p>
+				<p>
+					<h6>
+						@if (User.IsInRole("Admin"))
+						{
+							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@dessert.Id" asp-controller="Dessert" asp-action="Update" asp-area="Admin">Edit Dessert</a>
+							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@dessert.Id" asp-controller="Dessert" asp-action="Delete">Delete Dessert</a>
+						}
+						else if (User.IsInRole("User"))
+						{
+							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@dessert.Id" value="Add to Carts" asp-controller="Order" asp-action="AddToCart" asp-area="User" asp-route-name="dessert">Add to Carts</a>
+						}
+					</h6>
+				</p>
+			</div>
+		}
+	</main>
+	@if (User.IsInRole("Admin"))
+	{
+		<div class="text-center">
+			<a asp-action="Create" asp-controller="Dessert" class="btn btn-outline-success"> New Create Dessert</a>
+		</div>
+	}
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+</section>
+

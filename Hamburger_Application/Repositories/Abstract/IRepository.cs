@@ -13,8 +13,5 @@ namespace Hamburger_Application.Repositories.Abstract
 
         T GetById(int id);
         IEnumerable<T> GetWhere(Expression<Func<T, bool>> expression);
-
-
-        //void AddPhoto(BaseEntity entity, IFormFile formFile);
     }
 }

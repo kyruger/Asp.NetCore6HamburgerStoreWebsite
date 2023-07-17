@@ -7,8 +7,8 @@ namespace Hamburger_Application.Validations.Menu
 	{
         public CreateMenuVMValidator()
         {
-			RuleFor(f => f.Menu.Name).NotEmpty();
-			RuleFor(f => f.Menu.Price).NotEmpty().GreaterThan(0).WithMessage("Price cannot be a negative value");
+            RuleFor(f => f.Menu.Name).NotEmpty().MaximumLength(30).WithMessage("Menu name must not be empty & maximum characters must be 100");
+            RuleFor(f => f.Menu.Price).NotEmpty().GreaterThan(0).WithMessage("Price cannot be a negative value");
 			RuleFor(f => f.Menu.Photo).Must(BeValidImageFormat).WithMessage("Invalid photo format. Only JPEG, JPG and PNG formats are allowed.");
 			RuleFor(f=>f.Menu.Piece).NotEmpty().GreaterThan(0).WithMessage("Priece cannot be a negative value");
 		}

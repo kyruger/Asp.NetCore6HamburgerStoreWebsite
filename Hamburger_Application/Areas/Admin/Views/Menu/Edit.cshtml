@@ -1,60 +1,63 @@
 ﻿@model CreateMenuVM
 
 <style>
-	.btn.btn-outline-success:hover {
-		background-color: darkolivegreen !important;
-	}
+    .btn.btn-outline-warning:hover {
+        background-color: darkorange !important;
+    }
 
-	.btn.btn-outline-secondary.btn-block:hover {
-		background-color: red !important;
-	}
+    .btn.btn-outline-success:hover {
+        background-color: darkolivegreen !important;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: rgb(244, 147, 1);
+    }
+
+    .btn.btn-outline-secondary.btn-block:hover {
+        background-color: red !important;
+    }
 </style>
 
 <form method="post" asp-action="Edit" asp-controller="Menu" enctype="multipart/form-data">
-	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-	<input type="hidden" asp-for="Menu.Id" />
-	<div>
-		<label>Name:</label>
-		<input asp-for="Menu.Name" class="form-control" placeholder="Menu.Name"/>
-		<span asp-validation-for="Menu.Name" style="color:darkred" />
-	</div>
-	<div>
-		<label>Piece</label>
-		<input asp-for="Menu.Piece" class="form-control" placeholder="Menu.Piece"/>
-		<span asp-validation-for="Menu.Piece" style="color:darkred" />
-	</div>
-	<div>
-		<label>Price:</label>
-		<input asp-for="Menu.Price" class="form-control" placeholder="Menu.Price"/>
-		<span asp-validation-for="Menu.Price" style="color:darkred" />
-	</div>
-	<div class="form-group">
-		<label asp-for="Menu.Photo" class="control-label"></label>
-		<input asp-for="Menu.Photo" class="form-control" type="file" name="imageName" accept=".jpg,.png,.jpeg" placeholder="Menu.Photo"/>
-		<span asp-validation-for="Menu.Photo" class="text-danger"></span>
-	</div>
-	<div class="form-group">
-		<label>Hamburger Name:</label>
-		<select asp-for="Menu.HamburgerId" class="form-control"  asp-items="Model.Hamburgers"></select>
-	</div>
-	<div class="form-group">
-		<label>Fries Name:</label>
-		<select asp-for="Menu.FriesId" class="form-control" asp-items="Model.Fries"></select>
-	</div>
-	<div class="form-group">
-		<label>Drink Name:</label>
-		<select asp-for="Menu.DrinkId" class="form-control" asp-items="Model.Drinks"></select>
-	</div>
-	<div class="form-group">
-		<label>Dessert Name:</label>
-		<select asp-for="Menu.DessertId" class="form-control" asp-items="Model.Desserts"></select>
-	</div>
-	<div class="text-center">
-		<button type="submit" class="btn btn-outline-success">Save</button>
-		<a asp-action="List" asp-controller="Menu" class="btn btn-outline-secondary btn-block">Cancel</a>
-	</div>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Menu.Id" />
+    <div>
+        <label>Name:</label>
+        <input asp-for="Menu.Name" class="form-control" placeholder="Menu.Name" />
+        <span asp-validation-for="Menu.Name" style="color:darkred" />
+    </div>
+    <div>
+        <label>Piece</label>
+        <input asp-for="Menu.Piece" class="form-control" placeholder="Menu.Piece" />
+        <span asp-validation-for="Menu.Piece" style="color:darkred" />
+    </div>
+    <div>
+        <label>Price:</label>
+        <input asp-for="Menu.Price" class="form-control" placeholder="Menu.Price" />
+        <span asp-validation-for="Menu.Price" style="color:darkred" />
+    </div>
+    <div class="form-group">
+        <label class="control-label">Photo</label>
+        <input class="form-control" type="file" name="imgCover" accept=".jpg,.png,.jpeg" />
+    </div>
+    <div class="form-group">
+        <label>Hamburger Name:</label>
+        <select asp-for="Menu.HamburgerId" class="form-control" asp-items="Model.Hamburgers"></select>
+    </div>
+    <div class="form-group">
+        <label>Fries Name:</label>
+        <select asp-for="Menu.FriesId" class="form-control" asp-items="Model.Fries"></select>
+    </div>
+    <div class="form-group">
+        <label>Drink Name:</label>
+        <select asp-for="Menu.DrinkId" class="form-control" asp-items="Model.Drinks"></select>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-outline-success">Save</button>
+        <a asp-action="List" asp-controller="Menu" class="btn btn-outline-secondary btn-block">Cancel</a>
+    </div>
 </form>
 
 @section Scripts{
-	<partial name="_ValidationScriptsPartial" />
+    <partial name="_ValidationScriptsPartial" />
 }

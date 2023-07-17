@@ -1,13 +1,16 @@
 ﻿using AutoMapper;
 using Hamburger_Application.Areas.Admin.Models;
 using Hamburger_Application.Entities.Concrete;
+using Hamburger_Application.Entities.Enum;
 using Hamburger_Application.Repositories.Abstract;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Hamburger_Application.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    //[Authorize(Roles = "Admin")]
     public class DessertController : Controller
     {
         private readonly IRepository<Dessert> dessertRepository;
@@ -19,40 +22,41 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             this.mapper = mapper;
         }
 
+        [AllowAnonymous]
         public IActionResult DessertList()
         {
             DessertListVM dessertListVM = new DessertListVM();
             dessertListVM.Desserts = dessertRepository.GetAllTrue(true).ToList();
             return View(dessertListVM);
         }
+
         public IActionResult Create()
         {
             return View();
         }
+
+
         [HttpPost]
-        [Authorize]
         public async Task<IActionResult> Create(DessertCreateVM createVM, IFormFile imgCover)
         {
             if (ModelState.IsValid)
             {
                 Dessert dessert = mapper.Map<Dessert>(createVM);
+                dessert.Photo = GenerateUniqueFileName(imgCover);
                 bool isAdded = dessertRepository.Add(dessert);
 
-                dessert.Photo = GenerateUniqueFileName(imgCover);
-                FileStream stream = new FileStream("wwwroot/ProductImages/Dessert/" + dessert.Photo, FileMode.Create);
+                FileStream stream = new FileStream("wwwroot/ProductImages/Dessert1/" + dessert.Photo, FileMode.Create);
                 await imgCover.CopyToAsync(stream);
                 if (isAdded)
                 {
-                    TempData["info"] = "Dessert Created";
+                    TempData["Info"] = "Dessert Created";
                     return RedirectToAction("DessertList");
                 }
-                ViewBag.info = "Failed to Create dessert";
+                ViewBag.Info = "Failed to Create dessert";
             }
-
             return View(createVM);
         }
 
-        [Authorize]
         public IActionResult Update(int id)
         {
             Dessert dessert = new Dessert();
@@ -62,43 +66,41 @@ namespace Hamburger_Application.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         public async Task<IActionResult> Update(DessertUpdateVM updateVM, IFormFile imgCover)
         {
             if (ModelState.IsValid)
             {
-                Dessert dessert = mapper.Map<Dessert>(updateVM);
-
-                bool isUpdated = dessertRepository.Update(dessert);
-
-                dessert.Photo = GenerateUniqueFileName(imgCover);
-                FileStream stream = new FileStream("wwwroot/ProductImages/Dessert/" + dessert.Photo, FileMode.Create);
-                await imgCover.CopyToAsync(stream);
-                if (isUpdated)
+                if (updateVM is not null)
                 {
-                    TempData["info"] = "Dessert Updated";
-                    return RedirectToAction("DessertList");
+                    Dessert dessert = mapper.Map<Dessert>(updateVM);
+
+                    dessert.Photo = GenerateUniqueFileName(imgCover);
+                    bool isUpdated = dessertRepository.Update(dessert);
+
+                    FileStream stream = new FileStream("wwwroot/ProductImages/Dessert1/" + dessert.Photo, FileMode.Create);
+                    await imgCover.CopyToAsync(stream);
+                    if (isUpdated)
+                    {
+                        TempData["Info"] = "Dessert Updated";
+                        return RedirectToAction("DessertList");
+                    }
+                    else
+                        ViewBag.Info = "Failed to Update dessert";
                 }
-                else
-                    ViewBag.info = "Failed to Update dessert";
             }
-
             return View(updateVM);
-
         }
 
-        [Authorize]
         public IActionResult Delete(int id)
         {
-            Dessert dessert = new Dessert();
+            Dessert dessert = dessertRepository.GetById(id);
             bool isDeleted = dessertRepository.Delete(dessert);
             if (isDeleted)
             {
-                TempData["info"] = "Dessert activity became false";
-
+                TempData["Info"] = "Dessert activity became false";
             }
             else
-                TempData["info"] = "Failed to change dessert activity";
+                TempData["Info"] = "Failed to change dessert activity";
 
             return RedirectToAction("DessertList");
         }

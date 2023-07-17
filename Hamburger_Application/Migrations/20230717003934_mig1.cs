@@ -35,6 +35,7 @@ namespace Hamburger_Application.Migrations
                     LastName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     Address = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
+                    IsDark = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -168,24 +169,44 @@ namespace Hamburger_Application.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId1 = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    isActive = table.Column<bool>(type: "bit", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    Piece = table.Column<int>(type: "int", nullable: false),
-                    Photo = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
+                    IsAccepted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Orders", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Orders_AspNetUsers_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_Orders_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Desserts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OrderId = table.Column<int>(type: "int", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
+                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Piece = table.Column<int>(type: "int", nullable: true, defaultValue: 1),
+                    Photo = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Desserts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Desserts_Orders_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "Orders",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -195,15 +216,14 @@ namespace Hamburger_Application.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     OrderId = table.Column<int>(type: "int", nullable: true),
-                    DessertId = table.Column<int>(type: "int", nullable: true),
                     DrinkId = table.Column<int>(type: "int", nullable: true),
                     FriesId = table.Column<int>(type: "int", nullable: true),
                     HamburgerId = table.Column<int>(type: "int", nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    isActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    Piece = table.Column<int>(type: "int", nullable: false),
+                    Piece = table.Column<int>(type: "int", nullable: true, defaultValue: 1),
                     Photo = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -217,31 +237,24 @@ namespace Hamburger_Application.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Desserts",
+                name: "Sauce",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     OrderId = table.Column<int>(type: "int", nullable: true),
-                    MenuId = table.Column<int>(type: "int", nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    isActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
+                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    Piece = table.Column<int>(type: "int", nullable: false),
+                    Piece = table.Column<int>(type: "int", nullable: true, defaultValue: 1),
                     Photo = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Desserts", x => x.Id);
+                    table.PrimaryKey("PK_Sauce", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Desserts_Menus_MenuId",
-                        column: x => x.MenuId,
-                        principalTable: "Menus",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.SetNull);
-                    table.ForeignKey(
-                        name: "FK_Desserts_Orders_OrderId",
+                        name: "FK_Sauce_Orders_OrderId",
                         column: x => x.OrderId,
                         principalTable: "Orders",
                         principalColumn: "Id");
@@ -256,11 +269,11 @@ namespace Hamburger_Application.Migrations
                     Size = table.Column<int>(type: "int", nullable: false, defaultValue: 1),
                     OrderId = table.Column<int>(type: "int", nullable: true),
                     MenuId = table.Column<int>(type: "int", nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    isActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
+                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    Piece = table.Column<int>(type: "int", nullable: false),
+                    Piece = table.Column<int>(type: "int", nullable: true, defaultValue: 1),
                     Photo = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -288,11 +301,11 @@ namespace Hamburger_Application.Migrations
                     Size = table.Column<int>(type: "int", nullable: false, defaultValue: 1),
                     OrderId = table.Column<int>(type: "int", nullable: true),
                     MenuId = table.Column<int>(type: "int", nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    isActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
+                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    Piece = table.Column<int>(type: "int", nullable: false),
+                    Piece = table.Column<int>(type: "int", nullable: true, defaultValue: 1),
                     Photo = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -319,11 +332,11 @@ namespace Hamburger_Application.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     OrderId = table.Column<int>(type: "int", nullable: true),
                     MenuId = table.Column<int>(type: "int", nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    isActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    Piece = table.Column<int>(type: "int", nullable: false),
+                    Piece = table.Column<int>(type: "int", nullable: true, defaultValue: 1),
                     Photo = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -342,113 +355,83 @@ namespace Hamburger_Application.Migrations
                         principalColumn: "Id");
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Sauce",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    OrderId = table.Column<int>(type: "int", nullable: true),
-                    MenuId = table.Column<int>(type: "int", nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    isActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    Piece = table.Column<int>(type: "int", nullable: false),
-                    Photo = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Sauce", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Sauce_Menus_MenuId",
-                        column: x => x.MenuId,
-                        principalTable: "Menus",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Sauce_Orders_OrderId",
-                        column: x => x.OrderId,
-                        principalTable: "Orders",
-                        principalColumn: "Id");
-                });
-
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "CreationTime", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "5d2cdd39-0277-41b1-b5e2-708610b757dd", new DateTime(2023, 7, 14, 1, 56, 59, 362, DateTimeKind.Local).AddTicks(6025), "Admin", "ADMIN" },
-                    { 2, "9efb3c33-a4b9-4699-bc95-83b5f7c5bcde", new DateTime(2023, 7, 14, 1, 56, 59, 362, DateTimeKind.Local).AddTicks(6055), "User", "USER" }
+                    { 1, "5f3c0dc0-b257-41d7-8b48-b56fa9822170", new DateTime(2023, 7, 17, 3, 39, 32, 285, DateTimeKind.Local).AddTicks(9676), "Admin", "ADMIN" },
+                    { 2, "9ae81ee4-d7d8-449e-afe2-581216bce293", new DateTime(2023, 7, 17, 3, 39, 32, 285, DateTimeKind.Local).AddTicks(9692), "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Desserts",
-                columns: new[] { "Id", "CreationTime", "MenuId", "Name", "OrderId", "Photo", "Piece", "Price" },
+                columns: new[] { "Id", "CreationTime", "Name", "OrderId", "Photo", "Price" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 7, 14, 1, 56, 59, 362, DateTimeKind.Local).AddTicks(9317), null, "Brownie", null, null, 1, 50m },
-                    { 2, new DateTime(2023, 7, 14, 1, 56, 59, 362, DateTimeKind.Local).AddTicks(9326), null, "Milkshake", null, null, 1, 40m },
-                    { 3, new DateTime(2023, 7, 14, 1, 56, 59, 362, DateTimeKind.Local).AddTicks(9328), null, "Cheesecake", null, null, 1, 60m },
-                    { 4, new DateTime(2023, 7, 14, 1, 56, 59, 362, DateTimeKind.Local).AddTicks(9329), null, "Ice Cream", null, null, 1, 30m },
-                    { 5, new DateTime(2023, 7, 14, 1, 56, 59, 362, DateTimeKind.Local).AddTicks(9330), null, "Puding", null, null, 1, 40m }
+                    { 1, new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(3727), "Brownie", null, null, 50m },
+                    { 2, new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(3734), "Milkshake", null, null, 40m },
+                    { 3, new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(3736), "Cheesecake", null, null, 60m },
+                    { 4, new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(3737), "Ice Cream", null, null, 30m },
+                    { 5, new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(3738), "Puding", null, null, 40m }
                 });
 
             migrationBuilder.InsertData(
                 table: "Drinks",
-                columns: new[] { "Id", "CreationTime", "MenuId", "Name", "OrderId", "Photo", "Piece", "Price" },
+                columns: new[] { "Id", "CreationTime", "MenuId", "Name", "OrderId", "Photo", "Price" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 7, 14, 1, 56, 59, 363, DateTimeKind.Local).AddTicks(414), null, "Coke", null, null, 1, 40m },
-                    { 2, new DateTime(2023, 7, 14, 1, 56, 59, 363, DateTimeKind.Local).AddTicks(420), null, "Ayran", null, null, 1, 25m },
-                    { 3, new DateTime(2023, 7, 14, 1, 56, 59, 363, DateTimeKind.Local).AddTicks(421), null, "Coke Zero", null, null, 1, 45m },
-                    { 4, new DateTime(2023, 7, 14, 1, 56, 59, 363, DateTimeKind.Local).AddTicks(423), null, "Cold Tea", null, null, 1, 35m },
-                    { 5, new DateTime(2023, 7, 14, 1, 56, 59, 363, DateTimeKind.Local).AddTicks(424), null, "Mineral Water", null, null, 1, 15m }
+                    { 1, new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(5514), null, "Coke", null, null, 40m },
+                    { 2, new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(5519), null, "Ayran", null, null, 25m },
+                    { 3, new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(5520), null, "Coke Zero", null, null, 45m },
+                    { 4, new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(5521), null, "Cold Tea", null, null, 35m },
+                    { 5, new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(5523), null, "Mineral Water", null, null, 15m }
                 });
 
             migrationBuilder.InsertData(
                 table: "Frieses",
-                columns: new[] { "Id", "CreationTime", "MenuId", "Name", "OrderId", "Photo", "Piece", "Price" },
+                columns: new[] { "Id", "CreationTime", "MenuId", "Name", "OrderId", "Photo", "Price" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 7, 14, 1, 56, 59, 363, DateTimeKind.Local).AddTicks(1997), null, "Potato", null, null, 1, 20m },
-                    { 2, new DateTime(2023, 7, 14, 1, 56, 59, 363, DateTimeKind.Local).AddTicks(2018), null, "Onion Ring", null, null, 1, 22m },
-                    { 3, new DateTime(2023, 7, 14, 1, 56, 59, 363, DateTimeKind.Local).AddTicks(2021), null, "Nugget", null, null, 1, 25m },
-                    { 4, new DateTime(2023, 7, 14, 1, 56, 59, 363, DateTimeKind.Local).AddTicks(2022), null, "Chicken Tenders", null, null, 1, 25m }
+                    { 1, new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(7150), null, "Potato", null, null, 20m },
+                    { 2, new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(7218), null, "Onion Ring", null, null, 22m },
+                    { 3, new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(7220), null, "Nugget", null, null, 25m },
+                    { 4, new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(7221), null, "Chicken Tenders", null, null, 25m }
                 });
 
             migrationBuilder.InsertData(
                 table: "Hamburger",
-                columns: new[] { "Id", "CreationTime", "MenuId", "Name", "OrderId", "Photo", "Piece", "Price" },
+                columns: new[] { "Id", "CreationTime", "MenuId", "Name", "OrderId", "Photo", "Price" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 7, 14, 1, 56, 59, 363, DateTimeKind.Local).AddTicks(3067), null, "Whopper", null, null, 1, 120m },
-                    { 2, new DateTime(2023, 7, 14, 1, 56, 59, 363, DateTimeKind.Local).AddTicks(3072), null, "Texas SmokeHouse", null, null, 1, 140m },
-                    { 3, new DateTime(2023, 7, 14, 1, 56, 59, 363, DateTimeKind.Local).AddTicks(3073), null, "Fish Royale", null, null, 1, 110m },
-                    { 4, new DateTime(2023, 7, 14, 1, 56, 59, 363, DateTimeKind.Local).AddTicks(3074), null, "Big King", null, null, 1, 150m },
-                    { 5, new DateTime(2023, 7, 14, 1, 56, 59, 363, DateTimeKind.Local).AddTicks(3075), null, "Chicken Royale", null, null, 1, 95m }
+                    { 1, new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(8876), null, "Whopper", null, null, 120m },
+                    { 2, new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(8880), null, "Texas SmokeHouse", null, null, 140m },
+                    { 3, new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(8881), null, "Fish Royale", null, null, 110m },
+                    { 4, new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(8882), null, "Big King", null, null, 150m },
+                    { 5, new DateTime(2023, 7, 17, 3, 39, 32, 286, DateTimeKind.Local).AddTicks(8885), null, "Chicken Royale", null, null, 95m }
                 });
 
             migrationBuilder.InsertData(
                 table: "Menus",
-                columns: new[] { "Id", "CreationTime", "DessertId", "DrinkId", "FriesId", "HamburgerId", "Name", "OrderId", "Photo", "Piece", "Price" },
+                columns: new[] { "Id", "CreationTime", "DrinkId", "FriesId", "HamburgerId", "Name", "OrderId", "Photo", "Price" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 7, 14, 1, 56, 59, 366, DateTimeKind.Local).AddTicks(3404), null, 1, 1, 1, "Whopper Menu", null, null, 1, 150m },
-                    { 2, new DateTime(2023, 7, 14, 1, 56, 59, 366, DateTimeKind.Local).AddTicks(3419), null, 1, 1, 2, "Texas SmokeHouse Menu", null, null, 1, 170m },
-                    { 3, new DateTime(2023, 7, 14, 1, 56, 59, 366, DateTimeKind.Local).AddTicks(3421), null, 1, 1, 3, "Fish Royale Menu", null, null, 1, 140m },
-                    { 4, new DateTime(2023, 7, 14, 1, 56, 59, 366, DateTimeKind.Local).AddTicks(3422), null, 1, 1, 4, "Big King Menu", null, null, 1, 150m },
-                    { 5, new DateTime(2023, 7, 14, 1, 56, 59, 366, DateTimeKind.Local).AddTicks(3423), null, 1, 1, 5, "Chicken Royale Menu", null, null, 1, 120m }
+                    { 1, new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(6089), 1, 1, 1, "Whopper Menu", null, null, 150m },
+                    { 2, new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(6097), 1, 1, 2, "Texas SmokeHouse Menu", null, null, 170m },
+                    { 3, new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(6099), 1, 1, 3, "Fish Royale Menu", null, null, 140m },
+                    { 4, new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(6101), 1, 1, 4, "Big King Menu", null, null, 150m },
+                    { 5, new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(6102), 1, 1, 5, "Chicken Royale Menu", null, null, 120m }
                 });
 
             migrationBuilder.InsertData(
                 table: "Sauce",
-                columns: new[] { "Id", "CreationTime", "MenuId", "Name", "OrderId", "Photo", "Piece", "Price" },
+                columns: new[] { "Id", "CreationTime", "Name", "OrderId", "Photo", "Price" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 7, 14, 1, 56, 59, 366, DateTimeKind.Local).AddTicks(4695), null, "Ranch", null, null, 1, 15m },
-                    { 2, new DateTime(2023, 7, 14, 1, 56, 59, 366, DateTimeKind.Local).AddTicks(4701), null, "Ketchup", null, null, 1, 10m },
-                    { 3, new DateTime(2023, 7, 14, 1, 56, 59, 366, DateTimeKind.Local).AddTicks(4702), null, "Mayonnaise", null, null, 1, 10m },
-                    { 4, new DateTime(2023, 7, 14, 1, 56, 59, 366, DateTimeKind.Local).AddTicks(4703), null, "Barbeque", null, null, 1, 15m }
+                    { 1, new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(8327), "Ranch", null, null, 15m },
+                    { 2, new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(8331), "Ketchup", null, null, 10m },
+                    { 3, new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(8332), "Mayonnaise", null, null, 10m },
+                    { 4, new DateTime(2023, 7, 17, 3, 39, 32, 288, DateTimeKind.Local).AddTicks(8333), "Barbeque", null, null, 15m }
                 });
 
             migrationBuilder.CreateIndex(
@@ -490,6 +473,13 @@ namespace Hamburger_Application.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_UserName",
+                table: "AspNetUsers",
+                column: "UserName",
+                unique: true,
+                filter: "[UserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
@@ -497,11 +487,10 @@ namespace Hamburger_Application.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Desserts_MenuId",
+                name: "IX_Desserts_Name",
                 table: "Desserts",
-                column: "MenuId",
-                unique: true,
-                filter: "[MenuId] IS NOT NULL");
+                column: "Name",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Desserts_OrderId",
@@ -516,6 +505,12 @@ namespace Hamburger_Application.Migrations
                 filter: "[MenuId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Drinks_Name",
+                table: "Drinks",
+                column: "Name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Drinks_OrderId",
                 table: "Drinks",
                 column: "OrderId");
@@ -526,6 +521,12 @@ namespace Hamburger_Application.Migrations
                 column: "MenuId",
                 unique: true,
                 filter: "[MenuId] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Frieses_Name",
+                table: "Frieses",
+                column: "Name",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Frieses_OrderId",
@@ -540,9 +541,21 @@ namespace Hamburger_Application.Migrations
                 filter: "[MenuId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Hamburger_Name",
+                table: "Hamburger",
+                column: "Name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Hamburger_OrderId",
                 table: "Hamburger",
                 column: "OrderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Menus_Name",
+                table: "Menus",
+                column: "Name",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Menus_OrderId",
@@ -550,14 +563,15 @@ namespace Hamburger_Application.Migrations
                 column: "OrderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_UserId1",
+                name: "IX_Orders_UserId",
                 table: "Orders",
-                column: "UserId1");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Sauce_MenuId",
+                name: "IX_Sauce_Name",
                 table: "Sauce",
-                column: "MenuId");
+                column: "Name",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Sauce_OrderId",
