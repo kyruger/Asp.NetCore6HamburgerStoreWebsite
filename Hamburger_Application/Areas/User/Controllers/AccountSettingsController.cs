@@ -28,11 +28,13 @@ namespace Hamburger_Application.Areas.User.Controllers
 
         public async Task<IActionResult> Index()
         {
+            ViewData["WebSiteTitle"] = "Settings";
             return View();
         }
 
         public async Task<IActionResult> DeleteAccount()
         {
+            ViewData["WebSiteTitle"] = "Delete Account";
             return View();
         }
 
@@ -47,11 +49,13 @@ namespace Hamburger_Application.Areas.User.Controllers
                 await signInManager.SignOutAsync();
                 randomCode = random.Next(100_000, 1_000_000);
                 Helper.EmailSend(appUser.Email, "Your mbf hamburger account was deleted successfully !");
+                ViewData["WebSiteTitle"] = "Home";
                 return RedirectToAction("Main", "Home", new { area = "" });
             }
             else
             {
                 ModelState.AddModelError("", "Email confirm process is unsuccess !");
+                ViewData["WebSiteTitle"] = "Delete Account";
                 return View();
             }
         }
@@ -60,6 +64,7 @@ namespace Hamburger_Application.Areas.User.Controllers
         {
             AppUser appUser = await userManager.FindByNameAsync(User.Identity.Name);
             AppUserPersonalInfoVM appUserPersonalInfoVM = mapper.Map<AppUserPersonalInfoVM>(appUser);
+            ViewData["WebSiteTitle"] = "Personal Info";
             return View(appUserPersonalInfoVM);
         }
 
@@ -82,6 +87,7 @@ namespace Hamburger_Application.Areas.User.Controllers
                 }
                 else ModelState.AddModelError("Error", $"{appUserPersonalInfoVM.Email} email address was not found !\nPlease try again later.");
             }
+            ViewData["WebSiteTitle"] = "Personal Info";
             return View(appUserPersonalInfoVM);
         }
 
@@ -89,6 +95,7 @@ namespace Hamburger_Application.Areas.User.Controllers
         {
             AppUser appUser = await userManager.FindByNameAsync(User.Identity.Name);
             AppUserUsernameEmailVM appUserUsernameEmailVM = mapper.Map<AppUserUsernameEmailVM>(appUser);
+            ViewData["WebSiteTitle"] = "Email";
             return View(appUserUsernameEmailVM);
         }
 
@@ -110,6 +117,7 @@ namespace Hamburger_Application.Areas.User.Controllers
                         ModelState.AddModelError("", "You are redirected to the verification page to finish updating the email address !");
                         Helper.EmailSend(appUser.Email, "Verification page to finish updating the email address :  ", randomCode);
                         TempData["Email"] = appUser.Email;
+                        ViewData["WebSiteTitle"] = "Email Confirm";
                         return RedirectToAction("EmailConfirm", "Account", new { area = "User" });
                     }
                     else
@@ -120,6 +128,7 @@ namespace Hamburger_Application.Areas.User.Controllers
                 else ModelState.AddModelError("Error", $"Something went wrong !\nPlease try again later.");
             }
             ModelState.AddModelError("Error", $"{appUserUsernameEmailVM.Email} can not be used !");
+            ViewData["WebSiteTitle"] = "Email";
             return View(appUserUsernameEmailVM);
         }
 
@@ -127,6 +136,7 @@ namespace Hamburger_Application.Areas.User.Controllers
         {
             AppUser appUser = await userManager.FindByNameAsync(User.Identity.Name);
             AppUserEmailPasswordVM appUserEmailPasswordVM = mapper.Map<AppUserEmailPasswordVM>(appUser);
+            ViewData["WebSiteTitle"] = "Password";
             return View(appUserEmailPasswordVM);
         }
 
@@ -145,6 +155,7 @@ namespace Hamburger_Application.Areas.User.Controllers
                 {
                     ModelState.AddModelError("", "You are redirected to the verification page to finish updating the password !");
                     Helper.EmailSend(appUser.Email, "Verification page to finish updating the email address :  ", randomCode);
+                    ViewData["WebSiteTitle"] = "Email Confirm";
                     return RedirectToAction("EmailConfirm", "Account", new { area = "User" });
                 }
                 else
@@ -153,6 +164,7 @@ namespace Hamburger_Application.Areas.User.Controllers
                 }
             }
             else ModelState.AddModelError("Error", $"Something went wrong !\nPlease try again later.");
+            ViewData["WebSiteTitle"] = "Password";
             return View(appUserEmailPasswordVM);
         }
 
@@ -160,6 +172,7 @@ namespace Hamburger_Application.Areas.User.Controllers
         {
             AppUser appUser = await userManager.FindByNameAsync(User.Identity.Name);
             AppUserEmailAddressVM appUserEmailAddressVM = mapper.Map<AppUserEmailAddressVM>(appUser);
+            ViewData["WebSiteTitle"] = "Address";
             return View(appUserEmailAddressVM);
         }
 
@@ -179,6 +192,7 @@ namespace Hamburger_Application.Areas.User.Controllers
                 else ModelState.AddModelError("Error", $"Update process is unsucceed. Something went wrong !");
             }
             else ModelState.AddModelError("Error", $"{appUserEmailAddressVM.Email} email address was not found !\nPlease try again later.");
+            ViewData["WebSiteTitle"] = "Address";
             return View(appUserEmailAddressVM);
         }
 
@@ -186,6 +200,7 @@ namespace Hamburger_Application.Areas.User.Controllers
         {
             AppUser appUser = await userManager.FindByNameAsync(User.Identity.Name);
             AppUserThemeVM appUserThemeVM = mapper.Map<AppUserThemeVM>(appUser);
+            ViewData["WebSiteTitle"] = "Theme";
             return View(appUserThemeVM);
         }
 
@@ -209,6 +224,7 @@ namespace Hamburger_Application.Areas.User.Controllers
                     }
                 }
             }
+            ViewData["WebSiteTitle"] = "Theme";
             return View(appUserThemeVM);
         }
     }

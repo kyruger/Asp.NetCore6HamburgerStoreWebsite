@@ -6,6 +6,7 @@ using Hamburger_Application.Repositories.Abstract;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Hamburger_Application.Areas.Admin.Controllers
 {
@@ -25,11 +26,13 @@ namespace Hamburger_Application.Areas.Admin.Controllers
         public IActionResult List()
         {
             IEnumerable<Sauce> sauces = sauceRepository.GetAllTrue(true);
+            ViewData["WebSiteTitle"] = "Sauces";
             return View(sauces);
         }
 
         public IActionResult Create()
         {
+            ViewData["WebSiteTitle"] = "Create New Sauce";
             return View();
         }
         [HttpPost]
@@ -46,6 +49,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                 if (isAdded)
                 {
                     TempData["Info"] = "Sauces succesfully added";
+                    ViewData["WebSiteTitle"] = "Sauces";
                     return RedirectToAction("List");
                 }
                 else
@@ -53,6 +57,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                     ViewBag.Info = "Failed to Add Sauces";
                 }
             }
+            ViewData["WebSiteTitle"] = "Create New Sauce";
             return View(sauceVM);
         }
 
@@ -61,6 +66,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             UpdateSauceVM sauceVM = new();
             Sauce sauce = sauceRepository.GetById(id);
             sauceVM = mapper.Map<UpdateSauceVM>(sauce);
+            ViewData["WebSiteTitle"] = $"{sauceVM.Name} Update";
             return View(sauceVM);
         }
 
@@ -79,6 +85,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                 if (isAdded)
                 {
                     TempData["Info"] = "Sauce is updated";
+                    ViewData["WebSiteTitle"] = "Sauces";
                     return RedirectToAction("List");
                 }
                 else
@@ -86,6 +93,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                     ViewBag.Info = "Sauce cannot be updated";
                 }
             }
+            ViewData["WebSiteTitle"] = "Update";
             return View(updateSauceVM);
         }
 
@@ -108,7 +116,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             {
                 TempData["Info"] = "Sauce could not be founded.";
             }
-
+            ViewData["WebSiteTitle"] = "Sauces";
             return RedirectToAction("List");
         }
 
