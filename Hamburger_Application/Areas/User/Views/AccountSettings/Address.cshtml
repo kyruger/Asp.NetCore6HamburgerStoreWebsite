@@ -12,14 +12,12 @@
         <div class="" style="font-size:22px">
             <input type="text" asp-for="Address" class="form-control" placeholder="Address" />
             <input type="hidden" asp-for="Email" />
-            @*<input type="hidden" asp-for="IsDark" />*@
         </div>
         <div asp-validation-summary="All"></div>
         <br />
         <div class="form-group mb-3">
             <button class="btn btn-primary d-block w-100" id="submitButton" type="submit" style="color: rgb(255,255,255);background: rgb(244,147,1); font-family:'Indie Flower'">Update</button>
         </div>
-        <span><a class="form-control btn btn-outline-warning" asp-area="" asp-controller="Home" asp-action="Main" style="font-family:'Indie Flower'">Back To Home</a></span>
     </form>
 </div>
 

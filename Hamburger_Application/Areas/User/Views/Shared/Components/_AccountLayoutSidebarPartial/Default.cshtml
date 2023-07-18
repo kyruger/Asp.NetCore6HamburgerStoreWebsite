@@ -9,9 +9,12 @@
         if (User.IsInRole("User"))
         {
             AppUser appUser = await userManager.FindByNameAsync(User.Identity.Name);
-            if (appUser.IsDark)
+            if (appUser is not null)
             {
-                settingsBackgroundColor = "#B12103";
+                if (appUser.IsDark)
+                {
+                    settingsBackgroundColor = "#B12103";
+                }
             }
         }
     }

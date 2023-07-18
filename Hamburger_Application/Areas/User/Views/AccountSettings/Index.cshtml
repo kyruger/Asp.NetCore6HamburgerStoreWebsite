@@ -37,42 +37,6 @@
     <h1 style="padding: 10px; color:@mainColor; font-size:15px; font-family:'Comic Sans MS'; text-align:start">Address   =>   @appUser.Address</h1>
     <br />
     <h1 style="padding: 10px; color:@mainColor; font-size:15px; font-family:'Comic Sans MS'; text-align:start">Email Address   =>   @appUser.Email</h1>
-    @*<br />
-    @if (appUser.Orders.Any())
-    {
-        <h1 style="padding: 15px; color:@mainColor; font-size:15px; font-family:'Comic Sans MS'; text-align:start">Orders Count   =>   @appUser.Orders.Count</h1>
-        <br />
-    }
-    @if (appUser.Orders.Any(x => x.Menus.Any() == true))
-    {
-        <h1 style="padding: 15px; color:@mainColor; font-size:15px; font-family:'Comic Sans MS'; text-align:start">Menu in my orders Count   =>   @appUser.Orders.Select(a => a.Menus).Count()</h1>
-        <br />
-    }
-    @if (appUser.Orders.Any(x => x.Hamburgers.Any() == true))
-    {
-        <h1 style="padding: 15px; color:@mainColor; font-size:15px; font-family:'Comic Sans MS'; text-align:start">Hamburger in my orders Count   =>   @appUser.Orders.Select(a => a.Hamburgers).Count()</h1>
-        <br />
-    }
-    @if (appUser.Orders.Any(x => x.Fries.Any() == true))
-    {
-        <h1 style="padding: 15px; color:@mainColor; font-size:15px; font-family:'Comic Sans MS'; text-align:start">Fries in my orders Count   =>   @appUser.Orders.Select(a => a.Fries).Count()</h1>
-        <br />
-    }
-    @if (appUser.Orders.Any(x => x.Sauces.Any() == true))
-    {
-        <h1 style="padding: 15px; color:@mainColor; font-size:15px; font-family:'Comic Sans MS'; text-align:start">Sauce in my orders Count   =>   @appUser.Orders.Select(a => a.Sauces).Count()</h1>
-        <br />
-    }
-    @if (appUser.Orders.Any(x => x.Drinks.Any() == true))
-    {
-        <h1 style="padding: 15px; color:@mainColor; font-size:15px; font-family:'Comic Sans MS'; text-align:start">Drink in my orders Count   =>   @appUser.Orders.Select(a => a.Drinks).Count()</h1>
-        <br />
-    }
-    @if (appUser.Orders.Any(x => x.Desserts.Any() == true))
-    {
-        <h1 style="padding: 15px; color:@mainColor; font-size:15px; font-family:'Comic Sans MS'; text-align:start">Dessert in my orders Count   =>   @appUser.Orders.Select(a => a.Desserts).Count()</h1>
-        <br />
-    }*@
 </div>
 
 

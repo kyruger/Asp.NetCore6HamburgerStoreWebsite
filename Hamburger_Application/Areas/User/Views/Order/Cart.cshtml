@@ -1,4 +1,6 @@
-﻿@using Hamburger_Application.Entities.Enum;
+﻿@inject SignInManager<AppUser> signInManager;
+@inject UserManager<AppUser> userManager;
+@using Hamburger_Application.Entities.Enum;
 @model Order
 @{
     decimal? totalPrice = 0;
