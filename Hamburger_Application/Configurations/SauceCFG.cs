@@ -9,7 +9,6 @@ namespace Hamburger_Application.Configurations
         public void Configure(EntityTypeBuilder<Sauce> builder)
         {
             builder.Property(b => b.Name).HasMaxLength(30);
-            builder.HasIndex(b => b.Name).IsUnique();
             builder.Property(b => b.Piece).HasDefaultValue(1);
             builder.Property(b => b.IsActive).HasDefaultValue(true);
 
