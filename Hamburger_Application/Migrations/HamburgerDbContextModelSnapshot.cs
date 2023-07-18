@@ -58,16 +58,26 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<< HEAD
                             ConcurrencyStamp = "78d11b9b-025a-4661-a447-731ea77acca1",
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(205),
+=======
+                            ConcurrencyStamp = "d3253f04-1691-4f3e-a34e-a27b604815c0",
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 798, DateTimeKind.Local).AddTicks(6660),
+>>>>>>> burak_branch
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
+<<<<<<< HEAD
                             ConcurrencyStamp = "f09c7cdd-69b9-4ee8-8cd2-14d71e49fc44",
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(224),
+=======
+                            ConcurrencyStamp = "cca6088f-e627-4f82-8074-9c5b09467fe3",
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 798, DateTimeKind.Local).AddTicks(6674),
+>>>>>>> burak_branch
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -224,7 +234,11 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(4655),
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(381),
+>>>>>>> burak_branch
                             IsActive = true,
                             Name = "Brownie",
                             Photo = "cafddece-875e-4d0c-830c-72b3e194666c_Brownie.jpg",
@@ -233,7 +247,11 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 2,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(4662),
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(388),
+>>>>>>> burak_branch
                             IsActive = true,
                             Name = "Milkshake",
                             Photo = "fb998a43-9809-4ebc-a546-ce63ca896be8_MilkShake.jpg",
@@ -242,7 +260,11 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 3,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(4664),
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(390),
+>>>>>>> burak_branch
                             IsActive = true,
                             Name = "Cheesecake",
                             Photo = "ee446133-2bb0-46af-b257-3d1a8930432f_CheeseCake.jpg",
@@ -251,7 +273,11 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 4,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(4665),
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(391),
+>>>>>>> burak_branch
                             IsActive = true,
                             Name = "Ice Cream",
                             Photo = "1d5c1238-10f9-49e6-a388-a541d1d64e4c_IcaCream.jpg",
@@ -260,7 +286,11 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 5,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(4666),
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(392),
+>>>>>>> burak_branch
                             IsActive = true,
                             Name = "Puding",
                             Photo = "a01529c3-70cf-4b43-af5c-db1f8f9a921d_Puding.jpg",
@@ -325,9 +355,15 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(5916),
                             IsActive = true,
                             Name = "Coke-S",
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(1469),
+                            IsActive = true,
+                            Name = "Coke",
+>>>>>>> burak_branch
                             Photo = "6240f4b6-c927-4898-9c76-6968b54c1e39_Coke.jpg",
                             Price = 40m,
                             Size = 0
@@ -335,9 +371,15 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 2,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(5919),
                             IsActive = true,
                             Name = "Ayran-S",
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(1474),
+                            IsActive = true,
+                            Name = "Ayran",
+>>>>>>> burak_branch
                             Photo = "a7e28042-2e4a-443e-860d-0f0cbd0d640c_Ayran.jpg",
                             Price = 25m,
                             Size = 0
@@ -345,9 +387,15 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 3,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(5920),
                             IsActive = true,
                             Name = "Coke Zero-S",
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(1475),
+                            IsActive = true,
+                            Name = "Coke Zero",
+>>>>>>> burak_branch
                             Photo = "1117576e-e2a3-42a5-8dc0-9f5d90fd0e80_CokeZero.jpg",
                             Price = 45m,
                             Size = 0
@@ -355,9 +403,15 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 4,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(5921),
                             IsActive = true,
                             Name = "Cold Tea-S",
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(1476),
+                            IsActive = true,
+                            Name = "Cold Tea",
+>>>>>>> burak_branch
                             Photo = "914e854b-f076-455c-aeab-49f8d8f4ca8e_ColdTea.jpg",
                             Price = 35m,
                             Size = 0
@@ -365,9 +419,15 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 5,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(5922),
                             IsActive = true,
                             Name = "Mineral Water-S",
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(1478),
+                            IsActive = true,
+                            Name = "Mineral Water",
+>>>>>>> burak_branch
                             Photo = "d2ffceeb-e929-43e1-9fc6-df7838fa6aa2_MineralWater.jpg",
                             Price = 15m,
                             Size = 0
@@ -375,9 +435,15 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 6,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(5923),
                             IsActive = true,
                             Name = "Coke-M",
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(1479),
+                            IsActive = true,
+                            Name = "Coke",
+>>>>>>> burak_branch
                             Photo = "6240f4b6-c927-4898-9c76-6968b54c1e39_Coke.jpg",
                             Price = 45m,
                             Size = 2
@@ -385,9 +451,15 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 7,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(5924),
                             IsActive = true,
                             Name = "Ayran-M",
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(1481),
+                            IsActive = true,
+                            Name = "Ayran",
+>>>>>>> burak_branch
                             Photo = "a7e28042-2e4a-443e-860d-0f0cbd0d640c_Ayran.jpg",
                             Price = 30m,
                             Size = 2
@@ -395,9 +467,15 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 8,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(5926),
                             IsActive = true,
                             Name = "Coke Zero-M",
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(1482),
+                            IsActive = true,
+                            Name = "Coke Zero",
+>>>>>>> burak_branch
                             Photo = "1117576e-e2a3-42a5-8dc0-9f5d90fd0e80_CokeZero.jpg",
                             Price = 50m,
                             Size = 2
@@ -405,9 +483,15 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 9,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(5927),
                             IsActive = true,
                             Name = "Cold Tea-M",
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(1483),
+                            IsActive = true,
+                            Name = "Cold Tea",
+>>>>>>> burak_branch
                             Photo = "914e854b-f076-455c-aeab-49f8d8f4ca8e_ColdTea.jpg",
                             Price = 40m,
                             Size = 2
@@ -415,9 +499,15 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 10,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(5928),
                             IsActive = true,
                             Name = "Mineral Water-M",
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(1485),
+                            IsActive = true,
+                            Name = "Mineral Water",
+>>>>>>> burak_branch
                             Photo = "d2ffceeb-e929-43e1-9fc6-df7838fa6aa2_MineralWater.jpg",
                             Price = 20m,
                             Size = 2
@@ -425,9 +515,15 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 11,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(5929),
                             IsActive = true,
                             Name = "Coke-L",
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(1486),
+                            IsActive = true,
+                            Name = "Coke",
+>>>>>>> burak_branch
                             Photo = "6240f4b6-c927-4898-9c76-6968b54c1e39_Coke.jpg",
                             Price = 50m,
                             Size = 3
@@ -435,9 +531,15 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 12,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(5930),
                             IsActive = true,
                             Name = "Ayran-L",
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(1487),
+                            IsActive = true,
+                            Name = "Ayran",
+>>>>>>> burak_branch
                             Photo = "a7e28042-2e4a-443e-860d-0f0cbd0d640c_Ayran.jpg",
                             Price = 35m,
                             Size = 3
@@ -445,9 +547,15 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 13,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(5931),
                             IsActive = true,
                             Name = "Coke Zero-L",
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(1488),
+                            IsActive = true,
+                            Name = "Coke Zero",
+>>>>>>> burak_branch
                             Photo = "1117576e-e2a3-42a5-8dc0-9f5d90fd0e80_CokeZero.jpg",
                             Price = 55m,
                             Size = 3
@@ -455,9 +563,15 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 14,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(5932),
                             IsActive = true,
                             Name = "Cold Tea-L",
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(1491),
+                            IsActive = true,
+                            Name = "Cold Tea",
+>>>>>>> burak_branch
                             Photo = "914e854b-f076-455c-aeab-49f8d8f4ca8e_ColdTea.jpg",
                             Price = 45m,
                             Size = 3
@@ -465,9 +579,15 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 15,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(5933),
                             IsActive = true,
                             Name = "Mineral Water-L",
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(1492),
+                            IsActive = true,
+                            Name = "Mineral Water",
+>>>>>>> burak_branch
                             Photo = "d2ffceeb-e929-43e1-9fc6-df7838fa6aa2_MineralWater.jpg",
                             Price = 25m,
                             Size = 3
@@ -531,9 +651,15 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(6961),
                             IsActive = true,
                             Name = "Potatoes - S",
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(2747),
+                            IsActive = true,
+                            Name = "Potatoes",
+>>>>>>> burak_branch
                             Photo = "301422bb-3c9f-4670-87ec-52f6bb49510e_Potatoes.jpg",
                             Price = 20m,
                             Size = 0
@@ -541,9 +667,15 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 2,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(6964),
                             IsActive = true,
                             Name = "Onion Ring - S",
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(2752),
+                            IsActive = true,
+                            Name = "Onion Ring",
+>>>>>>> burak_branch
                             Photo = "40149d5b-324f-40d3-802c-0866bc9edac8_OnionRings.jpg",
                             Price = 22m,
                             Size = 0
@@ -551,9 +683,15 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 3,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(6966),
                             IsActive = true,
                             Name = "Nugget - S",
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(2754),
+                            IsActive = true,
+                            Name = "Nugget",
+>>>>>>> burak_branch
                             Photo = "f012288d-4cb5-4546-a5a1-82a2e34457ce_Nuggets.jpg",
                             Price = 25m,
                             Size = 0
@@ -561,9 +699,15 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 4,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(6967),
                             IsActive = true,
                             Name = "Chicken Tenders - S",
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(2755),
+                            IsActive = true,
+                            Name = "Chicken Tenders",
+>>>>>>> burak_branch
                             Photo = "1e165d0c-cdad-4956-a803-a291756320b1_ChickenTenders.jpg",
                             Price = 25m,
                             Size = 0
@@ -571,9 +715,15 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 5,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(7038),
                             IsActive = true,
                             Name = "Potatoes - M",
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(2756),
+                            IsActive = true,
+                            Name = "Potatoes",
+>>>>>>> burak_branch
                             Photo = "301422bb-3c9f-4670-87ec-52f6bb49510e_Potatoes.jpg",
                             Price = 24m,
                             Size = 2
@@ -581,9 +731,15 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 6,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(7040),
                             IsActive = true,
                             Name = "Onion Ring - M",
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(2758),
+                            IsActive = true,
+                            Name = "Onion Ring",
+>>>>>>> burak_branch
                             Photo = "40149d5b-324f-40d3-802c-0866bc9edac8_OnionRings.jpg",
                             Price = 26m,
                             Size = 2
@@ -591,9 +747,15 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 7,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(7041),
                             IsActive = true,
                             Name = "Nugget - M",
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(2759),
+                            IsActive = true,
+                            Name = "Nugget",
+>>>>>>> burak_branch
                             Photo = "f012288d-4cb5-4546-a5a1-82a2e34457ce_Nuggets.jpg",
                             Price = 29m,
                             Size = 2
@@ -601,9 +763,15 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 8,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(7042),
                             IsActive = true,
                             Name = "Chicken Tenders - M",
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(2760),
+                            IsActive = true,
+                            Name = "Chicken Tenders",
+>>>>>>> burak_branch
                             Photo = "1e165d0c-cdad-4956-a803-a291756320b1_ChickenTenders.jpg",
                             Price = 29m,
                             Size = 2
@@ -611,9 +779,15 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 9,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(7043),
                             IsActive = true,
                             Name = "Potatoes - L",
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(2762),
+                            IsActive = true,
+                            Name = "Potatoes",
+>>>>>>> burak_branch
                             Photo = "301422bb-3c9f-4670-87ec-52f6bb49510e_Potatoes.jpg",
                             Price = 28m,
                             Size = 3
@@ -621,9 +795,15 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 10,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(7044),
                             IsActive = true,
                             Name = "Onion Ring - L",
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(2763),
+                            IsActive = true,
+                            Name = "Onion Ring",
+>>>>>>> burak_branch
                             Photo = "40149d5b-324f-40d3-802c-0866bc9edac8_OnionRings.jpg",
                             Price = 30m,
                             Size = 3
@@ -631,9 +811,15 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 11,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(7045),
                             IsActive = true,
                             Name = "Nugget - L",
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(2813),
+                            IsActive = true,
+                            Name = "Nugget",
+>>>>>>> burak_branch
                             Photo = "f012288d-4cb5-4546-a5a1-82a2e34457ce_Nuggets.jpg",
                             Price = 33m,
                             Size = 3
@@ -641,9 +827,15 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 12,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(7046),
                             IsActive = true,
                             Name = "Chicken Tenders - L",
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(2815),
+                            IsActive = true,
+                            Name = "Chicken Tenders",
+>>>>>>> burak_branch
                             Photo = "1e165d0c-cdad-4956-a803-a291756320b1_ChickenTenders.jpg",
                             Price = 33m,
                             Size = 3
@@ -702,7 +894,11 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(8028),
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(3779),
+>>>>>>> burak_branch
                             IsActive = true,
                             Name = "Whopper",
                             Photo = "27c952d4-c958-4bce-87ad-6cb40a743067_Whopper.jpg",
@@ -711,7 +907,11 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 2,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(8033),
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(3784),
+>>>>>>> burak_branch
                             IsActive = true,
                             Name = "Texas SmokeHouse",
                             Photo = "43773966-353c-4741-9a0e-9d3642aea7e3_TexasSmokeHouse.jpg",
@@ -720,7 +920,11 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 3,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(8034),
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(3785),
+>>>>>>> burak_branch
                             IsActive = true,
                             Name = "Fish Royale",
                             Photo = "074e56a6-ab87-48b1-b948-8ddc5ff84c97_FishRoyale.jpg",
@@ -729,7 +933,11 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 4,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(8035),
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(3787),
+>>>>>>> burak_branch
                             IsActive = true,
                             Name = "Big King",
                             Photo = "e7bcba7f-5e1f-4b11-81fe-8f423b4bb26f_BigKing.jpg",
@@ -738,7 +946,11 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 5,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 28, DateTimeKind.Local).AddTicks(8036),
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 799, DateTimeKind.Local).AddTicks(3788),
+>>>>>>> burak_branch
                             IsActive = true,
                             Name = "Chicken Royale",
                             Photo = "0c8d85ff-19e8-4550-b079-f83d1e8b863a_ChickenRoyale.jpg",
@@ -798,7 +1010,11 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 30, DateTimeKind.Local).AddTicks(4066),
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 800, DateTimeKind.Local).AddTicks(9994),
+>>>>>>> burak_branch
                             DrinkId = 1,
                             FriesId = 1,
                             HamburgerId = 1,
@@ -810,7 +1026,11 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 2,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 30, DateTimeKind.Local).AddTicks(4072),
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 801, DateTimeKind.Local).AddTicks(3),
+>>>>>>> burak_branch
                             DrinkId = 1,
                             FriesId = 1,
                             HamburgerId = 2,
@@ -822,7 +1042,11 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 3,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 30, DateTimeKind.Local).AddTicks(4074),
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 801, DateTimeKind.Local).AddTicks(5),
+>>>>>>> burak_branch
                             DrinkId = 1,
                             FriesId = 1,
                             HamburgerId = 3,
@@ -834,7 +1058,11 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 4,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 30, DateTimeKind.Local).AddTicks(4075),
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 801, DateTimeKind.Local).AddTicks(7),
+>>>>>>> burak_branch
                             DrinkId = 1,
                             FriesId = 1,
                             HamburgerId = 4,
@@ -846,7 +1074,11 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 5,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 30, DateTimeKind.Local).AddTicks(4076),
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 801, DateTimeKind.Local).AddTicks(8),
+>>>>>>> burak_branch
                             DrinkId = 1,
                             FriesId = 1,
                             HamburgerId = 5,
@@ -925,9 +1157,6 @@ namespace Hamburger_Application.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Name")
-                        .IsUnique();
-
                     b.HasIndex("OrderId");
 
                     b.ToTable("Sauce");
@@ -936,7 +1165,11 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 30, DateTimeKind.Local).AddTicks(6476),
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 801, DateTimeKind.Local).AddTicks(1780),
+>>>>>>> burak_branch
                             IsActive = true,
                             Name = "Ranch",
                             Photo = "7b5e0551-d08d-4092-8c72-ff370ea64c57_RanchSauce.jpg",
@@ -945,7 +1178,11 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 2,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 30, DateTimeKind.Local).AddTicks(6480),
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 801, DateTimeKind.Local).AddTicks(1785),
+>>>>>>> burak_branch
                             IsActive = true,
                             Name = "Ketchup",
                             Photo = "f8b55022-2756-43dd-823d-6b94e43d9807_KetchupSauce.jpg",
@@ -954,7 +1191,11 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 3,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 30, DateTimeKind.Local).AddTicks(6481),
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 801, DateTimeKind.Local).AddTicks(1787),
+>>>>>>> burak_branch
                             IsActive = true,
                             Name = "Mayonnaise",
                             Photo = "7821c0f8-2b4b-4b46-b958-6fe2dec26bd7_MayonaisseSauce.jpg",
@@ -963,7 +1204,11 @@ namespace Hamburger_Application.Migrations
                         new
                         {
                             Id = 4,
+<<<<<<< HEAD
                             CreationTime = new DateTime(2023, 7, 18, 13, 48, 36, 30, DateTimeKind.Local).AddTicks(6485),
+=======
+                            CreationTime = new DateTime(2023, 7, 18, 14, 20, 52, 801, DateTimeKind.Local).AddTicks(1788),
+>>>>>>> burak_branch
                             IsActive = true,
                             Name = "Barbeque",
                             Photo = "cad13c53-f4c9-4b94-aaa7-cb20855cd41e_BarbequeSauce.jpg",

@@ -29,8 +29,8 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 		public IActionResult List()
 		{
 			IEnumerable<Fries> fries = friesRepository.GetAllTrue(true);
-            ViewData["WebSiteTitle"] = "Fries";
-            return View(fries);
+			ViewData["WebSiteTitle"] = "Fries";
+			return View(fries);
 		}
 
 		public IActionResult Create()
@@ -38,8 +38,8 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 			var enumList = Enum.GetValues(typeof(Size)).Cast<Size>().ToList();
 			SelectList selectList = new SelectList(enumList);
 			ViewBag.size = selectList;
-            ViewData["WebSiteTitle"] = "Create New Fries";
-            return View();
+			ViewData["WebSiteTitle"] = "Create New Fries";
+			return View();
 		}
 
 		[HttpPost]
@@ -50,23 +50,24 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 				Fries fries = mapper.Map<Fries>(friesVM);
 				fries.Photo = PhotoFile.GenerateUniqueFileName(imgCover);
 				bool isAdded = friesRepository.Add(fries);
-
-
-				FileStream file = new FileStream("wwwroot/ProductImages/Fries1/" + fries.Photo, FileMode.Create);
-				await imgCover.CopyToAsync(file);
+				if (imgCover is not null)
+				{
+					FileStream file = new FileStream("wwwroot/ProductImages/Fries1/" + fries.Photo, FileMode.Create);
+					await imgCover.CopyToAsync(file);
+				}
 				if (isAdded)
 				{
 					TempData["Info"] = "Fries is added";
-                    ViewData["WebSiteTitle"] = "Fries";
-                    return RedirectToAction("List");
+					ViewData["WebSiteTitle"] = "Fries";
+					return RedirectToAction("List");
 				}
 				else
 				{
 					ViewBag.Info = "Fries cannot added";
 				}
 			}
-            ViewData["WebSiteTitle"] = "Create New Fries";
-            return View(friesVM);
+			ViewData["WebSiteTitle"] = "Create New Fries";
+			return View(friesVM);
 		}
 
 		public IActionResult Edit(int id)
@@ -77,8 +78,8 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 			var enumList = Enum.GetValues(typeof(Size)).Cast<Size>().ToList();
 			SelectList selectList = new SelectList(enumList);
 			ViewBag.size = selectList;
-            ViewData["WebSiteTitle"] = $"Update";
-            return View(friesVM);
+			ViewData["WebSiteTitle"] = "Update";
+			return View(friesVM);
 		}
 
 		[HttpPost]
@@ -89,22 +90,24 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 				Fries fries = mapper.Map<Fries>(updateFriesVM);
 				fries.Photo = PhotoFile.GenerateUniqueFileName(imgCover);
 				bool isUpdated = friesRepository.Update(fries);
-
-				FileStream file = new FileStream("wwwroot/ProductImages/Fries1/" + fries.Photo, FileMode.Create);
-				await imgCover.CopyToAsync(file);
+				if (imgCover is not null)
+				{
+					FileStream file = new FileStream("wwwroot/ProductImages/Fries1/" + fries.Photo, FileMode.Create);
+					await imgCover.CopyToAsync(file);
+				}
 				if (isUpdated)
 				{
 					TempData["Info"] = "Fries Updated";
-                    ViewData["WebSiteTitle"] = "Fries";
-                    return RedirectToAction("List");
+					ViewData["WebSiteTitle"] = "Fries";
+					return RedirectToAction("List");
 				}
 				else
 				{
 					ViewBag.Info = "Failed to Update fries";
 				}
 			}
-            ViewData["WebSiteTitle"] = "Update";
-            return View(updateFriesVM);
+			ViewData["WebSiteTitle"] = "Update";
+			return View(updateFriesVM);
 		}
 
 		public IActionResult Delete(int id)
@@ -116,7 +119,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 				if (isDeleted)
 				{
 					TempData["Info"] = "Fries is deleted";
-                }
+				}
 				else
 				{
 					TempData["Info"] = "Fries is not deleted";
@@ -126,8 +129,8 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 			{
 				TempData["Info"] = "fries could not be founded.";
 			}
-            ViewData["WebSiteTitle"] = "Fries";
-            return RedirectToAction("List");
+			ViewData["WebSiteTitle"] = "Fries";
+			return RedirectToAction("List");
 		}
 	}
 }

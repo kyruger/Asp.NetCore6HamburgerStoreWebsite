@@ -9,6 +9,7 @@ namespace Hamburger_Application.Configurations
         public void Configure(EntityTypeBuilder<Menu> builder)
         {
             builder.Property(b => b.Name).HasMaxLength(100);
+            builder.Property(b => b.Piece).HasDefaultValue(1);
             builder.HasOne(b => b.Fries).WithOne(b => b.Menu).HasForeignKey<Fries>(b => b.MenuId).OnDelete(DeleteBehavior.SetNull);
             builder.HasOne(b => b.Drink).WithOne(b => b.Menu).HasForeignKey<Drink>(b => b.MenuId).OnDelete(DeleteBehavior.SetNull);
             builder.HasOne(b => b.Hamburger).WithOne(b => b.Menu).HasForeignKey<Hamburger>(b => b.MenuId).OnDelete(DeleteBehavior.SetNull);

@@ -19,42 +19,42 @@ namespace Hamburger_Application.Configurations
                 new Drink
                 {
                     Id = 1,
-                    Name = "Coke-S",
+                    Name = "Coke",
                     Price = 40,
                     Photo = "6240f4b6-c927-4898-9c76-6968b54c1e39_Coke.jpg"
                 },
                 new Drink
                 {
                     Id = 2,
-                    Name = "Ayran-S",
+                    Name = "Ayran",
                     Price = 25,
                     Photo = "a7e28042-2e4a-443e-860d-0f0cbd0d640c_Ayran.jpg"
                 },
                 new Drink
                 {
                     Id = 3,
-                    Name = "Coke Zero-S",
+                    Name = "Coke Zero",
                     Price = 45,
                     Photo = "1117576e-e2a3-42a5-8dc0-9f5d90fd0e80_CokeZero.jpg"
                 },
                 new Drink
                 {
                     Id = 4,
-                    Name = "Cold Tea-S",
+                    Name = "Cold Tea",
                     Price = 35,
                     Photo = "914e854b-f076-455c-aeab-49f8d8f4ca8e_ColdTea.jpg"
                 },
                 new Drink
                 {
                     Id = 5,
-                    Name = "Mineral Water-S",
+                    Name = "Mineral Water",
                     Price = 15,
                     Photo = "d2ffceeb-e929-43e1-9fc6-df7838fa6aa2_MineralWater.jpg",
                 },
                 new Drink
                 {
                     Id = 6,
-                    Name = "Coke-M",
+                    Name = "Coke",
                     Price = 45,
                     Photo = "6240f4b6-c927-4898-9c76-6968b54c1e39_Coke.jpg",
                     Size = Size.Medium
@@ -62,7 +62,7 @@ namespace Hamburger_Application.Configurations
                 new Drink
                 {
                     Id = 7,
-                    Name = "Ayran-M",
+                    Name = "Ayran",
                     Price = 30,
                     Photo = "a7e28042-2e4a-443e-860d-0f0cbd0d640c_Ayran.jpg",
                     Size = Size.Medium
@@ -70,7 +70,7 @@ namespace Hamburger_Application.Configurations
                 new Drink
                 {
                     Id = 8,
-                    Name = "Coke Zero-M",
+                    Name = "Coke Zero",
                     Price = 50,
                     Photo = "1117576e-e2a3-42a5-8dc0-9f5d90fd0e80_CokeZero.jpg",
                     Size = Size.Medium
@@ -78,7 +78,7 @@ namespace Hamburger_Application.Configurations
                 new Drink
                 {
                     Id = 9,
-                    Name = "Cold Tea-M",
+                    Name = "Cold Tea",
                     Price = 40,
                     Photo = "914e854b-f076-455c-aeab-49f8d8f4ca8e_ColdTea.jpg",
                     Size = Size.Medium
@@ -86,7 +86,7 @@ namespace Hamburger_Application.Configurations
                 new Drink
                 {
                     Id = 10,
-                    Name = "Mineral Water-M",
+                    Name = "Mineral Water",
                     Price = 20,
                     Photo = "d2ffceeb-e929-43e1-9fc6-df7838fa6aa2_MineralWater.jpg",
                     Size = Size.Medium
@@ -94,7 +94,7 @@ namespace Hamburger_Application.Configurations
                 new Drink
                 {
                     Id = 11,
-                    Name = "Coke-L",
+                    Name = "Coke",
                     Price = 50,
                     Photo = "6240f4b6-c927-4898-9c76-6968b54c1e39_Coke.jpg",
                     Size = Size.Large
@@ -102,7 +102,7 @@ namespace Hamburger_Application.Configurations
                 new Drink
                 {
                     Id = 12,
-                    Name = "Ayran-L",
+                    Name = "Ayran",
                     Price = 35,
                     Photo = "a7e28042-2e4a-443e-860d-0f0cbd0d640c_Ayran.jpg",
                     Size = Size.Large
@@ -110,7 +110,7 @@ namespace Hamburger_Application.Configurations
                 new Drink
                 {
                     Id = 13,
-                    Name = "Coke Zero-L",
+                    Name = "Coke Zero",
                     Price = 55,
                     Photo = "1117576e-e2a3-42a5-8dc0-9f5d90fd0e80_CokeZero.jpg",
                     Size = Size.Large
@@ -118,7 +118,7 @@ namespace Hamburger_Application.Configurations
                 new Drink
                 {
                     Id = 14,
-                    Name = "Cold Tea-L",
+                    Name = "Cold Tea",
                     Price = 45,
                     Photo = "914e854b-f076-455c-aeab-49f8d8f4ca8e_ColdTea.jpg",
                     Size = Size.Large
@@ -126,7 +126,7 @@ namespace Hamburger_Application.Configurations
                 new Drink
                 {
                     Id = 15,
-                    Name = "Mineral Water-L",
+                    Name = "Mineral Water",
                     Price = 25,
                     Photo = "d2ffceeb-e929-43e1-9fc6-df7838fa6aa2_MineralWater.jpg",
                     Size = Size.Large
