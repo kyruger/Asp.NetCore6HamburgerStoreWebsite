@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Hamburger_Application.Areas.Admin.Models;
+using Hamburger_Application.Areas.User.Utilities;
 using Hamburger_Application.Entities.Concrete;
 using Hamburger_Application.Entities.Enum;
 using Hamburger_Application.Repositories.Abstract;
@@ -11,7 +12,7 @@ using System.Data;
 namespace Hamburger_Application.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class DrinkController : Controller
     {
         private readonly IRepository<Drink> drinkRepository;
@@ -47,7 +48,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 Drink drink = mapper.Map<Drink>(createVM);
-                drink.Photo = GenerateUniqueFileName(imgCover);
+                drink.Photo = PhotoFile.GenerateUniqueFileName(imgCover);
                 bool isAdded = drinkRepository.Add(drink);
                 FileStream stream = new FileStream("wwwroot/ProductImages/Drink/" + drink.Photo, FileMode.Create);
                 await imgCover.CopyToAsync(stream);
@@ -84,7 +85,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             {
                 Drink drink = mapper.Map<Drink>(updateVM);
 
-                drink.Photo = GenerateUniqueFileName(imgCover);
+                drink.Photo = PhotoFile.GenerateUniqueFileName(imgCover);
                 bool isUpdated = drinkRepository.Update(drink);
                 FileStream stream = new FileStream("wwwroot/ProductImages/Drink/" + drink.Photo, FileMode.Create);
                 await imgCover.CopyToAsync(stream);
@@ -112,14 +113,6 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             }
             ViewBag.Info = "Failed to change drink activity";
             return View(drink);
-        }
-
-        [NonAction]
-        private string GenerateUniqueFileName(IFormFile file)
-        {
-            Guid guid = Guid.NewGuid();
-            string newFileName = guid.ToString() + "_" + file.FileName;
-            return newFileName;
         }
     }
 }

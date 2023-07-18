@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Hamburger_Application.Areas.Admin.Models.ViewModels.Fries;
+using Hamburger_Application.Areas.User.Utilities;
 using Hamburger_Application.Entities.Concrete;
 using Hamburger_Application.Entities.Enum;
 using Hamburger_Application.Repositories.Abstract;
@@ -12,7 +13,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 namespace Hamburger_Application.Areas.Admin.Controllers
 {
 	[Area("Admin")]
-	//[Authorize(Roles = "Admin")]
+	[Authorize(Roles = "Admin")]
 	public class FriesController : Controller
 	{
 		private readonly IRepository<Fries> friesRepository;
@@ -47,7 +48,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 			if (ModelState.IsValid)
 			{
 				Fries fries = mapper.Map<Fries>(friesVM);
-				fries.Photo = GenerateUniqueFileName(imgCover);
+				fries.Photo = PhotoFile.GenerateUniqueFileName(imgCover);
 				bool isAdded = friesRepository.Add(fries);
 
 
@@ -86,7 +87,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 			if (ModelState.IsValid)
 			{
 				Fries fries = mapper.Map<Fries>(updateFriesVM);
-				fries.Photo = GenerateUniqueFileName(imgCover);
+				fries.Photo = PhotoFile.GenerateUniqueFileName(imgCover);
 				bool isUpdated = friesRepository.Update(fries);
 
 				FileStream file = new FileStream("wwwroot/ProductImages/Fries1/" + fries.Photo, FileMode.Create);
@@ -127,14 +128,6 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 			}
             ViewData["WebSiteTitle"] = "Fries";
             return RedirectToAction("List");
-		}
-
-		[NonAction]
-		private string GenerateUniqueFileName(IFormFile file)
-		{
-			Guid guid = Guid.NewGuid();
-			string newFileName = guid.ToString() + "_" + file.FileName;
-			return newFileName;
 		}
 	}
 }

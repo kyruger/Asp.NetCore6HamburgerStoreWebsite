@@ -10,6 +10,6 @@ namespace Hamburger_Application.Entities.Abstract
         }
         public int Id { get; set; }
         public DateTime CreationTime { get; set; }
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
     }
 }

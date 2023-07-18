@@ -69,15 +69,23 @@
 	.btn-outline-success:hover {
 		background-color: darkolivegreen;
 	}
+
+	.full-width {
+		width: 100vw;
+		height: 100%;
+		margin: 0;
+		text-align: center;
+		font-family: 'Aclonica', serif;
+	}
 </style>
 
 <section id="page">
 	<main>
 		@if (TempData["Info"] is not null)
 		{
-			<h3 class="text-center text-danger" style="font-family:'Indie Flower'">@TempData["Info"]</h3>
+			<h3 class="full-width">@TempData["Info"]</h3>
 		}
-		<p class="text-center" style="text-align: center; font-family: Aclonica serif;">Desserts</p>
+		<p class="full-width">Desserts</p>
 		@foreach (Dessert dessert in Model.Desserts)
 		{
 			<div class="kutu">
