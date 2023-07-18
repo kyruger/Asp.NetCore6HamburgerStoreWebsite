@@ -15,21 +15,18 @@
 }
 <h3 class="text-center text-danger" style="text-align: center; font-family: Aclonica serif;">Hamburger Create</h3>
 <form method="post" asp-action="Create" asp-controller="Hamburger" enctype="multipart/form-data">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div asp-validation-summary="All" class="text-danger"></div>
     <div>
-        <label>Name:</label>
-        <input asp-for="Name" class="form-control" />
-        <span asp-validation-for="Name" style="color:darkred" />
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" type="text" />
     </div>
     <div>
-        <label>Piece</label>
-        <input asp-for="Piece" class="form-control" />
-        <span asp-validation-for="Piece" style="color:darkred" />
+        <label asp-for="Piece" class="control-label"></label>
+        <input asp-for="Piece" class="form-control" type="number" />
     </div>
     <div>
-        <label>Price:</label>
-        <input asp-for="Price" class="form-control" />
-        <span asp-validation-for="Price" style="color:darkred" />
+        <label asp-for="Price" class="control-label"></label>
+        <input asp-for="Price" class="form-control" type="number" />
     </div>
     <div class="form-group">
         <label class="control-label">Photo</label>
@@ -43,6 +40,7 @@
 </form>
 
 @section Scripts{
-    <script src="~/js/bootstrap.min.js"></script>
-    <partial name="_ValidationScriptsPartial" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation.unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
 }

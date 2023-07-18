@@ -23,17 +23,15 @@
 }
 <h3 class="text-center text-danger" style="text-align: center; font-family: Aclonica serif;">Drink Update</h3>
 <form asp-action="Update" method="post" enctype="multipart/form-data">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div asp-validation-summary="All" class="text-danger"></div>
     <input type="hidden" asp-for="Id" />
     <div class="form-group">
         <label asp-for="Name" class="control-label"></label>
         <input asp-for="Name" class="form-control" type="text" />
-        <span asp-validation-for="Name" style="color:darkred" />
     </div>
     <div class="form-group">
         <label asp-for="Piece" class="control-label"></label>
         <input asp-for="Piece" class="form-control" type="number" />
-        <span asp-validation-for="Piece" style="color:darkred" />
     </div>
     <div class="form-group">
         <label asp-for="Size" class="control-label"></label>
@@ -42,13 +40,12 @@
     <div class="form-group">
         <label asp-for="Price" class="control-label"></label>
         <input asp-for="Price" class="form-control" type="number" />
-        <span asp-validation-for="Price" style="color:darkred" />
     </div>
-
     <div class="form-group">
         <label class="control-label">Photo</label>
         <input class="form-control" type="file" name="imgCover" accept=".jpg,.png,.jpeg"/>
     </div>
+    <br />
     <div class="text-center">
         <input type="submit" value="Update" class="btn btn-outline-success">
         <a asp-action="DrinkList" asp-controller="Drink" class="btn btn-outline-secondary btn-block">Cancel</a>
@@ -57,6 +54,7 @@
 </form>
 
 @section Scripts{
-    <script src="~/js/bootstrap.min.js"></script>
-    <partial name="_ValidationScriptsPartial" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation.unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
 }

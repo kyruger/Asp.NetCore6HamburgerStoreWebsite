@@ -10,7 +10,7 @@ using System.Data;
 namespace Hamburger_Application.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class SauceController : Controller
     {
         private readonly IRepository<Sauce> sauceRepository;
