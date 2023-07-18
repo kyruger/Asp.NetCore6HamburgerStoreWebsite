@@ -1,30 +1,232 @@
-﻿@model IEnumerable<Hamburger_Application.Areas.User.Models.OrderVMs.ProductListVM>
+﻿@inject SignInManager<AppUser> signInManager;
+@inject UserManager<AppUser> userManager;
+@model IEnumerable<Order>
 
 @{
-    ViewData["Title"] = "ConfirmedOrders";
-    Layout = "~/Areas/User/Views/AccountLayout/Index.cshtml";
+    decimal? totalPrice = 0;
 }
 
-<h1>ConfirmedOrders</h1>
+<style>
+    .btn.btn-outline-warning:hover {
+        background-color: darkorange !important;
+    }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
-    </tbody>
+    .btn.btn-outline-danger:hover {
+        background-color: red !important;
+    }
+
+    .btn.btn-outline-success:hover {
+        background-color: darkolivegreen !important;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: rgb(244, 147, 1);
+    }
+
+    .button-container {
+        margin-right: 20px;
+    }
+</style>
+<table class="table table-hover table-bordered" style="color:#B12103; font-size:20px; font-family:'Comic Sans MS' ">
+
+    @if (Model is not null)
+    {
+        foreach (Order order in Model)
+        {
+            <thead>
+                <tr>
+                    <th colspan="5" style="color: rgb(244, 147, 1); background-color:rgb(247,244,244); font-size: 20px; text-align:center"><label>Order Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=> &nbsp;&nbsp;&nbsp;&nbsp;@order.CreationTime</label></th>
+                </tr>
+                <tr>
+                    <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px; text-align:center">Photo</th>
+                    <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Name</th>
+                    <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px; text-align:center">Piece</th>
+                    <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px; text-align:center">Price</th>
+                    <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Total Price</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (Menu menu in order.Menus)
+                {
+                    <tr>
+                        <td class="text-center">
+                            <img src="/ProductImages/Menu1/@menu.Photo" width="100" height="100">
+                        </td>
+                        <td>
+                            <div class="text-container">
+                                @menu.Name
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-container" style="text-align:center">
+                                <label>@menu.Piece</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-container" style="text-align:center">
+                                @menu.Price ₺
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-container" style="text-align:center">
+                                @menu.TotalPrice ₺
+                            </div>
+                        </td>
+                    </tr>
+                    totalPrice += menu.TotalPrice;
+                }
+                @foreach (Hamburger hamburger in order.Hamburgers)
+                {
+                    <tr>
+                        <td class="text-center">
+                            <img src="/ProductImages/Hamburger1/@hamburger.Photo" width="100" height="100">
+                        </td>
+                        <td>
+                            <div class="text-container">
+                                @hamburger.Name
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-container" style="text-align:center">
+                                @hamburger.Piece
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-container" style="text-align:center">
+                                @hamburger.Price ₺
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-container" style="text-align:center">
+                                @hamburger.TotalPrice ₺
+                            </div>
+                        </td>
+                    </tr>
+                    totalPrice += hamburger.TotalPrice;
+                }
+                @foreach (Fries fries in order.Fries)
+                {
+                    <tr>
+                        <td class="text-center">
+                            <img src="/ProductImages/Fries1/@fries.Photo" width="100" height="100">
+                        </td>
+                        <td>
+                            <div class="text-container">
+                                @fries.Name
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-container" style="text-align:center">
+                                @fries.Piece
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-container" style="text-align:center">
+                                @fries.Price ₺
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-container" style="text-align:center">
+                                @fries.TotalPrice ₺
+                            </div>
+                        </td>
+                    </tr>
+                    totalPrice += fries.TotalPrice;
+                }
+                @foreach (Sauce sauce in order.Sauces)
+                {
+                    <tr>
+                        <td class="text-center">
+                            <img src="/ProductImages/Sauce1/@sauce.Photo" width="100" height="100">
+                        </td>
+                        <td>
+                            <div class="text-container">
+                                @sauce.Name
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-container" style="text-align:center">
+                                @sauce.Piece
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-container" style="text-align:center">
+                                @sauce.Price ₺
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-container" style="text-align:center">
+                                @sauce.TotalPrice ₺
+                            </div>
+                        </td>
+                    </tr>
+                    totalPrice += sauce.TotalPrice;
+                }
+                @foreach (Drink drink in order.Drinks)
+                {
+                    <tr>
+                        <td class="text-center">
+                            <img src="/ProductImages/Drink/@drink.Photo" width="90" height="140">
+                        </td>
+                        <td>
+                            <div class="text-container">
+                                @drink.Name
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-container">
+                                @drink.Price ₺
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-container" style="text-align:center">
+                                @drink.TotalPrice ₺
+                            </div>
+                        </td>
+                    </tr>
+                    totalPrice += drink.TotalPrice;
+                }
+                @foreach (Dessert dessert in order.Desserts)
+                {
+                    <tr>
+                        <td class="text-center">
+                            <img src="/ProductImages/Dessert1/@dessert.Photo" width="100" height="100">
+                        </td>
+                        <td>
+                            <div class="text-container">
+                                @dessert.Name
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-container" style="text-align:center">
+                                @dessert.Piece
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-container" style="text-align:center">
+                                @dessert.Price ₺
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-container" style="text-align:center">
+                                @dessert.TotalPrice ₺
+                            </div>
+                        </td>
+                    </tr>
+                    totalPrice += dessert.TotalPrice;
+                }
+                <tr>
+                    <td colspan="4" class="text-center">
+                        <label><strong>Total Price  =></strong></label>
+                    </td>
+                    <td colspan="1" class="text-center">
+                        <label>@totalPrice</label>
+                    </td>
+                </tr>
+            </tbody>
+            <br />
+        }
+    }
 </table>
+

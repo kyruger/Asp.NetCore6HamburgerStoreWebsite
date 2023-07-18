@@ -130,6 +130,7 @@ namespace Hamburger_Application.Areas.User.Controllers
                     {
                         Helper.EmailSend(appUser.Email, $"Welcome to mbf hamburger {appUser.FirstName} {appUser.LastName} !");
                         ViewData["WebSiteTitle"] = "Sign In";
+                        await signInManager.SignOutAsync();
                         return RedirectToAction("SignIn");
                     }
                     else

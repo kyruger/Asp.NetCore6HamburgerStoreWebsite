@@ -13,6 +13,7 @@ namespace Hamburger_Application.Configurations
             builder.HasOne(b => b.Drink).WithOne(b => b.Menu).HasForeignKey<Drink>(b => b.MenuId).OnDelete(DeleteBehavior.SetNull);
             builder.HasOne(b => b.Hamburger).WithOne(b => b.Menu).HasForeignKey<Hamburger>(b => b.MenuId).OnDelete(DeleteBehavior.SetNull);
             builder.Property(b => b.IsActive).HasDefaultValue(true);
+            builder.Property(b => b.Piece).HasDefaultValue(1);
 
             builder.HasData
                 (
