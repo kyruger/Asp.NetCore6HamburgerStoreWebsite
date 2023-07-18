@@ -71,23 +71,28 @@ namespace Hamburger_Application.Areas.User.Controllers
         [HttpPost]
         public async Task<IActionResult> PersonalInfo(AppUserPersonalInfoVM appUserPersonalInfoVM)
         {
+            AppUser appUser = await userManager.FindByNameAsync(User.Identity.Name);
             if (ModelState.IsValid)
             {
-                AppUser appUser = await userManager.FindByEmailAsync(appUserPersonalInfoVM.Email);
-                if (appUser is not null)
+                appUser = await userManager.FindByEmailAsync(appUserPersonalInfoVM.Email);
+                if (appUser.Email == appUserPersonalInfoVM.Email)
                 {
-                    appUser = mapper.Map<AppUser>(appUserPersonalInfoVM);
+                    appUser.FirstName = appUserPersonalInfoVM.FirstName;
+                    appUser.LastName = appUserPersonalInfoVM.LastName;
+                    appUser.UserName = appUserPersonalInfoVM.UserName;
                     IdentityResult result = await userManager.UpdateAsync(appUser);
                     if (result.Succeeded)
                     {
                         ModelState.AddModelError("", "Update process is succeed !");
                         Helper.EmailSend(appUser.Email, $"Personal informations was changed !");
+                        return RedirectToAction("Index");
                     }
-                    else ModelState.AddModelError("Error", $"Update process is unsucceed. Something went wrong !");
+                    else ModelState.AddModelError("Error", "Update process is unsucceed. Something went wrong !\nPlease try again later !");
                 }
-                else ModelState.AddModelError("Error", $"{appUserPersonalInfoVM.Email} email address was not found !\nPlease try again later.");
+                else ModelState.AddModelError("Error", $"{appUserPersonalInfoVM.Email} email address was not found !\nPlease try again later !");
             }
             ViewData["WebSiteTitle"] = "Personal Info";
+            appUserPersonalInfoVM = mapper.Map<AppUserPersonalInfoVM>(appUser);
             return View(appUserPersonalInfoVM);
         }
 
@@ -226,6 +231,11 @@ namespace Hamburger_Application.Areas.User.Controllers
             }
             ViewData["WebSiteTitle"] = "Theme";
             return View(appUserThemeVM);
+        }
+
+        public async Task<IActionResult> ConfirmedOrders()
+        {
+            return View();
         }
     }
 }

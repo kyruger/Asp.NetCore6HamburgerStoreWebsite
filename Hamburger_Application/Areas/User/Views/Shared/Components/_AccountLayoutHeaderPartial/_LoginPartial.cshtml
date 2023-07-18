@@ -1,5 +1,4 @@
-﻿<link rel="stylesheet" href="~/css/Black-Navbar.css">
-@inject SignInManager<AppUser> signInManager
+﻿@inject SignInManager<AppUser> signInManager
 
 <style>
     .text-right {
@@ -19,7 +18,7 @@
     {
         <ul class="navbar-nav nav-right">
             <li class="nav-item dropdown">
-                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#" style="color: rgb(247,244,244);">
+                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="" style="color: rgb(247,244,244);">
                     Products
                 </a>
                 <div class="dropdown-menu">
@@ -33,13 +32,13 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="contact.html" style="color: rgb(254,254,254);">Shopping Carts </a>
+                <a class="nav-link" asp-area="User" asp-controller="Order" asp-action="Cart" style="color: rgb(254,254,254);">Shopping Cart </a>
             </li>
         </ul>
 
-        <ul class="navbar-nav nav-right">
+        <ul class="navbar-nav">
             <li class="nav-item dropdown">
-                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" style="color: rgb(247,244,244); font-family:'Indie Flower'">@User.Identity.Name</a>
+                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="" style="color: rgb(247,244,244); font-family:'Indie Flower';">@User.Identity.Name</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" asp-area="User" asp-controller="AccountSettings" asp-action="Index">Settings</a>
                     <a class="dropdown-item" asp-area="User" asp-controller="Account" asp-action="SignOut">Sign Out</a>
@@ -47,11 +46,12 @@
             </li>
         </ul>
     }
+
     else
     {
         <ul class="navbar-nav nav-right">
             <li class="nav-item dropdown">
-                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#" style="color: rgb(247,244,244);">
+                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="" style="color: rgb(247,244,244);">
                     Products
                 </a>
                 <div class="dropdown-menu">
@@ -66,36 +66,34 @@
             </li>
         </ul>
 
-
-        <ul class="navbar-nav nav-right">
+        <ul class="navbar-nav">
             <li class="nav-item dropdown">
-                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" style="color: rgb(247,244,244); font-family:'Indie Flower'">@User.Identity.Name</a>
+                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" style="color: rgb(247,244,244); font-family:'Indie Flower';">@User.Identity.Name</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" asp-area="User" asp-controller="Account" asp-action="SignOut">Sign Out</a>
                 </div>
             </li>
         </ul>
-
     }
 }
+
 else
 {
-    <ul class="navbar-nav nav-right" style="color: rgb(247,244,244);">
+    <ul class="navbar-nav nav-right">
         <li class="nav-item dropdown">
-            <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">
+            <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="" style="color: rgb(247,244,244);">
                 Products
             </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" asp-area="User" asp-controller="Order" asp-action="ProductList">All Products</a>
-                <a class="dropdown-item" asp-area="Admin" asp-controller="Menu" asp-action="List"><img src="https://www.burgerking.com.tr/cmsfiles/categories/urunler/menuler-icon.png?v=269">Menus</a>
-                <a class="dropdown-item" asp-area="Admin" asp-controller="Hamburger" asp-action="List"><img src="https://www.burgerking.com.tr/cmsfiles/categories/urunler/burgerler-icon.png?v=269">Burgers</a>
-                <a class="dropdown-item" asp-area="Admin" asp-controller="Fries" asp-action="List"><img src="https://www.burgerking.com.tr/cmsfiles/categories/urunler/citir-lezzetler-icon.png?v=269">Fries</a>
-                <a class="dropdown-item" asp-area="Admin" asp-controller="Sauce" asp-action="List"><img src="https://www.burgerking.com.tr/cmsfiles/categories/urunler/soslar-icon.png?v=269">Sauces</a>
-                <a class="dropdown-item" asp-area="Admin" asp-controller="Drink" asp-action="DrinkList"><img src="https://www.burgerking.com.tr/cmsfiles/categories/urunler/icecekler-icon.png?v=269">Drinks</a>
-                <a class="dropdown-item" asp-area="Admin" asp-controller="Dessert" asp-action="DessertList"><img src="https://www.burgerking.com.tr/cmsfiles/categories/urunler/tatlilar-icon.png?v=269">Desserts</a>
+                <a class="dropdown-item" asp-area="User" asp-controller="Order" asp-action="ProductList" style="font-size:25px;">All Products</a>
+                <a class="dropdown-item" asp-area="Admin" asp-controller="Menu" asp-action="List" style="font-size:25px;"><img src="https://www.burgerking.com.tr/cmsfiles/categories/urunler/menuler-icon.png?v=269">Menus</a>
+                <a class="dropdown-item" asp-area="Admin" asp-controller="Hamburger" asp-action="List" style="font-size:25px;"><img src="https://www.burgerking.com.tr/cmsfiles/categories/urunler/burgerler-icon.png?v=269">Burgers</a>
+                <a class="dropdown-item" asp-area="Admin" asp-controller="Fries" asp-action="List" style="font-size:25px;"><img src="https://www.burgerking.com.tr/cmsfiles/categories/urunler/citir-lezzetler-icon.png?v=269">Fries</a>
+                <a class="dropdown-item" asp-area="Admin" asp-controller="Sauce" asp-action="List" style="font-size:25px;"><img src="https://www.burgerking.com.tr/cmsfiles/categories/urunler/soslar-icon.png?v=269">Sauces</a>
+                <a class="dropdown-item" asp-area="Admin" asp-controller="Drink" asp-action="DrinkList" style="font-size:25px;"><img src="https://www.burgerking.com.tr/cmsfiles/categories/urunler/icecekler-icon.png?v=269">Drinks</a>
+                <a class="dropdown-item" asp-area="Admin" asp-controller="Dessert" asp-action="DessertList" style="font-size:25px;"><img src="https://www.burgerking.com.tr/cmsfiles/categories/urunler/tatlilar-icon.png?v=269">Desserts</a>
             </div>
     </ul>
-
 
     <ul class="navbar-nav">
         <li class="nav-item">
@@ -105,7 +103,6 @@ else
             <a class="nav-link text-white" asp-area="User" asp-controller="Account" asp-action="SignUp">Sign Up</a>
         </li>
     </ul>
-
 }
 
 

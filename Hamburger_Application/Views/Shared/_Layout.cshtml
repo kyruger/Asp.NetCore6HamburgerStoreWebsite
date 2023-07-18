@@ -1,6 +1,29 @@
 ﻿@inject SignInManager<AppUser> signInManager;
 @inject UserManager<AppUser> userManager;
 
+@{
+    var navbarBackgroundColor = "#F49301";
+    var mbfLogoColor = "#B12103";
+    var mainBackgroundColor = "#fff";
+    var footerBackgroundColor = "#D1D8E0";
+    var footerColor = "#747d8c";
+    if (signInManager.IsSignedIn(User))
+    {
+        if (User.IsInRole("User"))
+        {
+            AppUser appUser = await userManager.FindByNameAsync(User.Identity.Name);
+            if (appUser.IsDark)
+            {
+                navbarBackgroundColor = "#212529";
+                mbfLogoColor = "#F49301";
+                mainBackgroundColor = "#212529";
+                footerBackgroundColor = "#B12103";
+                footerColor = "#fff";
+            }
+        }
+    }
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +44,7 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-light navbar-expand-md navbar-fixed-top navigation-clean-button" style="background: #F49301 /*rgb(244,147,1)*/; font-size: 25px;">
+        <nav class="navbar navbar-light navbar-expand-md navbar-fixed-top navigation-clean-button" style="background: @navbarBackgroundColor; font-size: 25px;">
             <div class="container-fluid">
                 <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navi">
                     <span class="navbar-toggler-icon"></span>
@@ -29,7 +52,7 @@
                 <div>
                     <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Main">
                         <span style="font-family: Allura, serif;font-size: 50px; transform-style: preserve-3d;--bs-body-font-weight: 100;">
-                            <span style="text-decoration: underline; color: #B12103 /*rgb(177,33,3)*/">mbf</span>
+                            <span style="text-decoration: underline; color: @mbfLogoColor">mbf</span>
                         </span>
                     </a>
                 </div>
@@ -42,30 +65,12 @@
         </nav>
     </header>
 
-    @{
-        var mainBackgroundColor = "#fff";
-        var footerBackgroundColor = "#D1D8E0";
-        var footerColor = "#747d8c";
-        if (signInManager.IsSignedIn(User))
-        {
-            if (User.IsInRole("User"))
-            {
-                AppUser appUser = await userManager.FindByNameAsync(User.Identity.Name);
-                if (appUser.IsDark)
-                {
-                    mainBackgroundColor = "#212529";
-                    footerBackgroundColor = "#B12103";
-                    footerColor = "#fff";
-                }
-            }
-        }
-    }
 
-    <div class="container" style="background-color:@mainBackgroundColor;">
-        <main role="main" class="pb-3" style="background-color:@mainBackgroundColor;">
+    <main role="main" class="pb-3" style="background-color:@mainBackgroundColor;">
+        <div style="background-color:@mainBackgroundColor;">
             @RenderBody()
-        </main>
-    </div>
+        </div>
+    </main>
 
 
     <footer class="text-center" style="background: @footerBackgroundColor;">

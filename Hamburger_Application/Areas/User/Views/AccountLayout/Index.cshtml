@@ -1,6 +1,26 @@
 ﻿@{
     Layout = null;
 }
+@inject SignInManager<AppUser> signInManager;
+@inject UserManager<AppUser> userManager;
+
+@{
+    var mainBackgroundColor = "#fff";
+    var mainColor = "#212529";
+
+    if (signInManager.IsSignedIn(User))
+    {
+        if (User.IsInRole("User"))
+        {
+            AppUser appUser = await userManager.FindByNameAsync(User.Identity.Name);
+            if (appUser.IsDark)
+            {
+                mainBackgroundColor = "#212529";
+                mainColor = "#fff";
+            }
+        }
+    }
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,27 +33,32 @@
     @await Component.InvokeAsync("_AccountLayoutHeaderPartial")
     <!-- /header -->
 
-    <div class=" bg-body">
-        <main class="grid" @*style="background-color:@mainBackgroundColor"*@>
+    <div class=" bg-body" style="background-color:@mainBackgroundColor; color:@mainColor">
+        <div style="height:50px; background-color:@mainBackgroundColor;"></div>
+        <main class="grid row" style="background-color:@mainBackgroundColor; color:@mainColor">
+            <div class="col-6 col-md-1"></div>
             <!-- sidebar -->
-            <div class="col-6 col-md-3">
+            <div class="col-md-3">
                 @await Component.InvokeAsync("_AccountLayoutSidebarPartial")
             </div>
             <!-- sidebar -->
-            <div class="col-md-9">
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
                 @RenderBody()
             </div>
+            <div class="col-md-1"></div>
         </main>
+        <div style="height:50px; background-color:@mainBackgroundColor;"></div>
     </div>
+
 
     <!-- footer content -->
     @await Component.InvokeAsync("_AccountLayoutFooterPartial")
     <!-- /footer content -->
-
     <!-- script content -->
     @await Component.InvokeAsync("_AccountLayoutScriptPartial")
 
-    //@await RenderSectionAsync("Scripts", required: false)
+    @await RenderSectionAsync("Scripts", required: false)
     <!-- /script content -->
 
 </body>

@@ -73,7 +73,7 @@ namespace Hamburger_Application.Areas.User.Controllers
             AppUser user = await userManager.FindByNameAsync(User.Identity.Name);
 
             Order order = orderRepository.GetByUserId(user.Id, false);
-            ViewData["WebSiteTitle"] = "Cart";
+            ViewData["WebSiteTitle"] = "Shopping Cart";
             return View(order);
         }
 
@@ -129,7 +129,7 @@ namespace Hamburger_Application.Areas.User.Controllers
                 bool isAdded = orderRepository.Update(order);
 
             }
-            ViewData["WebSiteTitle"] = "Xart";
+            ViewData["WebSiteTitle"] = "Shopping Cart";
             return RedirectToAction("Cart", user);
 
         }
@@ -156,7 +156,7 @@ namespace Hamburger_Application.Areas.User.Controllers
 
             bool IsUpdated = orderRepository.Update(order);
 
-            ViewData["WebSiteTitle"] = "Cart";
+            ViewData["WebSiteTitle"] = "Shopping Cart";
             return RedirectToAction("Cart");
         }
 
@@ -182,7 +182,7 @@ namespace Hamburger_Application.Areas.User.Controllers
             {
                 TempData["Info"] = "Order was not found";
             }
-            ViewData["WebSiteTitle"] = "Cart";
+            ViewData["WebSiteTitle"] = "Shopping Cart";
             return RedirectToAction("Cart");
         }
 
@@ -239,7 +239,7 @@ namespace Hamburger_Application.Areas.User.Controllers
                 order.Desserts.Add(dessert);
                 bool isUpdated = orderRepository.Update(order);
             }
-            ViewData["WebSiteTitle"] = "Cart";
+            ViewData["WebSiteTitle"] = "Shopping Cart";
             return RedirectToAction("Cart");
         }
 
@@ -296,7 +296,7 @@ namespace Hamburger_Application.Areas.User.Controllers
                 order.Desserts.Add(dessert);
                 bool isUpdated = orderRepository.Update(order);
             }
-            ViewData["WebSiteTitle"] = "Cart";
+            ViewData["WebSiteTitle"] = "Shopping Cart";
             return RedirectToAction("Cart");
         }
     }

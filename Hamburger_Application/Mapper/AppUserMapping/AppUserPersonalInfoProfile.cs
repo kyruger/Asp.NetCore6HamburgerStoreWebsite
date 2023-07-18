@@ -12,9 +12,9 @@ namespace Hamburger_Application.Mapper.AppUserMapping
             CreateMap<AppUser, AppUserPersonalInfoVM>().ReverseMap().ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.LastName));
             CreateMap<AppUser, AppUserPersonalInfoVM>().ReverseMap().ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.UserName));
             CreateMap<AppUser, AppUserPersonalInfoVM>().ReverseMap().ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email));
+            CreateMap<AppUser, AppUserPersonalInfoVM>().ReverseMap().ForMember(dest => dest.IsDark, opt => opt.MapFrom(src => src.IsDark));
 
-            CreateMap<AppUser, AppUserThemeVM>().ReverseMap().ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email));
-            CreateMap<AppUser, AppUserThemeVM>().ReverseMap().ForMember(dest => dest.IsDark, opt => opt.MapFrom(src => src.IsDark));
+            
         }
     }
 }
