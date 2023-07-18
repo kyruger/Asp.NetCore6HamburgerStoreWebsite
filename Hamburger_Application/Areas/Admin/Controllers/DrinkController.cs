@@ -74,6 +74,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             var enumList = Enum.GetValues(typeof(Size)).Cast<Size>().ToList();
             SelectList selectList = new SelectList(enumList);
             ViewBag.size = selectList;
+            ViewData["WebSiteTitle"] = "Update";
             return View(updateVM);
         }
 

@@ -68,7 +68,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             UpdateHamburgerVM hamburgerVM = new();
             Hamburger hamburger = hamburgerRepository.GetById(id);
             hamburgerVM = mapper.Map<UpdateHamburgerVM>(hamburger);
-            ViewData["WebSiteTitle"] = $"{hamburgerVM.Name} Update";
+            ViewData["WebSiteTitle"] = "Update";
             return View(hamburgerVM);
         }
 

@@ -85,6 +85,7 @@ namespace Hamburger_Application.Areas.User.Controllers
                     {
                         ModelState.AddModelError("", "Update process is succeed !");
                         Helper.EmailSend(appUser.Email, $"Personal informations was changed !");
+                        TempData["IsDark"] = appUser.IsDark;
                         return RedirectToAction("Index");
                     }
                     else ModelState.AddModelError("Error", "Update process is unsucceed. Something went wrong !\nPlease try again later !");

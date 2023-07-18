@@ -67,6 +67,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             Dessert dessert = new Dessert();
             dessert = dessertRepository.GetById(id);
             DessertUpdateVM updateVM = mapper.Map<DessertUpdateVM>(dessert);
+            ViewData["WebSiteTitle"] = "Update";
             return View(updateVM);
         }
 
