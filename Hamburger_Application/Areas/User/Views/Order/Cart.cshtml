@@ -32,7 +32,7 @@
         <tr>
             <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px; text-align:center">Photo</th>
             <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Name</th>
-            <th colspan="2 style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px; text-align:center">Piece</th>
+            <th colspan="2" style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px; text-align:center">Piece</th>
             <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px; text-align:center">Price</th>
             <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Choose Your Transaction</th>
             <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Total Price</th>
@@ -265,16 +265,14 @@
                     <label>@totalPrice</label>
                 </td>
             </tr>
-            <tr>
-                <td colspan="7" class="text-center">
-                    <a asp-action="SaveOrder" asp-controller="Order" asp-area="User" asp-route-id="@Model" class="form-control btn btn-outline-success" asp-route-totalPrice="@totalPrice">Confirm my cart</a>
-                </td>
-            </tr>
-
-        }
-        else
-        {
-            <text>@TempData["Info"]</text>
         }
     </tbody>
 </table>
+<br />
+
+<div class="text-center">
+    <a asp-action="SaveOrder" asp-controller="Order" asp-area="User" asp-route-id="@Model" class="form-control btn btn-outline-warning" style="padding-top:15px;padding-bottom:15px;font-family: 'Comic Sans MS'; font-size:24px"  asp-route-totalPrice="@totalPrice">Confirm my cart</a>
+</div>
+<div class="text-center">
+    <text>@TempData["Info"]</text>
+</div>
