@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Org.BouncyCastle.Math;
 using System.Data;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Hamburger_Application.Areas.Admin.Controllers
 {
@@ -46,6 +47,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                 menuList.Add(menu);
             }
             menuListVM.Menus = menuList;
+            ViewData["WebSiteTitle"] = "Menus";
             return View(menuListVM);
         }
 
@@ -56,7 +58,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             menuVM.Fries = new SelectList(friesRepository.GetAll(), "Id", "Name");
             menuVM.Drinks = new SelectList(drinkRepository.GetAll(), "Id", "Name");
             menuVM.Hamburgers = new SelectList(hamburgerRepository.GetAll(), "Id", "Name");
-
+            ViewData["WebSiteTitle"] = "Create New Menu";
             return View(menuVM);
         }
 
@@ -73,6 +75,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                 if (isAdded)
                 {
                     TempData["Info"] = "Menu succesfully added";
+                    ViewData["WebSiteTitle"] = "Menus";
                     return RedirectToAction("List");
                 }
                 else
@@ -80,6 +83,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                     ViewBag.Info = "Failed to Add Menu";
                 }
             }
+            ViewData["WebSiteTitle"] = "Create New Menu";
             return View(menu);
         }
 
@@ -92,12 +96,14 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                 createMenuVM.Drinks = new SelectList(drinkRepository.GetAllTrue(true), "Id", "Name");
                 createMenuVM.Hamburgers = new SelectList(hamburgerRepository.GetAllTrue(true), "Id", "Name");
                 createMenuVM.Fries = new SelectList(friesRepository.GetAllTrue(true), "Id", "Name");
+                ViewData["WebSiteTitle"] = "Update";
                 return View(createMenuVM);
             }
             else
             {
                 TempData["Info"] = "Menu cannot be found";
             }
+            ViewData["WebSiteTitle"] = "Menus";
             return RedirectToAction("List");
         }
 
@@ -114,6 +120,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                 if (isAdded)
                 {
                     TempData["Info"] = "Menu succesfully added";
+                    ViewData["WebSiteTitle"] = "Menus";
                     return RedirectToAction("List");
                 }
                 else
@@ -121,6 +128,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                     ViewBag.Info = "Failed to Add Menu";
                 }
             }
+            ViewData["WebSiteTitle"] = "Update";
             return View(createMenuVM);
         }
 
@@ -143,7 +151,8 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 			{
 				TempData["Info"] = "Menu could not be founded.";
 			}
-			return RedirectToAction("List");
+            ViewData["WebSiteTitle"] = "Menus";
+            return RedirectToAction("List");
         }
 
         [NonAction]

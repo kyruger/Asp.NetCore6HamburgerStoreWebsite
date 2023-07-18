@@ -28,6 +28,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
         {
             DrinkListVM drinkListVM = new DrinkListVM();
             drinkListVM.Drinks = drinkRepository.GetAllTrue(true).ToList();
+            ViewData["WebSiteTitle"] = "Drinks";
             return View(drinkListVM);
         }
 
@@ -36,6 +37,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             var enumList = Enum.GetValues(typeof(Size)).Cast<Size>().ToList();
             SelectList selectList = new SelectList(enumList);
             ViewBag.size = selectList;
+            ViewData["WebSiteTitle"] = "Create New Drink";
             return View();
         }
 
@@ -52,11 +54,12 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                 if (isAdded)
                 {
                     TempData["Info"] = "Drink is added";
+                    ViewData["WebSiteTitle"] = "Drinks";
                     return RedirectToAction("DrinkList");
                 }
-                else
-                    ViewBag.Info = "Failed to add drink";
+                else ViewBag.Info = "Failed to add drink";
             }
+            ViewData["WebSiteTitle"] = "Create New Drink";
             return View(createVM);
 
 
@@ -70,6 +73,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             var enumList = Enum.GetValues(typeof(Size)).Cast<Size>().ToList();
             SelectList selectList = new SelectList(enumList);
             ViewBag.size = selectList;
+            ViewData["WebSiteTitle"] = $"{updateVM.Name} Update";
             return View(updateVM);
         }
 
@@ -88,11 +92,12 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                 if (isUpdated)
                 {
                     TempData["Info"] = "Drink Updated";
+                    ViewData["WebSiteTitle"] = "Drinks";
                     return RedirectToAction("DrinkList");
                 }
-                else
-                    ViewBag.Info = "Failed to Update drink";
+                else ViewBag.Info = "Failed to Update drink";
             }
+            ViewData["WebSiteTitle"] = "Update";
             return View(updateVM);
         }
         public IActionResult Delete(int id)
@@ -102,6 +107,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             if (isDeleted)
             {
                 TempData["Info"] = "Drink activity became false";
+                ViewData["WebSiteTitle"] = "Drinks";
                 return RedirectToAction("DrinkList");
             }
             ViewBag.Info = "Failed to change drink activity";

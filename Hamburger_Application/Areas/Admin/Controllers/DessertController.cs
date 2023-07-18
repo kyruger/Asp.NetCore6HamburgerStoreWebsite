@@ -27,11 +27,13 @@ namespace Hamburger_Application.Areas.Admin.Controllers
         {
             DessertListVM dessertListVM = new DessertListVM();
             dessertListVM.Desserts = dessertRepository.GetAllTrue(true).ToList();
+            ViewData["WebSiteTitle"] = "Desserts";
             return View(dessertListVM);
         }
 
         public IActionResult Create()
         {
+            ViewData["WebSiteTitle"] = "Create New Dessert";
             return View();
         }
 
@@ -50,10 +52,12 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                 if (isAdded)
                 {
                     TempData["Info"] = "Dessert Created";
+                    ViewData["WebSiteTitle"] = "Desserts";
                     return RedirectToAction("DessertList");
                 }
                 ViewBag.Info = "Failed to Create dessert";
             }
+            ViewData["WebSiteTitle"] = "Create New Dessert";
             return View(createVM);
         }
 
@@ -62,6 +66,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             Dessert dessert = new Dessert();
             dessert = dessertRepository.GetById(id);
             DessertUpdateVM updateVM = mapper.Map<DessertUpdateVM>(dessert);
+            ViewData["WebSiteTitle"] = $"{updateVM.Name} Update";
             return View(updateVM);
         }
 
@@ -82,12 +87,14 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                     if (isUpdated)
                     {
                         TempData["Info"] = "Dessert Updated";
+                        ViewData["WebSiteTitle"] = "Desserts";
                         return RedirectToAction("DessertList");
                     }
                     else
                         ViewBag.Info = "Failed to Update dessert";
                 }
             }
+            ViewData["WebSiteTitle"] = "Update";
             return View(updateVM);
         }
 
@@ -99,9 +106,9 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             {
                 TempData["Info"] = "Dessert activity became false";
             }
-            else
-                TempData["Info"] = "Failed to change dessert activity";
+            else TempData["Info"] = "Failed to change dessert activity";
 
+            ViewData["WebSiteTitle"] = "Desserts";
             return RedirectToAction("DessertList");
         }
 

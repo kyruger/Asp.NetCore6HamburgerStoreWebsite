@@ -8,8 +8,8 @@ namespace Hamburger_Application.Mapper.AppUserMapping
     {
         public AppUserEmailAddressProfile()
         {
-            CreateMap<AppUser, AppUserAccountVM>().ReverseMap().ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Address));
-            CreateMap<AppUser, AppUserAccountVM>().ReverseMap().ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email));
+            CreateMap<AppUser, AppUserEmailAddressVM>().ReverseMap().ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Address));
+            CreateMap<AppUser, AppUserEmailAddressVM>().ReverseMap().ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email));
         }
     }
 }

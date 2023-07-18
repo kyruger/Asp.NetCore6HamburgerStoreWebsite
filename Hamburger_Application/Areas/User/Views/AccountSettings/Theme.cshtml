@@ -1,21 +1,25 @@
-﻿
-@{
+﻿@{
     Layout = "~/Areas/User/Views/AccountLayout/Index.cshtml";
 }
 
 @model AppUserThemeVM
 
-<h2 style="color:white">mbf hamburger theme</h2>
-<br />
-<br />
-<hr />
-<div style="color:white">
-    <label>Do you want to use dark theme in mbf hamburger website?</label>
-    <br />
-    <form method="post" asp-area="User" asp-controller="AccountSettings" asp-action="Theme">
-        <input asp-for="IsDark" type="checkbox" class="btn btn-outline-danger" value="Dark Theme" />
+<div class="col-md-10" style="margin-top: 40px;background-color: transparent; font-family:'Indie Flower'">
+    <form asp-action="Theme" method="post" class="form-group justify-content-between text-center" style="font-family:'Indie Flower'; font-size:25px">
+        <label style="color:rgb(244,147,1);">
+            Do you want to use dark theme in mbf hamburger website? <input asp-for="IsDark" type="checkbox" class="btn btn-outline-danger" />
+        </label>
         <input type="hidden" asp-for="Email" />
-        <input type="submit" class="btn btn-outline-warning" value="Save" />
+        <br />
+        <div class="form-group mb-3">
+            <button class="btn btn-primary d-block w-100" id="submitButton" type="submit" style="color: rgb(255,255,255);background: rgb(244,147,1); font-family:'Indie Flower'">Update</button>
+        </div>
+        <span><a class="form-control btn btn-outline-warning" asp-area="" asp-controller="Home" asp-action="Main" style="font-family:'Indie Flower'">Back To Home</a></span>
     </form>
 </div>
+
+@section Scripts{
+    <script src="~/js/bootstrap.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+}
 

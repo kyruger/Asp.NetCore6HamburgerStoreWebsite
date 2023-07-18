@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MimeKit;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Hamburger_Application.Areas.User.Controllers
 {
@@ -31,6 +32,7 @@ namespace Hamburger_Application.Areas.User.Controllers
         [AllowAnonymous]
         public IActionResult SignUp()
         {
+            ViewData["WebSiteTitle"] = "Sign Up";
             return View();
         }
 
@@ -55,6 +57,7 @@ namespace Hamburger_Application.Areas.User.Controllers
 
                         Helper.EmailSend(appUser.Email, "Sign Up process confirm code :  ", randomCode);
                         TempData["Email"] = appUser.Email;
+                        ViewData["WebSiteTitle"] = "Email Confirm";
                         return RedirectToAction("EmailConfirm");
 
                     }
@@ -84,6 +87,7 @@ namespace Hamburger_Application.Areas.User.Controllers
 
                                 Helper.EmailSend(appUser.Email, "Sign Up process confirm code :  ", randomCode);
                                 TempData["Email"] = appUser.Email;
+                                ViewData["WebSiteTitle"] = "Email Confirm";
                                 return RedirectToAction("EmailConfirm");
 
                             }
@@ -100,12 +104,14 @@ namespace Hamburger_Application.Areas.User.Controllers
                     else ModelState.AddModelError("Error", "Register must not have been made with this email address or username !");
                 }
             }
+            ViewData["WebSiteTitle"] = "Sign Up";
             return View(appUserCreateVM);
         }
 
         [AllowAnonymous]
         public IActionResult EmailConfirm()
         {
+            ViewData["WebSiteTitle"] = "Email Confirm";
             return View();
         }
 
@@ -123,6 +129,7 @@ namespace Hamburger_Application.Areas.User.Controllers
                     if (result.Succeeded)
                     {
                         Helper.EmailSend(appUser.Email, $"Welcome to mbf hamburger {appUser.FirstName} {appUser.LastName} !");
+                        ViewData["WebSiteTitle"] = "Sign In";
                         return RedirectToAction("SignIn");
                     }
                     else
@@ -132,20 +139,24 @@ namespace Hamburger_Application.Areas.User.Controllers
                         appUser.ConfirmCode = randomCode;
                         Helper.EmailSend(appUser.Email, "A new confirm code : ", appUser.ConfirmCode);
                         await userManager.UpdateAsync(appUser);
+                        ViewData["WebSiteTitle"] = "Email Confirm";
                         return View(appUserEmailConfirmVM);
                     }
                 }
                 else ModelState.AddModelError("Error", "Confirm code is wrong !");
                 TempData["Email"] = appUser.Email;
+                ViewData["WebSiteTitle"] = "Email Confirm";
                 return View(appUserEmailConfirmVM);
             }
             ModelState.AddModelError("Error", "Something went wrong. Email address field can not be empty or this email address is wrong !");
+            ViewData["WebSiteTitle"] = "Email Confirm";
             return View(appUserEmailConfirmVM);
         }
 
         [AllowAnonymous]
         public IActionResult SignIn()
         {
+            ViewData["WebSiteTitle"] = "Sign In";
             return View();
         }
 
@@ -165,6 +176,7 @@ namespace Hamburger_Application.Areas.User.Controllers
                         {
                             if (appUser.EmailConfirmed)
                             {
+                                ViewData["WebSiteTitle"] = "Home";
                                 return RedirectToAction("Main", "Home", new { area = "" });
                             }
                             else
@@ -173,6 +185,7 @@ namespace Hamburger_Application.Areas.User.Controllers
                                 randomCode = random.Next(100_000, 1_000_000);
                                 appUser.ConfirmCode = randomCode;
                                 Helper.EmailSend(appUser.Email, "A new confirm code : ", appUser.ConfirmCode);
+                                ViewData["WebSiteTitle"] = "Email Confirm";
                                 return RedirectToAction("EmailConfirm");
                             }
                         }
@@ -182,12 +195,14 @@ namespace Hamburger_Application.Areas.User.Controllers
                 }
                 else ModelState.AddModelError("Error", $"{appUserSignInVM.Email} email address is not registered in the system !");
             }
+            ViewData["WebSiteTitle"] = "Sign In";
             return View(appUserSignInVM);
         }
 
         public async Task<IActionResult> SignOut()
         {
             await signInManager.SignOutAsync();
+            ViewData["WebSiteTitle"] = "Home";
             return RedirectToAction("Main", "Home", new { area = "" });
         }
     }

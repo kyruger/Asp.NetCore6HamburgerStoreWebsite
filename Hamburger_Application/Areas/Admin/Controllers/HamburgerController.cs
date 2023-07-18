@@ -5,6 +5,7 @@ using Hamburger_Application.Repositories.Abstract;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Hamburger_Application.Areas.Admin.Controllers
 {
@@ -25,11 +26,13 @@ namespace Hamburger_Application.Areas.Admin.Controllers
         public IActionResult List()
         {
             IEnumerable<Hamburger> hamburgers = hamburgerRepository.GetAllTrue(true);
+            ViewData["WebSiteTitle"] = "Hamburgers";
             return View(hamburgers);
         }
 
         public IActionResult Create()
         {
+            ViewData["WebSiteTitle"] = "Create New Hamburger";
             return View();
         }
 
@@ -47,6 +50,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                 if (isAdded)
                 {
                     TempData["Info"] = "Hamburger is added";
+                    ViewData["WebSiteTitle"] = "Hamburgers";
                     return RedirectToAction("List");
                 }
                 else
@@ -54,6 +58,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                     ViewBag.Info = "Failed to add hamburger";
                 }
             }
+            ViewData["WebSiteTitle"] = "Create New Hamburger";
             return View(hamburgerVM);
         }
 
@@ -62,6 +67,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             UpdateHamburgerVM hamburgerVM = new();
             Hamburger hamburger = hamburgerRepository.GetById(id);
             hamburgerVM = mapper.Map<UpdateHamburgerVM>(hamburger);
+            ViewData["WebSiteTitle"] = $"{hamburgerVM.Name} Update";
             return View(hamburgerVM);
         }
 
@@ -80,6 +86,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                 if (isAdded)
                 {
                     TempData["Info"] = "Hamburger is updated";
+                    ViewData["WebSiteTitle"] = "Hamburgers";
                     return RedirectToAction("List");
                 }
                 else
@@ -87,6 +94,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                     ViewBag.Info = "Hamburger is failed updated";
                 }
             }
+            ViewData["WebSiteTitle"] = "Update";
             return View(updateHamburgerVM);
         }
 
@@ -109,6 +117,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             {
                 TempData["Info"] = "Hamburger could not be founded.";
             }
+            ViewData["WebSiteTitle"] = "Hamburgers";
             return RedirectToAction("List");
         }
 

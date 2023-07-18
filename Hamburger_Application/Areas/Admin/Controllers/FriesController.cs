@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Data;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Hamburger_Application.Areas.Admin.Controllers
 {
@@ -27,7 +28,8 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 		public IActionResult List()
 		{
 			IEnumerable<Fries> fries = friesRepository.GetAllTrue(true);
-			return View(fries);
+            ViewData["WebSiteTitle"] = "Fries";
+            return View(fries);
 		}
 
 		public IActionResult Create()
@@ -35,7 +37,8 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 			var enumList = Enum.GetValues(typeof(Size)).Cast<Size>().ToList();
 			SelectList selectList = new SelectList(enumList);
 			ViewBag.size = selectList;
-			return View();
+            ViewData["WebSiteTitle"] = "Create New Fries";
+            return View();
 		}
 
 		[HttpPost]
@@ -53,14 +56,16 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 				if (isAdded)
 				{
 					TempData["Info"] = "Fries is added";
-					return RedirectToAction("List");
+                    ViewData["WebSiteTitle"] = "Fries";
+                    return RedirectToAction("List");
 				}
 				else
 				{
 					ViewBag.Info = "Fries cannot added";
 				}
 			}
-			return View(friesVM);
+            ViewData["WebSiteTitle"] = "Create New Fries";
+            return View(friesVM);
 		}
 
 		public IActionResult Edit(int id)
@@ -71,7 +76,8 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 			var enumList = Enum.GetValues(typeof(Size)).Cast<Size>().ToList();
 			SelectList selectList = new SelectList(enumList);
 			ViewBag.size = selectList;
-			return View(friesVM);
+            ViewData["WebSiteTitle"] = $"{friesVM.Name} Update";
+            return View(friesVM);
 		}
 
 		[HttpPost]
@@ -88,14 +94,16 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 				if (isUpdated)
 				{
 					TempData["Info"] = "Fries Updated";
-					return RedirectToAction("List");
+                    ViewData["WebSiteTitle"] = "Fries";
+                    return RedirectToAction("List");
 				}
 				else
 				{
 					ViewBag.Info = "Failed to Update fries";
 				}
 			}
-			return View(updateFriesVM);
+            ViewData["WebSiteTitle"] = "Update";
+            return View(updateFriesVM);
 		}
 
 		public IActionResult Delete(int id)
@@ -107,7 +115,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 				if (isDeleted)
 				{
 					TempData["Info"] = "Fries is deleted";
-				}
+                }
 				else
 				{
 					TempData["Info"] = "Fries is not deleted";
@@ -117,7 +125,8 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 			{
 				TempData["Info"] = "fries could not be founded.";
 			}
-			return RedirectToAction("List");
+            ViewData["WebSiteTitle"] = "Fries";
+            return RedirectToAction("List");
 		}
 
 		[NonAction]
