@@ -18,7 +18,7 @@ namespace Hamburger_Application.Validations.AppUserValidationRules
             RuleFor(x => x.LastName).MaximumLength(30).WithMessage("Surname is up to 30 characters must be entered !");
             RuleFor(x => x.UserName).MaximumLength(20).WithMessage("Username is up to 20 characters must be entered !");
             RuleFor(x => x.Email).MaximumLength(50).WithMessage("Email address is up to 50 characters must be entered !");
-            RuleFor(x => x.Password).MaximumLength(20).WithMessage("Password is up to 16 characters must be entered !");
+            RuleFor(x => x.Password).MaximumLength(20).WithMessage("Password is up to 20 characters must be entered !");
 
             RuleFor(x => x.Email).EmailAddress().WithMessage("Email address is invalid !");
             

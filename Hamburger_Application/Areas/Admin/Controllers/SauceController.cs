@@ -67,7 +67,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             UpdateSauceVM sauceVM = new();
             Sauce sauce = sauceRepository.GetById(id);
             sauceVM = mapper.Map<UpdateSauceVM>(sauce);
-            ViewData["WebSiteTitle"] = $"{sauceVM.Name} Update";
+            ViewData["WebSiteTitle"] = "Update";
             return View(sauceVM);
         }
 
