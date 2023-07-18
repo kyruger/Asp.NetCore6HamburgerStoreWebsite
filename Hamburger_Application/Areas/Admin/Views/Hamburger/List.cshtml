@@ -2,116 +2,122 @@
 @model IEnumerable<Hamburger>
 @inject SignInManager<AppUser> signInManager
 <style>
-	#page {
-		width: 100%;
-		box-sizing: border-box;
-		grid-template-columns: auto auto auto auto;
-		grid-template-rows: 100px auto 200px;
-		grid-template-areas:
-			"head head head head"
-			"nav main main main"
-			"foot foot foot foot";
-	}
+    #page {
+        width: 100%;
+        box-sizing: border-box;
+        grid-template-columns: auto auto auto auto;
+        grid-template-rows: 100px auto 200px;
+        grid-template-areas:
+            "head head head head"
+            "nav main main main"
+            "foot foot foot foot";
+    }
 
-	main {
-		grid-area: main;
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-around;
-		justify-content: space-between;
-	}
+    main {
+        grid-area: main;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        justify-content: space-between;
+    }
 
-	.kutu {
-		perspective: 1000px; /* 3D efekti için perspektif değeri */
-		transition: transform 1s ease;
-		width: 200px;
-		height: auto;
-		box-shadow: 5px 5px 10px orange;
-		margin: 20px;
-	}
+    .kutu {
+        perspective: 1000px; /* 3D efekti için perspektif değeri */
+        transition: transform 1s ease;
+        width: 200px;
+        height: auto;
+        box-shadow: 5px 5px 10px orange;
+        margin: 20px;
+    }
 
-	main p {
-		width: 100%;
-		text-align: center;
-		font-size: large;
-		background-color: rgb(244, 147, 1);
-		color: rgb(247,244,244);
-		font-family: Aclonica serif;
-		font-size: 25px;
-	}
+    main p {
+        width: 100%;
+        text-align: center;
+        font-size: large;
+        background-color: rgb(244, 147, 1);
+        color: rgb(247,244,244);
+        font-family: Aclonica serif;
+        font-size: 25px;
+    }
 
 
-	div.kutu:hover {
-		transform: rotateY(360deg) scale(1.2);
-	}
+    div.kutu:hover {
+        transform: rotateY(360deg) scale(1.2);
+    }
 
-	.card-styles {
-		width: 100%;
-		height: 50px;
-		background-color: darkorange;
-		color: red;
-		cursor: pointer;
-		font-family: Aclonica serif;
-	}
+    .card-styles {
+        width: 100%;
+        height: 50px;
+        background-color: darkorange;
+        color: red;
+        cursor: pointer;
+        font-family: Aclonica serif;
+    }
 
-	.btn.btn-outline-warning:hover {
-		background-color: darkorange !important;
-	}
+    .btn.btn-outline-warning:hover {
+        background-color: darkorange !important;
+    }
 
-	.btn.btn-outline-success:hover {
-		background-color: darkolivegreen !important;
-	}
+    .btn.btn-outline-success:hover {
+        background-color: darkolivegreen !important;
+    }
 
-	.btn.btn-outline-secondary.btn-block:hover {
-		background-color: red !important;
-	}
+    .btn.btn-outline-secondary.btn-block:hover {
+        background-color: red !important;
+    }
 
-	.btn-outline-success:hover {
-		background-color: darkolivegreen;
-	}
+    .btn-outline-success:hover {
+        background-color: darkolivegreen;
+    }
 
-	.full-width {
-		width: 100vw;
-		height: 100%;
-		margin: 0;
-		text-align: center;
-		font-family: 'Aclonica', serif;
-	}
+    .full-width {
+        width: 100vw;
+        height: 100%;
+        margin: 0;
+        text-align: center;
+        font-family: 'Aclonica', serif;
+    }
 </style>
-
+<br />
 <section id="page">
-	<main>
-		@if (TempData["Info"] is not null)
-		{
-			<h3 class="full-width">@TempData["Info"]</h3>
-		}
-		<p class="full-width">Hamburgers</p>
-		@foreach (Hamburger hamburger in Model)
-		{
-			<div class="kutu">
-				<img src="/ProductImages/Hamburger1/@hamburger.Photo" width="90" height="140" style="width: 100%" />
-				<h6 style="text-align: center; font-family: Aclonica serif;">@hamburger.Name</h6>
-				<p>@hamburger.Price ₺</p>
-				<p>
-					<h6>
-						@if (User.IsInRole("Admin"))
-						{
-							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@hamburger.Id" asp-controller="Hamburger" asp-action="Edit">Edit Hamburger</a>
-							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@hamburger.Id" asp-controller="Hamburger" asp-action="Delete">Delete Hamburger</a>
-						}
-						else if (User.IsInRole("User"))
-						{
-							<a class="btn btn-outline-warning button-container card-styles" value="Add to Carts" asp-controller="Order" asp-action="AddToCart" asp-area="User" asp-route-id="@hamburger.Id" asp-route-name="hamburger">Add to Carts</a>
-						}
-					</h6>
-				</p>
-			</div>
-		}
-	</main>
-	@if (User.IsInRole("Admin"))
-	{
-		<div class="text-center">
-			<a asp-action="Create" asp-controller="Hamburger" class="btn btn-outline-success"> Create New Hamburger</a>
-		</div>
-	}
+    <main>
+        @if (TempData["Info"] is not null)
+        {
+            <h3 class="full-width" style="color:#B12103">@TempData["Info"]</h3>
+        }
+        <p class="full-width" style="font-family: 'Comic Sans MS'; font-size:30px; background-color:#B12103; padding-top:15px; padding-bottom:15px">Hamburgers</p>
+        @foreach (Hamburger hamburger in Model)
+        {
+            <div class="kutu">
+                <img src="/ProductImages/Hamburger1/@hamburger.Photo" width="90" height="140" style="width: 100%" />
+                <h6 style="text-align: center; font-family: 'Comic Sans MS'; font-size:20px; color:#B12103">@hamburger.Name</h6>
+                <p style="font-family: 'Comic Sans MS'; font-size:20px">@hamburger.Price ₺</p>
+                <p>
+                    <h6>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a class="btn btn-outline-warning button-container card-styles" style="font-family: 'Comic Sans MS'; font-size:16px; color:#B12103" asp-route-id="@hamburger.Id" asp-controller="Hamburger" asp-action="Edit">Edit Hamburger</a>
+                            <a class="btn btn-outline-warning button-container card-styles" style="font-family: 'Comic Sans MS'; font-size:16px; color:#B12103" asp-route-id="@hamburger.Id" asp-controller="Hamburger" asp-action="Delete">Delete Hamburger</a>
+                        }
+                        else if (User.IsInRole("User"))
+                        {
+                            <a class="btn btn-outline-warning button-container card-styles" style="font-family: 'Comic Sans MS'; font-size:16px; color:#B12103" asp-controller="Order" asp-action="AddToCart" asp-area="User" asp-route-id="@hamburger.Id" asp-route-name="hamburger">Add to Carts</a>
+                        }
+                    </h6>
+                </p>
+            </div>
+        }
+    </main>
+    @if (User.IsInRole("Admin"))
+    {
+        <br />
+        <br />
+        <div class="text-center">
+            <a asp-action="Create" asp-controller="Hamburger" class="form-control btn btn-outline-success" style="font-family: 'Comic Sans MS'; font-size:20px"> Create New Hamburger</a>
+        </div>
+    }
+    <br />
+    <br />
+    <br />
+    <br />
 </section>

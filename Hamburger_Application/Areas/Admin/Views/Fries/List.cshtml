@@ -17,7 +17,6 @@
 		grid-area: main;
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: space-around;
 		justify-content: space-between;
 	}
 
@@ -78,83 +77,86 @@
 		font-family: 'Aclonica', serif;
 	}
 </style>
-
+<br />
 <section id="page">
 	<main>
 		@if (TempData["Info"] is not null)
 		{
-			<h3 class="full-width">@TempData["Info"]</h3>
+			<h3 class="full-width" style="color:#B12103">@TempData["Info"]</h3>
 		}
-		<p class="full-width">Fries</p>
-		<p class="full-width">Fries - Small</p>
+		<p class="full-width" style="font-family: 'Comic Sans MS'; font-size:30px; background-color:#B12103; padding-top:15px; padding-bottom:15px">Fries</p>
+		<br /><br /><br /><br />
+		<p class="full-width" style="font-family: 'Comic Sans MS'; font-size:20px">Fries - Small</p>
 		@foreach (Fries fries in Model)
 		{
 			if (fries.Size == Hamburger_Application.Entities.Enum.Size.Small)
 			{
 				<div class="kutu">
 					<img src="/ProductImages/Fries1/@fries.Photo" width="90" height="140" style="width: 100%" />
-					<h6 style="text-align: center; font-family: Aclonica serif;">@fries.Name-@fries.Size</h6>
-					<p>@fries.Price ₺</p>
+					<h6 style="text-align: center; font-family: 'Comic Sans MS'; font-size:20px; color:#B12103">@fries.Name-@fries.Size</h6>
+					<p style="font-family: 'Comic Sans MS'; font-size:20px">@fries.Price ₺</p>
 					<p>
 						<h6>
 							@if (User.IsInRole("Admin"))
 							{
-								<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@fries.Id" asp-controller="Fries" asp-action="Edit">Edit Fries</a>
-								<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@fries.Id" asp-controller="Fries" asp-action="Delete">Delete Fries</a>
+								<a class="btn btn-outline-warning button-container card-styles" style="font-family: 'Comic Sans MS'; font-size:16px; color:#B12103" asp-route-id="@fries.Id" asp-controller="Fries" asp-action="Edit">Edit Fries</a>
+								<a class="btn btn-outline-warning button-container card-styles" style="font-family: 'Comic Sans MS'; font-size:16px; color:#B12103" asp-route-id="@fries.Id" asp-controller="Fries" asp-action="Delete">Delete Fries</a>
 							}
 							else if (User.IsInRole("User"))
 							{
-								<a class="btn btn-outline-warning button-container card-styles" value="Add to Carts" asp-area="User" asp-controller="Order" asp-action="AddToCart" asp-route-id="@fries.Id" asp-route-name="fries">Add to Carts</a>
+								<a class="btn btn-outline-warning button-container card-styles" style="font-family: 'Comic Sans MS'; font-size:16px; color:#B12103" asp-area="User" asp-controller="Order" asp-action="AddToCart" asp-route-id="@fries.Id" asp-route-name="fries">Add to Carts</a>
 							}
 						</h6>
 					</p>
 				</div>
 			}			
 		}
-		<p class="full-width">Fries - Medium</p>
+		<br />
+		<p class="full-width" style="font-family: 'Comic Sans MS'; font-size:20px">Fries - Medium</p>
 		@foreach (Fries fries in Model)
 		{
 			if (fries.Size == Hamburger_Application.Entities.Enum.Size.Medium)
 			{
 				<div class="kutu">
 					<img src="/ProductImages/Fries1/@fries.Photo" width="90" height="140" style="width: 100%" />
-					<h6 style="text-align: center; font-family: Aclonica serif;">@fries.Name-@fries.Size</h6>
-					<p>@fries.Price ₺</p>
+					<h6 style="text-align: center; font-family: 'Comic Sans MS'; font-size:20px; color:#B12103">@fries.Name-@fries.Size</h6>
+					<p style="font-family: 'Comic Sans MS'; font-size:20px">@fries.Price ₺</p>
 					<p>
 						<h6>
 							@if (User.IsInRole("Admin"))
 							{
-								<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@fries.Id" asp-controller="Fries" asp-action="Edit">Edit Fries</a>
-								<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@fries.Id" asp-controller="Fries" asp-action="Delete">Delete Fries</a>
+								<a class="btn btn-outline-warning button-container card-styles" style="font-family: 'Comic Sans MS'; font-size:16px; color:#B12103" asp-route-id="@fries.Id" asp-controller="Fries" asp-action="Edit">Edit Fries</a>
+								<a class="btn btn-outline-warning button-container card-styles" style="font-family: 'Comic Sans MS'; font-size:16px; color:#B12103" asp-route-id="@fries.Id" asp-controller="Fries" asp-action="Delete">Delete Fries</a>
 							}
 							else if (User.IsInRole("User"))
 							{
-								<a class="btn btn-outline-warning button-container card-styles" value="Add to Carts" asp-area="User" asp-controller="Order" asp-action="AddToCart" asp-route-id="@fries.Id" asp-route-name="fries">Add to Carts</a>
+								<a class="btn btn-outline-warning button-container card-styles" style="font-family: 'Comic Sans MS'; font-size:16px; color:#B12103" asp-area="User" asp-controller="Order" asp-action="AddToCart" asp-route-id="@fries.Id" asp-route-name="fries">Add to Carts</a>
 							}
 						</h6>
 					</p>
 				</div>
 			}
 		}
-		<p class="full-width">Fries - Large</p>
+		<br />
+		<p class="full-width" style="font-family: 'Comic Sans MS'; font-size:20px">Fries - Large</p>
 		@foreach (Fries fries in Model)
 		{
 			if (fries.Size == Hamburger_Application.Entities.Enum.Size.Large)
 			{
 				<div class="kutu">
 					<img src="/ProductImages/Fries1/@fries.Photo" width="90" height="140" style="width: 100%" />
-					<h6 style="text-align: center; font-family: Aclonica serif;">@fries.Name-@fries.Size</h6>
-					<p>@fries.Price ₺</p>
+					<h6 style="text-align: center; font-family: 'Comic Sans MS'; font-size:20px; color:#B12103">@fries.Name-@fries.Size</h6>
+					<p style="font-family: 'Comic Sans MS'; font-size:20px">@fries.Price ₺</p>
 					<p>
 						<h6>
 							@if (User.IsInRole("Admin"))
 							{
-								<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@fries.Id" asp-controller="Fries" asp-action="Edit">Edit Fries</a>
-								<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@fries.Id" asp-controller="Fries" asp-action="Delete">Delete Fries</a>
+								<a class="btn btn-outline-warning button-container card-styles" style="font-family: 'Comic Sans MS'; font-size:16px; color:#B12103" asp-route-id="@fries.Id" asp-controller="Fries" asp-action="Edit">Edit Fries</a>
+								<a class="btn btn-outline-warning button-container card-styles" style="font-family: 'Comic Sans MS'; font-size:16px; color:#B12103" asp-route-id="@fries.Id" asp-controller="Fries" asp-action="Delete">Delete Fries</a>
 							}
 							else if (User.IsInRole("User"))
 							{
-								<a class="btn btn-outline-warning button-container card-styles" value="Add to Carts" asp-area="User" asp-controller="Order" asp-action="AddToCart" asp-route-id="@fries.Id" asp-route-name="fries">Add to Carts</a>
+								<a class="btn btn-outline-warning button-container card-styles" style="font-family: 'Comic Sans MS'; font-size:16px; color:#B12103" asp-area="User" asp-controller="Order" asp-action="AddToCart" asp-route-id="@fries.Id" asp-route-name="fries">Add to Carts</a>
 							}
 						</h6>
 					</p>
@@ -164,9 +166,14 @@
 	</main>
 	@if (User.IsInRole("Admin"))
 	{
+		<br /><br />
 		<div class="text-center">
-			<a asp-action="Create" asp-controller="Fries" class="btn btn-outline-success"> Create New Fries</a>
+			<a asp-action="Create" asp-controller="Fries" class="form-control btn btn-outline-success" style="font-family: 'Comic Sans MS'; font-size:20px"> Create New Fries</a>
 		</div>
 	}
+	<br />
+	<br />
+	<br />
+	<br />
 </section>
 

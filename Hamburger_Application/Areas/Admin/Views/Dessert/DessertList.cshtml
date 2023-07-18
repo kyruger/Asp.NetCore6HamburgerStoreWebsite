@@ -79,29 +79,30 @@
 	}
 </style>
 
+<br />
 <section id="page">
 	<main>
 		@if (TempData["Info"] is not null)
 		{
-			<h3 class="full-width">@TempData["Info"]</h3>
+			<h3 class="full-width" style="color:#B12103">@TempData["Info"]</h3>
 		}
-		<p class="full-width">Desserts</p>
+		<p class="full-width" style="font-family: 'Comic Sans MS'; font-size:30px; background-color:#B12103; padding-top:15px; padding-bottom:15px">Desserts</p>
 		@foreach (Dessert dessert in Model.Desserts)
 		{
 			<div class="kutu">
 				<img src="/ProductImages/Dessert1/@dessert.Photo" width="90" height="140" style="width: 100%" />
-				<h6 style="text-align: center; font-family: Aclonica serif;">@dessert.Name</h6>
-				<p>@dessert.Price ₺</p>
+				<h6 style="text-align: center; font-family: 'Comic Sans MS'; font-size:20px; color:#B12103">@dessert.Name</h6>
+				<p style="font-family: 'Comic Sans MS'; font-size:20px">@dessert.Price ₺</p>
 				<p>
 					<h6>
 						@if (User.IsInRole("Admin"))
 						{
-							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@dessert.Id" asp-controller="Dessert" asp-action="Update" asp-area="Admin">Edit Dessert</a>
-							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@dessert.Id" asp-controller="Dessert" asp-action="Delete">Delete Dessert</a>
+							<a class="btn btn-outline-warning button-container card-styles" style="font-family: 'Comic Sans MS'; font-size:16px; color:#B12103" asp-route-id="@dessert.Id" asp-controller="Dessert" asp-action="Update" asp-area="Admin">Edit Dessert</a>
+							<a class="btn btn-outline-warning button-container card-styles" style="font-family: 'Comic Sans MS'; font-size:16px; color:#B12103" asp-route-id="@dessert.Id" asp-controller="Dessert" asp-action="Delete">Delete Dessert</a>
 						}
 						else if (User.IsInRole("User"))
 						{
-							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@dessert.Id" value="Add to Carts" asp-controller="Order" asp-action="AddToCart" asp-area="User" asp-route-name="dessert">Add to Carts</a>
+							<a class="btn btn-outline-warning button-container card-styles" style="font-family: 'Comic Sans MS'; font-size:16px; color:#B12103" asp-route-id="@dessert.Id" value="Add to Carts" asp-controller="Order" asp-action="AddToCart" asp-area="User" asp-route-name="dessert">Add to Carts</a>
 						}
 					</h6>
 				</p>
@@ -110,20 +111,12 @@
 	</main>
 	@if (User.IsInRole("Admin"))
 	{
+		<br />
 		<div class="text-center">
-			<a asp-action="Create" asp-controller="Dessert" class="btn btn-outline-success"> Create New Dessert</a>
+			<a asp-action="Create" asp-controller="Dessert" class="form-control btn btn-outline-success" style="font-family: 'Comic Sans MS'; font-size:20px"> Create New Dessert</a>
 		</div>
 	}
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
+	
 	<br />
 	<br />
 	<br />

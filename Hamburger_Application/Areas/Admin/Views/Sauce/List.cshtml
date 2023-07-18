@@ -78,30 +78,30 @@
 		font-family: 'Aclonica', serif;
 	}
 </style>
-
+<br />
 <section id="page">
 	<main>
 		@if (TempData["Info"] is not null)
 		{
-			<h3 class="full-width">@TempData["Info"]</h3>
+			<h3 class="full-width" style="font-family: 'Comic Sans MS'; font-size:30px; background-color:#B12103; padding-top:15px; padding-bottom:15px">@TempData["Info"]</h3>
 		}
 		<p class="full-width">Sauces</p>
 		@foreach (Sauce sauce in Model)
 		{
 			<div class="kutu">
 				<img src="/ProductImages/Sauce1/@sauce.Photo" width="90" height="140" style="width: 100%" />
-				<h6 style="text-align: center; font-family: Aclonica serif;">@sauce.Name</h6>
-				<p>@sauce.Price ₺</p>
+				<h6 style="text-align: center; font-family: 'Comic Sans MS'; font-size:20px; color:#B12103">@sauce.Name</h6>
+				<p style="font-family: 'Comic Sans MS'; font-size:20px">@sauce.Price ₺</p>
 				<p>
 					<h6>
 						@if (User.IsInRole("Admin"))
 						{
-							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@sauce.Id" asp-controller="Sauce" asp-action="Edit">Edit Sauce</a>
-							<a class="btn btn-outline-warning button-container card-styles" asp-route-id="@sauce.Id" asp-controller="Sauce" asp-action="Delete">Delete Sauce</a>
+							<a class="btn btn-outline-warning button-container card-styles" style="font-family: 'Comic Sans MS'; font-size:16px; color:#B12103" asp-route-id="@sauce.Id" asp-controller="Sauce" asp-action="Edit">Edit Sauce</a>
+							<a class="btn btn-outline-warning button-container card-styles" style="font-family: 'Comic Sans MS'; font-size:16px; color:#B12103" asp-route-id="@sauce.Id" asp-controller="Sauce" asp-action="Delete">Delete Sauce</a>
 						}
 						else if (User.IsInRole("User"))
 						{
-							<a class="btn btn-outline-warning button-container card-styles" value="Add to Carts" asp-controller="Order" asp-action="AddToCart" asp-area="User" asp-route-id="@sauce.Id" asp-route-name="sauce">Add to Carts</a>
+							<a class="btn btn-outline-warning button-container card-styles" style="font-family: 'Comic Sans MS'; font-size:16px; color:#B12103" asp-controller="Order" asp-action="AddToCart" asp-area="User" asp-route-id="@sauce.Id" asp-route-name="sauce">Add to Carts</a>
 						}
 					</h6>
 				</p>
@@ -110,10 +110,15 @@
 	</main>
 	@if (User.IsInRole("Admin"))
 	{
+		<br />
+		<br />
 		<div class="text-center">
-			<a asp-action="Create" asp-controller="Sauce" class="btn btn-outline-success"> Create New Sauce</a>
+			<a asp-action="Create" asp-controller="Sauce" class="form-control btn btn-outline-success" style="font-family: 'Comic Sans MS'; font-size:20px"> Create New Sauce</a>
 		</div>
 	}
+	<br />
+	<br />
+	<br />
 </section>
 
 

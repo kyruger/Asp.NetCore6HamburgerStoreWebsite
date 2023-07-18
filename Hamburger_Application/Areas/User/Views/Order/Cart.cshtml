@@ -27,13 +27,13 @@
     }
 </style>
 
-<table class="table table-hover table-bordered  ">
+<table class="table table-hover table-bordered" style="color:#B12103; font-size:20px; font-family:'Comic Sans MS' ">
     <thead>
         <tr>
-            <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Photo</th>
+            <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px; text-align:center">Photo</th>
             <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Name</th>
-            <th colspan="2" style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Piece</th>
-            <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Price</th>
+            <th colspan="2 style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px; text-align:center">Piece</th>
+            <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px; text-align:center">Price</th>
             <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Choose Your Transaction</th>
             <th style="background-color: rgb(244, 147, 1); color:rgb(247,244,244); font-family: Aclonica; serif;font-size: 15px">Total Price</th>
         </tr>
@@ -45,7 +45,7 @@
             {
                 <tr>
                     <td class="text-center">
-                        <img src="/ProductImages/Menu1/@menu.Photo" width="90" height="140">
+                        <img src="/ProductImages/Menu1/@menu.Photo" width="100" height="100">
                     </td>
                     <td>
                         <div class="text-container">
@@ -53,14 +53,14 @@
                         </div>
                     </td>
                     <td colspan="2">
-                        <div class="text-container">
-                            <a class="value-button" asp-action="Decrease" asp-controller="Order" asp-route-entityName="@menu.Name">-</a>
-                            <label>@menu.Piece</label>
+                        <div class="text-container" style="text-align:center">
+                            <a class="value-button" asp-action="Decrease" asp-controller="Order" asp-route-entityName="@menu.Name">-</a>&nbsp;
+                            <label>@menu.Piece</label>&nbsp;
                             <a class="value-button" asp-action="Increase" asp-controller="Order" asp-route-entityName="@menu.Name">+</a>
                         </div>
                     </td>
                     <td>
-                        <div class="text-container">
+                        <div class="text-container" style="text-align:center">
                             @menu.Price ₺
                         </div>
                     </td>
@@ -70,7 +70,7 @@
                         </div>
                     </td>
                     <td>
-                        <div class="text-container">
+                        <div class="text-container" style="text-align:center">
                             @menu.TotalPrice ₺
                         </div>
                     </td>
@@ -81,7 +81,7 @@
             {
                 <tr>
                     <td class="text-center">
-                        <img src="/ProductImages/Hamburger1/@hamburger.Photo" width="90" height="140">
+                        <img src="/ProductImages/Hamburger1/@hamburger.Photo" width="100" height="100">
                     </td>
                     <td>
                         <div class="text-container">
@@ -89,14 +89,14 @@
                         </div>
                     </td>
                     <td colspan="2">
-                        <div class="text-container">
-                            <a class="value-button" asp-action="Decrease" asp-controller="Order" asp-route-entityName="@hamburger.Name">-</a>
-                            <label>@hamburger.Piece</label>
+                        <div class="text-container" style="text-align:center">
+                            <a class="value-button" asp-action="Decrease" asp-controller="Order" asp-route-entityName="@hamburger.Name">-</a>&nbsp;
+                            <label>@hamburger.Piece</label>&nbsp;
                             <a class="value-button" asp-action="Increase" asp-controller="Order" asp-route-entityName="@hamburger.Name">+</a>
                         </div>
                     </td>
                     <td>
-                        <div class="text-container">
+                        <div class="text-container" style="text-align:center">
                             @hamburger.Price ₺
                         </div>
                     </td>
@@ -106,7 +106,7 @@
                         </div>
                     </td>
                     <td>
-                        <div class="text-container">
+                        <div class="text-container" style="text-align:center">
                             @hamburger.TotalPrice ₺
                         </div>
                     </td>
@@ -117,7 +117,7 @@
             {
                 <tr>
                     <td class="text-center">
-                        <img src="/ProductImages/Fries1/@fries.Photo" width="90" height="140">
+                        <img src="/ProductImages/Fries1/@fries.Photo" width="100" height="100">
                     </td>
                     <td>
                         <div class="text-container">
@@ -125,14 +125,14 @@
                         </div>
                     </td>
                     <td colspan="2">
-                        <div class="text-container">
-                            <a class="value-button" asp-action="Decrease" asp-controller="Order" asp-route-entityName="@fries.Name">-</a>
-                            <label>@fries.Piece</label>
+                        <div class="text-container" style="text-align:center">
+                            <a class="value-button" asp-action="Decrease" asp-controller="Order" asp-route-entityName="@fries.Name">-</a>&nbsp;
+                            <label>@fries.Piece</label>&nbsp;
                             <a class="value-button" asp-action="Increase" asp-controller="Order" asp-route-entityName="@fries.Name">+</a>
                         </div>
                     </td>
                     <td>
-                        <div class="text-container">
+                        <div class="text-container" style="text-align:center">
                             @fries.Price ₺
                         </div>
                     </td>
@@ -142,7 +142,7 @@
                         </div>
                     </td>
                     <td>
-                        <div class="text-container">
+                        <div class="text-container" style="text-align:center">
                             @fries.TotalPrice ₺
                         </div>
                     </td>
@@ -153,7 +153,7 @@
             {
                 <tr>
                     <td class="text-center">
-                        <img src="/ProductImages/Sauce1/@sauce.Photo" width="90" height="140">
+                        <img src="/ProductImages/Sauce1/@sauce.Photo" width="100" height="100">
                     </td>
                     <td>
                         <div class="text-container">
@@ -161,14 +161,14 @@
                         </div>
                     </td>
                     <td colspan="2">
-                        <div class="text-container">
-                            <a class="value-button" asp-action="Decrease" asp-controller="Order" asp-route-entityName="@sauce.Name">-</a>
-                            <label>@sauce.Piece</label>
+                        <div class="text-container" style="text-align:center">
+                            <a class="value-button" asp-action="Decrease" asp-controller="Order" asp-route-entityName="@sauce.Name">-</a>&nbsp;
+                            <label>@sauce.Piece</label>&nbsp;
                             <a class="value-button" asp-action="Increase" asp-controller="Order" asp-route-entityName="@sauce.Name">+</a>
                         </div>
                     </td>
                     <td>
-                        <div class="text-container">
+                        <div class="text-container" style="text-align:center">
                             @sauce.Price ₺
                         </div>
                     </td>
@@ -178,7 +178,7 @@
                         </div>
                     </td>
                     <td>
-                        <div class="text-container">
+                        <div class="text-container" style="text-align:center">
                             @sauce.TotalPrice ₺
                         </div>
                     </td>
@@ -197,14 +197,14 @@
                         </div>
                     </td>
                     <td colspan="2">
-                        <div class="text-container">
-                            <a class="value-button" asp-action="Decrease" asp-controller="Order" asp-route-entityName="@drink.Name">-</a>
-                            <label>@drink.Piece</label>
+                        <div class="text-container" style="text-align:center">
+                            <a class="value-button" asp-action="Decrease" asp-controller="Order" asp-route-entityName="@drink.Name">-</a>&nbsp;
+                            <label>@drink.Piece</label>&nbsp;
                             <a class="value-button" asp-action="Increase" asp-controller="Order" asp-route-entityName="@drink.Name">+</a>
                         </div>
                     </td>
                     <td>
-                        <div class="text-container">
+                        <div class="text-container" style="text-align:center">
                             @drink.Price ₺
                         </div>
                     </td>
@@ -214,7 +214,7 @@
                         </div>
                     </td>
                     <td>
-                        <div class="text-container">
+                        <div class="text-container" style="text-align:center">
                             @drink.TotalPrice ₺
                         </div>
                     </td>
@@ -225,7 +225,7 @@
             {
                 <tr>
                     <td class="text-center">
-                        <img src="/ProductImages/Dessert1/@dessert.Photo" width="90" height="140">
+                        <img src="/ProductImages/Dessert1/@dessert.Photo" width="100" height="100">
                     </td>
                     <td>
                         <div class="text-container">
@@ -233,14 +233,14 @@
                         </div>
                     </td>
                     <td colspan="2">
-                        <div class="text-container">
-                            <a class="value-button" asp-action="Decrease" asp-controller="Order" asp-route-entityName="@dessert.Name">-</a>
-                            <label>@dessert.Piece</label>
+                        <div class="text-container" style="text-align:center">
+                            <a class="value-button" asp-action="Decrease" asp-controller="Order" asp-route-entityName="@dessert.Name">-</a>&nbsp;
+                            <label>@dessert.Piece</label>&nbsp;
                             <a class="value-button" asp-action="Increase" asp-controller="Order" asp-route-entityName="@dessert.Name">+</a>
                         </div>
                     </td>
                     <td>
-                        <div class="text-container">
+                        <div class="text-container" style="text-align:center">
                             @dessert.Price ₺
                         </div>
                     </td>
@@ -250,7 +250,7 @@
                         </div>
                     </td>
                     <td>
-                        <div class="text-container">
+                        <div class="text-container" style="text-align:center">
                             @dessert.TotalPrice ₺
                         </div>
                     </td>
@@ -267,7 +267,7 @@
             </tr>
             <tr>
                 <td colspan="7" class="text-center">
-                    <a asp-action="SaveOrder" asp-controller="Order" asp-area="User" asp-route-id="@Model" class="btn btn-outline-success" asp-route-totalPrice="@totalPrice">Confirm my cart</a>
+                    <a asp-action="SaveOrder" asp-controller="Order" asp-area="User" asp-route-id="@Model" class="form-control btn btn-outline-success" asp-route-totalPrice="@totalPrice">Confirm my cart</a>
                 </td>
             </tr>
 
