@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Hamburger_Application.Areas.Admin.Models;
+using Hamburger_Application.Areas.User.Utilities;
 using Hamburger_Application.Entities.Concrete;
 using Hamburger_Application.Entities.Enum;
 using Hamburger_Application.Repositories.Abstract;
@@ -10,7 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace Hamburger_Application.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class DessertController : Controller
     {
         private readonly IRepository<Dessert> dessertRepository;
@@ -44,7 +45,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 Dessert dessert = mapper.Map<Dessert>(createVM);
-                dessert.Photo = GenerateUniqueFileName(imgCover);
+                dessert.Photo = PhotoFile.GenerateUniqueFileName(imgCover);
                 bool isAdded = dessertRepository.Add(dessert);
 
                 FileStream stream = new FileStream("wwwroot/ProductImages/Dessert1/" + dessert.Photo, FileMode.Create);
@@ -79,7 +80,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
                 {
                     Dessert dessert = mapper.Map<Dessert>(updateVM);
 
-                    dessert.Photo = GenerateUniqueFileName(imgCover);
+                    dessert.Photo = PhotoFile.GenerateUniqueFileName(imgCover);
                     bool isUpdated = dessertRepository.Update(dessert);
 
                     FileStream stream = new FileStream("wwwroot/ProductImages/Dessert1/" + dessert.Photo, FileMode.Create);
@@ -111,18 +112,5 @@ namespace Hamburger_Application.Areas.Admin.Controllers
             ViewData["WebSiteTitle"] = "Desserts";
             return RedirectToAction("DessertList");
         }
-
-        [NonAction]
-        private string GenerateUniqueFileName(IFormFile file)
-        {
-            if (file is not null)
-            {
-                Guid guid = Guid.NewGuid();
-                string newFileName = guid.ToString() + "_" + file.FileName;
-                return newFileName;
-            }
-            return null;
-        }
-
     }
 }

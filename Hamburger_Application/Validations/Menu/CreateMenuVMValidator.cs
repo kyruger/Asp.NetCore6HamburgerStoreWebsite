@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using Hamburger_Application.Areas.Admin.Models.ViewModels.Menu;
+using Hamburger_Application.Areas.User.Utilities;
 
 namespace Hamburger_Application.Validations.Menu
 {
@@ -7,20 +8,12 @@ namespace Hamburger_Application.Validations.Menu
 	{
         public CreateMenuVMValidator()
         {
-            RuleFor(f => f.Menu.Name).NotEmpty().MaximumLength(30).WithMessage("Menu name must not be empty & maximum characters must be 100");
-            RuleFor(f => f.Menu.Price).NotEmpty().GreaterThan(0).WithMessage("Price cannot be a negative value");
-			RuleFor(f => f.Menu.Photo).Must(BeValidImageFormat).WithMessage("Invalid photo format. Only JPEG, JPG and PNG formats are allowed.");
-			RuleFor(f=>f.Menu.Piece).NotEmpty().GreaterThan(0).WithMessage("Priece cannot be a negative value");
-		}
-		private bool BeValidImageFormat(string photo)
-		{
-			if (string.IsNullOrEmpty(photo))                 // photo null => true;
-				return true;
-
-			var validFormats = new[] { ".jpg", ".jpeg", ".png" };
-			var fileExtension = Path.GetExtension(photo);    //return jpg, jpeg, png
-
-			return validFormats.Contains(fileExtension, StringComparer.OrdinalIgnoreCase);
-		}
-	}
+            RuleFor(f => f.Menu.Name).NotEmpty().WithMessage("Menu name must not be empty");
+            RuleFor(f => f.Menu.Name).MaximumLength(30).WithMessage("Maximum characters must be 30");
+            RuleFor(f => f.Menu.Price).NotEmpty().WithMessage("Price cannot be a empty");
+            RuleFor(f => f.Menu.Price).GreaterThan(0).WithMessage("Price cannot be a negative value");
+            RuleFor(f => f.Menu.Piece).GreaterThan(0).WithMessage("Piece cannot be a negative value");
+            RuleFor(f => f.imgCover).Must(PhotoFile.BeValidImageFormat).WithMessage("Invalid photo format. Only JPEG, JPG and PNG formats are allowed.");
+        }
+    }
 }

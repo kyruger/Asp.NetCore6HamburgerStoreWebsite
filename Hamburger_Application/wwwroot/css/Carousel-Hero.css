@@ -1,4 +1,4 @@
-div.jumbotron.carousel-hero {
+﻿div.jumbotron.carousel-hero {
   color: #fff;
   text-align: center;
   background-size: cover;
@@ -42,3 +42,4 @@ p.hero-subtitle {
 .mbf-container strong {
   font-weight: bold;
 }
+

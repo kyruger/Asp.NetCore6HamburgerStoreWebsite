@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Hamburger_Application.Areas.Admin.Models.ViewModels.Menu;
+using Hamburger_Application.Areas.User.Utilities;
 using Hamburger_Application.Entities.Concrete;
 using Hamburger_Application.Repositories.Abstract;
 using Microsoft.AspNetCore.Authorization;
@@ -67,7 +68,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                menu.Photo = GenerateUniqueFileName(imgCover);
+                menu.Photo = PhotoFile.GenerateUniqueFileName(imgCover);
                 bool isAdded = menuRepository.Add(menu);
 
                 FileStream file = new FileStream("wwwroot/ProductImages/Menu1/" + menu.Photo, FileMode.Create);
@@ -112,7 +113,7 @@ namespace Hamburger_Application.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                createMenuVM.Menu.Photo = GenerateUniqueFileName(imgCover);
+                createMenuVM.Menu.Photo = PhotoFile.GenerateUniqueFileName(imgCover);
                 bool isAdded = menuRepository.Update(createMenuVM.Menu);
 
                 FileStream file = new FileStream("wwwroot/ProductImages/Menu1/" + createMenuVM.Menu.Photo, FileMode.Create);
@@ -153,14 +154,6 @@ namespace Hamburger_Application.Areas.Admin.Controllers
 			}
             ViewData["WebSiteTitle"] = "Menus";
             return RedirectToAction("List");
-        }
-
-        [NonAction]
-        private string GenerateUniqueFileName(IFormFile file)
-        {
-            Guid guid = Guid.NewGuid();
-            string newFileName = guid.ToString() + "_" + file.FileName;
-            return newFileName;
         }
     }
 }

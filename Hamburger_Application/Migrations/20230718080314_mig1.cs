@@ -361,8 +361,8 @@ namespace Hamburger_Application.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "CreationTime", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "56dd3b13-2f3e-4f7a-89b2-1a84043a3def", new DateTime(2023, 7, 17, 20, 12, 35, 785, DateTimeKind.Local).AddTicks(1372), "Admin", "ADMIN" },
-                    { 2, "fddf04de-8442-4a9b-af53-132235f9acc5", new DateTime(2023, 7, 17, 20, 12, 35, 785, DateTimeKind.Local).AddTicks(1386), "User", "USER" }
+                    { 1, "9c7851a5-9015-4870-b491-3e3d318ec98b", new DateTime(2023, 7, 18, 11, 3, 12, 441, DateTimeKind.Local).AddTicks(7257), "Admin", "ADMIN" },
+                    { 2, "85a61d4e-0aa7-4aea-8598-f8a9e7bd854c", new DateTime(2023, 7, 18, 11, 3, 12, 441, DateTimeKind.Local).AddTicks(7272), "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -370,11 +370,11 @@ namespace Hamburger_Application.Migrations
                 columns: new[] { "Id", "CreationTime", "Name", "OrderId", "Photo", "Price" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 7, 17, 20, 12, 35, 785, DateTimeKind.Local).AddTicks(6461), "Brownie", null, "cafddece-875e-4d0c-830c-72b3e194666c_Brownie.jpg", 50m },
-                    { 2, new DateTime(2023, 7, 17, 20, 12, 35, 785, DateTimeKind.Local).AddTicks(6469), "Milkshake", null, "fb998a43-9809-4ebc-a546-ce63ca896be8_MilkShake.jpg", 40m },
-                    { 3, new DateTime(2023, 7, 17, 20, 12, 35, 785, DateTimeKind.Local).AddTicks(6471), "Cheesecake", null, "ee446133-2bb0-46af-b257-3d1a8930432f_CheeseCake.jpg", 60m },
-                    { 4, new DateTime(2023, 7, 17, 20, 12, 35, 785, DateTimeKind.Local).AddTicks(6472), "Ice Cream", null, "1d5c1238-10f9-49e6-a388-a541d1d64e4c_IcaCream.jpg", 30m },
-                    { 5, new DateTime(2023, 7, 17, 20, 12, 35, 785, DateTimeKind.Local).AddTicks(6473), "Puding", null, "a01529c3-70cf-4b43-af5c-db1f8f9a921d_Puding.jpg", 40m }
+                    { 1, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(1821), "Brownie", null, "cafddece-875e-4d0c-830c-72b3e194666c_Brownie.jpg", 50m },
+                    { 2, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(1828), "Milkshake", null, "fb998a43-9809-4ebc-a546-ce63ca896be8_MilkShake.jpg", 40m },
+                    { 3, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(1830), "Cheesecake", null, "ee446133-2bb0-46af-b257-3d1a8930432f_CheeseCake.jpg", 60m },
+                    { 4, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(1831), "Ice Cream", null, "1d5c1238-10f9-49e6-a388-a541d1d64e4c_IcaCream.jpg", 30m },
+                    { 5, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(1832), "Puding", null, "a01529c3-70cf-4b43-af5c-db1f8f9a921d_Puding.jpg", 40m }
                 });
 
             migrationBuilder.InsertData(
@@ -382,11 +382,11 @@ namespace Hamburger_Application.Migrations
                 columns: new[] { "Id", "CreationTime", "MenuId", "Name", "OrderId", "Photo", "Price" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 7, 17, 20, 12, 35, 785, DateTimeKind.Local).AddTicks(8483), null, "Coke-S", null, "6240f4b6-c927-4898-9c76-6968b54c1e39_Coke.jpg", 40m },
-                    { 2, new DateTime(2023, 7, 17, 20, 12, 35, 785, DateTimeKind.Local).AddTicks(8489), null, "Ayran-S", null, "a7e28042-2e4a-443e-860d-0f0cbd0d640c_Ayran.jpg", 25m },
-                    { 3, new DateTime(2023, 7, 17, 20, 12, 35, 785, DateTimeKind.Local).AddTicks(8490), null, "Coke Zero-S", null, "1117576e-e2a3-42a5-8dc0-9f5d90fd0e80_CokeZero.jpg", 45m },
-                    { 4, new DateTime(2023, 7, 17, 20, 12, 35, 785, DateTimeKind.Local).AddTicks(8491), null, "Cold Tea-S", null, "914e854b-f076-455c-aeab-49f8d8f4ca8e_ColdTea.jpg", 35m },
-                    { 5, new DateTime(2023, 7, 17, 20, 12, 35, 785, DateTimeKind.Local).AddTicks(8492), null, "Mineral Water-S", null, "d2ffceeb-e929-43e1-9fc6-df7838fa6aa2_MineralWater.jpg", 15m }
+                    { 1, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(3638), null, "Coke-S", null, "6240f4b6-c927-4898-9c76-6968b54c1e39_Coke.jpg", 40m },
+                    { 2, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(3643), null, "Ayran-S", null, "a7e28042-2e4a-443e-860d-0f0cbd0d640c_Ayran.jpg", 25m },
+                    { 3, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(3645), null, "Coke Zero-S", null, "1117576e-e2a3-42a5-8dc0-9f5d90fd0e80_CokeZero.jpg", 45m },
+                    { 4, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(3646), null, "Cold Tea-S", null, "914e854b-f076-455c-aeab-49f8d8f4ca8e_ColdTea.jpg", 35m },
+                    { 5, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(3648), null, "Mineral Water-S", null, "d2ffceeb-e929-43e1-9fc6-df7838fa6aa2_MineralWater.jpg", 15m }
                 });
 
             migrationBuilder.InsertData(
@@ -394,16 +394,16 @@ namespace Hamburger_Application.Migrations
                 columns: new[] { "Id", "CreationTime", "MenuId", "Name", "OrderId", "Photo", "Price", "Size" },
                 values: new object[,]
                 {
-                    { 6, new DateTime(2023, 7, 17, 20, 12, 35, 785, DateTimeKind.Local).AddTicks(8493), null, "Coke-M", null, "6240f4b6-c927-4898-9c76-6968b54c1e39_Coke.jpg", 45m, 2 },
-                    { 7, new DateTime(2023, 7, 17, 20, 12, 35, 785, DateTimeKind.Local).AddTicks(8495), null, "Ayran-M", null, "a7e28042-2e4a-443e-860d-0f0cbd0d640c_Ayran.jpg", 30m, 2 },
-                    { 8, new DateTime(2023, 7, 17, 20, 12, 35, 785, DateTimeKind.Local).AddTicks(8496), null, "Coke Zero-M", null, "1117576e-e2a3-42a5-8dc0-9f5d90fd0e80_CokeZero.jpg", 50m, 2 },
-                    { 9, new DateTime(2023, 7, 17, 20, 12, 35, 785, DateTimeKind.Local).AddTicks(8497), null, "Cold Tea-M", null, "914e854b-f076-455c-aeab-49f8d8f4ca8e_ColdTea.jpg", 40m, 2 },
-                    { 10, new DateTime(2023, 7, 17, 20, 12, 35, 785, DateTimeKind.Local).AddTicks(8498), null, "Mineral Water-M", null, "d2ffceeb-e929-43e1-9fc6-df7838fa6aa2_MineralWater.jpg", 20m, 2 },
-                    { 11, new DateTime(2023, 7, 17, 20, 12, 35, 785, DateTimeKind.Local).AddTicks(8499), null, "Coke-L", null, "6240f4b6-c927-4898-9c76-6968b54c1e39_Coke.jpg", 50m, 3 },
-                    { 12, new DateTime(2023, 7, 17, 20, 12, 35, 785, DateTimeKind.Local).AddTicks(8500), null, "Ayran-L", null, "a7e28042-2e4a-443e-860d-0f0cbd0d640c_Ayran.jpg", 35m, 3 },
-                    { 13, new DateTime(2023, 7, 17, 20, 12, 35, 785, DateTimeKind.Local).AddTicks(8501), null, "Coke Zero-L", null, "1117576e-e2a3-42a5-8dc0-9f5d90fd0e80_CokeZero.jpg", 55m, 3 },
-                    { 14, new DateTime(2023, 7, 17, 20, 12, 35, 785, DateTimeKind.Local).AddTicks(8502), null, "Cold Tea-L", null, "914e854b-f076-455c-aeab-49f8d8f4ca8e_ColdTea.jpg", 45m, 3 },
-                    { 15, new DateTime(2023, 7, 17, 20, 12, 35, 785, DateTimeKind.Local).AddTicks(8504), null, "Mineral Water-L", null, "d2ffceeb-e929-43e1-9fc6-df7838fa6aa2_MineralWater.jpg", 25m, 3 }
+                    { 6, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(3649), null, "Coke-M", null, "6240f4b6-c927-4898-9c76-6968b54c1e39_Coke.jpg", 45m, 2 },
+                    { 7, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(3651), null, "Ayran-M", null, "a7e28042-2e4a-443e-860d-0f0cbd0d640c_Ayran.jpg", 30m, 2 },
+                    { 8, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(3653), null, "Coke Zero-M", null, "1117576e-e2a3-42a5-8dc0-9f5d90fd0e80_CokeZero.jpg", 50m, 2 },
+                    { 9, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(3654), null, "Cold Tea-M", null, "914e854b-f076-455c-aeab-49f8d8f4ca8e_ColdTea.jpg", 40m, 2 },
+                    { 10, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(3656), null, "Mineral Water-M", null, "d2ffceeb-e929-43e1-9fc6-df7838fa6aa2_MineralWater.jpg", 20m, 2 },
+                    { 11, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(3657), null, "Coke-L", null, "6240f4b6-c927-4898-9c76-6968b54c1e39_Coke.jpg", 50m, 3 },
+                    { 12, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(3659), null, "Ayran-L", null, "a7e28042-2e4a-443e-860d-0f0cbd0d640c_Ayran.jpg", 35m, 3 },
+                    { 13, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(3660), null, "Coke Zero-L", null, "1117576e-e2a3-42a5-8dc0-9f5d90fd0e80_CokeZero.jpg", 55m, 3 },
+                    { 14, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(3661), null, "Cold Tea-L", null, "914e854b-f076-455c-aeab-49f8d8f4ca8e_ColdTea.jpg", 45m, 3 },
+                    { 15, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(3663), null, "Mineral Water-L", null, "d2ffceeb-e929-43e1-9fc6-df7838fa6aa2_MineralWater.jpg", 25m, 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -411,10 +411,10 @@ namespace Hamburger_Application.Migrations
                 columns: new[] { "Id", "CreationTime", "MenuId", "Name", "OrderId", "Photo", "Price" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 7, 17, 20, 12, 35, 786, DateTimeKind.Local).AddTicks(351), null, "Potatoes - S", null, "301422bb-3c9f-4670-87ec-52f6bb49510e_Potatoes.jpg", 20m },
-                    { 2, new DateTime(2023, 7, 17, 20, 12, 35, 786, DateTimeKind.Local).AddTicks(356), null, "Onion Ring - S", null, "40149d5b-324f-40d3-802c-0866bc9edac8_OnionRings.jpg", 22m },
-                    { 3, new DateTime(2023, 7, 17, 20, 12, 35, 786, DateTimeKind.Local).AddTicks(358), null, "Nugget - S", null, "f012288d-4cb5-4546-a5a1-82a2e34457ce_Nuggets.jpg", 25m },
-                    { 4, new DateTime(2023, 7, 17, 20, 12, 35, 786, DateTimeKind.Local).AddTicks(359), null, "Chicken Tenders - S", null, "1e165d0c-cdad-4956-a803-a291756320b1_ChickenTenders.jpg", 25m }
+                    { 1, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(5642), null, "Potatoes - S", null, "301422bb-3c9f-4670-87ec-52f6bb49510e_Potatoes.jpg", 20m },
+                    { 2, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(5647), null, "Onion Ring - S", null, "40149d5b-324f-40d3-802c-0866bc9edac8_OnionRings.jpg", 22m },
+                    { 3, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(5649), null, "Nugget - S", null, "f012288d-4cb5-4546-a5a1-82a2e34457ce_Nuggets.jpg", 25m },
+                    { 4, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(5651), null, "Chicken Tenders - S", null, "1e165d0c-cdad-4956-a803-a291756320b1_ChickenTenders.jpg", 25m }
                 });
 
             migrationBuilder.InsertData(
@@ -422,14 +422,14 @@ namespace Hamburger_Application.Migrations
                 columns: new[] { "Id", "CreationTime", "MenuId", "Name", "OrderId", "Photo", "Price", "Size" },
                 values: new object[,]
                 {
-                    { 5, new DateTime(2023, 7, 17, 20, 12, 35, 786, DateTimeKind.Local).AddTicks(360), null, "Potatoes - M", null, "301422bb-3c9f-4670-87ec-52f6bb49510e_Potatoes.jpg", 24m, 2 },
-                    { 6, new DateTime(2023, 7, 17, 20, 12, 35, 786, DateTimeKind.Local).AddTicks(364), null, "Onion Ring - M", null, "40149d5b-324f-40d3-802c-0866bc9edac8_OnionRings.jpg", 26m, 2 },
-                    { 7, new DateTime(2023, 7, 17, 20, 12, 35, 786, DateTimeKind.Local).AddTicks(365), null, "Nugget - M", null, "f012288d-4cb5-4546-a5a1-82a2e34457ce_Nuggets.jpg", 29m, 2 },
-                    { 8, new DateTime(2023, 7, 17, 20, 12, 35, 786, DateTimeKind.Local).AddTicks(366), null, "Chicken Tenders - M", null, "1e165d0c-cdad-4956-a803-a291756320b1_ChickenTenders.jpg", 29m, 2 },
-                    { 9, new DateTime(2023, 7, 17, 20, 12, 35, 786, DateTimeKind.Local).AddTicks(368), null, "Potatoes - L", null, "301422bb-3c9f-4670-87ec-52f6bb49510e_Potatoes.jpg", 28m, 3 },
-                    { 10, new DateTime(2023, 7, 17, 20, 12, 35, 786, DateTimeKind.Local).AddTicks(369), null, "Onion Ring - L", null, "40149d5b-324f-40d3-802c-0866bc9edac8_OnionRings.jpg", 30m, 3 },
-                    { 11, new DateTime(2023, 7, 17, 20, 12, 35, 786, DateTimeKind.Local).AddTicks(370), null, "Nugget - L", null, "f012288d-4cb5-4546-a5a1-82a2e34457ce_Nuggets.jpg", 33m, 3 },
-                    { 12, new DateTime(2023, 7, 17, 20, 12, 35, 786, DateTimeKind.Local).AddTicks(371), null, "Chicken Tenders - L", null, "1e165d0c-cdad-4956-a803-a291756320b1_ChickenTenders.jpg", 33m, 3 }
+                    { 5, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(5652), null, "Potatoes - M", null, "301422bb-3c9f-4670-87ec-52f6bb49510e_Potatoes.jpg", 24m, 2 },
+                    { 6, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(5654), null, "Onion Ring - M", null, "40149d5b-324f-40d3-802c-0866bc9edac8_OnionRings.jpg", 26m, 2 },
+                    { 7, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(5655), null, "Nugget - M", null, "f012288d-4cb5-4546-a5a1-82a2e34457ce_Nuggets.jpg", 29m, 2 },
+                    { 8, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(5657), null, "Chicken Tenders - M", null, "1e165d0c-cdad-4956-a803-a291756320b1_ChickenTenders.jpg", 29m, 2 },
+                    { 9, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(5658), null, "Potatoes - L", null, "301422bb-3c9f-4670-87ec-52f6bb49510e_Potatoes.jpg", 28m, 3 },
+                    { 10, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(5660), null, "Onion Ring - L", null, "40149d5b-324f-40d3-802c-0866bc9edac8_OnionRings.jpg", 30m, 3 },
+                    { 11, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(5661), null, "Nugget - L", null, "f012288d-4cb5-4546-a5a1-82a2e34457ce_Nuggets.jpg", 33m, 3 },
+                    { 12, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(5662), null, "Chicken Tenders - L", null, "1e165d0c-cdad-4956-a803-a291756320b1_ChickenTenders.jpg", 33m, 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -437,11 +437,11 @@ namespace Hamburger_Application.Migrations
                 columns: new[] { "Id", "CreationTime", "MenuId", "Name", "OrderId", "Photo", "Price" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 7, 17, 20, 12, 35, 786, DateTimeKind.Local).AddTicks(2341), null, "Whopper", null, "27c952d4-c958-4bce-87ad-6cb40a743067_Whopper.jpg", 120m },
-                    { 2, new DateTime(2023, 7, 17, 20, 12, 35, 786, DateTimeKind.Local).AddTicks(2347), null, "Texas SmokeHouse", null, "43773966-353c-4741-9a0e-9d3642aea7e3_TexasSmokeHouse.jpg", 140m },
-                    { 3, new DateTime(2023, 7, 17, 20, 12, 35, 786, DateTimeKind.Local).AddTicks(2348), null, "Fish Royale", null, "074e56a6-ab87-48b1-b948-8ddc5ff84c97_FishRoyale.jpg", 110m },
-                    { 4, new DateTime(2023, 7, 17, 20, 12, 35, 786, DateTimeKind.Local).AddTicks(2349), null, "Big King", null, "e7bcba7f-5e1f-4b11-81fe-8f423b4bb26f_BigKing.jpg", 150m },
-                    { 5, new DateTime(2023, 7, 17, 20, 12, 35, 786, DateTimeKind.Local).AddTicks(2351), null, "Chicken Royale", null, "0c8d85ff-19e8-4550-b079-f83d1e8b863a_ChickenRoyale.jpg", 95m }
+                    { 1, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(7417), null, "Whopper", null, "27c952d4-c958-4bce-87ad-6cb40a743067_Whopper.jpg", 120m },
+                    { 2, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(7423), null, "Texas SmokeHouse", null, "43773966-353c-4741-9a0e-9d3642aea7e3_TexasSmokeHouse.jpg", 140m },
+                    { 3, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(7425), null, "Fish Royale", null, "074e56a6-ab87-48b1-b948-8ddc5ff84c97_FishRoyale.jpg", 110m },
+                    { 4, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(7427), null, "Big King", null, "e7bcba7f-5e1f-4b11-81fe-8f423b4bb26f_BigKing.jpg", 150m },
+                    { 5, new DateTime(2023, 7, 18, 11, 3, 12, 442, DateTimeKind.Local).AddTicks(7428), null, "Chicken Royale", null, "0c8d85ff-19e8-4550-b079-f83d1e8b863a_ChickenRoyale.jpg", 95m }
                 });
 
             migrationBuilder.InsertData(
@@ -449,9 +449,9 @@ namespace Hamburger_Application.Migrations
                 columns: new[] { "Id", "CreationTime", "DrinkId", "FriesId", "HamburgerId", "Name", "OrderId", "Photo", "Price" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 7, 17, 20, 12, 35, 788, DateTimeKind.Local).AddTicks(1850), 1, 1, 1, "Whopper Menu", null, "085732b2-62a9-473a-9c94-198bf0b38d9c_WhopperMenu.jpg", 150m },
-                    { 2, new DateTime(2023, 7, 17, 20, 12, 35, 788, DateTimeKind.Local).AddTicks(1863), 1, 1, 2, "Texas SmokeHouse Menu", null, "03e49b85-7d1b-4a0e-8d18-47d97756a570_TexasSmokeHouseMenu.jpg", 170m },
-                    { 3, new DateTime(2023, 7, 17, 20, 12, 35, 788, DateTimeKind.Local).AddTicks(1866), 1, 1, 3, "Fish Royale Menu", null, "c7e2b9ad-b7b7-476f-9e1d-32c502cf5686_FishRoyaleMenu.jpg", 140m }
+                    { 1, new DateTime(2023, 7, 18, 11, 3, 12, 444, DateTimeKind.Local).AddTicks(6346), 1, 1, 1, "Whopper Menu", null, "085732b2-62a9-473a-9c94-198bf0b38d9c_WhopperMenu.jpg", 150m },
+                    { 2, new DateTime(2023, 7, 18, 11, 3, 12, 444, DateTimeKind.Local).AddTicks(6356), 1, 1, 2, "Texas SmokeHouse Menu", null, "03e49b85-7d1b-4a0e-8d18-47d97756a570_TexasSmokeHouseMenu.jpg", 170m },
+                    { 3, new DateTime(2023, 7, 18, 11, 3, 12, 444, DateTimeKind.Local).AddTicks(6360), 1, 1, 3, "Fish Royale Menu", null, "c7e2b9ad-b7b7-476f-9e1d-32c502cf5686_FishRoyaleMenu.jpg", 140m }
                 });
 
             migrationBuilder.InsertData(
@@ -459,8 +459,8 @@ namespace Hamburger_Application.Migrations
                 columns: new[] { "Id", "CreationTime", "DrinkId", "FriesId", "HamburgerId", "Name", "OrderId", "Photo", "Price" },
                 values: new object[,]
                 {
-                    { 4, new DateTime(2023, 7, 17, 20, 12, 35, 788, DateTimeKind.Local).AddTicks(1867), 1, 1, 4, "Big King Menu", null, "3ae527d5-e1ca-474d-b550-9acca3afb9b8_BigKingMenu.jpg", 150m },
-                    { 5, new DateTime(2023, 7, 17, 20, 12, 35, 788, DateTimeKind.Local).AddTicks(1868), 1, 1, 5, "Chicken Royale Menu", null, "70e64328-09a0-4e6c-90c5-23868ba18a03_ChickenRoyaleMenu.jpg", 120m }
+                    { 4, new DateTime(2023, 7, 18, 11, 3, 12, 444, DateTimeKind.Local).AddTicks(6362), 1, 1, 4, "Big King Menu", null, "3ae527d5-e1ca-474d-b550-9acca3afb9b8_BigKingMenu.jpg", 150m },
+                    { 5, new DateTime(2023, 7, 18, 11, 3, 12, 444, DateTimeKind.Local).AddTicks(6364), 1, 1, 5, "Chicken Royale Menu", null, "70e64328-09a0-4e6c-90c5-23868ba18a03_ChickenRoyaleMenu.jpg", 120m }
                 });
 
             migrationBuilder.InsertData(
@@ -468,10 +468,10 @@ namespace Hamburger_Application.Migrations
                 columns: new[] { "Id", "CreationTime", "Name", "OrderId", "Photo", "Price" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 7, 17, 20, 12, 35, 788, DateTimeKind.Local).AddTicks(4562), "Ranch", null, "7b5e0551-d08d-4092-8c72-ff370ea64c57_RanchSauce.jpg", 15m },
-                    { 2, new DateTime(2023, 7, 17, 20, 12, 35, 788, DateTimeKind.Local).AddTicks(4567), "Ketchup", null, "f8b55022-2756-43dd-823d-6b94e43d9807_KetchupSauce.jpg", 10m },
-                    { 3, new DateTime(2023, 7, 17, 20, 12, 35, 788, DateTimeKind.Local).AddTicks(4569), "Mayonnaise", null, "7821c0f8-2b4b-4b46-b958-6fe2dec26bd7_MayonaisseSauce.jpg", 10m },
-                    { 4, new DateTime(2023, 7, 17, 20, 12, 35, 788, DateTimeKind.Local).AddTicks(4570), "Barbeque", null, "cad13c53-f4c9-4b94-aaa7-cb20855cd41e_BarbequeSauce.jpg", 15m }
+                    { 1, new DateTime(2023, 7, 18, 11, 3, 12, 444, DateTimeKind.Local).AddTicks(9215), "Ranch", null, "7b5e0551-d08d-4092-8c72-ff370ea64c57_RanchSauce.jpg", 15m },
+                    { 2, new DateTime(2023, 7, 18, 11, 3, 12, 444, DateTimeKind.Local).AddTicks(9221), "Ketchup", null, "f8b55022-2756-43dd-823d-6b94e43d9807_KetchupSauce.jpg", 10m },
+                    { 3, new DateTime(2023, 7, 18, 11, 3, 12, 444, DateTimeKind.Local).AddTicks(9222), "Mayonnaise", null, "7821c0f8-2b4b-4b46-b958-6fe2dec26bd7_MayonaisseSauce.jpg", 10m },
+                    { 4, new DateTime(2023, 7, 18, 11, 3, 12, 444, DateTimeKind.Local).AddTicks(9224), "Barbeque", null, "cad13c53-f4c9-4b94-aaa7-cb20855cd41e_BarbequeSauce.jpg", 15m }
                 });
 
             migrationBuilder.CreateIndex(
