@@ -2,6 +2,8 @@
 using Hamburger_Application.Areas.User.Models.AppUserVMs;
 using Hamburger_Application.Areas.User.Utilities;
 using Hamburger_Application.Entities.Concrete;
+using Hamburger_Application.Repositories.Abstract;
+using Hamburger_Application.Repositories.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -15,14 +17,16 @@ namespace Hamburger_Application.Areas.User.Controllers
         private readonly UserManager<AppUser> userManager;
         private readonly SignInManager<AppUser> signInManager;
         private readonly IMapper mapper;
+        private readonly IOrderRepository orderRepository;
         Random random;
         int randomCode;
 
-        public AccountSettingsController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IMapper mapper)
+        public AccountSettingsController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IMapper mapper, IOrderRepository orderRepository)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.mapper = mapper;
+            this.orderRepository = orderRepository;
             random = new();
         }
 
@@ -85,8 +89,8 @@ namespace Hamburger_Application.Areas.User.Controllers
                     {
                         ModelState.AddModelError("", "Update process is succeed !");
                         Helper.EmailSend(appUser.Email, $"Personal informations was changed !");
-                        TempData["IsDark"] = appUser.IsDark;
-                        return RedirectToAction("Index");
+                        //ViewBag.IsDark = appUser.IsDark;
+                        return View(appUserPersonalInfoVM);
                     }
                     else ModelState.AddModelError("Error", "Update process is unsucceed. Something went wrong !\nPlease try again later !");
                 }
@@ -113,15 +117,16 @@ namespace Hamburger_Application.Areas.User.Controllers
                 AppUser appUser = await userManager.FindByNameAsync(appUserUsernameEmailVM.UserName);
                 if (appUser is not null)
                 {
-                    appUser = mapper.Map<AppUser>(appUserUsernameEmailVM);
+                    appUser.UserName = appUserUsernameEmailVM.UserName;
+                    appUser.Email = appUserUsernameEmailVM.Email;
                     appUser.EmailConfirmed = false;
                     randomCode = random.Next(100_000, 1_000_000);
-                    Helper.EmailSend(appUser.Email, $"{appUser.UserName}'s mbf hamburger account change email address confirm code : ", randomCode);
+                    appUser.ConfirmCode = randomCode;
                     IdentityResult result = await userManager.UpdateAsync(appUser);
                     if (result.Succeeded)
                     {
                         ModelState.AddModelError("", "You are redirected to the verification page to finish updating the email address !");
-                        Helper.EmailSend(appUser.Email, "Verification page to finish updating the email address :  ", randomCode);
+                        Helper.EmailSend(appUser.Email, $"{appUser.UserName}'s mbf hamburger account change email address confirm code : ", randomCode);
                         TempData["Email"] = appUser.Email;
                         ViewData["WebSiteTitle"] = "Email Confirm";
                         return RedirectToAction("EmailConfirm", "Account", new { area = "User" });
@@ -141,7 +146,8 @@ namespace Hamburger_Application.Areas.User.Controllers
         public async Task<IActionResult> Password()
         {
             AppUser appUser = await userManager.FindByNameAsync(User.Identity.Name);
-            AppUserEmailPasswordVM appUserEmailPasswordVM = mapper.Map<AppUserEmailPasswordVM>(appUser);
+            AppUserEmailPasswordVM appUserEmailPasswordVM = new();
+            appUser.Email = appUserEmailPasswordVM.Email;
             ViewData["WebSiteTitle"] = "Password";
             return View(appUserEmailPasswordVM);
         }
@@ -177,7 +183,9 @@ namespace Hamburger_Application.Areas.User.Controllers
         public async Task<IActionResult> Address()
         {
             AppUser appUser = await userManager.FindByNameAsync(User.Identity.Name);
-            AppUserEmailAddressVM appUserEmailAddressVM = mapper.Map<AppUserEmailAddressVM>(appUser);
+            AppUserEmailAddressVM appUserEmailAddressVM = new();
+            appUserEmailAddressVM.Email = appUser.Email;
+            appUserEmailAddressVM.Address = appUser.Address;
             ViewData["WebSiteTitle"] = "Address";
             return View(appUserEmailAddressVM);
         }
@@ -236,7 +244,11 @@ namespace Hamburger_Application.Areas.User.Controllers
 
         public async Task<IActionResult> ConfirmedOrders()
         {
-            return View();
+            AppUser user = await userManager.FindByNameAsync(User.Identity.Name);
+
+            IEnumerable<Order> orders = orderRepository.GetAllOrdersWithProductsWhere(o => o.UserId == user.Id && o.IsAccepted == true);
+            ViewData["WebSiteTitle"] = "Confiirmed Orders";
+            return View(orders);
         }
     }
 }

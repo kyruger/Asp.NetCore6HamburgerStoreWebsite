@@ -12,13 +12,16 @@
         if (User.IsInRole("User"))
         {
             AppUser appUser = await userManager.FindByNameAsync(User.Identity.Name);
-            if (appUser.IsDark)
+            if (appUser is not null)
             {
-                navbarBackgroundColor = "#212529";
-                mbfLogoColor = "#F49301";
-                mainBackgroundColor = "#212529";
-                footerBackgroundColor = "#B12103";
-                footerColor = "#fff";
+                if (appUser.IsDark)
+                {
+                    navbarBackgroundColor = "#212529";
+                    mbfLogoColor = "#F49301";
+                    mainBackgroundColor = "#212529";
+                    footerBackgroundColor = "#B12103";
+                    footerColor = "#fff";
+                }
             }
         }
     }

@@ -363,3 +363,11 @@ MigrationBackup/
 FodyWeavers.xsd
 /Hamburger_Application/Areas/User/Views/Account/LogIn.cshtml
 /Hamburger_Application/Program.cs
+/Hamburger_Application/Migrations/20230718104838_mig1.cs
+/Hamburger_Application/Migrations/20230718104838_mig1.Designer.cs
+/Hamburger_Application/Migrations/20230718104838_mig1.cs
+/Hamburger_Application/Migrations/20230718104838_mig1.cs
+/Hamburger_Application/Migrations/20230718104838_mig1.cs
+/Hamburger_Application/Migrations/HamburgerDbContextModelSnapshot.cs
+/Hamburger_Application/Migrations/20230718112055_mig1.cs
+/Hamburger_Application/Migrations/20230718112055_mig1.Designer.cs
