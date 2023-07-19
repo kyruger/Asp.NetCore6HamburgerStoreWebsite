@@ -11,7 +11,8 @@ namespace Hamburger_Application.Areas.User.Utilities
     {
         internal static void EmailSend(string email, string info, int? randomCode = null)
         {
-            MailboxAddress mailboxAddressFrom = new MailboxAddress("mbf hamburger", "fatih_trkci96@hotmail.com");
+            /*************************************************************************************************/
+            MailboxAddress mailboxAddressFrom = new MailboxAddress("mbf hamburger", "mail adresi");
             MailboxAddress mailboxAddressTo = new MailboxAddress("User", email);
 
             var bodyBuilder = new BodyBuilder();
@@ -26,7 +27,8 @@ namespace Hamburger_Application.Areas.User.Utilities
 
             SmtpClient client = new();
             client.Connect("smtp.office365.com", 587, false);
-            client.Authenticate("fatih_trkci96@hotmail.com", "dakytkefxqwqevks");
+            /******************************************************************************/
+            client.Authenticate("mail adresi", "");
             client.Send(mimeMessage);
             client.Disconnect(true);
         }
