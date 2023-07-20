@@ -163,27 +163,40 @@ namespace Hamburger_Application.Areas.User.Controllers
         public async Task<IActionResult> SaveOrder(decimal totalPrice)
         {
             AppUser user = await userManager.FindByNameAsync(User.Identity.Name);
-            Order order = orderRepository.GetByUserId(user.Id, false);
-            if (order is not null)
+            if (user.Address is not null)
             {
-                order.IsAccepted = true;
-                bool isUpdateOrder = orderRepository.Update(order);
-                if (isUpdateOrder)
+                Order order = orderRepository.GetByUserId(user.Id, false);
+                if (order is not null)
                 {
-                    Helper.EmailSend(user.Email, $"Your Order was confirmed {DateTime.Now} Order Price:{totalPrice}..Your order will arrive in 1 hours");
-                    TempData["Info"] = $"Your Order was confirmed {DateTime.Now}";
+                    order.IsAccepted = true;
+                    bool isUpdateOrder = orderRepository.Update(order);
+                    if (isUpdateOrder)
+                    {
+                        Helper.EmailSend(user.Email, $"Your Order was confirmed {DateTime.Now} Order Price:{totalPrice / 100} ₺..Your order will arrive at your {user.Address} within 1 hours.\nAfter paying at the door, you can receive your order. ");
+                        TempData["Info"] = $"Your Order was confirmed {DateTime.Now}. After paying at the door, you can receive your order.";
+                    }
+                    else
+                    {
+                        TempData["Info"] = "Something went wrong..Please try again later.. :)";
+                        ViewData["WebSiteTitle"] = "Shopping Cart";
+                        return RedirectToAction("Cart");
+                    }
                 }
                 else
                 {
-                    TempData["Info"] = "Something went wrong..Please try again later.. :)";
+                    TempData["Info"] = "Order was not found";
+                    ViewData["WebSiteTitle"] = "Shopping Cart";
+                    return RedirectToAction("Cart");
                 }
+                ViewData["WebSiteTitle"] = "Shopping Cart";
+                return RedirectToAction("Cart");
             }
             else
             {
-                TempData["Info"] = "Order was not found";
+                TempData["Info"] = "To place order, you must first add an address.";
+                ViewData["WebSiteTitle"] = "Shopping Cart";
+                return RedirectToAction("Cart");
             }
-            ViewData["WebSiteTitle"] = "Shopping Cart";
-            return RedirectToAction("Cart");
         }
 
         public async Task<IActionResult> Decrease(string entityName)
