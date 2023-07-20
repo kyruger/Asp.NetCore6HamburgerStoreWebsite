@@ -174,6 +174,8 @@ namespace Hamburger_Application.Areas.User.Controllers
                     {
                         Helper.EmailSend(user.Email, $"Your Order was confirmed {DateTime.Now} Order Price:{totalPrice / 100} ₺..Your order will arrive at your {user.Address} within 1 hours.\nAfter paying at the door, you can receive your order. ");
                         TempData["Info"] = $"Your Order was confirmed {DateTime.Now}. After paying at the door, you can receive your order.";
+                        ViewData["WebSiteTitle"] = "Shopping Cart";
+                        return RedirectToAction("Cart");
                     }
                     else
                     {
@@ -188,8 +190,6 @@ namespace Hamburger_Application.Areas.User.Controllers
                     ViewData["WebSiteTitle"] = "Shopping Cart";
                     return RedirectToAction("Cart");
                 }
-                ViewData["WebSiteTitle"] = "Shopping Cart";
-                return RedirectToAction("Cart");
             }
             else
             {
