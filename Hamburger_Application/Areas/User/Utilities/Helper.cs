@@ -26,8 +26,8 @@ namespace Hamburger_Application.Areas.User.Utilities
             mimeMessage.Subject = "mbf hamburger";
             SmtpClient client = new();
             /**********Smtp Address**Smptp Türkiye(587)****************************************************************************/
-            client.Connect("smptp address", 587, false);
-            /******************Email**Email Application Verification Code**************************************************************/
+            client.Connect("smtp.office365.com", 587, false);
+            /**********Smtp Address**Smptp Türkiye(587)****************************************************************************/
             client.Authenticate("email", "email application verification code");
             client.Send(mimeMessage);
             client.Disconnect(true);
